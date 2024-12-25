@@ -22,9 +22,6 @@ apis:
       - FN: Postmark Support
         url: https://postmarkapp.com/support
         email: info@example.com
-    overlays:
-      - type: APIs.io Search
-        url: overlays/http://example.com/openapi.json-openapi-search.yml
     aid: postmark:postmark-api
 maintainers:
   - FN: API Evangelist
