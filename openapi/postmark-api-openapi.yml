@@ -1,0 +1,1251 @@
+openapi: 3.0.0
+info:
+  title: Postmark
+  description: |-
+    Postmark makes sending and receiving emailnincredibly easy.n
+
+    Contact Support:
+     Name: No Contact
+     Email: email@example.com
+  version: 1.0.0
+servers:
+  - url: http://{{baseurl}}
+tags:
+  - name: bounces
+  - name: bounces > {bounceid}
+  - name: email
+  - name: messages
+  - name: messages > inbound
+  - name: messages > inbound > {messageid}
+  - name: messages > outbound
+  - name: messages > outbound > clicks
+  - name: messages > outbound > opens
+  - name: messages > outbound > {messageid}
+  - name: stats/outbound
+  - name: stats/outbound > clicks
+  - name: stats/outbound > opens
+  - name: templates
+  - name: triggers
+  - name: triggers > inboundrules
+  - name: triggers > tags
+paths:
+  /bounces/{bounceid}:
+    get:
+      tags:
+        - bounces > {bounceid}
+      summary: Get a single bounce
+      parameters:
+        - name: bounceid
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The ID of the bounce to retrieve.
+          example: <integer>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bounces/{bounceid}/activate:
+    put:
+      tags:
+        - bounces > {bounceid}
+      summary: Activate a bounce
+      requestBody:
+        content: {}
+      parameters:
+        - name: bounceid
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The ID of the bounce to retrieve.
+          example: <integer>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bounces/{bounceid}/dump:
+    get:
+      tags:
+        - bounces > {bounceid}
+      summary: Get bounce dump
+      parameters:
+        - name: bounceid
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The ID of the bounce to retrieve.
+          example: <integer>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bounces:
+    get:
+      tags:
+        - bounces
+      summary: Get bounces
+      parameters:
+        - name: count
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to return per request. Max 500.
+          example: <integer>
+        - name: offset
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to skip.
+          example: <integer>
+        - name: type
+          in: query
+          schema:
+            type: string
+          description: Filter by type of bounce
+          example: <string>
+        - name: inactive
+          in: query
+          schema:
+            type: string
+          description: >-
+            Filter by emails that were deactivated by Postmark due to the
+            bounce. Set to true or false. If this isn't specified it will return
+            both active and inactive.
+          example: <boolean>
+        - name: emailFilter
+          in: query
+          schema:
+            type: string
+          description: Filter by email address
+          example: <string>
+        - name: messageID
+          in: query
+          schema:
+            type: string
+          description: Filter by messageID
+          example: <string>
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: todate
+          in: query
+          schema:
+            type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+          example: <string>
+        - name: fromdate
+          in: query
+          schema:
+            type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bounces/tags:
+    get:
+      tags:
+        - bounces
+      summary: Get bounced tags
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /email:
+    post:
+      tags:
+        - email
+      summary: Send a single email
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /email/batch:
+    post:
+      tags:
+        - email
+      summary: Send a batch of emails
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /email/batchWithTemplates:
+    post:
+      tags:
+        - email
+      summary: Send a batch of email using templates.
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /email/withTemplate:
+    post:
+      tags:
+        - email
+      summary: Send an email using a Template
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /messages/inbound/{messageid}/bypass:
+    put:
+      tags:
+        - messages > inbound > {messageid}
+      summary: Bypass rules for a blocked inbound message
+      requestBody:
+        content: {}
+      parameters:
+        - name: messageid
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The ID of the message which should bypass inbound rules.
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /messages/inbound/{messageid}/details:
+    get:
+      tags:
+        - messages > inbound > {messageid}
+      summary: Inbound message details
+      parameters:
+        - name: messageid
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The ID of the message which should bypass inbound rules.
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /messages/inbound/{messageid}/retry:
+    put:
+      tags:
+        - messages > inbound > {messageid}
+      summary: Retry a failed inbound message for processing
+      requestBody:
+        content: {}
+      parameters:
+        - name: messageid
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The ID of the message which should bypass inbound rules.
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /messages/inbound:
+    get:
+      tags:
+        - messages > inbound
+      summary: Inbound message search
+      parameters:
+        - name: count
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to return per request. Max 500.
+          example: <integer>
+        - name: offset
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to skip.
+          example: <integer>
+        - name: recipient
+          in: query
+          schema:
+            type: string
+          description: Filter by the user who was receiving the email
+          example: <string>
+        - name: fromemail
+          in: query
+          schema:
+            type: string
+          description: Filter by the sender email address
+          example: <string>
+        - name: subject
+          in: query
+          schema:
+            type: string
+          description: Filter by email subject
+          example: <string>
+        - name: mailboxhash
+          in: query
+          schema:
+            type: string
+          description: Filter by mailboxhash
+          example: <string>
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: >-
+            Filter by status (`blocked`, `processed`, `queued`, `failed`,
+            `scheduled`)
+          example: <string>
+        - name: todate
+          in: query
+          schema:
+            type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+          example: <string>
+        - name: fromdate
+          in: query
+          schema:
+            type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /messages/outbound/clicks:
+    get:
+      tags:
+        - messages > outbound > clicks
+      summary: Clicks for a all messages
+      parameters:
+        - name: count
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to return per request. Max 500.
+          example: <integer>
+        - name: offset
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to skip.
+          example: <integer>
+        - name: recipient
+          in: query
+          schema:
+            type: string
+          description: Filter by the user who was receiving the email
+          example: <string>
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: client_name
+          in: query
+          schema:
+            type: string
+          description: Filter by client name, i.e. Outlook, Gmail
+          example: <string>
+        - name: client_company
+          in: query
+          schema:
+            type: string
+          description: Filter by company, i.e. Microsoft, Apple, Google
+          example: <string>
+        - name: client_family
+          in: query
+          schema:
+            type: string
+          description: Filter by client family, i.e. OS X, Chrome
+          example: <string>
+        - name: os_name
+          in: query
+          schema:
+            type: string
+          description: >-
+            Filter by full OS name and specific version, i.e. OS X 10.9
+            Mavericks, Windows 7
+          example: <string>
+        - name: os_family
+          in: query
+          schema:
+            type: string
+          description: >-
+            Filter by kind of OS used without specific version, i.e. OS X,
+            Windows
+          example: <string>
+        - name: os_company
+          in: query
+          schema:
+            type: string
+          description: >-
+            Filter by company which produced the OS, i.e. Apple Computer, Inc.,
+            Microsoft Corporation
+          example: <string>
+        - name: platform
+          in: query
+          schema:
+            type: string
+          description: Filter by platform, i.e. webmail, desktop, mobile
+          example: <string>
+        - name: country
+          in: query
+          schema:
+            type: string
+          description: Filter by country messages were opened in, i.e. Denmark, Russia
+          example: <string>
+        - name: region
+          in: query
+          schema:
+            type: string
+          description: >-
+            Filter by full name of region messages were opened in, i.e. Moscow,
+            New York
+          example: <string>
+        - name: city
+          in: query
+          schema:
+            type: string
+          description: >-
+            Filter by full name of region messages were opened in, i.e. Moscow,
+            New York
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /messages/outbound/clicks/{messageid}:
+    get:
+      tags:
+        - messages > outbound > clicks
+      summary: Retrieve Message Clicks
+      parameters:
+        - name: count
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to return per request. Max 500.
+          example: <integer>
+        - name: offset
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to skip.
+          example: <integer>
+        - name: messageid
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The ID of the message which should bypass inbound rules.
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /messages/outbound/opens:
+    get:
+      tags:
+        - messages > outbound > opens
+      summary: Opens for all messages
+      parameters:
+        - name: count
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to return per request. Max 500.
+          example: <integer>
+        - name: offset
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to skip.
+          example: <integer>
+        - name: recipient
+          in: query
+          schema:
+            type: string
+          description: Filter by the user who was receiving the email
+          example: <string>
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: client_name
+          in: query
+          schema:
+            type: string
+          description: Filter by client name, i.e. Outlook, Gmail
+          example: <string>
+        - name: client_company
+          in: query
+          schema:
+            type: string
+          description: Filter by company, i.e. Microsoft, Apple, Google
+          example: <string>
+        - name: client_family
+          in: query
+          schema:
+            type: string
+          description: Filter by client family, i.e. OS X, Chrome
+          example: <string>
+        - name: os_name
+          in: query
+          schema:
+            type: string
+          description: >-
+            Filter by full OS name and specific version, i.e. OS X 10.9
+            Mavericks, Windows 7
+          example: <string>
+        - name: os_family
+          in: query
+          schema:
+            type: string
+          description: >-
+            Filter by kind of OS used without specific version, i.e. OS X,
+            Windows
+          example: <string>
+        - name: os_company
+          in: query
+          schema:
+            type: string
+          description: >-
+            Filter by company which produced the OS, i.e. Apple Computer, Inc.,
+            Microsoft Corporation
+          example: <string>
+        - name: platform
+          in: query
+          schema:
+            type: string
+          description: Filter by platform, i.e. webmail, desktop, mobile
+          example: <string>
+        - name: country
+          in: query
+          schema:
+            type: string
+          description: Filter by country messages were opened in, i.e. Denmark, Russia
+          example: <string>
+        - name: region
+          in: query
+          schema:
+            type: string
+          description: >-
+            Filter by full name of region messages were opened in, i.e. Moscow,
+            New York
+          example: <string>
+        - name: city
+          in: query
+          schema:
+            type: string
+          description: >-
+            Filter by full name of region messages were opened in, i.e. Moscow,
+            New York
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /messages/outbound/opens/{messageid}:
+    get:
+      tags:
+        - messages > outbound > opens
+      summary: Retrieve Message Opens
+      parameters:
+        - name: count
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to return per request. Max 500.
+          example: <integer>
+        - name: offset
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to skip.
+          example: <integer>
+        - name: messageid
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The ID of the message which should bypass inbound rules.
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /messages/outbound/{messageid}/details:
+    get:
+      tags:
+        - messages > outbound > {messageid}
+      summary: Outbound message details
+      parameters:
+        - name: messageid
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The ID of the message which should bypass inbound rules.
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /messages/outbound/{messageid}/dump:
+    get:
+      tags:
+        - messages > outbound > {messageid}
+      summary: Outbound message dump
+      parameters:
+        - name: messageid
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The ID of the message which should bypass inbound rules.
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /messages/outbound:
+    get:
+      tags:
+        - messages > outbound
+      summary: Outbound message search
+      parameters:
+        - name: count
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to return per request. Max 500.
+          example: <integer>
+        - name: offset
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to skip.
+          example: <integer>
+        - name: recipient
+          in: query
+          schema:
+            type: string
+          description: Filter by the user who was receiving the email
+          example: <string>
+        - name: fromemail
+          in: query
+          schema:
+            type: string
+          description: Filter by the sender email address
+          example: <string>
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: >-
+            Filter by status (`blocked`, `processed`, `queued`, `failed`,
+            `scheduled`)
+          example: <string>
+        - name: todate
+          in: query
+          schema:
+            type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+          example: <string>
+        - name: fromdate
+          in: query
+          schema:
+            type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /stats/outbound/clicks:
+    get:
+      tags:
+        - stats/outbound > clicks
+      summary: Get click counts
+      parameters:
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: fromdate
+          in: query
+          schema:
+            type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          example: <string>
+        - name: todate
+          in: query
+          schema:
+            type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /stats/outbound/clicks/browserfamilies:
+    get:
+      tags:
+        - stats/outbound > clicks
+      summary: Get browser usage by family
+      parameters:
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: fromdate
+          in: query
+          schema:
+            type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          example: <string>
+        - name: todate
+          in: query
+          schema:
+            type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /stats/outbound/clicks/location:
+    get:
+      tags:
+        - stats/outbound > clicks
+      summary: Get clicks by body location
+      parameters:
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: fromdate
+          in: query
+          schema:
+            type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          example: <string>
+        - name: todate
+          in: query
+          schema:
+            type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /stats/outbound/clicks/platforms:
+    get:
+      tags:
+        - stats/outbound > clicks
+      summary: Get browser plaform usage
+      parameters:
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: fromdate
+          in: query
+          schema:
+            type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          example: <string>
+        - name: todate
+          in: query
+          schema:
+            type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /stats/outbound/opens:
+    get:
+      tags:
+        - stats/outbound > opens
+      summary: Get email open counts
+      parameters:
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: fromdate
+          in: query
+          schema:
+            type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          example: <string>
+        - name: todate
+          in: query
+          schema:
+            type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /stats/outbound/opens/emailclients:
+    get:
+      tags:
+        - stats/outbound > opens
+      summary: Get email client usage
+      parameters:
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: fromdate
+          in: query
+          schema:
+            type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          example: <string>
+        - name: todate
+          in: query
+          schema:
+            type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /stats/outbound/opens/platforms:
+    get:
+      tags:
+        - stats/outbound > opens
+      summary: Get email platform usage
+      parameters:
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: fromdate
+          in: query
+          schema:
+            type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          example: <string>
+        - name: todate
+          in: query
+          schema:
+            type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /stats/outbound/opens/readtimes:
+    get:
+      tags:
+        - stats/outbound > opens
+      summary: Get email read times
+      parameters:
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: fromdate
+          in: query
+          schema:
+            type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          example: <string>
+        - name: todate
+          in: query
+          schema:
+            type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /stats/outbound:
+    get:
+      tags:
+        - stats/outbound
+      summary: Get outbound overview
+      parameters:
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: fromdate
+          in: query
+          schema:
+            type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          example: <string>
+        - name: todate
+          in: query
+          schema:
+            type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /stats/outbound/bounces:
+    get:
+      tags:
+        - stats/outbound
+      summary: Get bounce counts
+      parameters:
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: fromdate
+          in: query
+          schema:
+            type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          example: <string>
+        - name: todate
+          in: query
+          schema:
+            type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /stats/outbound/sends:
+    get:
+      tags:
+        - stats/outbound
+      summary: Get sent counts
+      parameters:
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: fromdate
+          in: query
+          schema:
+            type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          example: <string>
+        - name: todate
+          in: query
+          schema:
+            type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /stats/outbound/spam:
+    get:
+      tags:
+        - stats/outbound
+      summary: Get spam complaints
+      parameters:
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: fromdate
+          in: query
+          schema:
+            type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          example: <string>
+        - name: todate
+          in: query
+          schema:
+            type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /stats/outbound/tracked:
+    get:
+      tags:
+        - stats/outbound
+      summary: Get tracked email counts
+      parameters:
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter by tag
+          example: <string>
+        - name: fromdate
+          in: query
+          schema:
+            type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          example: <string>
+        - name: todate
+          in: query
+          schema:
+            type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /templates:
+    get:
+      tags:
+        - templates
+      summary: Get the Templates associated with this Server
+      parameters:
+        - name: count
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to return per request. Max 500.
+          example: <integer>
+        - name: offset
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to skip.
+          example: <integer>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /templates/validate:
+    post:
+      tags:
+        - templates
+      summary: Test Template Content
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /templates/{templateIdOrAlias}:
+    delete:
+      tags:
+        - templates
+      summary: Delete a Template
+      parameters:
+        - name: templateIdOrAlias
+          in: path
+          schema:
+            type: string
+          required: true
+          description: >-
+            The 'TemplateID' or 'Alias' value for the Template you wish to
+            delete.
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /triggers/inboundrules:
+    get:
+      tags:
+        - triggers > inboundrules
+      summary: List inbound rule triggers
+      parameters:
+        - name: count
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to return per request. Max 500.
+          example: <integer>
+        - name: offset
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to skip.
+          example: <integer>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /triggers/inboundrules/{triggerid}:
+    delete:
+      tags:
+        - triggers > inboundrules
+      summary: Delete a single trigger
+      parameters:
+        - name: triggerid
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The ID of the Inbound Rule that should be deleted.
+          example: <integer>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /triggers/tags:
+    get:
+      tags:
+        - triggers > tags
+      summary: Search triggers
+      parameters:
+        - name: count
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to return per request. Max 500.
+          example: <integer>
+        - name: offset
+          in: query
+          schema:
+            type: string
+          description: Number of bounces to skip.
+          example: <integer>
+        - name: match_name
+          in: query
+          schema:
+            type: string
+          description: Filter by delivery tag
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /triggers/tags/{triggerid}:
+    delete:
+      tags:
+        - triggers > tags
+      summary: Delete a single trigger
+      parameters:
+        - name: triggerid
+          in: path
+          schema:
+            type: string
+          required: true
+          description: The ID of the Inbound Rule that should be deleted.
+          example: <integer>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /deliverystats:
+    get:
+      tags:
+        - default
+      summary: Get delivery stats
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /server:
+    get:
+      tags:
+        - default
+      summary: Get Server Configuration
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
