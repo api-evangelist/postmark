@@ -6,33 +6,33 @@ apis:
     name: Postmark API
     tags:
       - Bounceid
-      - ' Activate'
-      - ' Dump'
-      - ' Bounces'
-      - ' Tags'
-      - ' Email'
-      - ' Batch'
-      - ' Templates'
-      - ' Template'
-      - ' Messages'
-      - ' Inbound'
-      - ' Bypass'
-      - ' Retry'
-      - ' Outbound'
-      - ' Message Identifier'
-      - ' Statistics'
-      - ' Browser Families'
-      - ' Locations'
-      - ' Platforms'
-      - ' Readtimes'
-      - ' Sends'
-      - ' Spam'
-      - ' Validate'
-      - ' Alias'
-      - ' Triggers'
-      - ' Triggerid'
-      - ' Default'
-      - ' Servers'
+      - Activate
+      - Dump
+      - Bounces
+      - Tags
+      - Email
+      - Batch
+      - Templates
+      - Template
+      - Messages
+      - Inbound
+      - Bypass
+      - Retry
+      - Outbound
+      - Message Identifier
+      - Statistics
+      - Browser Families
+      - Locations
+      - Platforms
+      - Readtimes
+      - Sends
+      - Spam
+      - Validate
+      - Alias
+      - Triggers
+      - Triggerid
+      - Default
+      - Servers
     contact:
       - FN: Postmark Support
         url: https://postmarkapp.com/support
