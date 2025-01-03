@@ -1,12 +1,11 @@
 openapi: 3.0.0
 info:
-  title: Postmark
+  title: Postmark API
   description: |-
-    Postmark makes sending and receiving emailnincredibly easy.n
-
-    Contact Support:
-     Name: No Contact
-     Email: email@example.com
+    Postmark helps deliver and track application email. In a nutshell, the
+    service replaces SMTP (or Sendmail) with a far more reliable, scalable and
+    care-free environment. In addition, you can track statistics such as
+    number of emails sent or processed, opens, bounces and spam complaints.
   version: 1.0.0
 servers:
   - url: http://{{baseurl}}
@@ -32,7 +31,7 @@ paths:
   /bounces/{bounceid}:
     get:
       tags:
-        - bounces > {bounceid}
+        - Bounceid
       summary: Get a single bounce
       parameters:
         - name: bounceid
@@ -50,7 +49,8 @@ paths:
   /bounces/{bounceid}/activate:
     put:
       tags:
-        - bounces > {bounceid}
+        - Bounceid
+        - Activate
       summary: Activate a bounce
       requestBody:
         content: {}
@@ -70,7 +70,8 @@ paths:
   /bounces/{bounceid}/dump:
     get:
       tags:
-        - bounces > {bounceid}
+        - Bounceid
+        - Dump
       summary: Get bounce dump
       parameters:
         - name: bounceid
@@ -88,7 +89,7 @@ paths:
   /bounces:
     get:
       tags:
-        - bounces
+        - Bounces
       summary: Get bounces
       parameters:
         - name: count
@@ -156,7 +157,7 @@ paths:
   /bounces/tags:
     get:
       tags:
-        - bounces
+        - Tags
       summary: Get bounced tags
       responses:
         '200':
@@ -166,7 +167,7 @@ paths:
   /email:
     post:
       tags:
-        - email
+        - Email
       summary: Send a single email
       requestBody:
         content: {}
@@ -178,7 +179,8 @@ paths:
   /email/batch:
     post:
       tags:
-        - email
+        - Email
+        - Batch
       summary: Send a batch of emails
       requestBody:
         content: {}
@@ -190,7 +192,9 @@ paths:
   /email/batchWithTemplates:
     post:
       tags:
-        - email
+        - Email
+        - Batch
+        - Templates
       summary: Send a batch of email using templates.
       requestBody:
         content: {}
@@ -202,7 +206,8 @@ paths:
   /email/withTemplate:
     post:
       tags:
-        - email
+        - Email
+        - Template
       summary: Send an email using a Template
       requestBody:
         content: {}
@@ -214,7 +219,9 @@ paths:
   /messages/inbound/{messageid}/bypass:
     put:
       tags:
-        - messages > inbound > {messageid}
+        - Messages
+        - Inbound
+        - Bypass
       summary: Bypass rules for a blocked inbound message
       requestBody:
         content: {}
@@ -234,7 +241,9 @@ paths:
   /messages/inbound/{messageid}/details:
     get:
       tags:
-        - messages > inbound > {messageid}
+        - Messages
+        - Inbound
+        - Messages > Inbound > {Messageid}
       summary: Inbound message details
       parameters:
         - name: messageid
@@ -252,7 +261,9 @@ paths:
   /messages/inbound/{messageid}/retry:
     put:
       tags:
-        - messages > inbound > {messageid}
+        - Messages
+        - Inbound
+        - Retry
       summary: Retry a failed inbound message for processing
       requestBody:
         content: {}
@@ -272,7 +283,8 @@ paths:
   /messages/inbound:
     get:
       tags:
-        - messages > inbound
+        - Messages
+        - Inbound
       summary: Inbound message search
       parameters:
         - name: count
@@ -345,7 +357,9 @@ paths:
   /messages/outbound/clicks:
     get:
       tags:
-        - messages > outbound > clicks
+        - Messages
+        - Outbound
+        - Messages > Outbound > Clicks
       summary: Clicks for a all messages
       parameters:
         - name: count
@@ -450,7 +464,9 @@ paths:
   /messages/outbound/clicks/{messageid}:
     get:
       tags:
-        - messages > outbound > clicks
+        - Messages
+        - Outbound
+        - Message Identifier
       summary: Retrieve Message Clicks
       parameters:
         - name: count
@@ -480,7 +496,9 @@ paths:
   /messages/outbound/opens:
     get:
       tags:
-        - messages > outbound > opens
+        - Messages
+        - Outbound
+        - Messages > Outbound > Opens
       summary: Opens for all messages
       parameters:
         - name: count
@@ -585,7 +603,9 @@ paths:
   /messages/outbound/opens/{messageid}:
     get:
       tags:
-        - messages > outbound > opens
+        - Messages
+        - Outbound
+        - Message Identifier
       summary: Retrieve Message Opens
       parameters:
         - name: count
@@ -615,7 +635,9 @@ paths:
   /messages/outbound/{messageid}/details:
     get:
       tags:
-        - messages > outbound > {messageid}
+        - Messages
+        - Outbound
+        - Messages > Outbound > {Messageid}
       summary: Outbound message details
       parameters:
         - name: messageid
@@ -633,7 +655,9 @@ paths:
   /messages/outbound/{messageid}/dump:
     get:
       tags:
-        - messages > outbound > {messageid}
+        - Messages
+        - Outbound
+        - Dump
       summary: Outbound message dump
       parameters:
         - name: messageid
@@ -651,7 +675,8 @@ paths:
   /messages/outbound:
     get:
       tags:
-        - messages > outbound
+        - Messages
+        - Outbound
       summary: Outbound message search
       parameters:
         - name: count
@@ -712,7 +737,9 @@ paths:
   /stats/outbound/clicks:
     get:
       tags:
-        - stats/outbound > clicks
+        - Statistics
+        - Outbound
+        - Stats/outbound > Clicks
       summary: Get click counts
       parameters:
         - name: tag
@@ -741,7 +768,9 @@ paths:
   /stats/outbound/clicks/browserfamilies:
     get:
       tags:
-        - stats/outbound > clicks
+        - Statistics
+        - Outbound
+        - Browser Families
       summary: Get browser usage by family
       parameters:
         - name: tag
@@ -770,7 +799,9 @@ paths:
   /stats/outbound/clicks/location:
     get:
       tags:
-        - stats/outbound > clicks
+        - Statistics
+        - Outbound
+        - Locations
       summary: Get clicks by body location
       parameters:
         - name: tag
@@ -799,7 +830,9 @@ paths:
   /stats/outbound/clicks/platforms:
     get:
       tags:
-        - stats/outbound > clicks
+        - Statistics
+        - Outbound
+        - Platforms
       summary: Get browser plaform usage
       parameters:
         - name: tag
@@ -828,7 +861,9 @@ paths:
   /stats/outbound/opens:
     get:
       tags:
-        - stats/outbound > opens
+        - Statistics
+        - Outbound
+        - Stats/outbound > Opens
       summary: Get email open counts
       parameters:
         - name: tag
@@ -857,7 +892,9 @@ paths:
   /stats/outbound/opens/emailclients:
     get:
       tags:
-        - stats/outbound > opens
+        - Statistics
+        - Outbound
+        - Emailclients
       summary: Get email client usage
       parameters:
         - name: tag
@@ -886,7 +923,9 @@ paths:
   /stats/outbound/opens/platforms:
     get:
       tags:
-        - stats/outbound > opens
+        - Statistics
+        - Outbound
+        - Platforms
       summary: Get email platform usage
       parameters:
         - name: tag
@@ -915,7 +954,9 @@ paths:
   /stats/outbound/opens/readtimes:
     get:
       tags:
-        - stats/outbound > opens
+        - Statistics
+        - Outbound
+        - Readtimes
       summary: Get email read times
       parameters:
         - name: tag
@@ -944,7 +985,8 @@ paths:
   /stats/outbound:
     get:
       tags:
-        - stats/outbound
+        - Statistics
+        - Outbound
       summary: Get outbound overview
       parameters:
         - name: tag
@@ -973,7 +1015,9 @@ paths:
   /stats/outbound/bounces:
     get:
       tags:
-        - stats/outbound
+        - Statistics
+        - Outbound
+        - Stats/outbound
       summary: Get bounce counts
       parameters:
         - name: tag
@@ -1002,7 +1046,9 @@ paths:
   /stats/outbound/sends:
     get:
       tags:
-        - stats/outbound
+        - Statistics
+        - Outbound
+        - Sends
       summary: Get sent counts
       parameters:
         - name: tag
@@ -1031,7 +1077,9 @@ paths:
   /stats/outbound/spam:
     get:
       tags:
-        - stats/outbound
+        - Statistics
+        - Outbound
+        - Spam
       summary: Get spam complaints
       parameters:
         - name: tag
@@ -1060,7 +1108,9 @@ paths:
   /stats/outbound/tracked:
     get:
       tags:
-        - stats/outbound
+        - Statistics
+        - Outbound
+        - Stats/outbound
       summary: Get tracked email counts
       parameters:
         - name: tag
@@ -1089,7 +1139,7 @@ paths:
   /templates:
     get:
       tags:
-        - templates
+        - Templates
       summary: Get the Templates associated with this Server
       parameters:
         - name: count
@@ -1112,7 +1162,8 @@ paths:
   /templates/validate:
     post:
       tags:
-        - templates
+        - Templates
+        - Validate
       summary: Test Template Content
       requestBody:
         content: {}
@@ -1124,7 +1175,9 @@ paths:
   /templates/{templateIdOrAlias}:
     delete:
       tags:
-        - templates
+        - Templates
+        - Template
+        - Alias
       summary: Delete a Template
       parameters:
         - name: templateIdOrAlias
@@ -1144,7 +1197,8 @@ paths:
   /triggers/inboundrules:
     get:
       tags:
-        - triggers > inboundrules
+        - Triggers
+        - Triggers > Inboundrules
       summary: List inbound rule triggers
       parameters:
         - name: count
@@ -1167,7 +1221,8 @@ paths:
   /triggers/inboundrules/{triggerid}:
     delete:
       tags:
-        - triggers > inboundrules
+        - Triggers
+        - Triggerid
       summary: Delete a single trigger
       parameters:
         - name: triggerid
@@ -1185,7 +1240,8 @@ paths:
   /triggers/tags:
     get:
       tags:
-        - triggers > tags
+        - Triggers
+        - Tags
       summary: Search triggers
       parameters:
         - name: count
@@ -1214,7 +1270,9 @@ paths:
   /triggers/tags/{triggerid}:
     delete:
       tags:
-        - triggers > tags
+        - Triggers
+        - Tags
+        - Triggers > Tags
       summary: Delete a single trigger
       parameters:
         - name: triggerid
@@ -1232,7 +1290,7 @@ paths:
   /deliverystats:
     get:
       tags:
-        - default
+        - Default
       summary: Get delivery stats
       responses:
         '200':
@@ -1242,7 +1300,8 @@ paths:
   /server:
     get:
       tags:
-        - default
+        - Servers
+        - Default
       summary: Get Server Configuration
       responses:
         '200':
