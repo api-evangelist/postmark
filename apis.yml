@@ -25,7 +25,6 @@ description: >-
   environment. In addition, you can track statistics such as number of emails
   sent or processed, opens, bounces and spam complaints.
 maintainers:
-  - FN: API Evangelist
-    url: http://apievangelist.com
-    email: info@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
 specificationVersion: '0.18'
