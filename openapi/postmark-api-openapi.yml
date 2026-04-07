@@ -10,23 +10,42 @@ info:
 servers:
   - url: http://{{baseurl}}
 tags:
-  - name: bounces
-  - name: bounces > {bounceid}
-  - name: email
-  - name: messages
-  - name: messages > inbound
-  - name: messages > inbound > {messageid}
-  - name: messages > outbound
-  - name: messages > outbound > clicks
-  - name: messages > outbound > opens
-  - name: messages > outbound > {messageid}
-  - name: stats/outbound
-  - name: stats/outbound > clicks
-  - name: stats/outbound > opens
-  - name: templates
-  - name: triggers
-  - name: triggers > inboundrules
-  - name: triggers > tags
+  - name: Activate
+  - name: Alias
+  - name: Batch
+  - name: Bounceid
+  - name: Bounces
+  - name: Browser Families
+  - name: Bypass
+  - name: Dump
+  - name: Email
+  - name: Emailclients
+  - name: Inbound
+  - name: Locations
+  - name: Message Identifier
+  - name: Messages
+  - name: Messages > Inbound > {Messageid}
+  - name: Messages > Outbound > Clicks
+  - name: Messages > Outbound > Opens
+  - name: Messages > Outbound > {Messageid}
+  - name: Outbound
+  - name: Platforms
+  - name: Readtimes
+  - name: Retry
+  - name: Sends
+  - name: Servers
+  - name: Spam
+  - name: Statistics
+  - name: Stats/Outbound
+  - name: Stats/Outbound > Clicks
+  - name: Stats/Outbound > Opens
+  - name: Template
+  - name: Templates
+  - name: Triggerid
+  - name: Triggers
+  - name: Triggers > Inboundrules
+  - name: Triggers > Tags
+  - name: Validate
 paths:
   /bounces/{bounceid}:
     get:
@@ -49,8 +68,8 @@ paths:
   /bounces/{bounceid}/activate:
     put:
       tags:
-        - Bounceid
         - Activate
+        - Bounceid
       summary: Postmark Activate a bounce
       requestBody:
         content: {}
@@ -156,8 +175,7 @@ paths:
             application/json: {}
   /bounces/tags:
     get:
-      tags:
-        - Tags
+      tags: []
       summary: Postmark Get bounced tags
       responses:
         '200':
@@ -179,8 +197,8 @@ paths:
   /email/batch:
     post:
       tags:
-        - Email
         - Batch
+        - Email
       summary: Postmark Send a batch of emails
       requestBody:
         content: {}
@@ -192,8 +210,8 @@ paths:
   /email/batchWithTemplates:
     post:
       tags:
-        - Email
         - Batch
+        - Email
         - Templates
       summary: Postmark Send a batch of email using templates.
       requestBody:
@@ -219,9 +237,9 @@ paths:
   /messages/inbound/{messageid}/bypass:
     put:
       tags:
-        - Messages
-        - Inbound
         - Bypass
+        - Inbound
+        - Messages
       summary: Postmark Bypass rules for a blocked inbound message
       requestBody:
         content: {}
@@ -241,8 +259,8 @@ paths:
   /messages/inbound/{messageid}/details:
     get:
       tags:
-        - Messages
         - Inbound
+        - Messages
         - Messages > Inbound > {Messageid}
       summary: Postmark Inbound message details
       parameters:
@@ -261,8 +279,8 @@ paths:
   /messages/inbound/{messageid}/retry:
     put:
       tags:
-        - Messages
         - Inbound
+        - Messages
         - Retry
       summary: Postmark Retry a failed inbound message for processing
       requestBody:
@@ -283,8 +301,8 @@ paths:
   /messages/inbound:
     get:
       tags:
-        - Messages
         - Inbound
+        - Messages
       summary: Postmark Inbound message search
       parameters:
         - name: count
@@ -358,8 +376,8 @@ paths:
     get:
       tags:
         - Messages
-        - Outbound
         - Messages > Outbound > Clicks
+        - Outbound
       summary: Postmark Clicks for a all messages
       parameters:
         - name: count
@@ -464,9 +482,9 @@ paths:
   /messages/outbound/clicks/{messageid}:
     get:
       tags:
+        - Message Identifier
         - Messages
         - Outbound
-        - Message Identifier
       summary: Postmark Retrieve Message Clicks
       parameters:
         - name: count
@@ -497,8 +515,8 @@ paths:
     get:
       tags:
         - Messages
-        - Outbound
         - Messages > Outbound > Opens
+        - Outbound
       summary: Postmark Opens for all messages
       parameters:
         - name: count
@@ -603,9 +621,9 @@ paths:
   /messages/outbound/opens/{messageid}:
     get:
       tags:
+        - Message Identifier
         - Messages
         - Outbound
-        - Message Identifier
       summary: Postmark Retrieve Message Opens
       parameters:
         - name: count
@@ -636,8 +654,8 @@ paths:
     get:
       tags:
         - Messages
-        - Outbound
         - Messages > Outbound > {Messageid}
+        - Outbound
       summary: Postmark Outbound message details
       parameters:
         - name: messageid
@@ -655,9 +673,9 @@ paths:
   /messages/outbound/{messageid}/dump:
     get:
       tags:
+        - Dump
         - Messages
         - Outbound
-        - Dump
       summary: Postmark Outbound message dump
       parameters:
         - name: messageid
@@ -737,9 +755,9 @@ paths:
   /stats/outbound/clicks:
     get:
       tags:
-        - Statistics
         - Outbound
-        - Stats/outbound > Clicks
+        - Statistics
+        - Stats/Outbound > Clicks
       summary: Postmark Get click counts
       parameters:
         - name: tag
@@ -768,9 +786,9 @@ paths:
   /stats/outbound/clicks/browserfamilies:
     get:
       tags:
-        - Statistics
-        - Outbound
         - Browser Families
+        - Outbound
+        - Statistics
       summary: Postmark Get browser usage by family
       parameters:
         - name: tag
@@ -799,9 +817,9 @@ paths:
   /stats/outbound/clicks/location:
     get:
       tags:
-        - Statistics
-        - Outbound
         - Locations
+        - Outbound
+        - Statistics
       summary: Postmark Get clicks by body location
       parameters:
         - name: tag
@@ -830,9 +848,9 @@ paths:
   /stats/outbound/clicks/platforms:
     get:
       tags:
-        - Statistics
         - Outbound
         - Platforms
+        - Statistics
       summary: Postmark Get browser plaform usage
       parameters:
         - name: tag
@@ -861,9 +879,9 @@ paths:
   /stats/outbound/opens:
     get:
       tags:
-        - Statistics
         - Outbound
-        - Stats/outbound > Opens
+        - Statistics
+        - Stats/Outbound > Opens
       summary: Postmark Get email open counts
       parameters:
         - name: tag
@@ -892,9 +910,9 @@ paths:
   /stats/outbound/opens/emailclients:
     get:
       tags:
-        - Statistics
-        - Outbound
         - Emailclients
+        - Outbound
+        - Statistics
       summary: Postmark Get email client usage
       parameters:
         - name: tag
@@ -923,9 +941,9 @@ paths:
   /stats/outbound/opens/platforms:
     get:
       tags:
-        - Statistics
         - Outbound
         - Platforms
+        - Statistics
       summary: Postmark Get email platform usage
       parameters:
         - name: tag
@@ -954,9 +972,9 @@ paths:
   /stats/outbound/opens/readtimes:
     get:
       tags:
-        - Statistics
         - Outbound
         - Readtimes
+        - Statistics
       summary: Postmark Get email read times
       parameters:
         - name: tag
@@ -985,8 +1003,8 @@ paths:
   /stats/outbound:
     get:
       tags:
-        - Statistics
         - Outbound
+        - Statistics
       summary: Postmark Get outbound overview
       parameters:
         - name: tag
@@ -1015,9 +1033,9 @@ paths:
   /stats/outbound/bounces:
     get:
       tags:
-        - Statistics
         - Outbound
-        - Stats/outbound
+        - Statistics
+        - Stats/Outbound
       summary: Postmark Get bounce counts
       parameters:
         - name: tag
@@ -1046,9 +1064,9 @@ paths:
   /stats/outbound/sends:
     get:
       tags:
-        - Statistics
         - Outbound
         - Sends
+        - Statistics
       summary: Postmark Get sent counts
       parameters:
         - name: tag
@@ -1077,9 +1095,9 @@ paths:
   /stats/outbound/spam:
     get:
       tags:
-        - Statistics
         - Outbound
         - Spam
+        - Statistics
       summary: Postmark Get spam complaints
       parameters:
         - name: tag
@@ -1108,9 +1126,9 @@ paths:
   /stats/outbound/tracked:
     get:
       tags:
-        - Statistics
         - Outbound
-        - Stats/outbound
+        - Statistics
+        - Stats/Outbound
       summary: Postmark Get tracked email counts
       parameters:
         - name: tag
@@ -1175,9 +1193,9 @@ paths:
   /templates/{templateIdOrAlias}:
     delete:
       tags:
-        - Templates
-        - Template
         - Alias
+        - Template
+        - Templates
       summary: Postmark Delete a Template
       parameters:
         - name: templateIdOrAlias
@@ -1221,8 +1239,8 @@ paths:
   /triggers/inboundrules/{triggerid}:
     delete:
       tags:
-        - Triggers
         - Triggerid
+        - Triggers
       summary: Postmark Delete a single trigger
       parameters:
         - name: triggerid
@@ -1241,7 +1259,6 @@ paths:
     get:
       tags:
         - Triggers
-        - Tags
       summary: Postmark Search triggers
       parameters:
         - name: count
@@ -1271,7 +1288,6 @@ paths:
     delete:
       tags:
         - Triggers
-        - Tags
         - Triggers > Tags
       summary: Postmark Delete a single trigger
       parameters:
@@ -1289,8 +1305,7 @@ paths:
             application/json: {}
   /deliverystats:
     get:
-      tags:
-        - Default
+      tags: []
       summary: Postmark Get delivery stats
       responses:
         '200':
@@ -1301,7 +1316,6 @@ paths:
     get:
       tags:
         - Servers
-        - Default
       summary: Postmark Get Server Configuration
       responses:
         '200':

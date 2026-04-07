@@ -2505,3 +2505,11 @@ paths:
           $ref: '#/responses/422'
         500:
           $ref: '#/responses/500'
+tags:
+  - name: Bounces API
+  - name: Inbound Rules API
+  - name: Messages API
+  - name: Sending API
+  - name: Server Configuration API
+  - name: Stats API
+  - name: Templates API

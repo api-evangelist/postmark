@@ -1276,3 +1276,8 @@ components:
     "500":
       description: Indicates an internal server error occurred.
       content: {}
+tags:
+  - name: Domains API
+  - name: Sender Signatures API
+  - name: Server Management API
+  - name: Templates API
