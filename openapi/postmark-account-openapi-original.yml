@@ -7,28 +7,27 @@ info:
     with an Account.
   version: 0.9.0
 servers:
-- url: //api.postmarkapp.com/
+  - url: //api.postmarkapp.com/
 paths:
   /servers/{serverid}:
     get:
       tags:
-      - Server Management API
-      summary: Get a Server
+        - Server Management API
+      summary: Postmark Get a Server
       operationId: getServerInformation
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: serverid
-        in: path
-        description: The ID of the Server to get.
-        required: true
-        schema:
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: serverid
+          in: path
+          description: The ID of the Server to get.
+          required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: OK
@@ -37,8 +36,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExtendedServerInfo'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -48,23 +46,22 @@ paths:
           content: {}
     put:
       tags:
-      - Server Management API
-      summary: Edit a Server
+        - Server Management API
+      summary: Postmark Edit a Server
       operationId: editServerInformation
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: serverid
-        in: path
-        description: The ID of the Server to update.
-        required: true
-        schema:
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: serverid
+          in: path
+          description: The ID of the Server to update.
+          required: true
+          schema:
+            type: integer
       requestBody:
         content:
           application/json:
@@ -79,8 +76,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExtendedServerInfo'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -91,30 +87,28 @@ paths:
       x-codegen-request-body-name: body
     delete:
       tags:
-      - Server Management API
-      summary: Delete a Server
+        - Server Management API
+      summary: Postmark Delete a Server
       operationId: deleteServer
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: serverid
-        in: path
-        description: The ID of the Server that should be deleted.
-        required: true
-        schema:
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: serverid
+          in: path
+          description: The ID of the Server that should be deleted.
+          required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: OK
           content: {}
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -125,34 +119,33 @@ paths:
   /servers:
     get:
       tags:
-      - Server Management API
-      summary: List servers
+        - Server Management API
+      summary: Postmark List servers
       operationId: listServers
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: count
-        in: query
-        description: Number of servers to return per request.
-        required: true
-        schema:
-          type: integer
-      - name: offset
-        in: query
-        description: Number of servers to skip.
-        required: true
-        schema:
-          type: integer
-      - name: name
-        in: query
-        description: Filter by a specific server name
-        schema:
-          type: string
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: count
+          in: query
+          description: Number of servers to return per request.
+          required: true
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Number of servers to skip.
+          required: true
+          schema:
+            type: integer
+        - name: name
+          in: query
+          description: Filter by a specific server name
+          schema:
+            type: string
       responses:
         "200":
           description: OK
@@ -161,8 +154,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServerListingResponse'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -172,17 +164,16 @@ paths:
           content: {}
     post:
       tags:
-      - Server Management API
-      summary: Create a Server
+        - Server Management API
+      summary: Postmark Create a Server
       operationId: createServer
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -197,8 +188,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExtendedServerInfo'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -210,32 +200,31 @@ paths:
   /senders:
     get:
       tags:
-      - Sender Signatures API
-      summary: List Sender Signatures
+        - Sender Signatures API
+      summary: Postmark List Sender Signatures
       operationId: listSenderSignatures
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: count
-        in: query
-        description: Number of records to return per request. Max 500.
-        required: true
-        schema:
-          maximum: 500
-          minimum: 1
-          type: integer
-      - name: offset
-        in: query
-        description: Number of records to skip
-        required: true
-        schema:
-          minimum: 0
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: count
+          in: query
+          description: Number of records to return per request. Max 500.
+          required: true
+          schema:
+            maximum: 500
+            minimum: 1
+            type: integer
+        - name: offset
+          in: query
+          description: Number of records to skip
+          required: true
+          schema:
+            minimum: 0
+            type: integer
       responses:
         "200":
           description: OK
@@ -244,8 +233,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SenderListingResults'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -255,17 +243,16 @@ paths:
           content: {}
     post:
       tags:
-      - Sender Signatures API
-      summary: Create a Sender Signature
+        - Sender Signatures API
+      summary: Postmark Create a Sender Signature
       operationId: createSenderSignature
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -280,8 +267,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SenderSignatureExtendedInformation'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -293,23 +279,22 @@ paths:
   /senders/{signatureid}:
     get:
       tags:
-      - Sender Signatures API
-      summary: Get a Sender Signature
+        - Sender Signatures API
+      summary: Postmark Get a Sender Signature
       operationId: getSenderSignature
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: signatureid
-        in: path
-        description: The ID for the Sender Signature that should be retrieved.
-        required: true
-        schema:
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: signatureid
+          in: path
+          description: The ID for the Sender Signature that should be retrieved.
+          required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: OK
@@ -318,8 +303,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SenderSignatureExtendedInformation'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -329,24 +313,22 @@ paths:
           content: {}
     put:
       tags:
-      - Sender Signatures API
-      summary: Update a Sender Signature
+        - Sender Signatures API
+      summary: Postmark Update a Sender Signature
       operationId: editSenderSignature
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: signatureid
-        in: path
-        description: The ID for the Sender Signature that should be modified by the
-          request.
-        required: true
-        schema:
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: signatureid
+          in: path
+          description: The ID for the Sender Signature that should be modified by the request.
+          required: true
+          schema:
+            type: integer
       requestBody:
         content:
           application/json:
@@ -361,8 +343,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SenderSignatureExtendedInformation'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -373,24 +354,22 @@ paths:
       x-codegen-request-body-name: body
     delete:
       tags:
-      - Sender Signatures API
-      summary: Delete a Sender Signature
+        - Sender Signatures API
+      summary: Postmark Delete a Sender Signature
       operationId: deleteSenderSignature
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: signatureid
-        in: path
-        description: The ID for the Sender Signature that should be deleted by the
-          request.
-        required: true
-        schema:
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: signatureid
+          in: path
+          description: The ID for the Sender Signature that should be deleted by the request.
+          required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: OK
@@ -399,8 +378,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/StandardPostmarkResponse'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -411,24 +389,22 @@ paths:
   /senders/{signatureid}/resend:
     post:
       tags:
-      - Sender Signatures API
-      summary: Resend Signature Confirmation Email
+        - Sender Signatures API
+      summary: Postmark Resend Signature Confirmation Email
       operationId: resendSenderSignatureConfirmationEmail
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: signatureid
-        in: path
-        description: The ID for the Sender Signature that should have its confirmation
-          email resent.
-        required: true
-        schema:
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: signatureid
+          in: path
+          description: The ID for the Sender Signature that should have its confirmation email resent.
+          required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: OK
@@ -437,8 +413,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/StandardPostmarkResponse'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -449,24 +424,22 @@ paths:
   /senders/{signatureid}/verifyspf:
     post:
       tags:
-      - Sender Signatures API
-      summary: Request DNS Verification for SPF
+        - Sender Signatures API
+      summary: Postmark Request DNS Verification for SPF
       operationId: requestSPFVerificationForSenderSignature
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: signatureid
-        in: path
-        description: The ID for the Sender Signature for which SPF DNS records should
-          be verified.
-        required: true
-        schema:
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: signatureid
+          in: path
+          description: The ID for the Sender Signature for which SPF DNS records should be verified.
+          required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: OK
@@ -475,8 +448,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SenderSignatureExtendedInformation'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -487,8 +459,8 @@ paths:
   /senders/{signatureid}/requestnewdkim:
     post:
       tags:
-      - Sender Signatures API
-      summary: Request a new DKIM Key
+        - Sender Signatures API
+      summary: Postmark Request a new DKIM Key
       description: |
         Requests a new DKIM key to be created. Until the DNS entries are confirmed,
         the new values will be in the `DKIMPendingHost` and `DKIMPendingTextValue` fields.
@@ -497,20 +469,18 @@ paths:
         with the new DKIM key.
       operationId: requestNewDKIMKeyForSenderSignature
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: signatureid
-        in: path
-        description: The ID for the Sender Signature for which a new DKIM Key should
-          be generated.
-        required: true
-        schema:
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: signatureid
+          in: path
+          description: The ID for the Sender Signature for which a new DKIM Key should be generated.
+          required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: OK
@@ -519,8 +489,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/StandardPostmarkResponse'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -531,32 +500,31 @@ paths:
   /domains:
     get:
       tags:
-      - Domains API
-      summary: List Domains
+        - Domains API
+      summary: Postmark List Domains
       operationId: listDomains
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: count
-        in: query
-        description: Number of records to return per request. Max 500.
-        required: true
-        schema:
-          maximum: 500
-          minimum: 1
-          type: integer
-      - name: offset
-        in: query
-        description: Number of records to skip
-        required: true
-        schema:
-          minimum: 0
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: count
+          in: query
+          description: Number of records to return per request. Max 500.
+          required: true
+          schema:
+            maximum: 500
+            minimum: 1
+            type: integer
+        - name: offset
+          in: query
+          description: Number of records to skip
+          required: true
+          schema:
+            minimum: 0
+            type: integer
       responses:
         "200":
           description: OK
@@ -565,8 +533,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/DomainListingResults'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -576,17 +543,16 @@ paths:
           content: {}
     post:
       tags:
-      - Domains API
-      summary: Create a Domain
+        - Domains API
+      summary: Postmark Create a Domain
       operationId: createDomain
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -601,8 +567,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/DomainExtendedInformation'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -614,23 +579,22 @@ paths:
   /domains/{domainid}:
     get:
       tags:
-      - Domains API
-      summary: Get a Domain
+        - Domains API
+      summary: Postmark Get a Domain
       operationId: getDomain
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: domainid
-        in: path
-        description: The ID for the Domain that should be retrieved.
-        required: true
-        schema:
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: domainid
+          in: path
+          description: The ID for the Domain that should be retrieved.
+          required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: OK
@@ -639,8 +603,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/DomainExtendedInformation'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -650,23 +613,22 @@ paths:
           content: {}
     put:
       tags:
-      - Domains API
-      summary: Update a Domain
+        - Domains API
+      summary: Postmark Update a Domain
       operationId: editDomain
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: domainid
-        in: path
-        description: The ID for the Domain that should be modified by the request.
-        required: true
-        schema:
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: domainid
+          in: path
+          description: The ID for the Domain that should be modified by the request.
+          required: true
+          schema:
+            type: integer
       requestBody:
         content:
           application/json:
@@ -681,8 +643,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/DomainExtendedInformation'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -693,23 +654,22 @@ paths:
       x-codegen-request-body-name: body
     delete:
       tags:
-      - Domains API
-      summary: Delete a Domain
+        - Domains API
+      summary: Postmark Delete a Domain
       operationId: deleteDomain
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: domainid
-        in: path
-        description: The ID for the Domain that should be deleted by the request.
-        required: true
-        schema:
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: domainid
+          in: path
+          description: The ID for the Domain that should be deleted by the request.
+          required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: OK
@@ -718,8 +678,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/StandardPostmarkResponse'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -730,23 +689,22 @@ paths:
   /domains/{domainid}/verifydkim:
     put:
       tags:
-      - Domains API
-      summary: Request DNS Verification for DKIM
+        - Domains API
+      summary: Postmark Request DNS Verification for DKIM
       operationId: requestDkimVerificationForDomain
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: domainid
-        in: path
-        description: The ID for the Domain for which DKIM DNS records should be verified.
-        required: true
-        schema:
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: domainid
+          in: path
+          description: The ID for the Domain for which DKIM DNS records should be verified.
+          required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: OK
@@ -755,8 +713,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/DomainExtendedInformation'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -767,24 +724,22 @@ paths:
   /domains/{domainid}/verifyreturnpath:
     put:
       tags:
-      - Domains API
-      summary: Request DNS Verification for Return-Path
+        - Domains API
+      summary: Postmark Request DNS Verification for Return-Path
       operationId: requestReturnPathVerificationForDomain
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: domainid
-        in: path
-        description: The ID for the Domain for which Return-Path DNS records should
-          be verified.
-        required: true
-        schema:
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: domainid
+          in: path
+          description: The ID for the Domain for which Return-Path DNS records should be verified.
+          required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: OK
@@ -793,8 +748,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/DomainExtendedInformation'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -805,23 +759,22 @@ paths:
   /domains/{domainid}/verifyspf:
     post:
       tags:
-      - Domains API
-      summary: Request DNS Verification for SPF
+        - Domains API
+      summary: Postmark Request DNS Verification for SPF
       operationId: requestSPFVerificationForDomain
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: domainid
-        in: path
-        description: The ID for the Domain for which SPF DNS records should be verified.
-        required: true
-        schema:
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: domainid
+          in: path
+          description: The ID for the Domain for which SPF DNS records should be verified.
+          required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: OK
@@ -830,8 +783,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/DomainSPFResult'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -842,8 +794,8 @@ paths:
   /domains/{domainid}/rotatedkim:
     post:
       tags:
-      - Domains API
-      summary: Rotate DKIM Key
+        - Domains API
+      summary: Postmark Rotate DKIM Key
       description: |
         Creates a new DKIM key to replace your current key. Until the DNS entries are confirmed,
         the new values will be in the `DKIMPendingHost` and `DKIMPendingTextValue` fields.
@@ -852,20 +804,18 @@ paths:
         with the new DKIM key.
       operationId: rotateDKIMKeyForDomain
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
-      - name: domainid
-        in: path
-        description: The ID for the Sender Signature for which a new DKIM Key should
-          be generated.
-        required: true
-        schema:
-          type: integer
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
+        - name: domainid
+          in: path
+          description: The ID for the Sender Signature for which a new DKIM Key should be generated.
+          required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: OK
@@ -874,8 +824,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/DKIMRotationResponse'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -886,17 +835,16 @@ paths:
   /templates/push:
     put:
       tags:
-      - Templates API
-      summary: Push templates from one server to another
+        - Templates API
+      summary: Postmark Push templates from one server to another
       operationId: pushTemplates
       parameters:
-      - name: X-Postmark-Account-Token
-        in: header
-        description: The token associated with the Account on which this request will
-          operate.
-        required: true
-        schema:
-          type: string
+        - name: X-Postmark-Account-Token
+          in: header
+          description: The token associated with the Account on which this request will operate.
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -911,8 +859,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TemplatesPushResponse'
         "422":
-          description: An error was generated due to incorrect use of the API. See
-            the Message associated with this response for more information.
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
           content:
             application/json:
               schema:
@@ -967,10 +914,10 @@ components:
         TrackLinks:
           type: string
           enum:
-          - None
-          - HtmlAndTextTracking
-          - HtmlOnlyTracking
-          - TextOnlyTracking
+            - None
+            - HtmlAndTextTracking
+            - HtmlOnlyTracking
+            - TextOnlyTracking
         ClickHookUrl:
           type: string
         InboundDomain:
@@ -1006,10 +953,10 @@ components:
         TrackLinks:
           type: string
           enum:
-          - None
-          - HtmlAndTextTracking
-          - HtmlOnlyTracking
-          - TextOnlyTracking
+            - None
+            - HtmlAndTextTracking
+            - HtmlOnlyTracking
+            - TextOnlyTracking
         ClickHookUrl:
           type: string
         InboundDomain:
@@ -1043,10 +990,10 @@ components:
         TrackLinks:
           type: string
           enum:
-          - None
-          - HtmlAndTextTracking
-          - HtmlOnlyTracking
-          - TextOnlyTracking
+            - None
+            - HtmlAndTextTracking
+            - HtmlOnlyTracking
+            - TextOnlyTracking
         ClickHookUrl:
           type: string
         InboundDomain:
@@ -1321,8 +1268,7 @@ components:
       description: ""
   responses:
     "422":
-      description: An error was generated due to incorrect use of the API. See the
-        Message associated with this response for more information.
+      description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
       content:
         application/json:
           schema:

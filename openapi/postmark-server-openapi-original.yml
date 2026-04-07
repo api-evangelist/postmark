@@ -897,7 +897,7 @@ paths:
       operationId: sendEmail
       tags:
         - Sending API
-      summary: Send a single email
+      summary: Postmark Send a single email
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -922,7 +922,7 @@ paths:
       operationId: sendEmailBatch
       tags:
         - Sending API
-      summary: Send a batch of emails
+      summary: Postmark Send a batch of emails
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -946,7 +946,7 @@ paths:
   /deliverystats:
     get:
       operationId: getDeliveryStats
-      summary: Get delivery stats
+      summary: Postmark Get delivery stats
       tags:
         - Bounces API
       parameters:
@@ -969,7 +969,7 @@ paths:
       operationId: getBounces
       tags:
         - Bounces API
-      summary: Get bounces
+      summary: Postmark Get bounces
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -991,8 +991,7 @@ paths:
           description: Filter by type of bounce
           in: query
           type: string
-          enum: ['HardBounce','Transient','Unsubscribe','Subscribe','AutoResponder','AddressChange','DnsError','SpamNotification','OpenRelayTest','Unknown','SoftBounce','VirusNotification',
-                'MailFrontier Matador.','BadEmailAddress','SpamComplaint','ManuallyDeactivated','Unconfirmed','Blocked','SMTPApiError','InboundError','DMARCPolicy','TemplateRenderingFailed']
+          enum: ['HardBounce', 'Transient', 'Unsubscribe', 'Subscribe', 'AutoResponder', 'AddressChange', 'DnsError', 'SpamNotification', 'OpenRelayTest', 'Unknown', 'SoftBounce', 'VirusNotification', 'MailFrontier Matador.', 'BadEmailAddress', 'SpamComplaint', 'ManuallyDeactivated', 'Unconfirmed', 'Blocked', 'SMTPApiError', 'InboundError', 'DMARCPolicy', 'TemplateRenderingFailed']
         - name: inactive
           description: Filter by emails that were deactivated by Postmark due to the bounce. Set to true or false. If this isn't specified it will return both active and inactive.
           in: query
@@ -1034,7 +1033,7 @@ paths:
       operationId: getSingleBounce
       tags:
         - Bounces API
-      summary: Get a single bounce
+      summary: Postmark Get a single bounce
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1060,7 +1059,7 @@ paths:
     get:
       tags:
         - Bounces API
-      summary: Get bounce dump
+      summary: Postmark Get bounce dump
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1087,7 +1086,7 @@ paths:
       operationId: activateBounce
       tags:
         - Bounces API
-      summary: Activate a bounce
+      summary: Postmark Activate a bounce
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1115,7 +1114,7 @@ paths:
       operationId: searchOutboundMessages
       tags:
         - Messages API
-      summary: Outbound message search
+      summary: Postmark Outbound message search
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1175,7 +1174,7 @@ paths:
       operationId: getOutboundMessageDetails
       tags:
         - Messages API
-      summary: Outbound message details
+      summary: Postmark Outbound message details
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1201,7 +1200,7 @@ paths:
       operationId: getOutboundMessageDump
       tags:
         - Messages API
-      summary: Outbound message dump
+      summary: Postmark Outbound message dump
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1227,7 +1226,7 @@ paths:
       operationId: searchInboundMessages
       tags:
         - Messages API
-      summary: Inbound message search
+      summary: Postmark Inbound message search
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1295,7 +1294,7 @@ paths:
       operationId: getInboundMessageDetails
       tags:
         - Messages API
-      summary: Inbound message details
+      summary: Postmark Inbound message details
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1321,7 +1320,7 @@ paths:
       operationId: bypassRulesForInboundMessage
       tags:
         - Messages API
-      summary: Bypass rules for a blocked inbound message
+      summary: Postmark Bypass rules for a blocked inbound message
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1347,7 +1346,7 @@ paths:
       operationId: retryInboundMessageProcessing
       tags:
         - Messages API
-      summary: Retry a failed inbound message for processing
+      summary: Postmark Retry a failed inbound message for processing
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1373,7 +1372,7 @@ paths:
       operationId: searchOpensForOutboundMessages
       tags:
         - Messages API
-      summary: Opens for all messages
+      summary: Postmark Opens for all messages
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1464,7 +1463,7 @@ paths:
       operationId: getOpensForSingleOutboundMessage
       tags:
         - Messages API
-      summary: Retrieve Message Opens
+      summary: Postmark Retrieve Message Opens
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1505,7 +1504,7 @@ paths:
       operationId: searchClicksForOutboundMessages
       tags:
         - Messages API
-      summary: Clicks for a all messages
+      summary: Postmark Clicks for a all messages
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1596,7 +1595,7 @@ paths:
       operationId: getClicksForSingleOutboundMessage
       tags:
         - Messages API
-      summary: Retrieve Message Clicks
+      summary: Postmark Retrieve Message Clicks
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1640,7 +1639,7 @@ paths:
       tags:
         - Sending API
         - Templates API
-      summary: Send an email using a Template
+      summary: Postmark Send an email using a Template
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1667,7 +1666,7 @@ paths:
       tags:
         - Sending API
         - Templates API
-      summary: Send a batch of email using templates.
+      summary: Postmark Send a batch of email using templates.
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1691,7 +1690,7 @@ paths:
   /templates:
     get:
       operationId: listTemplates
-      summary: Get the Templates associated with this Server
+      summary: Postmark Get the Templates associated with this Server
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1722,7 +1721,7 @@ paths:
         500:
           $ref: '#/responses/500'
     post:
-      summary: Create a Template
+      summary: Postmark Create a Template
       tags:
         - Templates API
       parameters:
@@ -1748,7 +1747,7 @@ paths:
   /templates/{templateIdOrAlias}:
     get:
       operationId: getSingleTemplate
-      summary: Get a Template
+      summary: Postmark Get a Template
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1773,7 +1772,7 @@ paths:
           $ref: '#/responses/500'
     put:
       operationId: updateTemplate
-      summary: Update a Template
+      summary: Postmark Update a Template
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1803,7 +1802,7 @@ paths:
           $ref: '#/responses/500'
     delete:
       operationId: deleteTemplate
-      summary: Delete a Template
+      summary: Postmark Delete a Template
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1829,7 +1828,7 @@ paths:
   /templates/validate:
     post:
       operationId: testTemplateContent
-      summary: Test Template Content
+      summary: Postmark Test Template Content
       tags:
         - Templates API
       parameters:
@@ -1857,7 +1856,7 @@ paths:
       operationId: getOutboundOverviewStatistics
       tags:
         - Stats API
-      summary: Get outbound overview
+      summary: Postmark Get outbound overview
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1892,7 +1891,7 @@ paths:
       operationId: getSentCounts
       tags:
         - Stats API
-      summary: Get sent counts
+      summary: Postmark Get sent counts
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1927,7 +1926,7 @@ paths:
       operationId: getBounceCounts
       tags:
         - Stats API
-      summary: Get bounce counts
+      summary: Postmark Get bounce counts
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -1984,7 +1983,7 @@ paths:
       operationId: getSpamComplaints
       tags:
         - Stats API
-      summary: Get spam complaints
+      summary: Postmark Get spam complaints
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -2002,7 +2001,7 @@ paths:
           format: date
         - name: todate
           in: query
-          description:  Filter stats up to the date specified. e.g. `2014-02-01`
+          description: Filter stats up to the date specified. e.g. `2014-02-01`
           type: string
           format: date
       responses:
@@ -2029,7 +2028,7 @@ paths:
       operationId: getTrackedEmailCounts
       tags:
         - Stats API
-      summary: Get tracked email counts
+      summary: Postmark Get tracked email counts
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -2074,7 +2073,7 @@ paths:
       operationId: getOutboundOpenCounts
       tags:
         - Stats API
-      summary: Get email open counts
+      summary: Postmark Get email open counts
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -2123,7 +2122,7 @@ paths:
       operationId: getOutboundOpenCountsByPlatform
       tags:
         - Stats API
-      summary: Get email platform usage
+      summary: Postmark Get email platform usage
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -2180,7 +2179,7 @@ paths:
       operationId: getOutboundOpenCountsByEmailClient
       tags:
         - Stats API
-      summary: Get email client usage
+      summary: Postmark Get email client usage
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -2227,7 +2226,7 @@ paths:
       operationId: getOutboundClickCounts
       tags:
         - Stats API
-      summary: Get click counts
+      summary: Postmark Get click counts
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -2262,7 +2261,7 @@ paths:
       operationId: getOutboundClickCountsByBrowserFamily
       tags:
         - Stats API
-      summary: Get browser usage by family
+      summary: Postmark Get browser usage by family
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -2297,7 +2296,7 @@ paths:
       operationId: getOutboundClickCountsByPlatform
       tags:
         - Stats API
-      summary: Get browser plaform usage
+      summary: Postmark Get browser plaform usage
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -2332,7 +2331,7 @@ paths:
       operationId: getOutboundClickCountsByLocation
       tags:
         - Stats API
-      summary: Get clicks by body location
+      summary: Postmark Get clicks by body location
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -2368,7 +2367,7 @@ paths:
       operationId: createInboundRule
       tags:
         - Inbound Rules API
-      summary: Create an inbound rule trigger
+      summary: Postmark Create an inbound rule trigger
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -2396,7 +2395,7 @@ paths:
       operationId: listInboundRules
       tags:
         - Inbound Rules API
-      summary: List inbound rule triggers
+      summary: Postmark List inbound rule triggers
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -2438,7 +2437,7 @@ paths:
       operationId: deleteInboundRule
       tags:
         - Inbound Rules API
-      summary: Delete a single trigger
+      summary: Postmark Delete a single trigger
       parameters:
         - name: X-Postmark-Server-Token
           required: true
@@ -2462,7 +2461,7 @@ paths:
 #server
   /server:
     get:
-      summary: Get Server Configuration
+      summary: Postmark Get Server Configuration
       operationId: getCurrentServerConfiguration
       tags:
         - Server Configuration API
@@ -2482,7 +2481,7 @@ paths:
         500:
           $ref: '#/responses/500'
     put:
-      summary: Edit Server Configuration
+      summary: Postmark Edit Server Configuration
       operationId: editCurrentServerConfiguration
       tags:
         - Server Configuration API
