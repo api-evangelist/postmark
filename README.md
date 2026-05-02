@@ -1,46 +1,63 @@
 # Postmark (postmark)
-Postmark is an email delivery service that provides businesses with a reliable and secure way to send transactional emails. From password resets and account notifications to receipts and shipping confirmations, Postmark ensures that important emails reach customers' inboxes and avoid getting caught in spam filters. With features like detailed delivery analytics, bounce tracking, and dedicated IP addresses, Postmark helps businesses improve their email deliverability rates and maintain a positive sender reputation. By offering a simple and straightforward API, Postmark makes it easy for developers to integrate email functionality into their applications and streamline the communication process with customers. Overall, Postmark helps businesses communicate effectively and consistently with their customers through email.
+Postmark is an email delivery service that helps businesses send and track transactional and broadcast email reliably, replacing SMTP with a scalable service that surfaces detailed delivery analytics, bounce tracking, open and click tracking, and dedicated IP addresses.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-search/messaging/main/_apis/discord/apis.md)
+**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/postmark/refs/heads/main/apis.yml)
 
 ## Scope
 
-- **Type:** Contract 
-- **Position:** Consuming 
-- **Access:** 3rd-Party 
+- **Type:** Index
+- **Access:** 3rd-Party
 
 ## Tags:
 
- - Emails
+ - Emails, Messaging, Transactional Email, Deliverability, SMTP
 
 ## Timestamps
 
-- **Created:** 2024/04/14 
-- **Modified:** 2025-01-02 
+- **Created:** 2024-04-14
+- **Modified:** 2026-04-28
 
 ## APIs
 
 ### Postmark API
-Postmark helps deliver and track application email. In a nutshell, the
-service replaces SMTP (or Sendmail) with a far more reliable, scalable and
-care-free environment. In addition, you can track statistics such as
-number of emails sent or processed, opens, bounces and spam complaints.
+The Postmark API provides programmatic access to send and track transactional and broadcast emails, manage servers, templates, message streams, bounces, suppressions, statistics, webhooks, and inbound message processing.
 
 **Human URL:** [https://postmarkapp.com/developer](https://postmarkapp.com/developer)
 
+**Base URL:** https://api.postmarkapp.com
 
 #### Tags:
 
- - Bounceid, Activate, Dump, Bounces, Tags, Email, Batch, Templates, Template, Messages, Inbound, Bypass, Retry, Outbound, Message Identifier, Statistics, Browser Families, Locations, Platforms, Readtimes, Sends, Spam, Validate, Alias, Triggers, Triggerid, Default, Servers
+ - Email, Messages, Templates, Servers, Bounces, Statistics, Webhooks, Inbound, Outbound
 
 #### Properties
 
-- [Documentation](https://postmarkapp.com/developer/api/overview)
-- [OpenAPI](properties/postmark-api-openapi.yml)
+- [Documentation](https://postmarkapp.com/developer)
+- [GettingStarted](https://postmarkapp.com/developer/api/overview)
+- [Authentication](https://postmarkapp.com/developer/api/overview#authentication)
+- [OpenAPI](openapi/postmark-api-openapi.yml)
+
+## Common Properties
+
+- [Website](https://postmarkapp.com)
+- [Documentation](https://postmarkapp.com/developer)
+- [GettingStarted](https://postmarkapp.com/developer/api/overview)
+- [Pricing](https://postmarkapp.com/pricing)
+- [SignUp](https://account.postmarkapp.com/sign_up)
+- [Login](https://account.postmarkapp.com/login)
+- [Blog](https://postmarkapp.com/blog)
+- [Support](https://postmarkapp.com/support)
+- [Status](https://status.postmarkapp.com)
+- [Templates](https://postmarkapp.com/transactional-email-templates)
+- [ChangeLog](https://postmarkapp.com/changelog)
+- [TermsOfService](https://postmarkapp.com/terms-of-service)
+- [PrivacyPolicy](https://wildbit.com/privacy)
+- [GitHub](https://github.com/ActiveCampaign)
+- [Twitter](https://twitter.com/postmarkapp)
+- [LinkedIn](https://www.linkedin.com/company/postmarkapp)
 
 ## Maintainers
 
-**FN:** API Evangelist
+**FN:** Kin Lane
 
-**Email:** info@apievangelist.com
-
+**Email:** kin@apievangelist.com
