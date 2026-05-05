@@ -1,0 +1,13 @@
+{
+  "repo": "postmark",
+  "feeds": [
+    {
+      "source": "https://postmarkapp.com/blog",
+      "feed_url": "https://postmarkapp.com/blog/feed.atom",
+      "saved": 10,
+      "title": "Postmark (en-US)"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:34:05Z"
+}
