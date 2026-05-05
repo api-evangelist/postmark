@@ -1,0 +1,121 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Postmark
+providerId: postmark
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Email
+  - Transactional
+description: Postmark transactional email plans by monthly volume.
+sources:
+  - https://postmarkapp.com/pricing
+plans:
+  - id: postmark-free
+    name: Free
+    type: freemium
+    description: 100 emails/month.
+    entries:
+      - label: Emails
+        name: emails
+        type: quota
+        metric: email
+        limit: 100
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Send up to 100 emails/mo for testing
+  - id: postmark-basic
+    name: Basic
+    type: paid
+    description: $15/month for 10,000 emails.
+    entries:
+      - label: Monthly
+        name: monthly
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '15.00'
+        userMultiplied: false
+      - label: Emails
+        name: emails
+        type: quota
+        metric: email
+        limit: 10000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Transactional sending
+      - name: Email API + SMTP
+      - name: 45-day activity
+  - id: postmark-pro
+    name: Pro
+    type: paid
+    description: $16.50/month for 10,000 emails.
+    entries:
+      - label: Monthly
+        name: monthly
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '16.50'
+        userMultiplied: false
+      - label: Emails
+        name: emails
+        type: quota
+        metric: email
+        limit: 10000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: All Basic features
+      - name: Templates with versioning
+      - name: Webhooks
+      - name: Priority email support
+  - id: postmark-platform
+    name: Platform
+    type: paid
+    description: $18/month for 10,000 emails.
+    entries:
+      - label: Monthly
+        name: monthly
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '18.00'
+        userMultiplied: false
+      - label: Emails
+        name: emails
+        type: quota
+        metric: email
+        limit: 10000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: All Pro features
+      - name: Multiple servers
+      - name: API for sending
+      - name: Dedicated IPs

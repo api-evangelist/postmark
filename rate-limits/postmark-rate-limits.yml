@@ -1,0 +1,29 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Postmark
+providerId: postmark
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Rate Limiting
+  - Email
+description: Postmark API rate limits per server.
+sources:
+  - https://postmarkapp.com/pricing
+  - https://postmarkapp.com/developer/api/overview
+headers:
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+limits:
+  - name: Email API send
+    scope: server
+    metric: messages_per_request_batch
+    limit: 500
+    timeFrame: request
+  - name: Email API rate
+    scope: server
+    metric: requests_per_second
+    limit: soft (raise via support)

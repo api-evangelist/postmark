@@ -1,14 +1,11 @@
 aid: postmark
 name: Postmark
-description: >-
-  Postmark is an email delivery service that helps businesses send and track
-  transactional and broadcast email reliably, replacing SMTP with a scalable
-  service that surfaces detailed delivery analytics, bounce tracking, open and
-  click tracking, and dedicated IP addresses.
+description: Postmark is an email delivery service that helps businesses send and track transactional
+  and broadcast email reliably, replacing SMTP with a scalable service that surfaces detailed delivery
+  analytics, bounce tracking, open and click tracking, and dedicated IP addresses.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/postmark/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/postmark/refs/heads/main/apis.yml
 tags:
   - Emails
   - Messaging
@@ -16,16 +13,14 @@ tags:
   - Deliverability
   - SMTP
 created: '2024-04-14'
-modified: '2026-04-28'
+modified: '2026-05-04'
 specificationVersion: '0.19'
 apis:
   - aid: postmark:postmark-api
     name: Postmark API
-    description: >-
-      The Postmark API provides programmatic access to send and track
-      transactional and broadcast emails, manage servers, templates, message
-      streams, bounces, suppressions, statistics, webhooks, and inbound
-      message processing.
+    description: The Postmark API provides programmatic access to send and track transactional and broadcast
+      emails, manage servers, templates, message streams, bounces, suppressions, statistics, webhooks,
+      and inbound message processing.
     humanURL: https://postmarkapp.com/developer
     baseURL: https://api.postmarkapp.com
     tags:
@@ -83,6 +78,27 @@ common:
     url: https://twitter.com/postmarkapp
   - type: LinkedIn
     url: https://www.linkedin.com/company/postmarkapp
+  - type: Features
+    data:
+      - 'Free: 100 emails/month'
+      - 'Basic: $15/mo for 10K emails'
+      - 'Pro: $16.50/mo for 10K emails with templates and webhooks'
+      - 'Platform: $18/mo for 10K emails with multiple servers and dedicated IPs'
+      - Email API and SMTP server
+      - Templates with versioning (Pro+)
+      - Webhooks for delivery, bounce, open, click, spam, subscription events
+      - Bounce and spam complaint handling
+      - Server tokens for per-environment isolation
+      - Send up to 500 emails per batch request
+      - Inbound email parsing
+      - Message Streams (broadcast vs transactional)
+      - OpenTracker beacon for opens/clicks
+      - Suppression management
+      - Dedicated IPs (Platform)
+      - Best-in-class deliverability
+    sources:
+      - https://postmarkapp.com/pricing
+    updated: '2026-05-04'
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
