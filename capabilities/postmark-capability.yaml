@@ -1,0 +1,1151 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Postmark Account API
+  description: Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to configure
+    all Servers, Domains, and Sender Signatures associated with an Account.
+  tags:
+  - Postmark
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: postmark
+    baseUri: //api.postmarkapp.com
+    description: Postmark Account API HTTP API.
+    resources:
+    - name: servers-serverid
+      path: /servers/{serverid}
+      operations:
+      - name: getserverinformation
+        method: GET
+        description: Postmark Get a Server
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: serverid
+          in: path
+          type: integer
+          required: true
+          description: The ID of the Server to get.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: editserverinformation
+        method: PUT
+        description: Postmark Edit a Server
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: serverid
+          in: path
+          type: integer
+          required: true
+          description: The ID of the Server to update.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteserver
+        method: DELETE
+        description: Postmark Delete a Server
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: serverid
+          in: path
+          type: integer
+          required: true
+          description: The ID of the Server that should be deleted.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: servers
+      path: /servers
+      operations:
+      - name: listservers
+        method: GET
+        description: Postmark List servers
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: count
+          in: query
+          type: integer
+          required: true
+          description: Number of servers to return per request.
+        - name: offset
+          in: query
+          type: integer
+          required: true
+          description: Number of servers to skip.
+        - name: name
+          in: query
+          type: string
+          description: Filter by a specific server name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createserver
+        method: POST
+        description: Postmark Create a Server
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: senders
+      path: /senders
+      operations:
+      - name: listsendersignatures
+        method: GET
+        description: Postmark List Sender Signatures
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: count
+          in: query
+          type: integer
+          required: true
+          description: Number of records to return per request. Max 500.
+        - name: offset
+          in: query
+          type: integer
+          required: true
+          description: Number of records to skip
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createsendersignature
+        method: POST
+        description: Postmark Create a Sender Signature
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: senders-signatureid
+      path: /senders/{signatureid}
+      operations:
+      - name: getsendersignature
+        method: GET
+        description: Postmark Get a Sender Signature
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: signatureid
+          in: path
+          type: integer
+          required: true
+          description: The ID for the Sender Signature that should be retrieved.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: editsendersignature
+        method: PUT
+        description: Postmark Update a Sender Signature
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: signatureid
+          in: path
+          type: integer
+          required: true
+          description: The ID for the Sender Signature that should be modified by the request.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletesendersignature
+        method: DELETE
+        description: Postmark Delete a Sender Signature
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: signatureid
+          in: path
+          type: integer
+          required: true
+          description: The ID for the Sender Signature that should be deleted by the request.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: senders-signatureid-resend
+      path: /senders/{signatureid}/resend
+      operations:
+      - name: resendsendersignatureconfirmationemail
+        method: POST
+        description: Postmark Resend Signature Confirmation Email
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: signatureid
+          in: path
+          type: integer
+          required: true
+          description: The ID for the Sender Signature that should have its confirmation email resent.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: senders-signatureid-verifyspf
+      path: /senders/{signatureid}/verifyspf
+      operations:
+      - name: requestspfverificationforsendersignature
+        method: POST
+        description: Postmark Request DNS Verification for SPF
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: signatureid
+          in: path
+          type: integer
+          required: true
+          description: The ID for the Sender Signature for which SPF DNS records should be verified.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: senders-signatureid-requestnewdkim
+      path: /senders/{signatureid}/requestnewdkim
+      operations:
+      - name: requestnewdkimkeyforsendersignature
+        method: POST
+        description: Postmark Request a new DKIM Key
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: signatureid
+          in: path
+          type: integer
+          required: true
+          description: The ID for the Sender Signature for which a new DKIM Key should be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: domains
+      path: /domains
+      operations:
+      - name: listdomains
+        method: GET
+        description: Postmark List Domains
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: count
+          in: query
+          type: integer
+          required: true
+          description: Number of records to return per request. Max 500.
+        - name: offset
+          in: query
+          type: integer
+          required: true
+          description: Number of records to skip
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createdomain
+        method: POST
+        description: Postmark Create a Domain
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: domains-domainid
+      path: /domains/{domainid}
+      operations:
+      - name: getdomain
+        method: GET
+        description: Postmark Get a Domain
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: domainid
+          in: path
+          type: integer
+          required: true
+          description: The ID for the Domain that should be retrieved.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: editdomain
+        method: PUT
+        description: Postmark Update a Domain
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: domainid
+          in: path
+          type: integer
+          required: true
+          description: The ID for the Domain that should be modified by the request.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletedomain
+        method: DELETE
+        description: Postmark Delete a Domain
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: domainid
+          in: path
+          type: integer
+          required: true
+          description: The ID for the Domain that should be deleted by the request.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: domains-domainid-verifydkim
+      path: /domains/{domainid}/verifydkim
+      operations:
+      - name: requestdkimverificationfordomain
+        method: PUT
+        description: Postmark Request DNS Verification for DKIM
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: domainid
+          in: path
+          type: integer
+          required: true
+          description: The ID for the Domain for which DKIM DNS records should be verified.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: domains-domainid-verifyreturnpath
+      path: /domains/{domainid}/verifyreturnpath
+      operations:
+      - name: requestreturnpathverificationfordomain
+        method: PUT
+        description: Postmark Request DNS Verification for Return-Path
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: domainid
+          in: path
+          type: integer
+          required: true
+          description: The ID for the Domain for which Return-Path DNS records should be verified.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: domains-domainid-verifyspf
+      path: /domains/{domainid}/verifyspf
+      operations:
+      - name: requestspfverificationfordomain
+        method: POST
+        description: Postmark Request DNS Verification for SPF
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: domainid
+          in: path
+          type: integer
+          required: true
+          description: The ID for the Domain for which SPF DNS records should be verified.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: domains-domainid-rotatedkim
+      path: /domains/{domainid}/rotatedkim
+      operations:
+      - name: rotatedkimkeyfordomain
+        method: POST
+        description: Postmark Rotate DKIM Key
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        - name: domainid
+          in: path
+          type: integer
+          required: true
+          description: The ID for the Sender Signature for which a new DKIM Key should be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: templates-push
+      path: /templates/push
+      operations:
+      - name: pushtemplates
+        method: PUT
+        description: Postmark Push templates from one server to another
+        inputParameters:
+        - name: X-Postmark-Account-Token
+          in: header
+          type: string
+          required: true
+          description: The token associated with the Account on which this request will operate.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: postmark-rest
+    description: REST adapter for Postmark Account API.
+    resources:
+    - path: /servers/{serverid}
+      name: getserverinformation
+      operations:
+      - method: GET
+        name: getserverinformation
+        description: Postmark Get a Server
+        call: postmark.getserverinformation
+        with:
+          serverid: rest.serverid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /servers/{serverid}
+      name: editserverinformation
+      operations:
+      - method: PUT
+        name: editserverinformation
+        description: Postmark Edit a Server
+        call: postmark.editserverinformation
+        with:
+          serverid: rest.serverid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /servers/{serverid}
+      name: deleteserver
+      operations:
+      - method: DELETE
+        name: deleteserver
+        description: Postmark Delete a Server
+        call: postmark.deleteserver
+        with:
+          serverid: rest.serverid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /servers
+      name: listservers
+      operations:
+      - method: GET
+        name: listservers
+        description: Postmark List servers
+        call: postmark.listservers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /servers
+      name: createserver
+      operations:
+      - method: POST
+        name: createserver
+        description: Postmark Create a Server
+        call: postmark.createserver
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /senders
+      name: listsendersignatures
+      operations:
+      - method: GET
+        name: listsendersignatures
+        description: Postmark List Sender Signatures
+        call: postmark.listsendersignatures
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /senders
+      name: createsendersignature
+      operations:
+      - method: POST
+        name: createsendersignature
+        description: Postmark Create a Sender Signature
+        call: postmark.createsendersignature
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /senders/{signatureid}
+      name: getsendersignature
+      operations:
+      - method: GET
+        name: getsendersignature
+        description: Postmark Get a Sender Signature
+        call: postmark.getsendersignature
+        with:
+          signatureid: rest.signatureid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /senders/{signatureid}
+      name: editsendersignature
+      operations:
+      - method: PUT
+        name: editsendersignature
+        description: Postmark Update a Sender Signature
+        call: postmark.editsendersignature
+        with:
+          signatureid: rest.signatureid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /senders/{signatureid}
+      name: deletesendersignature
+      operations:
+      - method: DELETE
+        name: deletesendersignature
+        description: Postmark Delete a Sender Signature
+        call: postmark.deletesendersignature
+        with:
+          signatureid: rest.signatureid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /senders/{signatureid}/resend
+      name: resendsendersignatureconfirmationemail
+      operations:
+      - method: POST
+        name: resendsendersignatureconfirmationemail
+        description: Postmark Resend Signature Confirmation Email
+        call: postmark.resendsendersignatureconfirmationemail
+        with:
+          signatureid: rest.signatureid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /senders/{signatureid}/verifyspf
+      name: requestspfverificationforsendersignature
+      operations:
+      - method: POST
+        name: requestspfverificationforsendersignature
+        description: Postmark Request DNS Verification for SPF
+        call: postmark.requestspfverificationforsendersignature
+        with:
+          signatureid: rest.signatureid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /senders/{signatureid}/requestnewdkim
+      name: requestnewdkimkeyforsendersignature
+      operations:
+      - method: POST
+        name: requestnewdkimkeyforsendersignature
+        description: Postmark Request a new DKIM Key
+        call: postmark.requestnewdkimkeyforsendersignature
+        with:
+          signatureid: rest.signatureid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /domains
+      name: listdomains
+      operations:
+      - method: GET
+        name: listdomains
+        description: Postmark List Domains
+        call: postmark.listdomains
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /domains
+      name: createdomain
+      operations:
+      - method: POST
+        name: createdomain
+        description: Postmark Create a Domain
+        call: postmark.createdomain
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /domains/{domainid}
+      name: getdomain
+      operations:
+      - method: GET
+        name: getdomain
+        description: Postmark Get a Domain
+        call: postmark.getdomain
+        with:
+          domainid: rest.domainid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /domains/{domainid}
+      name: editdomain
+      operations:
+      - method: PUT
+        name: editdomain
+        description: Postmark Update a Domain
+        call: postmark.editdomain
+        with:
+          domainid: rest.domainid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /domains/{domainid}
+      name: deletedomain
+      operations:
+      - method: DELETE
+        name: deletedomain
+        description: Postmark Delete a Domain
+        call: postmark.deletedomain
+        with:
+          domainid: rest.domainid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /domains/{domainid}/verifydkim
+      name: requestdkimverificationfordomain
+      operations:
+      - method: PUT
+        name: requestdkimverificationfordomain
+        description: Postmark Request DNS Verification for DKIM
+        call: postmark.requestdkimverificationfordomain
+        with:
+          domainid: rest.domainid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /domains/{domainid}/verifyreturnpath
+      name: requestreturnpathverificationfordomain
+      operations:
+      - method: PUT
+        name: requestreturnpathverificationfordomain
+        description: Postmark Request DNS Verification for Return-Path
+        call: postmark.requestreturnpathverificationfordomain
+        with:
+          domainid: rest.domainid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /domains/{domainid}/verifyspf
+      name: requestspfverificationfordomain
+      operations:
+      - method: POST
+        name: requestspfverificationfordomain
+        description: Postmark Request DNS Verification for SPF
+        call: postmark.requestspfverificationfordomain
+        with:
+          domainid: rest.domainid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /domains/{domainid}/rotatedkim
+      name: rotatedkimkeyfordomain
+      operations:
+      - method: POST
+        name: rotatedkimkeyfordomain
+        description: Postmark Rotate DKIM Key
+        call: postmark.rotatedkimkeyfordomain
+        with:
+          domainid: rest.domainid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /templates/push
+      name: pushtemplates
+      operations:
+      - method: PUT
+        name: pushtemplates
+        description: Postmark Push templates from one server to another
+        call: postmark.pushtemplates
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: postmark-mcp
+    transport: http
+    description: MCP adapter for Postmark Account API for AI agent use.
+    tools:
+    - name: getserverinformation
+      description: Postmark Get a Server
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: postmark.getserverinformation
+      with:
+        serverid: tools.serverid
+      inputParameters:
+      - name: serverid
+        type: integer
+        description: The ID of the Server to get.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: editserverinformation
+      description: Postmark Edit a Server
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: postmark.editserverinformation
+      with:
+        serverid: tools.serverid
+      inputParameters:
+      - name: serverid
+        type: integer
+        description: The ID of the Server to update.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteserver
+      description: Postmark Delete a Server
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: postmark.deleteserver
+      with:
+        serverid: tools.serverid
+      inputParameters:
+      - name: serverid
+        type: integer
+        description: The ID of the Server that should be deleted.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listservers
+      description: Postmark List servers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: postmark.listservers
+      with:
+        count: tools.count
+        offset: tools.offset
+        name: tools.name
+      inputParameters:
+      - name: count
+        type: integer
+        description: Number of servers to return per request.
+        required: true
+      - name: offset
+        type: integer
+        description: Number of servers to skip.
+        required: true
+      - name: name
+        type: string
+        description: Filter by a specific server name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createserver
+      description: Postmark Create a Server
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: postmark.createserver
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listsendersignatures
+      description: Postmark List Sender Signatures
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: postmark.listsendersignatures
+      with:
+        count: tools.count
+        offset: tools.offset
+      inputParameters:
+      - name: count
+        type: integer
+        description: Number of records to return per request. Max 500.
+        required: true
+      - name: offset
+        type: integer
+        description: Number of records to skip
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createsendersignature
+      description: Postmark Create a Sender Signature
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: postmark.createsendersignature
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getsendersignature
+      description: Postmark Get a Sender Signature
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: postmark.getsendersignature
+      with:
+        signatureid: tools.signatureid
+      inputParameters:
+      - name: signatureid
+        type: integer
+        description: The ID for the Sender Signature that should be retrieved.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: editsendersignature
+      description: Postmark Update a Sender Signature
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: postmark.editsendersignature
+      with:
+        signatureid: tools.signatureid
+      inputParameters:
+      - name: signatureid
+        type: integer
+        description: The ID for the Sender Signature that should be modified by the request.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletesendersignature
+      description: Postmark Delete a Sender Signature
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: postmark.deletesendersignature
+      with:
+        signatureid: tools.signatureid
+      inputParameters:
+      - name: signatureid
+        type: integer
+        description: The ID for the Sender Signature that should be deleted by the request.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: resendsendersignatureconfirmationemail
+      description: Postmark Resend Signature Confirmation Email
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: postmark.resendsendersignatureconfirmationemail
+      with:
+        signatureid: tools.signatureid
+      inputParameters:
+      - name: signatureid
+        type: integer
+        description: The ID for the Sender Signature that should have its confirmation email resent.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: requestspfverificationforsendersignature
+      description: Postmark Request DNS Verification for SPF
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: postmark.requestspfverificationforsendersignature
+      with:
+        signatureid: tools.signatureid
+      inputParameters:
+      - name: signatureid
+        type: integer
+        description: The ID for the Sender Signature for which SPF DNS records should be verified.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: requestnewdkimkeyforsendersignature
+      description: Postmark Request a new DKIM Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: postmark.requestnewdkimkeyforsendersignature
+      with:
+        signatureid: tools.signatureid
+      inputParameters:
+      - name: signatureid
+        type: integer
+        description: The ID for the Sender Signature for which a new DKIM Key should be generated.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listdomains
+      description: Postmark List Domains
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: postmark.listdomains
+      with:
+        count: tools.count
+        offset: tools.offset
+      inputParameters:
+      - name: count
+        type: integer
+        description: Number of records to return per request. Max 500.
+        required: true
+      - name: offset
+        type: integer
+        description: Number of records to skip
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createdomain
+      description: Postmark Create a Domain
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: postmark.createdomain
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getdomain
+      description: Postmark Get a Domain
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: postmark.getdomain
+      with:
+        domainid: tools.domainid
+      inputParameters:
+      - name: domainid
+        type: integer
+        description: The ID for the Domain that should be retrieved.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: editdomain
+      description: Postmark Update a Domain
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: postmark.editdomain
+      with:
+        domainid: tools.domainid
+      inputParameters:
+      - name: domainid
+        type: integer
+        description: The ID for the Domain that should be modified by the request.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletedomain
+      description: Postmark Delete a Domain
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: postmark.deletedomain
+      with:
+        domainid: tools.domainid
+      inputParameters:
+      - name: domainid
+        type: integer
+        description: The ID for the Domain that should be deleted by the request.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: requestdkimverificationfordomain
+      description: Postmark Request DNS Verification for DKIM
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: postmark.requestdkimverificationfordomain
+      with:
+        domainid: tools.domainid
+      inputParameters:
+      - name: domainid
+        type: integer
+        description: The ID for the Domain for which DKIM DNS records should be verified.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: requestreturnpathverificationfordomain
+      description: Postmark Request DNS Verification for Return-Path
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: postmark.requestreturnpathverificationfordomain
+      with:
+        domainid: tools.domainid
+      inputParameters:
+      - name: domainid
+        type: integer
+        description: The ID for the Domain for which Return-Path DNS records should be verified.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: requestspfverificationfordomain
+      description: Postmark Request DNS Verification for SPF
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: postmark.requestspfverificationfordomain
+      with:
+        domainid: tools.domainid
+      inputParameters:
+      - name: domainid
+        type: integer
+        description: The ID for the Domain for which SPF DNS records should be verified.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: rotatedkimkeyfordomain
+      description: Postmark Rotate DKIM Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: postmark.rotatedkimkeyfordomain
+      with:
+        domainid: tools.domainid
+      inputParameters:
+      - name: domainid
+        type: integer
+        description: The ID for the Sender Signature for which a new DKIM Key should be generated.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: pushtemplates
+      description: Postmark Push templates from one server to another
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: postmark.pushtemplates
+      outputParameters:
+      - type: object
+        mapping: $.
