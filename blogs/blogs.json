@@ -3,11 +3,12 @@
   "feeds": [
     {
       "source": "https://postmarkapp.com/blog",
-      "feed_url": "https://postmarkapp.com/blog/feed.atom",
-      "saved": 10,
-      "title": "Postmark (en-US)"
+      "feed_url": "",
+      "title": "",
+      "saved": 0,
+      "error": "no_feed"
     }
   ],
   "post_count": 10,
-  "fetched": "2026-05-03T23:34:05Z"
+  "fetched": "2026-05-09T20:17:51Z"
 }
