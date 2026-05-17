@@ -62,7 +62,7 @@ common:
     url: https://postmarkapp.com/blog
   - type: Support
     url: https://postmarkapp.com/support
-  - type: Status
+  - type: StatusPage
     url: https://status.postmarkapp.com
   - type: Templates
     url: https://postmarkapp.com/transactional-email-templates
