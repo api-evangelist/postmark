@@ -1,0 +1,203 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Postmark API — Email
+  description: 'Postmark API — Email. 4 operations. Lead operation: Postmark Send a single email. Self-contained Naftiko capability
+    covering one Postmark business surface.'
+  tags:
+  - Postmark
+  - Email
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POSTMARK_API_KEY: POSTMARK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: postmark-email
+    baseUri: http://{{baseurl}}
+    description: Postmark API — Email business capability. Self-contained, no shared references.
+    resources:
+    - name: email
+      path: /email
+      operations:
+      - name: post
+        method: POST
+        description: Postmark Send a single email
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: email-batch
+      path: /email/batch
+      operations:
+      - name: post
+        method: POST
+        description: Postmark Send a batch of emails
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: email-batchWithTemplates
+      path: /email/batchWithTemplates
+      operations:
+      - name: post
+        method: POST
+        description: Postmark Send a batch of email using templates.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: email-withTemplate
+      path: /email/withTemplate
+      operations:
+      - name: post
+        method: POST
+        description: Postmark Send an email using a Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: postmark-email-rest
+    port: 8080
+    description: REST adapter for Postmark API — Email. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/email
+      name: email
+      description: REST surface for email.
+      operations:
+      - method: POST
+        name: post
+        description: Postmark Send a single email
+        call: postmark-email.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/email/batch
+      name: email-batch
+      description: REST surface for email-batch.
+      operations:
+      - method: POST
+        name: post
+        description: Postmark Send a batch of emails
+        call: postmark-email.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/email/batchwithtemplates
+      name: email-batchwithtemplates
+      description: REST surface for email-batchWithTemplates.
+      operations:
+      - method: POST
+        name: post
+        description: Postmark Send a batch of email using templates.
+        call: postmark-email.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/email/withtemplate
+      name: email-withtemplate
+      description: REST surface for email-withTemplate.
+      operations:
+      - method: POST
+        name: post
+        description: Postmark Send an email using a Template
+        call: postmark-email.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: postmark-email-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Postmark API — Email. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: postmark-send-single-email
+      description: Postmark Send a single email
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: postmark-email.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-send-batch-emails
+      description: Postmark Send a batch of emails
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: postmark-email.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-send-batch-email-using
+      description: Postmark Send a batch of email using templates.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: postmark-email.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-send-email-using-template
+      description: Postmark Send an email using a Template
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: postmark-email.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

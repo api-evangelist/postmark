@@ -1,0 +1,755 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Postmark Server API — Stats API
+  description: 'Postmark Server API — Stats API. 12 operations. Lead operation: Postmark Get outbound overview. Self-contained
+    Naftiko capability covering one Postmark business surface.'
+  tags:
+  - Postmark
+  - Stats API
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POSTMARK_API_KEY: POSTMARK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: server-stats-api
+    baseUri: https://api.postmarkapp.com
+    description: Postmark Server API — Stats API business capability. Self-contained, no shared references.
+    resources:
+    - name: stats-outbound
+      path: /stats/outbound
+      operations:
+      - name: getoutboundoverviewstatistics
+        method: GET
+        description: Postmark Get outbound overview
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Postmark-Server-Token
+          in: header
+          type: string
+          description: The token associated with the Server on which this request will operate.
+          required: true
+        - name: tag
+          in: query
+          type: string
+          description: Filter by tag
+        - name: fromdate
+          in: query
+          type: string
+          description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        - name: todate
+          in: query
+          type: string
+          description: Filter stats up to the date specified. e.g. `2014-02-01`
+    - name: stats-outbound-bounces
+      path: /stats/outbound/bounces
+      operations:
+      - name: getbouncecounts
+        method: GET
+        description: Postmark Get bounce counts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Postmark-Server-Token
+          in: header
+          type: string
+          description: The token associated with the Server on which this request will operate.
+          required: true
+        - name: tag
+          in: query
+          type: string
+          description: Filter by tag
+        - name: fromdate
+          in: query
+          type: string
+          description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        - name: todate
+          in: query
+          type: string
+          description: Filter stats up to the date specified. e.g. `2014-02-01`
+    - name: stats-outbound-clicks
+      path: /stats/outbound/clicks
+      operations:
+      - name: getoutboundclickcounts
+        method: GET
+        description: Postmark Get click counts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Postmark-Server-Token
+          in: header
+          type: string
+          description: The token associated with the Server on which this request will operate.
+          required: true
+        - name: tag
+          in: query
+          type: string
+          description: Filter by tag
+        - name: fromdate
+          in: query
+          type: string
+          description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        - name: todate
+          in: query
+          type: string
+          description: Filter stats up to the date specified. e.g. `2014-02-01`
+    - name: stats-outbound-clicks-browserfamilies
+      path: /stats/outbound/clicks/browserfamilies
+      operations:
+      - name: getoutboundclickcountsbybrowserfamily
+        method: GET
+        description: Postmark Get browser usage by family
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Postmark-Server-Token
+          in: header
+          type: string
+          description: The token associated with the Server on which this request will operate.
+          required: true
+        - name: tag
+          in: query
+          type: string
+          description: Filter by tag
+        - name: fromdate
+          in: query
+          type: string
+          description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        - name: todate
+          in: query
+          type: string
+          description: Filter stats up to the date specified. e.g. `2014-02-01`
+    - name: stats-outbound-clicks-location
+      path: /stats/outbound/clicks/location
+      operations:
+      - name: getoutboundclickcountsbylocation
+        method: GET
+        description: Postmark Get clicks by body location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Postmark-Server-Token
+          in: header
+          type: string
+          description: The token associated with the Server on which this request will operate.
+          required: true
+        - name: tag
+          in: query
+          type: string
+          description: Filter by tag
+        - name: fromdate
+          in: query
+          type: string
+          description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        - name: todate
+          in: query
+          type: string
+          description: Filter stats up to the date specified. e.g. `2014-02-01`
+    - name: stats-outbound-clicks-platforms
+      path: /stats/outbound/clicks/platforms
+      operations:
+      - name: getoutboundclickcountsbyplatform
+        method: GET
+        description: Postmark Get browser plaform usage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Postmark-Server-Token
+          in: header
+          type: string
+          description: The token associated with the Server on which this request will operate.
+          required: true
+        - name: tag
+          in: query
+          type: string
+          description: Filter by tag
+        - name: fromdate
+          in: query
+          type: string
+          description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        - name: todate
+          in: query
+          type: string
+          description: Filter stats up to the date specified. e.g. `2014-02-01`
+    - name: stats-outbound-opens
+      path: /stats/outbound/opens
+      operations:
+      - name: getoutboundopencounts
+        method: GET
+        description: Postmark Get email open counts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Postmark-Server-Token
+          in: header
+          type: string
+          description: The token associated with the Server on which this request will operate.
+          required: true
+        - name: tag
+          in: query
+          type: string
+          description: Filter by tag
+        - name: fromdate
+          in: query
+          type: string
+          description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        - name: todate
+          in: query
+          type: string
+          description: Filter stats up to the date specified. e.g. `2014-02-01`
+    - name: stats-outbound-opens-emailclients
+      path: /stats/outbound/opens/emailclients
+      operations:
+      - name: getoutboundopencountsbyemailclient
+        method: GET
+        description: Postmark Get email client usage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Postmark-Server-Token
+          in: header
+          type: string
+          description: The token associated with the Server on which this request will operate.
+          required: true
+        - name: tag
+          in: query
+          type: string
+          description: Filter by tag
+        - name: fromdate
+          in: query
+          type: string
+          description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        - name: todate
+          in: query
+          type: string
+          description: Filter stats up to the date specified. e.g. `2014-02-01`
+    - name: stats-outbound-opens-platforms
+      path: /stats/outbound/opens/platforms
+      operations:
+      - name: getoutboundopencountsbyplatform
+        method: GET
+        description: Postmark Get email platform usage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Postmark-Server-Token
+          in: header
+          type: string
+          description: The token associated with the Server on which this request will operate.
+          required: true
+        - name: tag
+          in: query
+          type: string
+          description: Filter by tag
+        - name: fromdate
+          in: query
+          type: string
+          description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        - name: todate
+          in: query
+          type: string
+          description: Filter stats up to the date specified. e.g. `2014-02-01`
+    - name: stats-outbound-sends
+      path: /stats/outbound/sends
+      operations:
+      - name: getsentcounts
+        method: GET
+        description: Postmark Get sent counts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Postmark-Server-Token
+          in: header
+          type: string
+          description: The token associated with the Server on which this request will operate.
+          required: true
+        - name: tag
+          in: query
+          type: string
+          description: Filter by tag
+        - name: fromdate
+          in: query
+          type: string
+          description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        - name: todate
+          in: query
+          type: string
+          description: Filter stats up to the date specified. e.g. `2014-02-01`
+    - name: stats-outbound-spam
+      path: /stats/outbound/spam
+      operations:
+      - name: getspamcomplaints
+        method: GET
+        description: Postmark Get spam complaints
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Postmark-Server-Token
+          in: header
+          type: string
+          description: The token associated with the Server on which this request will operate.
+          required: true
+        - name: tag
+          in: query
+          type: string
+          description: Filter by tag
+        - name: fromdate
+          in: query
+          type: string
+          description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        - name: todate
+          in: query
+          type: string
+          description: Filter stats up to the date specified. e.g. `2014-02-01`
+    - name: stats-outbound-tracked
+      path: /stats/outbound/tracked
+      operations:
+      - name: gettrackedemailcounts
+        method: GET
+        description: Postmark Get tracked email counts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Postmark-Server-Token
+          in: header
+          type: string
+          description: The token associated with the Server on which this request will operate.
+          required: true
+        - name: tag
+          in: query
+          type: string
+          description: Filter by tag
+        - name: fromdate
+          in: query
+          type: string
+          description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        - name: todate
+          in: query
+          type: string
+          description: Filter stats starting from the date specified. e.g. `2014-01-01`
+  exposes:
+  - type: rest
+    namespace: server-stats-api-rest
+    port: 8080
+    description: REST adapter for Postmark Server API — Stats API. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/stats/outbound
+      name: stats-outbound
+      description: REST surface for stats-outbound.
+      operations:
+      - method: GET
+        name: getoutboundoverviewstatistics
+        description: Postmark Get outbound overview
+        call: server-stats-api.getoutboundoverviewstatistics
+        with:
+          X-Postmark-Server-Token: rest.X-Postmark-Server-Token
+          tag: rest.tag
+          fromdate: rest.fromdate
+          todate: rest.todate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stats/outbound/bounces
+      name: stats-outbound-bounces
+      description: REST surface for stats-outbound-bounces.
+      operations:
+      - method: GET
+        name: getbouncecounts
+        description: Postmark Get bounce counts
+        call: server-stats-api.getbouncecounts
+        with:
+          X-Postmark-Server-Token: rest.X-Postmark-Server-Token
+          tag: rest.tag
+          fromdate: rest.fromdate
+          todate: rest.todate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stats/outbound/clicks
+      name: stats-outbound-clicks
+      description: REST surface for stats-outbound-clicks.
+      operations:
+      - method: GET
+        name: getoutboundclickcounts
+        description: Postmark Get click counts
+        call: server-stats-api.getoutboundclickcounts
+        with:
+          X-Postmark-Server-Token: rest.X-Postmark-Server-Token
+          tag: rest.tag
+          fromdate: rest.fromdate
+          todate: rest.todate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stats/outbound/clicks/browserfamilies
+      name: stats-outbound-clicks-browserfamilies
+      description: REST surface for stats-outbound-clicks-browserfamilies.
+      operations:
+      - method: GET
+        name: getoutboundclickcountsbybrowserfamily
+        description: Postmark Get browser usage by family
+        call: server-stats-api.getoutboundclickcountsbybrowserfamily
+        with:
+          X-Postmark-Server-Token: rest.X-Postmark-Server-Token
+          tag: rest.tag
+          fromdate: rest.fromdate
+          todate: rest.todate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stats/outbound/clicks/location
+      name: stats-outbound-clicks-location
+      description: REST surface for stats-outbound-clicks-location.
+      operations:
+      - method: GET
+        name: getoutboundclickcountsbylocation
+        description: Postmark Get clicks by body location
+        call: server-stats-api.getoutboundclickcountsbylocation
+        with:
+          X-Postmark-Server-Token: rest.X-Postmark-Server-Token
+          tag: rest.tag
+          fromdate: rest.fromdate
+          todate: rest.todate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stats/outbound/clicks/platforms
+      name: stats-outbound-clicks-platforms
+      description: REST surface for stats-outbound-clicks-platforms.
+      operations:
+      - method: GET
+        name: getoutboundclickcountsbyplatform
+        description: Postmark Get browser plaform usage
+        call: server-stats-api.getoutboundclickcountsbyplatform
+        with:
+          X-Postmark-Server-Token: rest.X-Postmark-Server-Token
+          tag: rest.tag
+          fromdate: rest.fromdate
+          todate: rest.todate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stats/outbound/opens
+      name: stats-outbound-opens
+      description: REST surface for stats-outbound-opens.
+      operations:
+      - method: GET
+        name: getoutboundopencounts
+        description: Postmark Get email open counts
+        call: server-stats-api.getoutboundopencounts
+        with:
+          X-Postmark-Server-Token: rest.X-Postmark-Server-Token
+          tag: rest.tag
+          fromdate: rest.fromdate
+          todate: rest.todate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stats/outbound/opens/emailclients
+      name: stats-outbound-opens-emailclients
+      description: REST surface for stats-outbound-opens-emailclients.
+      operations:
+      - method: GET
+        name: getoutboundopencountsbyemailclient
+        description: Postmark Get email client usage
+        call: server-stats-api.getoutboundopencountsbyemailclient
+        with:
+          X-Postmark-Server-Token: rest.X-Postmark-Server-Token
+          tag: rest.tag
+          fromdate: rest.fromdate
+          todate: rest.todate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stats/outbound/opens/platforms
+      name: stats-outbound-opens-platforms
+      description: REST surface for stats-outbound-opens-platforms.
+      operations:
+      - method: GET
+        name: getoutboundopencountsbyplatform
+        description: Postmark Get email platform usage
+        call: server-stats-api.getoutboundopencountsbyplatform
+        with:
+          X-Postmark-Server-Token: rest.X-Postmark-Server-Token
+          tag: rest.tag
+          fromdate: rest.fromdate
+          todate: rest.todate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stats/outbound/sends
+      name: stats-outbound-sends
+      description: REST surface for stats-outbound-sends.
+      operations:
+      - method: GET
+        name: getsentcounts
+        description: Postmark Get sent counts
+        call: server-stats-api.getsentcounts
+        with:
+          X-Postmark-Server-Token: rest.X-Postmark-Server-Token
+          tag: rest.tag
+          fromdate: rest.fromdate
+          todate: rest.todate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stats/outbound/spam
+      name: stats-outbound-spam
+      description: REST surface for stats-outbound-spam.
+      operations:
+      - method: GET
+        name: getspamcomplaints
+        description: Postmark Get spam complaints
+        call: server-stats-api.getspamcomplaints
+        with:
+          X-Postmark-Server-Token: rest.X-Postmark-Server-Token
+          tag: rest.tag
+          fromdate: rest.fromdate
+          todate: rest.todate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stats/outbound/tracked
+      name: stats-outbound-tracked
+      description: REST surface for stats-outbound-tracked.
+      operations:
+      - method: GET
+        name: gettrackedemailcounts
+        description: Postmark Get tracked email counts
+        call: server-stats-api.gettrackedemailcounts
+        with:
+          X-Postmark-Server-Token: rest.X-Postmark-Server-Token
+          tag: rest.tag
+          fromdate: rest.fromdate
+          todate: rest.todate
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: server-stats-api-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Postmark Server API — Stats API. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: postmark-get-outbound-overview
+      description: Postmark Get outbound overview
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-stats-api.getoutboundoverviewstatistics
+      with:
+        X-Postmark-Server-Token: tools.X-Postmark-Server-Token
+        tag: tools.tag
+        fromdate: tools.fromdate
+        todate: tools.todate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-get-bounce-counts
+      description: Postmark Get bounce counts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-stats-api.getbouncecounts
+      with:
+        X-Postmark-Server-Token: tools.X-Postmark-Server-Token
+        tag: tools.tag
+        fromdate: tools.fromdate
+        todate: tools.todate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-get-click-counts
+      description: Postmark Get click counts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-stats-api.getoutboundclickcounts
+      with:
+        X-Postmark-Server-Token: tools.X-Postmark-Server-Token
+        tag: tools.tag
+        fromdate: tools.fromdate
+        todate: tools.todate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-get-browser-usage-family
+      description: Postmark Get browser usage by family
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-stats-api.getoutboundclickcountsbybrowserfamily
+      with:
+        X-Postmark-Server-Token: tools.X-Postmark-Server-Token
+        tag: tools.tag
+        fromdate: tools.fromdate
+        todate: tools.todate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-get-clicks-body-location
+      description: Postmark Get clicks by body location
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-stats-api.getoutboundclickcountsbylocation
+      with:
+        X-Postmark-Server-Token: tools.X-Postmark-Server-Token
+        tag: tools.tag
+        fromdate: tools.fromdate
+        todate: tools.todate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-get-browser-plaform-usage
+      description: Postmark Get browser plaform usage
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-stats-api.getoutboundclickcountsbyplatform
+      with:
+        X-Postmark-Server-Token: tools.X-Postmark-Server-Token
+        tag: tools.tag
+        fromdate: tools.fromdate
+        todate: tools.todate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-get-email-open-counts
+      description: Postmark Get email open counts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-stats-api.getoutboundopencounts
+      with:
+        X-Postmark-Server-Token: tools.X-Postmark-Server-Token
+        tag: tools.tag
+        fromdate: tools.fromdate
+        todate: tools.todate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-get-email-client-usage
+      description: Postmark Get email client usage
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-stats-api.getoutboundopencountsbyemailclient
+      with:
+        X-Postmark-Server-Token: tools.X-Postmark-Server-Token
+        tag: tools.tag
+        fromdate: tools.fromdate
+        todate: tools.todate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-get-email-platform-usage
+      description: Postmark Get email platform usage
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-stats-api.getoutboundopencountsbyplatform
+      with:
+        X-Postmark-Server-Token: tools.X-Postmark-Server-Token
+        tag: tools.tag
+        fromdate: tools.fromdate
+        todate: tools.todate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-get-sent-counts
+      description: Postmark Get sent counts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-stats-api.getsentcounts
+      with:
+        X-Postmark-Server-Token: tools.X-Postmark-Server-Token
+        tag: tools.tag
+        fromdate: tools.fromdate
+        todate: tools.todate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-get-spam-complaints
+      description: Postmark Get spam complaints
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-stats-api.getspamcomplaints
+      with:
+        X-Postmark-Server-Token: tools.X-Postmark-Server-Token
+        tag: tools.tag
+        fromdate: tools.fromdate
+        todate: tools.todate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-get-tracked-email-counts
+      description: Postmark Get tracked email counts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-stats-api.gettrackedemailcounts
+      with:
+        X-Postmark-Server-Token: tools.X-Postmark-Server-Token
+        tag: tools.tag
+        fromdate: tools.fromdate
+        todate: tools.todate
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,208 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Postmark API — Templates
+  description: 'Postmark API — Templates. 4 operations. Lead operation: Postmark Send a batch of email using templates.. Self-contained
+    Naftiko capability covering one Postmark business surface.'
+  tags:
+  - Postmark
+  - Templates
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POSTMARK_API_KEY: POSTMARK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: postmark-templates
+    baseUri: http://{{baseurl}}
+    description: Postmark API — Templates business capability. Self-contained, no shared references.
+    resources:
+    - name: email-batchWithTemplates
+      path: /email/batchWithTemplates
+      operations:
+      - name: post
+        method: POST
+        description: Postmark Send a batch of email using templates.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: templates
+      path: /templates
+      operations:
+      - name: get
+        method: GET
+        description: Postmark Get the Templates associated with this Server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: count
+          in: query
+          type: string
+          description: Number of bounces to return per request. Max 500.
+        - name: offset
+          in: query
+          type: string
+          description: Number of bounces to skip.
+    - name: templates-validate
+      path: /templates/validate
+      operations:
+      - name: post
+        method: POST
+        description: Postmark Test Template Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: templates-templateIdOrAlias
+      path: /templates/{templateIdOrAlias}
+      operations:
+      - name: delete
+        method: DELETE
+        description: Postmark Delete a Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: templateIdOrAlias
+          in: path
+          type: string
+          description: The 'TemplateID' or 'Alias' value for the Template you wish to delete.
+          required: true
+  exposes:
+  - type: rest
+    namespace: postmark-templates-rest
+    port: 8080
+    description: REST adapter for Postmark API — Templates. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/email/batchwithtemplates
+      name: email-batchwithtemplates
+      description: REST surface for email-batchWithTemplates.
+      operations:
+      - method: POST
+        name: post
+        description: Postmark Send a batch of email using templates.
+        call: postmark-templates.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/templates
+      name: templates
+      description: REST surface for templates.
+      operations:
+      - method: GET
+        name: get
+        description: Postmark Get the Templates associated with this Server
+        call: postmark-templates.get
+        with:
+          count: rest.count
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/templates/validate
+      name: templates-validate
+      description: REST surface for templates-validate.
+      operations:
+      - method: POST
+        name: post
+        description: Postmark Test Template Content
+        call: postmark-templates.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/templates/{templateidoralias}
+      name: templates-templateidoralias
+      description: REST surface for templates-templateIdOrAlias.
+      operations:
+      - method: DELETE
+        name: delete
+        description: Postmark Delete a Template
+        call: postmark-templates.delete
+        with:
+          templateIdOrAlias: rest.templateIdOrAlias
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: postmark-templates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Postmark API — Templates. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: postmark-send-batch-email-using
+      description: Postmark Send a batch of email using templates.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: postmark-templates.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-get-templates-associated-this
+      description: Postmark Get the Templates associated with this Server
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: postmark-templates.get
+      with:
+        count: tools.count
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-test-template-content
+      description: Postmark Test Template Content
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: postmark-templates.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-delete-template
+      description: Postmark Delete a Template
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: postmark-templates.delete
+      with:
+        templateIdOrAlias: tools.templateIdOrAlias
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Postmark API — Messages > Inbound > {Messageid}
+  description: 'Postmark API — Messages > Inbound > {Messageid}. 1 operations. Lead operation: Postmark Inbound message details.
+    Self-contained Naftiko capability covering one Postmark business surface.'
+  tags:
+  - Postmark
+  - Messages > Inbound > {Messageid}
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POSTMARK_API_KEY: POSTMARK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: postmark-messages-inbound-messageid
+    baseUri: http://{{baseurl}}
+    description: Postmark API — Messages > Inbound > {Messageid} business capability. Self-contained, no shared references.
+    resources:
+    - name: messages-inbound-messageid-details
+      path: /messages/inbound/{messageid}/details
+      operations:
+      - name: get
+        method: GET
+        description: Postmark Inbound message details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: messageid
+          in: path
+          type: string
+          description: The ID of the message which should bypass inbound rules.
+          required: true
+  exposes:
+  - type: rest
+    namespace: postmark-messages-inbound-messageid-rest
+    port: 8080
+    description: REST adapter for Postmark API — Messages > Inbound > {Messageid}. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/messages/inbound/{messageid}/details
+      name: messages-inbound-messageid-details
+      description: REST surface for messages-inbound-messageid-details.
+      operations:
+      - method: GET
+        name: get
+        description: Postmark Inbound message details
+        call: postmark-messages-inbound-messageid.get
+        with:
+          messageid: rest.messageid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: postmark-messages-inbound-messageid-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Postmark API — Messages > Inbound > {Messageid}. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: postmark-inbound-message-details
+      description: Postmark Inbound message details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: postmark-messages-inbound-messageid.get
+      with:
+        messageid: tools.messageid
+      outputParameters:
+      - type: object
+        mapping: $.

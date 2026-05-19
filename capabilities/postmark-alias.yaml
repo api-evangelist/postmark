@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Postmark API — Alias
+  description: 'Postmark API — Alias. 1 operations. Lead operation: Postmark Delete a Template. Self-contained Naftiko capability
+    covering one Postmark business surface.'
+  tags:
+  - Postmark
+  - Alias
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POSTMARK_API_KEY: POSTMARK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: postmark-alias
+    baseUri: http://{{baseurl}}
+    description: Postmark API — Alias business capability. Self-contained, no shared references.
+    resources:
+    - name: templates-templateIdOrAlias
+      path: /templates/{templateIdOrAlias}
+      operations:
+      - name: delete
+        method: DELETE
+        description: Postmark Delete a Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: templateIdOrAlias
+          in: path
+          type: string
+          description: The 'TemplateID' or 'Alias' value for the Template you wish to delete.
+          required: true
+  exposes:
+  - type: rest
+    namespace: postmark-alias-rest
+    port: 8080
+    description: REST adapter for Postmark API — Alias. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/templates/{templateidoralias}
+      name: templates-templateidoralias
+      description: REST surface for templates-templateIdOrAlias.
+      operations:
+      - method: DELETE
+        name: delete
+        description: Postmark Delete a Template
+        call: postmark-alias.delete
+        with:
+          templateIdOrAlias: rest.templateIdOrAlias
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: postmark-alias-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Postmark API — Alias. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: postmark-delete-template
+      description: Postmark Delete a Template
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: postmark-alias.delete
+      with:
+        templateIdOrAlias: tools.templateIdOrAlias
+      outputParameters:
+      - type: object
+        mapping: $.

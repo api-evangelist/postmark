@@ -1,0 +1,97 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Postmark API
+  description: 'Postmark API. 2 operations. Lead operation: Postmark Get bounced tags. Self-contained Naftiko capability covering
+    one Postmark business surface.'
+  tags:
+  - Postmark
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POSTMARK_API_KEY: POSTMARK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: postmark-general
+    baseUri: http://{{baseurl}}
+    description: Postmark API business capability. Self-contained, no shared references.
+    resources:
+    - name: bounces-tags
+      path: /bounces/tags
+      operations:
+      - name: get
+        method: GET
+        description: Postmark Get bounced tags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: deliverystats
+      path: /deliverystats
+      operations:
+      - name: get
+        method: GET
+        description: Postmark Get delivery stats
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: postmark-general-rest
+    port: 8080
+    description: REST adapter for Postmark API. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/bounces/tags
+      name: bounces-tags
+      description: REST surface for bounces-tags.
+      operations:
+      - method: GET
+        name: get
+        description: Postmark Get bounced tags
+        call: postmark-general.get
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deliverystats
+      name: deliverystats
+      description: REST surface for deliverystats.
+      operations:
+      - method: GET
+        name: get
+        description: Postmark Get delivery stats
+        call: postmark-general.get
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: postmark-general-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Postmark API. One tool per consumed operation, routed inline through this capability's consumes
+      block.
+    tools:
+    - name: postmark-get-bounced-tags
+      description: Postmark Get bounced tags
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: postmark-general.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-get-delivery-stats
+      description: Postmark Get delivery stats
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: postmark-general.get
+      outputParameters:
+      - type: object
+        mapping: $.

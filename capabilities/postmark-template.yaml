@@ -1,0 +1,119 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Postmark API — Template
+  description: 'Postmark API — Template. 2 operations. Lead operation: Postmark Send an email using a Template. Self-contained
+    Naftiko capability covering one Postmark business surface.'
+  tags:
+  - Postmark
+  - Template
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POSTMARK_API_KEY: POSTMARK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: postmark-template
+    baseUri: http://{{baseurl}}
+    description: Postmark API — Template business capability. Self-contained, no shared references.
+    resources:
+    - name: email-withTemplate
+      path: /email/withTemplate
+      operations:
+      - name: post
+        method: POST
+        description: Postmark Send an email using a Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: templates-templateIdOrAlias
+      path: /templates/{templateIdOrAlias}
+      operations:
+      - name: delete
+        method: DELETE
+        description: Postmark Delete a Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: templateIdOrAlias
+          in: path
+          type: string
+          description: The 'TemplateID' or 'Alias' value for the Template you wish to delete.
+          required: true
+  exposes:
+  - type: rest
+    namespace: postmark-template-rest
+    port: 8080
+    description: REST adapter for Postmark API — Template. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/email/withtemplate
+      name: email-withtemplate
+      description: REST surface for email-withTemplate.
+      operations:
+      - method: POST
+        name: post
+        description: Postmark Send an email using a Template
+        call: postmark-template.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/templates/{templateidoralias}
+      name: templates-templateidoralias
+      description: REST surface for templates-templateIdOrAlias.
+      operations:
+      - method: DELETE
+        name: delete
+        description: Postmark Delete a Template
+        call: postmark-template.delete
+        with:
+          templateIdOrAlias: rest.templateIdOrAlias
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: postmark-template-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Postmark API — Template. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: postmark-send-email-using-template
+      description: Postmark Send an email using a Template
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: postmark-template.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: postmark-delete-template
+      description: Postmark Delete a Template
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: postmark-template.delete
+      with:
+        templateIdOrAlias: tools.templateIdOrAlias
+      outputParameters:
+      - type: object
+        mapping: $.

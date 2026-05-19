@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Postmark API — Servers
+  description: 'Postmark API — Servers. 1 operations. Lead operation: Postmark Get Server Configuration. Self-contained Naftiko
+    capability covering one Postmark business surface.'
+  tags:
+  - Postmark
+  - Servers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POSTMARK_API_KEY: POSTMARK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: postmark-servers
+    baseUri: http://{{baseurl}}
+    description: Postmark API — Servers business capability. Self-contained, no shared references.
+    resources:
+    - name: server
+      path: /server
+      operations:
+      - name: get
+        method: GET
+        description: Postmark Get Server Configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: postmark-servers-rest
+    port: 8080
+    description: REST adapter for Postmark API — Servers. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/server
+      name: server
+      description: REST surface for server.
+      operations:
+      - method: GET
+        name: get
+        description: Postmark Get Server Configuration
+        call: postmark-servers.get
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: postmark-servers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Postmark API — Servers. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: postmark-get-server-configuration
+      description: Postmark Get Server Configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: postmark-servers.get
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,88 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Postmark API — Sends
+  description: 'Postmark API — Sends. 1 operations. Lead operation: Postmark Get sent counts. Self-contained Naftiko capability
+    covering one Postmark business surface.'
+  tags:
+  - Postmark
+  - Sends
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POSTMARK_API_KEY: POSTMARK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: postmark-sends
+    baseUri: http://{{baseurl}}
+    description: Postmark API — Sends business capability. Self-contained, no shared references.
+    resources:
+    - name: stats-outbound-sends
+      path: /stats/outbound/sends
+      operations:
+      - name: get
+        method: GET
+        description: Postmark Get sent counts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: tag
+          in: query
+          type: string
+          description: Filter by tag
+        - name: fromdate
+          in: query
+          type: string
+          description: Filter messages starting from the date specified. e.g. `2014-02-01`
+        - name: todate
+          in: query
+          type: string
+          description: Filter messages up to the date specified. e.g. `2014-02-01`
+  exposes:
+  - type: rest
+    namespace: postmark-sends-rest
+    port: 8080
+    description: REST adapter for Postmark API — Sends. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/stats/outbound/sends
+      name: stats-outbound-sends
+      description: REST surface for stats-outbound-sends.
+      operations:
+      - method: GET
+        name: get
+        description: Postmark Get sent counts
+        call: postmark-sends.get
+        with:
+          tag: rest.tag
+          fromdate: rest.fromdate
+          todate: rest.todate
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: postmark-sends-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Postmark API — Sends. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: postmark-get-sent-counts
+      description: Postmark Get sent counts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: postmark-sends.get
+      with:
+        tag: tools.tag
+        fromdate: tools.fromdate
+        todate: tools.todate
+      outputParameters:
+      - type: object
+        mapping: $.
