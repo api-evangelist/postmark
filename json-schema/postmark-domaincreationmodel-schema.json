@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DomainCreationModel",
+  "title": "DomainCreationModel",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "ReturnPathDomain": {
+      "type": "string"
+    }
+  },
+  "description": ""
+}

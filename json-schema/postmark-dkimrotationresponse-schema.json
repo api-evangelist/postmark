@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DKIMRotationResponse",
+  "title": "DKIMRotationResponse",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "DKIMVerified": {
+      "type": "boolean"
+    },
+    "WeakDKIM": {
+      "type": "boolean"
+    },
+    "DKIMHost": {
+      "type": "string"
+    },
+    "DKIMTestValue": {
+      "type": "string"
+    },
+    "DKIMPendingHost": {
+      "type": "string"
+    },
+    "DKIMPendingTextValue": {
+      "type": "string"
+    },
+    "DKIMRevokedHost": {
+      "type": "string"
+    },
+    "DKIMRevokedTextValue": {
+      "type": "string"
+    },
+    "SafeToRemoveRevokedKeyFromDNS": {
+      "type": "boolean"
+    },
+    "DKIMUpdateStatus": {
+      "type": "string"
+    },
+    "ID": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "description": ""
+}

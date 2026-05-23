@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TemplatesPushResponse",
+  "title": "TemplatesPushResponse",
+  "type": "object",
+  "properties": {
+    "TotalCount": {
+      "type": "integer"
+    },
+    "Templates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Action": {
+            "type": "string"
+          },
+          "TemplateId": {
+            "type": "integer"
+          },
+          "Alias": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "description": ""
+}

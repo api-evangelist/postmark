@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EditServerPayload",
+  "title": "EditServerPayload",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "Color": {
+      "type": "string"
+    },
+    "RawEmailEnabled": {
+      "type": "boolean"
+    },
+    "DeliveryHookUrl": {
+      "type": "string"
+    },
+    "SmtpApiActivated": {
+      "type": "boolean"
+    },
+    "InboundHookUrl": {
+      "type": "string"
+    },
+    "BounceHookUrl": {
+      "type": "string"
+    },
+    "OpenHookUrl": {
+      "type": "string"
+    },
+    "PostFirstOpenOnly": {
+      "type": "boolean"
+    },
+    "TrackOpens": {
+      "type": "boolean"
+    },
+    "TrackLinks": {
+      "type": "string",
+      "enum": [
+        "None",
+        "HtmlAndTextTracking",
+        "HtmlOnlyTracking",
+        "TextOnlyTracking"
+      ]
+    },
+    "ClickHookUrl": {
+      "type": "string"
+    },
+    "InboundDomain": {
+      "type": "string"
+    },
+    "InboundSpamThreshold": {
+      "type": "integer"
+    }
+  },
+  "description": ""
+}

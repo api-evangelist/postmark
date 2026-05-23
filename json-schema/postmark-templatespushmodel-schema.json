@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TemplatesPushModel",
+  "title": "TemplatesPushModel",
+  "type": "object",
+  "properties": {
+    "SourceServerId": {
+      "type": "integer"
+    },
+    "DestinationServerId": {
+      "type": "integer"
+    },
+    "PerformChanges": {
+      "type": "boolean"
+    }
+  },
+  "description": ""
+}

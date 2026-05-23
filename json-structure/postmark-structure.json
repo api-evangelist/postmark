@@ -1,0 +1,400 @@
+{
+  "provider": "Postmark",
+  "providerId": "postmark",
+  "kind": "json-structure",
+  "description": "Structural overview of the Postmark API surface; extracted from openapi/.",
+  "schemaCount": 0,
+  "operationCount": 43,
+  "schemas": [],
+  "operations": [
+    {
+      "method": "POST",
+      "path": "/email",
+      "operationId": "sendEmail",
+      "summary": "Postmark Send a single email",
+      "tags": [
+        "Sending API"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/email/batch",
+      "operationId": "sendEmailBatch",
+      "summary": "Postmark Send a batch of emails",
+      "tags": [
+        "Sending API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/deliverystats",
+      "operationId": "getDeliveryStats",
+      "summary": "Postmark Get delivery stats",
+      "tags": [
+        "Bounces API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/bounces",
+      "operationId": "getBounces",
+      "summary": "Postmark Get bounces",
+      "tags": [
+        "Bounces API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/bounces/{bounceid}",
+      "operationId": "getSingleBounce",
+      "summary": "Postmark Get a single bounce",
+      "tags": [
+        "Bounces API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/bounces/{bounceid}/dump",
+      "operationId": null,
+      "summary": "Postmark Get bounce dump",
+      "tags": [
+        "Bounces API"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/bounces/{bounceid}/activate",
+      "operationId": "activateBounce",
+      "summary": "Postmark Activate a bounce",
+      "tags": [
+        "Bounces API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/messages/outbound",
+      "operationId": "searchOutboundMessages",
+      "summary": "Postmark Outbound message search",
+      "tags": [
+        "Messages API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/messages/outbound/{messageid}/details",
+      "operationId": "getOutboundMessageDetails",
+      "summary": "Postmark Outbound message details",
+      "tags": [
+        "Messages API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/messages/outbound/{messageid}/dump",
+      "operationId": "getOutboundMessageDump",
+      "summary": "Postmark Outbound message dump",
+      "tags": [
+        "Messages API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/messages/inbound",
+      "operationId": "searchInboundMessages",
+      "summary": "Postmark Inbound message search",
+      "tags": [
+        "Messages API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/messages/inbound/{messageid}/details",
+      "operationId": "getInboundMessageDetails",
+      "summary": "Postmark Inbound message details",
+      "tags": [
+        "Messages API"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/messages/inbound/{messageid}/bypass",
+      "operationId": "bypassRulesForInboundMessage",
+      "summary": "Postmark Bypass rules for a blocked inbound message",
+      "tags": [
+        "Messages API"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/messages/inbound/{messageid}/retry",
+      "operationId": "retryInboundMessageProcessing",
+      "summary": "Postmark Retry a failed inbound message for processing",
+      "tags": [
+        "Messages API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/messages/outbound/opens",
+      "operationId": "searchOpensForOutboundMessages",
+      "summary": "Postmark Opens for all messages",
+      "tags": [
+        "Messages API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/messages/outbound/opens/{messageid}",
+      "operationId": "getOpensForSingleOutboundMessage",
+      "summary": "Postmark Retrieve Message Opens",
+      "tags": [
+        "Messages API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/messages/outbound/clicks",
+      "operationId": "searchClicksForOutboundMessages",
+      "summary": "Postmark Clicks for a all messages",
+      "tags": [
+        "Messages API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/messages/outbound/clicks/{messageid}",
+      "operationId": "getClicksForSingleOutboundMessage",
+      "summary": "Postmark Retrieve Message Clicks",
+      "tags": [
+        "Messages API"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/email/withTemplate",
+      "operationId": "sendEmailWithTemplate",
+      "summary": "Postmark Send an email using a Template",
+      "tags": [
+        "Sending API",
+        "Templates API"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/email/batchWithTemplates",
+      "operationId": "sendEmailBatchWithTemplates",
+      "summary": "Postmark Send a batch of email using templates.",
+      "tags": [
+        "Sending API",
+        "Templates API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/templates",
+      "operationId": "listTemplates",
+      "summary": "Postmark Get the Templates associated with this Server",
+      "tags": [
+        "Templates API"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/templates",
+      "operationId": null,
+      "summary": "Postmark Create a Template",
+      "tags": [
+        "Templates API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/templates/{templateIdOrAlias}",
+      "operationId": "getSingleTemplate",
+      "summary": "Postmark Get a Template",
+      "tags": [
+        "Templates API"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/templates/{templateIdOrAlias}",
+      "operationId": "updateTemplate",
+      "summary": "Postmark Update a Template",
+      "tags": [
+        "Templates API"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/templates/{templateIdOrAlias}",
+      "operationId": "deleteTemplate",
+      "summary": "Postmark Delete a Template",
+      "tags": [
+        "Templates API"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/templates/validate",
+      "operationId": "testTemplateContent",
+      "summary": "Postmark Test Template Content",
+      "tags": [
+        "Templates API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/stats/outbound",
+      "operationId": "getOutboundOverviewStatistics",
+      "summary": "Postmark Get outbound overview",
+      "tags": [
+        "Stats API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/stats/outbound/sends",
+      "operationId": "getSentCounts",
+      "summary": "Postmark Get sent counts",
+      "tags": [
+        "Stats API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/stats/outbound/bounces",
+      "operationId": "getBounceCounts",
+      "summary": "Postmark Get bounce counts",
+      "tags": [
+        "Stats API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/stats/outbound/spam",
+      "operationId": "getSpamComplaints",
+      "summary": "Postmark Get spam complaints",
+      "tags": [
+        "Stats API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/stats/outbound/tracked",
+      "operationId": "getTrackedEmailCounts",
+      "summary": "Postmark Get tracked email counts",
+      "tags": [
+        "Stats API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/stats/outbound/opens",
+      "operationId": "getOutboundOpenCounts",
+      "summary": "Postmark Get email open counts",
+      "tags": [
+        "Stats API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/stats/outbound/opens/platforms",
+      "operationId": "getOutboundOpenCountsByPlatform",
+      "summary": "Postmark Get email platform usage",
+      "tags": [
+        "Stats API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/stats/outbound/opens/emailclients",
+      "operationId": "getOutboundOpenCountsByEmailClient",
+      "summary": "Postmark Get email client usage",
+      "tags": [
+        "Stats API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/stats/outbound/clicks",
+      "operationId": "getOutboundClickCounts",
+      "summary": "Postmark Get click counts",
+      "tags": [
+        "Stats API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/stats/outbound/clicks/browserfamilies",
+      "operationId": "getOutboundClickCountsByBrowserFamily",
+      "summary": "Postmark Get browser usage by family",
+      "tags": [
+        "Stats API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/stats/outbound/clicks/platforms",
+      "operationId": "getOutboundClickCountsByPlatform",
+      "summary": "Postmark Get browser plaform usage",
+      "tags": [
+        "Stats API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/stats/outbound/clicks/location",
+      "operationId": "getOutboundClickCountsByLocation",
+      "summary": "Postmark Get clicks by body location",
+      "tags": [
+        "Stats API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/triggers/inboundrules",
+      "operationId": "listInboundRules",
+      "summary": "Postmark List inbound rule triggers",
+      "tags": [
+        "Inbound Rules API"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/triggers/inboundrules",
+      "operationId": "createInboundRule",
+      "summary": "Postmark Create an inbound rule trigger",
+      "tags": [
+        "Inbound Rules API"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/triggers/inboundrules/{triggerid}",
+      "operationId": "deleteInboundRule",
+      "summary": "Postmark Delete a single trigger",
+      "tags": [
+        "Inbound Rules API"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/server",
+      "operationId": "getCurrentServerConfiguration",
+      "summary": "Postmark Get Server Configuration",
+      "tags": [
+        "Server Configuration API"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/server",
+      "operationId": "editCurrentServerConfiguration",
+      "summary": "Postmark Edit Server Configuration",
+      "tags": [
+        "Server Configuration API"
+      ]
+    }
+  ]
+}

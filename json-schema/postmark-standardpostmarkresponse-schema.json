@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StandardPostmarkResponse",
+  "title": "StandardPostmarkResponse",
+  "type": "object",
+  "properties": {
+    "ErrorCode": {
+      "type": "integer"
+    },
+    "Message": {
+      "type": "string"
+    }
+  },
+  "description": "A Postmark API error."
+}

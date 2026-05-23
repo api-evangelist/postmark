@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DomainInformation",
+  "title": "DomainInformation",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "SPFVerified": {
+      "type": "boolean"
+    },
+    "DKIMVerified": {
+      "type": "boolean"
+    },
+    "WeakDKIM": {
+      "type": "boolean"
+    },
+    "ReturnPathDomainVerified": {
+      "type": "boolean"
+    },
+    "ID": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "description": ""
+}

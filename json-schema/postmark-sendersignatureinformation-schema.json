@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SenderSignatureInformation",
+  "title": "SenderSignatureInformation",
+  "type": "object",
+  "properties": {
+    "Domain": {
+      "type": "string"
+    },
+    "EmailAddress": {
+      "type": "string",
+      "format": "email"
+    },
+    "ReplyToEmailAddress": {
+      "type": "string",
+      "format": "email"
+    },
+    "Name": {
+      "type": "string"
+    },
+    "Confirmed": {
+      "type": "boolean"
+    },
+    "ID": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "description": ""
+}

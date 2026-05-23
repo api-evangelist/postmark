@@ -1,0 +1,12 @@
+name: Postmark Domain Vocabulary
+provider: Postmark
+providerId: postmark
+description: Tag-derived vocabulary for the Postmark API surface; sourced from openapi/ tags.
+terms:
+- term: Bounces API
+- term: Inbound Rules API
+- term: Messages API
+- term: Sending API
+- term: Server Configuration API
+- term: Stats API
+- term: Templates API

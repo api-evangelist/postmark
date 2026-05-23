@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SenderListingResults",
+  "title": "SenderListingResults",
+  "type": "object",
+  "properties": {
+    "TotalCount": {
+      "type": "integer"
+    },
+    "SenderSignatures": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SenderSignatureInformation"
+      }
+    }
+  },
+  "description": ""
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SenderSignatureCreationModel",
+  "title": "SenderSignatureCreationModel",
+  "type": "object",
+  "properties": {
+    "FromEmail": {
+      "type": "string",
+      "format": "email"
+    },
+    "Name": {
+      "type": "string"
+    },
+    "ReplyToEmail": {
+      "type": "string",
+      "format": "email"
+    },
+    "ReturnPathDomain": {
+      "type": "string"
+    }
+  },
+  "description": ""
+}
