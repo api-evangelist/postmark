@@ -2,12 +2,20 @@
   "repo": "postmark",
   "feeds": [
     {
-      "source": "https://postmarkapp.com/blog",
+      "source": "https://postmarkapp.com/blog/feed.atom",
       "feed_url": "https://postmarkapp.com/blog/feed.atom",
-      "title": "Postmark (en-US)",
-      "saved": 7
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://account.postmarkapp.com/login",
+      "feed_url": "https://account.postmarkapp.com/login",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 17,
-  "fetched": "2026-05-17T20:48:52Z"
+  "fetched": "2026-06-01T23:35:02Z"
 }

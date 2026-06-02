@@ -13,7 +13,7 @@ tags:
 - Deliverability
 - SMTP
 created: '2024-04-14'
-modified: '2026-05-19'
+modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
 - aid: postmark:postmark-api
@@ -41,6 +41,8 @@ apis:
     url: https://postmarkapp.com/developer/api/overview#authentication
   - type: OpenAPI
     url: openapi/postmark-api-openapi.yml
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
   - type: NaftikoCapability
     url: capabilities/account-domains-api.yaml
   - type: NaftikoCapability

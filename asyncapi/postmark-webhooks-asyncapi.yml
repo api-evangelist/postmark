@@ -1,0 +1,453 @@
+asyncapi: 2.6.0
+info:
+  title: Postmark Webhooks
+  version: '1.0.0'
+  description: |-
+    AsyncAPI description of Postmark's outbound webhook surface. Postmark delivers
+    event notifications by issuing HTTP POST requests with a JSON body to a URL the
+    customer configures per server (and per stream). Each event includes a
+    `RecordType` discriminator field that identifies the event class.
+
+    Source documentation:
+      - Webhooks overview: https://postmarkapp.com/developer/webhooks/webhooks-overview
+      - Delivery webhook:  https://postmarkapp.com/developer/webhooks/delivery-webhook
+      - Bounce webhook:    https://postmarkapp.com/developer/webhooks/bounce-webhook
+      - Open webhook:      https://postmarkapp.com/developer/webhooks/open-tracking-webhook
+      - Click webhook:     https://postmarkapp.com/developer/webhooks/click-webhook
+      - Spam complaint:    https://postmarkapp.com/developer/webhooks/spam-complaint-webhook
+      - Subscription chg:  https://postmarkapp.com/developer/webhooks/subscription-change-webhook
+      - Inbound parse:     https://postmarkapp.com/developer/user-guide/inbound/parse-an-email
+
+    Security and signing:
+      Postmark does not publish an HMAC signature header for outbound webhooks.
+      The documented authentication options are (1) HTTPS with HTTP Basic
+      Authentication credentials embedded in the webhook URL, and (2) IP
+      allowlisting against Postmark's published webhook IP ranges. Both options
+      are modelled below in `components.securitySchemes`.
+  contact:
+    name: Postmark Support
+    url: https://postmarkapp.com/support
+  license:
+    name: Postmark Terms of Service
+    url: https://postmarkapp.com/terms-of-service
+
+defaultContentType: application/json
+
+servers:
+  subscriber:
+    url: '{webhookUrl}'
+    protocol: https
+    description: |-
+      Customer-hosted HTTPS endpoint that receives webhook POSTs from Postmark.
+      The full URL (including path) is configured per server/stream in the
+      Postmark dashboard or via the Webhooks API.
+    variables:
+      webhookUrl:
+        default: https://example.com/postmark/webhook
+        description: Fully-qualified HTTPS URL of the subscriber endpoint.
+    security:
+      - basicAuth: []
+      - ipAllowList: []
+
+channels:
+  /postmark/webhook:
+    description: |-
+      Single subscriber endpoint that receives every Postmark webhook event for
+      the configured server/stream. The `RecordType` field on the JSON body
+      identifies the event class. Postmark sends one event per HTTP POST.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    publish:
+      operationId: receivePostmarkWebhook
+      summary: Receive a Postmark webhook event
+      description: |-
+        Postmark POSTs a JSON event to the subscriber endpoint. Subscribers
+        should respond with a 2xx status code within the documented retry
+        window. Bounce and Inbound events are retried up to eight times over
+        six hours; Click, Open, Delivery and SubscriptionChange events are
+        retried up to three times within fifteen minutes.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/Delivery'
+          - $ref: '#/components/messages/Bounce'
+          - $ref: '#/components/messages/Transient'
+          - $ref: '#/components/messages/Open'
+          - $ref: '#/components/messages/Click'
+          - $ref: '#/components/messages/SpamComplaint'
+          - $ref: '#/components/messages/SubscriptionChange'
+          - $ref: '#/components/messages/ManualSuppression'
+          - $ref: '#/components/messages/Inbound'
+
+components:
+  securitySchemes:
+    basicAuth:
+      type: httpApiKey
+      description: |-
+        HTTP Basic credentials are embedded directly in the webhook URL
+        (e.g. `https://user:pass@example.com/webhook`). Postmark sends them
+        in the standard `Authorization: Basic <base64>` header on each POST.
+      name: Authorization
+      in: header
+    ipAllowList:
+      type: httpApiKey
+      description: |-
+        Source IP allowlist. Postmark publishes the IP ranges used by its
+        webhook delivery workers; subscribers may restrict inbound POSTs to
+        those addresses. Modelled here as a transport-layer scheme because
+        AsyncAPI 2.6 has no first-class IP allowlist type.
+      name: X-Forwarded-For
+      in: header
+
+  messages:
+    Delivery:
+      name: DeliveryEvent
+      title: Delivery
+      summary: Postmark successfully delivered a message to the recipient's mail server.
+      contentType: application/json
+      bindings:
+        http:
+          headers:
+            type: object
+            properties:
+              Content-Type:
+                type: string
+                const: application/json
+          bindingVersion: '0.3.0'
+      payload:
+        $ref: '#/components/schemas/DeliveryPayload'
+    Bounce:
+      name: BounceEvent
+      title: Bounce
+      summary: A bounce of any non-transient type (HardBounce, SoftBounce, SpamNotification, etc.).
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/BouncePayload'
+    Transient:
+      name: TransientEvent
+      title: Transient
+      summary: |-
+        A transient delivery failure (Bounce TypeCode 2). Sent on the same
+        Bounce webhook channel; distinguished by `Type` = `Transient`.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/TransientPayload'
+    Open:
+      name: OpenEvent
+      title: Open
+      summary: A recipient opened a tracked outbound message.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/OpenPayload'
+    Click:
+      name: ClickEvent
+      title: Click
+      summary: A recipient clicked a tracked link in an outbound message.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/ClickPayload'
+    SpamComplaint:
+      name: SpamComplaintEvent
+      title: SpamComplaint
+      summary: A recipient or receiving mail provider reported a message as spam.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SpamComplaintPayload'
+    SubscriptionChange:
+      name: SubscriptionChangeEvent
+      title: SubscriptionChange
+      summary: A suppression was added or removed for a recipient address on a stream.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SubscriptionChangePayload'
+    ManualSuppression:
+      name: ManualSuppressionEvent
+      title: ManualSuppression
+      summary: |-
+        A manually-applied suppression. Postmark delivers manual suppressions
+        through the SubscriptionChange webhook with
+        `SuppressionReason` = `ManualSuppression` and a null `MessageID`.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/ManualSuppressionPayload'
+    Inbound:
+      name: InboundEvent
+      title: Inbound
+      summary: Postmark received and parsed an inbound email and is forwarding it as JSON.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/InboundPayload'
+
+  schemas:
+    Metadata:
+      type: object
+      description: Custom key/value metadata supplied when sending the message.
+      additionalProperties:
+        type: string
+
+    Client:
+      type: object
+      properties:
+        Name: { type: string }
+        Company: { type: string }
+        Family: { type: string }
+
+    OS:
+      type: object
+      properties:
+        Name: { type: string }
+        Company: { type: string }
+        Family: { type: string }
+
+    Geo:
+      type: object
+      properties:
+        CountryISOCode: { type: string }
+        Country: { type: string }
+        RegionISOCode: { type: string }
+        Region: { type: string }
+        City: { type: string }
+        Zip: { type: string }
+        Coords: { type: string }
+        IP: { type: string }
+
+    Header:
+      type: object
+      properties:
+        Name: { type: string }
+        Value: { type: string }
+
+    EmailAddress:
+      type: object
+      properties:
+        Email: { type: string, format: email }
+        Name: { type: string }
+        MailboxHash: { type: string }
+
+    Attachment:
+      type: object
+      properties:
+        Name: { type: string }
+        Content:
+          type: string
+          format: byte
+          description: Base64-encoded attachment bytes.
+        ContentType: { type: string }
+        ContentLength: { type: integer }
+        ContentID: { type: string }
+
+    DeliveryPayload:
+      type: object
+      required: [RecordType, MessageID, Recipient, DeliveredAt]
+      properties:
+        RecordType:
+          type: string
+          const: Delivery
+        MessageStream: { type: string, example: outbound }
+        ServerID: { type: integer }
+        MessageID: { type: string }
+        Recipient: { type: string, format: email }
+        DeliveredAt: { type: string, format: date-time }
+        Details: { type: string }
+        Tag: { type: string }
+        Metadata: { $ref: '#/components/schemas/Metadata' }
+
+    BouncePayload:
+      type: object
+      required: [RecordType, ID, Type, TypeCode, Email]
+      properties:
+        RecordType:
+          type: string
+          const: Bounce
+        MessageStream: { type: string, example: outbound }
+        ID: { type: integer, format: int64 }
+        Type:
+          type: string
+          description: Postmark bounce type identifier (HardBounce, SoftBounce, Transient, SpamNotification, etc.).
+        TypeCode: { type: integer }
+        Name: { type: string }
+        Tag: { type: string }
+        MessageID: { type: string }
+        Metadata: { $ref: '#/components/schemas/Metadata' }
+        ServerID: { type: integer }
+        Description: { type: string }
+        Details: { type: string }
+        Email: { type: string, format: email }
+        From: { type: string, format: email }
+        BouncedAt: { type: string, format: date-time }
+        DumpAvailable: { type: boolean }
+        Inactive: { type: boolean }
+        CanActivate: { type: boolean }
+        Subject: { type: string }
+        Content: { type: string }
+
+    TransientPayload:
+      allOf:
+        - $ref: '#/components/schemas/BouncePayload'
+        - type: object
+          properties:
+            Type:
+              type: string
+              const: Transient
+              description: Transient soft failure (Postmark TypeCode 2).
+            TypeCode:
+              type: integer
+              const: 2
+
+    OpenPayload:
+      type: object
+      required: [RecordType, MessageID, Recipient, ReceivedAt]
+      properties:
+        RecordType:
+          type: string
+          const: Open
+        MessageStream: { type: string, example: outbound }
+        FirstOpen: { type: boolean }
+        Client: { $ref: '#/components/schemas/Client' }
+        OS: { $ref: '#/components/schemas/OS' }
+        Platform: { type: string, description: 'Desktop, Mobile, WebMail or Unknown.' }
+        UserAgent: { type: string }
+        Geo: { $ref: '#/components/schemas/Geo' }
+        MessageID: { type: string }
+        Metadata: { $ref: '#/components/schemas/Metadata' }
+        ReceivedAt: { type: string, format: date-time }
+        Tag: { type: string }
+        Recipient: { type: string, format: email }
+
+    ClickPayload:
+      type: object
+      required: [RecordType, MessageID, Recipient, ReceivedAt]
+      properties:
+        RecordType:
+          type: string
+          const: Click
+        MessageStream: { type: string, example: outbound }
+        ClickLocation:
+          type: string
+          description: HTML or Text indicating which body part contained the link.
+        Client: { $ref: '#/components/schemas/Client' }
+        OS: { $ref: '#/components/schemas/OS' }
+        Platform: { type: string }
+        UserAgent: { type: string }
+        OriginalLink: { type: string, format: uri }
+        Geo: { $ref: '#/components/schemas/Geo' }
+        MessageID: { type: string }
+        Metadata: { $ref: '#/components/schemas/Metadata' }
+        ReceivedAt: { type: string, format: date-time }
+        Tag: { type: string }
+        Recipient: { type: string, format: email }
+
+    SpamComplaintPayload:
+      type: object
+      required: [RecordType, ID, Email]
+      properties:
+        RecordType:
+          type: string
+          const: SpamComplaint
+        MessageStream: { type: string, example: outbound }
+        ID: { type: integer, format: int64 }
+        Type:
+          type: string
+          const: SpamComplaint
+        TypeCode:
+          type: integer
+          description: Postmark spam complaint type code (e.g. 512).
+        Name: { type: string }
+        Tag: { type: string }
+        MessageID: { type: string }
+        Metadata: { $ref: '#/components/schemas/Metadata' }
+        ServerID: { type: integer }
+        Description: { type: string }
+        Details: { type: string }
+        Email: { type: string, format: email }
+        From: { type: string, format: email }
+        BouncedAt: { type: string, format: date-time }
+        DumpAvailable: { type: boolean }
+        Inactive: { type: boolean }
+        CanActivate: { type: boolean }
+        Subject: { type: string }
+        Content: { type: string }
+
+    SubscriptionChangePayload:
+      type: object
+      required: [RecordType, Recipient, ChangedAt, SuppressSending]
+      properties:
+        RecordType:
+          type: string
+          const: SubscriptionChange
+        MessageID:
+          type: string
+          nullable: true
+          description: Null for manual suppressions and reactivations.
+        ServerID: { type: integer }
+        MessageStream: { type: string, example: outbound }
+        ChangedAt: { type: string, format: date-time }
+        Recipient: { type: string, format: email }
+        Origin:
+          type: string
+          enum: [Recipient, Customer, Admin]
+        SuppressSending:
+          type: boolean
+          description: True when the address was deactivated, false when reactivated.
+        SuppressionReason:
+          type: string
+          enum: [HardBounce, SpamComplaint, ManualSuppression]
+          nullable: true
+        Tag: { type: string }
+        Metadata: { $ref: '#/components/schemas/Metadata' }
+
+    ManualSuppressionPayload:
+      allOf:
+        - $ref: '#/components/schemas/SubscriptionChangePayload'
+        - type: object
+          properties:
+            SuppressionReason:
+              type: string
+              const: ManualSuppression
+            MessageID:
+              type: string
+              nullable: true
+              description: Null for manual suppression events.
+
+    InboundPayload:
+      type: object
+      required: [FromFull, ToFull, MessageID]
+      properties:
+        FromName: { type: string }
+        MessageStream: { type: string, example: inbound }
+        From: { type: string, format: email }
+        FromFull: { $ref: '#/components/schemas/EmailAddress' }
+        To: { type: string }
+        ToFull:
+          type: array
+          items: { $ref: '#/components/schemas/EmailAddress' }
+        Cc: { type: string }
+        CcFull:
+          type: array
+          items: { $ref: '#/components/schemas/EmailAddress' }
+        Bcc: { type: string }
+        BccFull:
+          type: array
+          items: { $ref: '#/components/schemas/EmailAddress' }
+        OriginalRecipient: { type: string, format: email }
+        Subject: { type: string }
+        MessageID: { type: string }
+        ReplyTo: { type: string }
+        MailboxHash:
+          type: string
+          description: Hash from plus-addressing (e.g. user+HASH@example.com).
+        Date:
+          type: string
+          description: RFC 2822 timestamp from the inbound message.
+        TextBody: { type: string }
+        HtmlBody: { type: string }
+        StrippedTextReply: { type: string }
+        Tag: { type: string }
+        Headers:
+          type: array
+          items: { $ref: '#/components/schemas/Header' }
+        Attachments:
+          type: array
+          items: { $ref: '#/components/schemas/Attachment' }
