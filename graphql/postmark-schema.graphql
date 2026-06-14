@@ -1,0 +1,1154 @@
+"""
+Postmark GraphQL Schema
+Conceptual schema derived from the Postmark REST API.
+Reference: https://postmarkapp.com/developer/api/overview
+"""
+
+# ──────────────────────────────────────────────────────────────
+# Scalars
+# ──────────────────────────────────────────────────────────────
+
+scalar DateTime
+scalar JSON
+scalar EmailAddress
+scalar URL
+
+# ──────────────────────────────────────────────────────────────
+# Enumerations
+# ──────────────────────────────────────────────────────────────
+
+"""Delivery status of a sent message."""
+enum MessageStatus {
+  QUEUED
+  SENT
+  DELIVERED
+  BOUNCED
+  SPAM
+  OPENED
+  CLICKED
+}
+
+"""Whether a message is transactional or broadcast."""
+enum MessageType {
+  TRANSACTIONAL
+  BROADCAST
+}
+
+"""Category of email bounce."""
+enum BounceType {
+  HARD_BOUNCE
+  SOFT_BOUNCE
+  SPAM_COMPLAINT
+  UNSUBSCRIBE
+  SUBSCRIBE
+  AUTO_RESPONDER
+  ADDRESS_CHANGE
+  DNS_ERROR
+  SPAM_NOTIFICATION
+  OPEN_RELAY_TEST
+  UNKNOWN
+  SOFT_BOUNCE_INVALID_MAILBOX
+  SOFT_BOUNCE_DNS_FAILURE
+  SOFT_BOUNCE_MAILBOX_FULL
+  SOFT_BOUNCE_CHALLENGE_VERIFICATION
+  SOFT_BOUNCE_OTHER
+}
+
+"""Processing status of a bounce record."""
+enum BounceStatus {
+  ACTIVE
+  INACTIVE
+  TRANSIENT
+}
+
+"""Reason a recipient is suppressed."""
+enum SuppressionType {
+  HARD_BOUNCE
+  SPAM_COMPLAINT
+  MANUAL_SUPPRESSION
+  UNSUBSCRIBE
+  RECIPIENT_COMPLAINT
+}
+
+"""How a suppression entry was created."""
+enum SuppressionOrigin {
+  CUSTOMER
+  POSTMARK_ABUSE
+  COMPLAINT
+}
+
+"""Email client platform type."""
+enum ClientType {
+  DESKTOP
+  WEB
+  MOBILE
+  UNKNOWN
+}
+
+"""Type of server (plan level)."""
+enum ServerType {
+  SHARED
+  DEDICATED
+}
+
+"""DNS record verification status."""
+enum DNSStatus {
+  VERIFIED
+  PENDING
+  UNVERIFIED
+  ERROR
+}
+
+"""HTTP method for webhook delivery."""
+enum WebhookMethod {
+  POST
+  GET
+}
+
+"""Events that can trigger a webhook."""
+enum WebhookTrigger {
+  DELIVERY
+  BOUNCE
+  SPAM_COMPLAINT
+  OPEN
+  CLICK
+  SUBSCRIPTION_CHANGE
+  INBOUND
+}
+
+# ──────────────────────────────────────────────────────────────
+# Core Message Types
+# ──────────────────────────────────────────────────────────────
+
+"""A sent email message record."""
+type Message {
+  messageId: ID!
+  tag: String
+  to: [EmailAddress!]!
+  cc: [EmailAddress]
+  bcc: [EmailAddress]
+  from: EmailAddress!
+  replyTo: EmailAddress
+  subject: String!
+  status: MessageStatus!
+  type: MessageType!
+  submittedAt: DateTime!
+  server: Server
+  stream: String
+  details: MessageDetails
+}
+
+"""Full metadata and content for a sent message."""
+type MessageDetails {
+  messageId: ID!
+  tag: String
+  to: [EmailAddress!]!
+  cc: [EmailAddress]
+  bcc: [EmailAddress]
+  from: EmailAddress!
+  replyTo: EmailAddress
+  subject: String!
+  textBody: String
+  htmlBody: String
+  headers: [EmailHeader]
+  attachments: [EmailAttachment]
+  trackOpens: Boolean
+  trackLinks: String
+  submittedAt: DateTime!
+  receivedAt: DateTime
+  status: MessageStatus!
+  type: MessageType!
+  stream: String
+  metadata: JSON
+}
+
+"""A single email header key-value pair."""
+type EmailHeader {
+  name: String!
+  value: String!
+}
+
+"""An email attachment."""
+type EmailAttachment {
+  name: String!
+  content: String!
+  contentType: String!
+  contentId: String
+  contentLength: Int
+}
+
+"""Sender identity attached to a message."""
+type Sender {
+  email: EmailAddress!
+  name: String
+}
+
+# ──────────────────────────────────────────────────────────────
+# Email Details (extended content view)
+# ──────────────────────────────────────────────────────────────
+
+"""Detailed email content fields."""
+type EmailDetails {
+  subject: String!
+  textBody: String
+  htmlBody: String
+  headers: [EmailHeader]
+  attachments: [EmailAttachment]
+  replyTo: EmailAddress
+  metadata: JSON
+}
+
+# ──────────────────────────────────────────────────────────────
+# Templates
+# ──────────────────────────────────────────────────────────────
+
+"""A reusable email template."""
+type Template {
+  templateId: ID!
+  alias: TemplateAlias
+  name: String!
+  subject: String!
+  htmlBody: String
+  textBody: String
+  layoutTemplate: String
+  associatedServerId: Int
+  active: Boolean!
+  templateType: String
+  details: TemplateDetails
+}
+
+"""Full content and metadata for a template."""
+type TemplateDetails {
+  templateId: ID!
+  alias: TemplateAlias
+  name: String!
+  subject: String!
+  htmlBody: String
+  textBody: String
+  layoutTemplate: String
+  suggestedTemplateModel: JSON
+  validationErrors: [String]
+  active: Boolean!
+  templateType: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+"""Human-readable alias for a template."""
+type TemplateAlias {
+  alias: String!
+  templateId: ID!
+}
+
+"""A key-value model used when rendering a template."""
+type TemplateModel {
+  key: String!
+  value: JSON
+}
+
+# ──────────────────────────────────────────────────────────────
+# Layouts
+# ──────────────────────────────────────────────────────────────
+
+"""A template layout wrapper."""
+type Layout {
+  layoutId: ID!
+  alias: LayoutAlias
+  name: String!
+  htmlBody: String
+  textBody: String
+  associatedServerId: Int
+  active: Boolean!
+}
+
+"""Human-readable alias for a layout."""
+type LayoutAlias {
+  alias: String!
+  layoutId: ID!
+}
+
+"""Full layout content and metadata."""
+type LayoutDetails {
+  layoutId: ID!
+  alias: LayoutAlias
+  name: String!
+  htmlBody: String
+  textBody: String
+  associatedServerId: Int
+  validationErrors: [String]
+  active: Boolean!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+# ──────────────────────────────────────────────────────────────
+# Bounces
+# ──────────────────────────────────────────────────────────────
+
+"""A record of a bounced email message."""
+type Bounce {
+  bounceId: ID!
+  type: BounceType!
+  status: BounceStatus!
+  email: EmailAddress!
+  bouncedAt: DateTime!
+  messageId: ID
+  tag: String
+  subject: String
+  canActivate: Boolean!
+  details: BounceDetails
+}
+
+"""Extended bounce information."""
+type BounceDetails {
+  bounceId: ID!
+  type: BounceType!
+  typecode: Int
+  status: BounceStatus!
+  email: EmailAddress!
+  name: String
+  tag: String
+  messageId: ID
+  serverID: Int
+  description: String
+  details: String
+  subject: String
+  content: String
+  bouncedAt: DateTime!
+  dumpAvailable: Boolean
+  inactive: Boolean!
+  canActivate: Boolean!
+  recordType: String
+}
+
+# ──────────────────────────────────────────────────────────────
+# Suppressions
+# ──────────────────────────────────────────────────────────────
+
+"""A suppressed email address."""
+type Suppression {
+  email: EmailAddress!
+  suppressionReason: SuppressionType!
+  origin: SuppressionOrigin!
+  createdAt: DateTime!
+  details: SuppressionDetails
+}
+
+"""Extended suppression record."""
+type SuppressionDetails {
+  email: EmailAddress!
+  suppressionReason: SuppressionType!
+  origin: SuppressionOrigin!
+  createdAt: DateTime!
+  stream: String
+  tag: String
+}
+
+# ──────────────────────────────────────────────────────────────
+# Open Tracking
+# ──────────────────────────────────────────────────────────────
+
+"""An email open tracking event."""
+type Open {
+  messageId: ID!
+  recipient: EmailAddress!
+  tag: String
+  openedAt: DateTime!
+  firstOpen: Boolean!
+  client: OpenClient
+  os: OpenOS
+  platform: String
+  userAgent: OpenUserAgent
+  details: OpenDetails
+}
+
+"""Extended open event metadata."""
+type OpenDetails {
+  messageId: ID!
+  recipient: EmailAddress!
+  tag: String
+  openedAt: DateTime!
+  firstOpen: Boolean!
+  client: OpenClient
+  os: OpenOS
+  platform: String
+  userAgent: OpenUserAgent
+  geo: JSON
+  iP: String
+}
+
+"""Email client information at open."""
+type OpenClient {
+  name: String
+  company: String
+  family: String
+  type: ClientType
+}
+
+"""Operating system at open."""
+type OpenOS {
+  name: String
+  company: String
+  family: String
+}
+
+"""Raw user agent string at open."""
+type OpenUserAgent {
+  raw: String
+  parsed: String
+}
+
+# ──────────────────────────────────────────────────────────────
+# Click Tracking
+# ──────────────────────────────────────────────────────────────
+
+"""A link click tracking event."""
+type Click {
+  messageId: ID!
+  recipient: EmailAddress!
+  tag: String
+  clickedAt: DateTime!
+  link: ClickLink!
+  client: OpenClient
+  os: OpenOS
+  platform: String
+  userAgent: OpenUserAgent
+  details: ClickDetails
+}
+
+"""Extended click event metadata."""
+type ClickDetails {
+  messageId: ID!
+  recipient: EmailAddress!
+  tag: String
+  clickedAt: DateTime!
+  link: ClickLink!
+  client: OpenClient
+  os: OpenOS
+  platform: String
+  userAgent: OpenUserAgent
+  geo: JSON
+  iP: String
+}
+
+"""Details of a clicked URL."""
+type ClickLink {
+  url: URL!
+  originalURL: URL
+}
+
+# ──────────────────────────────────────────────────────────────
+# Delivery
+# ──────────────────────────────────────────────────────────────
+
+"""A successful delivery event."""
+type Delivery {
+  messageId: ID!
+  recipient: EmailAddress!
+  tag: String
+  deliveredAt: DateTime!
+  details: DeliveryDetails
+}
+
+"""Extended delivery event metadata."""
+type DeliveryDetails {
+  messageId: ID!
+  recipient: EmailAddress!
+  tag: String
+  deliveredAt: DateTime!
+  serverID: Int
+  messageStream: String
+  details: String
+}
+
+# ──────────────────────────────────────────────────────────────
+# Statistics
+# ──────────────────────────────────────────────────────────────
+
+"""Aggregate statistics summary."""
+type Stats {
+  period: StatPeriod!
+  sent: Int!
+  bounced: Int!
+  spamComplaints: Int!
+  opens: Int!
+  uniqueOpens: Int!
+  clicks: Int!
+  uniqueClicks: Int!
+  details: [StatDetails]
+}
+
+"""Individual stat metric details."""
+type StatDetails {
+  date: DateTime!
+  sent: Int!
+  bounced: Int!
+  smtpApiErrors: Int
+  softBounced: Int
+  spamComplaints: Int
+  spamComplaintsRate: Float
+  bounceRate: Float
+  opens: Int!
+  uniqueOpens: Int!
+  openRate: Float
+  clicks: Int!
+  uniqueClicks: Int!
+  clickRate: Float
+  tracked: Int
+}
+
+"""Time period for a statistics query."""
+type StatPeriod {
+  fromDate: DateTime!
+  toDate: DateTime!
+  days: Int!
+}
+
+# ──────────────────────────────────────────────────────────────
+# Servers
+# ──────────────────────────────────────────────────────────────
+
+"""A Postmark server (sending environment)."""
+type Server {
+  id: ID!
+  name: String!
+  apiTokens: [Token]
+  serverType: ServerType!
+  color: String
+  smtpApiActivated: Boolean!
+  rawEmailEnabled: Boolean!
+  deliveryType: String
+  inboundAddress: String
+  inboundHookUrl: URL
+  postFirstOpenOnly: Boolean
+  trackOpens: Boolean!
+  trackLinks: String
+  inboundSpamThreshold: Int
+  details: ServerDetails
+}
+
+"""Extended server configuration."""
+type ServerDetails {
+  id: ID!
+  name: String!
+  apiTokens: [Token]
+  serverType: ServerType!
+  color: String
+  smtpApiActivated: Boolean!
+  rawEmailEnabled: Boolean!
+  deliveryType: String
+  inboundAddress: String
+  inboundHookUrl: URL
+  bounceHookUrl: URL
+  openHookUrl: URL
+  clickHookUrl: URL
+  deliveryHookUrl: URL
+  spamHookUrl: URL
+  subscriptionChangeHookUrl: URL
+  postFirstOpenOnly: Boolean
+  trackOpens: Boolean!
+  trackLinks: String
+  inboundSpamThreshold: Int
+  enableSmtpApiErrorHooks: Boolean
+  createdAt: DateTime
+}
+
+# ──────────────────────────────────────────────────────────────
+# Domains
+# ──────────────────────────────────────────────────────────────
+
+"""A domain configured for sending."""
+type Domain {
+  id: ID!
+  name: String!
+  spfVerified: Boolean!
+  dkimVerified: Boolean!
+  weakDkim: Boolean!
+  returnPathDomainVerified: Boolean!
+  details: DomainDetails
+}
+
+"""Full domain record with DNS authentication info."""
+type DomainDetails {
+  id: ID!
+  name: String!
+  spfVerified: Boolean!
+  spfHost: String
+  spfTextValue: String
+  dkimVerified: Boolean!
+  weakDkim: Boolean!
+  dkimHost: String
+  dkimTextValue: String
+  dkimPendingHost: String
+  dkimPendingTextValue: String
+  dkimRevokedHost: String
+  dkimRevokedTextValue: String
+  safeToRemoveRevokedKeyFromDns: Boolean
+  dkimUpdateStatus: String
+  returnPathDomain: String
+  returnPathDomainVerified: Boolean!
+  returnPathDomainCnameValue: String
+  spf: SPF
+  dkim: DKIM
+  returnPath: ReturnPath
+}
+
+"""SPF DNS record status."""
+type SPF {
+  host: String!
+  textValue: String!
+  verified: Boolean!
+}
+
+"""DKIM signing key status."""
+type DKIM {
+  host: String!
+  textValue: String!
+  pendingHost: String
+  pendingTextValue: String
+  verified: Boolean!
+  weakDkim: Boolean!
+  updateStatus: String
+}
+
+"""Return-Path CNAME configuration."""
+type ReturnPath {
+  domain: String!
+  cnameValue: String!
+  verified: Boolean!
+}
+
+# ──────────────────────────────────────────────────────────────
+# Sender Signatures
+# ──────────────────────────────────────────────────────────────
+
+"""A verified sender signature."""
+type Signature {
+  id: ID!
+  name: String!
+  email: EmailAddress!
+  replyToEmail: EmailAddress
+  confirmed: Boolean!
+  spfVerified: Boolean!
+  dkimVerified: Boolean!
+  returnPathDomain: String
+  returnPathDomainVerified: Boolean
+  details: SenderDetails
+}
+
+"""Extended verified sender details."""
+type SenderDetails {
+  id: ID!
+  name: String!
+  email: EmailAddress!
+  replyToEmail: EmailAddress
+  confirmed: Boolean!
+  spfVerified: Boolean!
+  spfHost: String
+  spfTextValue: String
+  dkimVerified: Boolean!
+  weakDkim: Boolean!
+  dkimHost: String
+  dkimTextValue: String
+  dkimPendingHost: String
+  dkimPendingTextValue: String
+  returnPathDomain: String
+  returnPathDomainVerified: Boolean
+  returnPathDomainCnameValue: String
+  createdAt: DateTime
+}
+
+# ──────────────────────────────────────────────────────────────
+# Inbound Email
+# ──────────────────────────────────────────────────────────────
+
+"""An email received via Postmark inbound processing."""
+type InboundMessage {
+  messageId: ID!
+  from: EmailAddress!
+  fromName: String
+  to: [EmailAddress!]!
+  cc: [EmailAddress]
+  bcc: [EmailAddress]
+  subject: String!
+  receivedAt: DateTime!
+  textBody: String
+  htmlBody: String
+  strippedTextReply: String
+  details: InboundDetails
+}
+
+"""Full parsed inbound email details."""
+type InboundDetails {
+  messageId: ID!
+  from: EmailAddress!
+  fromName: String
+  fromFull: Sender
+  to: [EmailAddress!]!
+  toFull: [Sender]
+  cc: [EmailAddress]
+  ccFull: [Sender]
+  bcc: [EmailAddress]
+  bccFull: [Sender]
+  replyTo: EmailAddress
+  subject: String!
+  date: String
+  mailboxHash: String
+  textBody: String
+  htmlBody: String
+  strippedTextReply: String
+  tag: String
+  headers: [EmailHeader]
+  attachments: [EmailAttachment]
+  receivedAt: DateTime!
+  parsed: ParsedEmail
+}
+
+"""Structured parsed inbound email."""
+type ParsedEmail {
+  fromEmail: EmailAddress!
+  fromName: String
+  toEmail: EmailAddress
+  subject: String
+  textBody: String
+  htmlBody: String
+  replyTo: EmailAddress
+  headers: [EmailHeader]
+}
+
+"""An inbound routing rule."""
+type InboundRule {
+  rule: String!
+  details: InboundFilter
+}
+
+"""Criteria for filtering inbound mail."""
+type InboundFilter {
+  rule: String!
+  serverId: Int
+}
+
+# ──────────────────────────────────────────────────────────────
+# API Keys and Tokens
+# ──────────────────────────────────────────────────────────────
+
+"""An account-level API key."""
+type APIKey {
+  id: ID!
+  name: String!
+  token: String
+  createdAt: DateTime
+}
+
+"""A server-level authentication token."""
+type Token {
+  token: String!
+  name: String
+}
+
+# ──────────────────────────────────────────────────────────────
+# Webhooks
+# ──────────────────────────────────────────────────────────────
+
+"""A webhook endpoint configuration."""
+type Webhook {
+  id: ID!
+  url: URL!
+  messageStream: String
+  httpAuth: JSON
+  httpHeaders: [EmailHeader]
+  triggers: [WebhookTrigger!]!
+  details: JSON
+}
+
+# ──────────────────────────────────────────────────────────────
+# Input Types
+# ──────────────────────────────────────────────────────────────
+
+"""Input for sending a standard email."""
+input EmailMessage {
+  from: EmailAddress!
+  to: String!
+  cc: String
+  bcc: String
+  replyTo: EmailAddress
+  subject: String!
+  textBody: String
+  htmlBody: String
+  tag: String
+  trackOpens: Boolean
+  trackLinks: String
+  messageStream: String
+  headers: [EmailHeaderInput]
+  attachments: [EmailAttachmentInput]
+  metadata: JSON
+}
+
+"""Input for sending an email using a template."""
+input TemplatedEmail {
+  from: EmailAddress!
+  to: String!
+  cc: String
+  bcc: String
+  replyTo: EmailAddress
+  templateId: ID
+  templateAlias: String
+  templateModel: JSON!
+  tag: String
+  trackOpens: Boolean
+  trackLinks: String
+  messageStream: String
+  headers: [EmailHeaderInput]
+  attachments: [EmailAttachmentInput]
+  metadata: JSON
+}
+
+"""Input for an email header."""
+input EmailHeaderInput {
+  name: String!
+  value: String!
+}
+
+"""Input for an email attachment."""
+input EmailAttachmentInput {
+  name: String!
+  content: String!
+  contentType: String!
+  contentId: String
+}
+
+# ──────────────────────────────────────────────────────────────
+# Pagination
+# ──────────────────────────────────────────────────────────────
+
+"""Pagination info for list results."""
+type PageInfo {
+  totalCount: Int!
+  offset: Int!
+  count: Int!
+}
+
+"""Paginated list of messages."""
+type MessageConnection {
+  pageInfo: PageInfo!
+  messages: [Message!]!
+}
+
+"""Paginated list of bounces."""
+type BounceConnection {
+  pageInfo: PageInfo!
+  bounces: [Bounce!]!
+}
+
+"""Paginated list of suppressions."""
+type SuppressionConnection {
+  pageInfo: PageInfo!
+  suppressions: [Suppression!]!
+}
+
+"""Paginated list of opens."""
+type OpenConnection {
+  pageInfo: PageInfo!
+  opens: [Open!]!
+}
+
+"""Paginated list of clicks."""
+type ClickConnection {
+  pageInfo: PageInfo!
+  clicks: [Click!]!
+}
+
+"""Paginated list of inbound messages."""
+type InboundMessageConnection {
+  pageInfo: PageInfo!
+  messages: [InboundMessage!]!
+}
+
+# ──────────────────────────────────────────────────────────────
+# Query Root
+# ──────────────────────────────────────────────────────────────
+
+type Query {
+  "Get a sent message by ID."
+  message(messageId: ID!): Message
+
+  "List sent messages with optional filters."
+  messages(
+    tag: String
+    status: MessageStatus
+    fromDate: DateTime
+    toDate: DateTime
+    recipient: EmailAddress
+    stream: String
+    offset: Int
+    count: Int
+  ): MessageConnection
+
+  "Get a template by ID or alias."
+  template(templateId: ID, alias: String): Template
+
+  "List all templates."
+  templates(offset: Int, count: Int): [Template!]!
+
+  "Get a layout by ID or alias."
+  layout(layoutId: ID, alias: String): Layout
+
+  "List all layouts."
+  layouts(offset: Int, count: Int): [Layout!]!
+
+  "Get a bounce by ID."
+  bounce(bounceId: ID!): Bounce
+
+  "List bounces with optional filters."
+  bounces(
+    type: BounceType
+    inactive: Boolean
+    fromEmail: EmailAddress
+    fromDate: DateTime
+    toDate: DateTime
+    messageID: ID
+    tag: String
+    stream: String
+    offset: Int
+    count: Int
+  ): BounceConnection
+
+  "List suppressions."
+  suppressions(
+    suppressionReason: SuppressionType
+    origin: SuppressionOrigin
+    fromDate: DateTime
+    toDate: DateTime
+    emailAddress: EmailAddress
+    stream: String
+  ): SuppressionConnection
+
+  "List open events."
+  opens(
+    tag: String
+    fromDate: DateTime
+    toDate: DateTime
+    client: String
+    messageID: ID
+    offset: Int
+    count: Int
+  ): OpenConnection
+
+  "List click events."
+  clicks(
+    tag: String
+    fromDate: DateTime
+    toDate: DateTime
+    messageID: ID
+    offset: Int
+    count: Int
+  ): ClickConnection
+
+  "Get aggregate delivery and engagement stats."
+  stats(
+    fromDate: DateTime!
+    toDate: DateTime!
+    tag: String
+    messageStream: String
+  ): Stats
+
+  "Get a server by ID."
+  server(serverId: ID!): Server
+
+  "List all servers."
+  servers(offset: Int, count: Int): [Server!]!
+
+  "Get a domain by ID."
+  domain(domainId: ID!): Domain
+
+  "List all domains."
+  domains(offset: Int, count: Int): [Domain!]!
+
+  "Get a sender signature by ID."
+  signature(signatureId: ID!): Signature
+
+  "List all sender signatures."
+  signatures(offset: Int, count: Int): [Signature!]!
+
+  "Get an inbound message by ID."
+  inboundMessage(messageId: ID!): InboundMessage
+
+  "List inbound messages."
+  inboundMessages(
+    recipient: EmailAddress
+    fromEmail: EmailAddress
+    tag: String
+    subject: String
+    mailboxHash: String
+    fromDate: DateTime
+    toDate: DateTime
+    status: String
+    offset: Int
+    count: Int
+  ): InboundMessageConnection
+
+  "List inbound routing rules."
+  inboundRules(offset: Int, count: Int): [InboundRule!]!
+
+  "List webhooks."
+  webhooks(messageStream: String): [Webhook!]!
+
+  "Get a webhook by ID."
+  webhook(webhookId: ID!): Webhook
+}
+
+# ──────────────────────────────────────────────────────────────
+# Mutation Root
+# ──────────────────────────────────────────────────────────────
+
+type Mutation {
+  "Send a single email."
+  sendEmail(input: EmailMessage!): MessageDetails
+
+  "Send a batch of emails."
+  sendEmailBatch(inputs: [EmailMessage!]!): [MessageDetails!]!
+
+  "Send a single email using a template."
+  sendEmailWithTemplate(input: TemplatedEmail!): MessageDetails
+
+  "Send a batch of emails using templates."
+  sendEmailWithTemplateBatch(inputs: [TemplatedEmail!]!): [MessageDetails!]!
+
+  "Create a new template."
+  createTemplate(
+    name: String!
+    subject: String!
+    htmlBody: String
+    textBody: String
+    alias: String
+    layoutTemplate: String
+    templateType: String
+  ): Template
+
+  "Update an existing template."
+  updateTemplate(
+    templateId: ID!
+    name: String
+    subject: String
+    htmlBody: String
+    textBody: String
+    alias: String
+    layoutTemplate: String
+  ): Template
+
+  "Delete a template."
+  deleteTemplate(templateId: ID!): Boolean
+
+  "Create a layout."
+  createLayout(
+    name: String!
+    htmlBody: String
+    textBody: String
+    alias: String
+  ): Layout
+
+  "Update a layout."
+  updateLayout(
+    layoutId: ID!
+    name: String
+    htmlBody: String
+    textBody: String
+    alias: String
+  ): Layout
+
+  "Delete a layout."
+  deleteLayout(layoutId: ID!): Boolean
+
+  "Reactivate a bounced address."
+  activateBounce(bounceId: ID!): Bounce
+
+  "Delete a bounce record."
+  deleteBounce(bounceId: ID!): Boolean
+
+  "Add suppressions."
+  createSuppressions(
+    stream: String!
+    suppressions: [SuppressionInput!]!
+  ): [Suppression!]!
+
+  "Delete suppressions."
+  deleteSuppressions(
+    stream: String!
+    suppressions: [SuppressionDeleteInput!]!
+  ): Boolean
+
+  "Create a server."
+  createServer(name: String!, color: String): Server
+
+  "Update a server."
+  updateServer(serverId: ID!, name: String, trackOpens: Boolean, trackLinks: String): Server
+
+  "Delete a server."
+  deleteServer(serverId: ID!): Boolean
+
+  "Create a domain."
+  createDomain(name: String!): Domain
+
+  "Delete a domain."
+  deleteDomain(domainId: ID!): Boolean
+
+  "Trigger SPF verification for a domain."
+  verifyDomainSPF(domainId: ID!): Domain
+
+  "Rotate DKIM keys for a domain."
+  rotateDomainDKIM(domainId: ID!): Domain
+
+  "Create a sender signature."
+  createSignature(fromEmail: EmailAddress!, name: String!, replyToEmail: EmailAddress): Signature
+
+  "Update a sender signature."
+  updateSignature(signatureId: ID!, name: String, replyToEmail: EmailAddress): Signature
+
+  "Delete a sender signature."
+  deleteSignature(signatureId: ID!): Boolean
+
+  "Resend confirmation email for a sender signature."
+  resendSignatureConfirmation(signatureId: ID!): Boolean
+
+  "Create an inbound routing rule."
+  createInboundRule(rule: String!): InboundRule
+
+  "Delete an inbound routing rule."
+  deleteInboundRule(rule: String!): Boolean
+
+  "Create a webhook."
+  createWebhook(
+    url: URL!
+    messageStream: String!
+    triggers: [WebhookTrigger!]!
+    httpAuth: JSON
+    httpHeaders: [EmailHeaderInput]
+  ): Webhook
+
+  "Update a webhook."
+  updateWebhook(
+    webhookId: ID!
+    url: URL
+    triggers: [WebhookTrigger!]
+    httpAuth: JSON
+    httpHeaders: [EmailHeaderInput]
+  ): Webhook
+
+  "Delete a webhook."
+  deleteWebhook(webhookId: ID!): Boolean
+}
+
+# ──────────────────────────────────────────────────────────────
+# Additional Input Types
+# ──────────────────────────────────────────────────────────────
+
+"""Input for creating a suppression."""
+input SuppressionInput {
+  email: EmailAddress!
+  suppressionReason: SuppressionType!
+}
+
+"""Input for deleting a suppression."""
+input SuppressionDeleteInput {
+  email: EmailAddress!
+}

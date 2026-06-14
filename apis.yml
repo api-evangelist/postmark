@@ -1,7 +1,8 @@
 aid: postmark
 name: Postmark
-description: Postmark is an email delivery service that helps businesses send and track transactional and broadcast email
-  reliably, replacing SMTP with a scalable service that surfaces detailed delivery analytics, bounce tracking, open and click
+description: Postmark is an email delivery service that helps businesses send and
+  track transactional and broadcast email reliably, replacing SMTP with a scalable
+  service that surfaces detailed delivery analytics, bounce tracking, open and click
   tracking, and dedicated IP addresses.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -18,8 +19,9 @@ specificationVersion: '0.19'
 apis:
 - aid: postmark:postmark-api
   name: Postmark API
-  description: The Postmark API provides programmatic access to send and track transactional and broadcast emails, manage
-    servers, templates, message streams, bounces, suppressions, statistics, webhooks, and inbound message processing.
+  description: The Postmark API provides programmatic access to send and track transactional
+    and broadcast emails, manage servers, templates, message streams, bounces, suppressions,
+    statistics, webhooks, and inbound message processing.
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
   tags:
@@ -43,102 +45,8 @@ apis:
     url: openapi/postmark-api-openapi.yml
   - type: AsyncAPI
     url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: NaftikoCapability
-    url: capabilities/account-domains-api.yaml
-  - type: NaftikoCapability
-    url: capabilities/account-sender-signatures-api.yaml
-  - type: NaftikoCapability
-    url: capabilities/account-server-management-api.yaml
-  - type: NaftikoCapability
-    url: capabilities/account-templates-api.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-general.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-activate.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-alias.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-batch.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-bounceid.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-bounces.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-browser-families.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-bypass.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-dump.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-email.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-emailclients.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-inbound.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-locations.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-message-identifier.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-messages.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-messages-inbound-messageid.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-messages-outbound-clicks.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-messages-outbound-opens.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-messages-outbound-messageid.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-outbound.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-platforms.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-readtimes.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-retry.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-sends.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-servers.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-spam.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-statistics.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-stats-outbound.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-stats-outbound-clicks.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-stats-outbound-opens.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-template.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-templates.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-triggerid.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-triggers.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-triggers-inboundrules.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-triggers-tags.yaml
-  - type: NaftikoCapability
-    url: capabilities/postmark-validate.yaml
-  - type: NaftikoCapability
-    url: capabilities/server-bounces-api.yaml
-  - type: NaftikoCapability
-    url: capabilities/server-inbound-rules-api.yaml
-  - type: NaftikoCapability
-    url: capabilities/server-messages-api.yaml
-  - type: NaftikoCapability
-    url: capabilities/server-sending-api.yaml
-  - type: NaftikoCapability
-    url: capabilities/server-server-configuration-api.yaml
-  - type: NaftikoCapability
-    url: capabilities/server-stats-api.yaml
-  - type: NaftikoCapability
-    url: capabilities/server-templates-api.yaml
+  - url: graphql/postmark-graphql.md
+    type: GraphQL
   contact:
   - FN: Postmark Support
     url: https://postmarkapp.com/support
