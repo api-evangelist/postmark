@@ -1,0 +1,1408 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bounceid",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get a single bounce",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/bounces/:bounceid",
+            "params": [
+              {
+                "name": "bounceid",
+                "value": "<integer>",
+                "type": "path",
+                "description": "The ID of the bounce to retrieve."
+              }
+            ]
+          },
+          "docs": "Postmark Get a single bounce"
+        },
+        {
+          "info": {
+            "name": "Postmark Get bounce dump",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/bounces/:bounceid/dump",
+            "params": [
+              {
+                "name": "bounceid",
+                "value": "<integer>",
+                "type": "path",
+                "description": "The ID of the bounce to retrieve."
+              }
+            ]
+          },
+          "docs": "Postmark Get bounce dump"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Activate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Activate a bounce",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{baseurl}}/bounces/:bounceid/activate",
+            "params": [
+              {
+                "name": "bounceid",
+                "value": "<integer>",
+                "type": "path",
+                "description": "The ID of the bounce to retrieve."
+              }
+            ]
+          },
+          "docs": "Postmark Activate a bounce"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Bounces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get bounces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/bounces",
+            "params": [
+              {
+                "name": "count",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to skip."
+              },
+              {
+                "name": "type",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by type of bounce"
+              },
+              {
+                "name": "inactive",
+                "value": "<boolean>",
+                "type": "query",
+                "description": "Filter by emails that were deactivated by Postmark due to the bounce. Set to true or false. If this isn't specified it will return both active and inactive."
+              },
+              {
+                "name": "emailFilter",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by email address"
+              },
+              {
+                "name": "messageID",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by messageID"
+              },
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get bounces"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Default",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get bounced tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/bounces/tags"
+          },
+          "docs": "Postmark Get bounced tags"
+        },
+        {
+          "info": {
+            "name": "Postmark Get delivery stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/deliverystats"
+          },
+          "docs": "Postmark Get delivery stats"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Email",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Send a single email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{baseurl}}/email"
+          },
+          "docs": "Postmark Send a single email"
+        },
+        {
+          "info": {
+            "name": "Postmark Send an email using a Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{baseurl}}/email/withTemplate"
+          },
+          "docs": "Postmark Send an email using a Template"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Batch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Send a batch of emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{baseurl}}/email/batch"
+          },
+          "docs": "Postmark Send a batch of emails"
+        },
+        {
+          "info": {
+            "name": "Postmark Send a batch of email using templates.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{baseurl}}/email/batchWithTemplates"
+          },
+          "docs": "Postmark Send a batch of email using templates."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Bypass",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Bypass rules for a blocked inbound message",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{baseurl}}/messages/inbound/:messageid/bypass",
+            "params": [
+              {
+                "name": "messageid",
+                "value": "<string>",
+                "type": "path",
+                "description": "The ID of the message which should bypass inbound rules."
+              }
+            ]
+          },
+          "docs": "Postmark Bypass rules for a blocked inbound message"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Inbound",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Inbound message details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/messages/inbound/:messageid/details",
+            "params": [
+              {
+                "name": "messageid",
+                "value": "<string>",
+                "type": "path",
+                "description": "The ID of the message which should bypass inbound rules."
+              }
+            ]
+          },
+          "docs": "Postmark Inbound message details"
+        },
+        {
+          "info": {
+            "name": "Postmark Retry a failed inbound message for processing",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{baseurl}}/messages/inbound/:messageid/retry",
+            "params": [
+              {
+                "name": "messageid",
+                "value": "<string>",
+                "type": "path",
+                "description": "The ID of the message which should bypass inbound rules."
+              }
+            ]
+          },
+          "docs": "Postmark Retry a failed inbound message for processing"
+        },
+        {
+          "info": {
+            "name": "Postmark Inbound message search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/messages/inbound",
+            "params": [
+              {
+                "name": "count",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to skip."
+              },
+              {
+                "name": "recipient",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by the user who was receiving the email"
+              },
+              {
+                "name": "fromemail",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by the sender email address"
+              },
+              {
+                "name": "subject",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by email subject"
+              },
+              {
+                "name": "mailboxhash",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by mailboxhash"
+              },
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "status",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by status (`blocked`, `processed`, `queued`, `failed`, `scheduled`)"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Inbound message search"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Clicks for a all messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/messages/outbound/clicks",
+            "params": [
+              {
+                "name": "count",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to skip."
+              },
+              {
+                "name": "recipient",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by the user who was receiving the email"
+              },
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "client_name",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by client name, i.e. Outlook, Gmail"
+              },
+              {
+                "name": "client_company",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by company, i.e. Microsoft, Apple, Google"
+              },
+              {
+                "name": "client_family",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by client family, i.e. OS X, Chrome"
+              },
+              {
+                "name": "os_name",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by full OS name and specific version, i.e. OS X 10.9 Mavericks, Windows 7"
+              },
+              {
+                "name": "os_family",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by kind of OS used without specific version, i.e. OS X, Windows"
+              },
+              {
+                "name": "os_company",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by company which produced the OS, i.e. Apple Computer, Inc., Microsoft Corporation"
+              },
+              {
+                "name": "platform",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by platform, i.e. webmail, desktop, mobile"
+              },
+              {
+                "name": "country",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by country messages were opened in, i.e. Denmark, Russia"
+              },
+              {
+                "name": "region",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
+              },
+              {
+                "name": "city",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
+              }
+            ]
+          },
+          "docs": "Postmark Clicks for a all messages"
+        },
+        {
+          "info": {
+            "name": "Postmark Opens for all messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/messages/outbound/opens",
+            "params": [
+              {
+                "name": "count",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to skip."
+              },
+              {
+                "name": "recipient",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by the user who was receiving the email"
+              },
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "client_name",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by client name, i.e. Outlook, Gmail"
+              },
+              {
+                "name": "client_company",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by company, i.e. Microsoft, Apple, Google"
+              },
+              {
+                "name": "client_family",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by client family, i.e. OS X, Chrome"
+              },
+              {
+                "name": "os_name",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by full OS name and specific version, i.e. OS X 10.9 Mavericks, Windows 7"
+              },
+              {
+                "name": "os_family",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by kind of OS used without specific version, i.e. OS X, Windows"
+              },
+              {
+                "name": "os_company",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by company which produced the OS, i.e. Apple Computer, Inc., Microsoft Corporation"
+              },
+              {
+                "name": "platform",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by platform, i.e. webmail, desktop, mobile"
+              },
+              {
+                "name": "country",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by country messages were opened in, i.e. Denmark, Russia"
+              },
+              {
+                "name": "region",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
+              },
+              {
+                "name": "city",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
+              }
+            ]
+          },
+          "docs": "Postmark Opens for all messages"
+        },
+        {
+          "info": {
+            "name": "Postmark Outbound message details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/messages/outbound/:messageid/details",
+            "params": [
+              {
+                "name": "messageid",
+                "value": "<string>",
+                "type": "path",
+                "description": "The ID of the message which should bypass inbound rules."
+              }
+            ]
+          },
+          "docs": "Postmark Outbound message details"
+        },
+        {
+          "info": {
+            "name": "Postmark Outbound message search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/messages/outbound",
+            "params": [
+              {
+                "name": "count",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to skip."
+              },
+              {
+                "name": "recipient",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by the user who was receiving the email"
+              },
+              {
+                "name": "fromemail",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by the sender email address"
+              },
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "status",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by status (`blocked`, `processed`, `queued`, `failed`, `scheduled`)"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Outbound message search"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Message Identifier",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Retrieve Message Clicks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/messages/outbound/clicks/:messageid",
+            "params": [
+              {
+                "name": "count",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to skip."
+              },
+              {
+                "name": "messageid",
+                "value": "<string>",
+                "type": "path",
+                "description": "The ID of the message which should bypass inbound rules."
+              }
+            ]
+          },
+          "docs": "Postmark Retrieve Message Clicks"
+        },
+        {
+          "info": {
+            "name": "Postmark Retrieve Message Opens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/messages/outbound/opens/:messageid",
+            "params": [
+              {
+                "name": "count",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to skip."
+              },
+              {
+                "name": "messageid",
+                "value": "<string>",
+                "type": "path",
+                "description": "The ID of the message which should bypass inbound rules."
+              }
+            ]
+          },
+          "docs": "Postmark Retrieve Message Opens"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Dump",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Outbound message dump",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/messages/outbound/:messageid/dump",
+            "params": [
+              {
+                "name": "messageid",
+                "value": "<string>",
+                "type": "path",
+                "description": "The ID of the message which should bypass inbound rules."
+              }
+            ]
+          },
+          "docs": "Postmark Outbound message dump"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Outbound",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get click counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/stats/outbound/clicks",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get click counts"
+        },
+        {
+          "info": {
+            "name": "Postmark Get browser plaform usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/stats/outbound/clicks/platforms",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get browser plaform usage"
+        },
+        {
+          "info": {
+            "name": "Postmark Get email open counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/stats/outbound/opens",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get email open counts"
+        },
+        {
+          "info": {
+            "name": "Postmark Get email platform usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/stats/outbound/opens/platforms",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get email platform usage"
+        },
+        {
+          "info": {
+            "name": "Postmark Get email read times",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/stats/outbound/opens/readtimes",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get email read times"
+        },
+        {
+          "info": {
+            "name": "Postmark Get outbound overview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/stats/outbound",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get outbound overview"
+        },
+        {
+          "info": {
+            "name": "Postmark Get bounce counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/stats/outbound/bounces",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get bounce counts"
+        },
+        {
+          "info": {
+            "name": "Postmark Get sent counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/stats/outbound/sends",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get sent counts"
+        },
+        {
+          "info": {
+            "name": "Postmark Get spam complaints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/stats/outbound/spam",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get spam complaints"
+        },
+        {
+          "info": {
+            "name": "Postmark Get tracked email counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/stats/outbound/tracked",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get tracked email counts"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Browser Families",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get browser usage by family",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/stats/outbound/clicks/browserfamilies",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get browser usage by family"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get clicks by body location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/stats/outbound/clicks/location",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get clicks by body location"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Emailclients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get email client usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/stats/outbound/opens/emailclients",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get email client usage"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get the Templates associated with this Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/templates",
+            "params": [
+              {
+                "name": "count",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to skip."
+              }
+            ]
+          },
+          "docs": "Postmark Get the Templates associated with this Server"
+        },
+        {
+          "info": {
+            "name": "Postmark Test Template Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{baseurl}}/templates/validate"
+          },
+          "docs": "Postmark Test Template Content"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Alias",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Delete a Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{baseurl}}/templates/:templateIdOrAlias",
+            "params": [
+              {
+                "name": "templateIdOrAlias",
+                "value": "<string>",
+                "type": "path",
+                "description": "The 'TemplateID' or 'Alias' value for the Template you wish to delete."
+              }
+            ]
+          },
+          "docs": "Postmark Delete a Template"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Triggers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark List inbound rule triggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/triggers/inboundrules",
+            "params": [
+              {
+                "name": "count",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to skip."
+              }
+            ]
+          },
+          "docs": "Postmark List inbound rule triggers"
+        },
+        {
+          "info": {
+            "name": "Postmark Search triggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/triggers/tags",
+            "params": [
+              {
+                "name": "count",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to skip."
+              },
+              {
+                "name": "match_name",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by delivery tag"
+              }
+            ]
+          },
+          "docs": "Postmark Search triggers"
+        },
+        {
+          "info": {
+            "name": "Postmark Delete a single trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{baseurl}}/triggers/tags/:triggerid",
+            "params": [
+              {
+                "name": "triggerid",
+                "value": "<integer>",
+                "type": "path",
+                "description": "The ID of the Inbound Rule that should be deleted."
+              }
+            ]
+          },
+          "docs": "Postmark Delete a single trigger"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Triggerid",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Delete a single trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{baseurl}}/triggers/inboundrules/:triggerid",
+            "params": [
+              {
+                "name": "triggerid",
+                "value": "<integer>",
+                "type": "path",
+                "description": "The ID of the Inbound Rule that should be deleted."
+              }
+            ]
+          },
+          "docs": "Postmark Delete a single trigger"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Servers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get Server Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{baseurl}}/server"
+          },
+          "docs": "Postmark Get Server Configuration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
