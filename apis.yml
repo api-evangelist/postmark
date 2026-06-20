@@ -5,7 +5,7 @@ description: Postmark is an email delivery service that helps businesses send an
   service that surfaces detailed delivery analytics, bounce tracking, open and click
   tracking, and dedicated IP addresses.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/postmark/refs/heads/main/apis.yml
 tags:
 - Emails
