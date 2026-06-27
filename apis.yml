@@ -59,7 +59,7 @@ common:
   url: https://postmarkapp.com/developer/api/overview
 - type: Pricing
   url: https://postmarkapp.com/pricing
-- type: SignUp
+- type: Signup
   url: https://account.postmarkapp.com/sign_up
 - type: Login
   url: https://account.postmarkapp.com/login
