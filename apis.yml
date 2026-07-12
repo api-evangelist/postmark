@@ -51,6 +51,11 @@ apis:
   - FN: Postmark Support
     url: https://postmarkapp.com/support
 common:
+- type: DomainSecurity
+  url: security/postmark-domain-security.yml
+- name: Agent Skills
+  url: https://github.com/ActiveCampaign/postmark-skills
+  type: AgentSkills
 - type: Website
   url: https://postmarkapp.com
 - type: Documentation
