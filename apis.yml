@@ -51,6 +51,8 @@ apis:
   - FN: Postmark Support
     url: https://postmarkapp.com/support
 common:
+- type: AgenticAccess
+  url: agentic-access/postmark-agentic-access.yml
 - type: DomainSecurity
   url: security/postmark-domain-security.yml
 - name: Agent Skills
