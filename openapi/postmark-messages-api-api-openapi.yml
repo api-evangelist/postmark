@@ -1,0 +1,949 @@
+openapi: 3.0.1
+info:
+  title: Postmark Account Activate Messages API API
+  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+
+    configure all Servers, Domains, and Sender Signatures associated
+
+    with an Account.
+
+    '
+  version: 0.9.0
+servers:
+- url: //api.postmarkapp.com/
+tags:
+- name: Messages API
+paths:
+  /messages/outbound:
+    get:
+      operationId: searchOutboundMessages
+      tags:
+      - Messages API
+      summary: Postmark Outbound message search
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: count
+        description: Number of messages to return per request. Max 500.
+        in: query
+        required: true
+        type: integer
+      - name: offset
+        description: Number of messages to skip
+        required: true
+        type: integer
+        in: query
+      - name: recipient
+        description: Filter by the user who was receiving the email
+        in: query
+        type: string
+        format: email
+      - name: fromemail
+        description: Filter by the sender email address
+        in: query
+        type: string
+        format: email
+      - name: tag
+        in: query
+        description: Filter by tag
+        type: string
+      - name: status
+        in: query
+        description: Filter by status (`queued` or `sent`)
+        type: string
+        enum:
+        - queued
+        - sent
+      - name: todate
+        in: query
+        description: Filter messages up to the date specified. e.g. `2014-02-01`
+        type: string
+        format: date
+      - name: fromdate
+        description: Filter messages starting from the date specified. e.g. `2014-02-01`
+        in: query
+        type: string
+        format: date
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OutboundSearchResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /messages/outbound/{messageid}/details:
+    get:
+      operationId: getOutboundMessageDetails
+      tags:
+      - Messages API
+      summary: Postmark Outbound message details
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: messageid
+        description: The ID of the message for which to retrieve details.
+        in: path
+        type: string
+        required: true
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OutboundMessageDetailsResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /messages/outbound/{messageid}/dump:
+    get:
+      operationId: getOutboundMessageDump
+      tags:
+      - Messages API
+      summary: Postmark Outbound message dump
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: messageid
+        description: The ID of the message for which to retrieve a dump.
+        in: path
+        required: true
+        type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OutboundMessageDumpResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /messages/inbound:
+    get:
+      operationId: searchInboundMessages
+      tags:
+      - Messages API
+      summary: Postmark Inbound message search
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: count
+        in: query
+        required: true
+        type: integer
+        description: Number of messages to return per request. Max 500.
+      - name: offset
+        description: Number of messages to skip
+        required: true
+        type: integer
+        in: query
+      - name: recipient
+        description: Filter by the user who was receiving the email
+        in: query
+        type: string
+        format: email
+      - name: fromemail
+        description: Filter by the sender email address
+        in: query
+        type: string
+        format: email
+      - name: subject
+        description: Filter by email subject
+        in: query
+        type: string
+      - name: mailboxhash
+        description: Filter by mailboxhash
+        in: query
+        type: string
+      - name: tag
+        in: query
+        description: Filter by tag
+        type: string
+      - name: status
+        description: Filter by status (`blocked`, `processed`, `queued`, `failed`, `scheduled`)
+        in: query
+        type: string
+        enum:
+        - blocked
+        - processed
+        - queued
+        - failed
+        - scheduled
+      - name: todate
+        in: query
+        description: Filter messages up to the date specified. e.g. `2014-02-01`
+        type: string
+        format: date
+      - name: fromdate
+        in: query
+        type: string
+        format: date
+        description: Filter messages starting from the date specified. e.g. `2014-02-01`
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/InboundSearchResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /messages/inbound/{messageid}/details:
+    get:
+      operationId: getInboundMessageDetails
+      tags:
+      - Messages API
+      summary: Postmark Inbound message details
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: messageid
+        description: The ID of the message for which to details will be retrieved.
+        in: path
+        required: true
+        type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/InboundMessageFullDetailsResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /messages/inbound/{messageid}/bypass:
+    put:
+      operationId: bypassRulesForInboundMessage
+      tags:
+      - Messages API
+      summary: Postmark Bypass rules for a blocked inbound message
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: messageid
+        description: The ID of the message which should bypass inbound rules.
+        in: path
+        required: true
+        type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/StandardPostmarkResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /messages/inbound/{messageid}/retry:
+    put:
+      operationId: retryInboundMessageProcessing
+      tags:
+      - Messages API
+      summary: Postmark Retry a failed inbound message for processing
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: messageid
+        in: path
+        description: The ID of the inbound message on which we should retry processing.
+        required: true
+        type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/StandardPostmarkResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /messages/outbound/opens:
+    get:
+      operationId: searchOpensForOutboundMessages
+      tags:
+      - Messages API
+      summary: Postmark Opens for all messages
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: count
+        in: query
+        description: Number of message opens to return per request. Max 500.
+        type: integer
+        required: true
+      - name: offset
+        description: Number of messages to skip
+        in: query
+        type: integer
+        required: true
+      - name: recipient
+        description: Filter by To, Cc, Bcc
+        in: query
+        type: string
+        required: false
+      - name: tag
+        description: Filter by tag
+        in: query
+        type: string
+        required: false
+      - name: client_name
+        description: Filter by client name, i.e. Outlook, Gmail
+        in: query
+        type: string
+        required: false
+      - name: client_company
+        description: Filter by company, i.e. Microsoft, Apple, Google
+        in: query
+        type: string
+        required: false
+      - name: client_family
+        description: Filter by client family, i.e. OS X, Chrome
+        in: query
+        type: string
+        required: false
+      - name: os_name
+        description: Filter by full OS name and specific version, i.e. OS X 10.9 Mavericks, Windows 7
+        in: query
+        type: string
+        required: false
+      - name: os_family
+        description: Filter by kind of OS used without specific version, i.e. OS X, Windows
+        in: query
+        type: string
+        required: false
+      - name: os_company
+        description: Filter by company which produced the OS, i.e. Apple Computer, Inc., Microsoft Corporation
+        in: query
+        type: string
+        required: false
+      - name: platform
+        description: Filter by platform, i.e. webmail, desktop, mobile
+        in: query
+        type: string
+        required: false
+      - name: country
+        description: Filter by country messages were opened in, i.e. Denmark, Russia
+        in: query
+        type: string
+        required: false
+      - name: region
+        description: Filter by full name of region messages were opened in, i.e. Moscow, New York
+        in: query
+        type: string
+        required: false
+      - name: city
+        description: Filter by full name of region messages were opened in, i.e. Moscow, New York
+        in: query
+        type: string
+        required: false
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/MessageOpenSearchResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /messages/outbound/opens/{messageid}:
+    get:
+      operationId: getOpensForSingleOutboundMessage
+      tags:
+      - Messages API
+      summary: Postmark Retrieve Message Opens
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: messageid
+        description: The ID of the Outbound Message for which open statistics should be retrieved.
+        in: path
+        type: string
+        required: true
+      - name: count
+        in: query
+        default: 1
+        description: Number of message opens to return per request. Max 500.
+        type: integer
+        required: true
+        minimum: 1
+        maximum: 500
+      - name: offset
+        in: query
+        description: Number of messages to skip.
+        type: integer
+        required: true
+        minimum: 0
+        default: 0
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/MessageOpenSearchResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /messages/outbound/clicks:
+    get:
+      operationId: searchClicksForOutboundMessages
+      tags:
+      - Messages API
+      summary: Postmark Clicks for a all messages
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: count
+        in: query
+        description: Number of message clicks to return per request. Max 500.
+        type: integer
+        required: true
+      - name: offset
+        description: Number of messages to skip
+        in: query
+        type: integer
+        required: true
+      - name: recipient
+        description: Filter by To, Cc, Bcc
+        in: query
+        type: string
+        required: false
+      - name: tag
+        description: Filter by tag
+        in: query
+        type: string
+        required: false
+      - name: client_name
+        description: Filter by client name, i.e. Outlook, Gmail
+        in: query
+        type: string
+        required: false
+      - name: client_company
+        description: Filter by company, i.e. Microsoft, Apple, Google
+        in: query
+        type: string
+        required: false
+      - name: client_family
+        description: Filter by client family, i.e. OS X, Chrome
+        in: query
+        type: string
+        required: false
+      - name: os_name
+        description: Filter by full OS name and specific version, i.e. OS X 10.9 Mavericks, Windows 7
+        in: query
+        type: string
+        required: false
+      - name: os_family
+        description: Filter by kind of OS used without specific version, i.e. OS X, Windows
+        in: query
+        type: string
+        required: false
+      - name: os_company
+        description: Filter by company which produced the OS, i.e. Apple Computer, Inc., Microsoft Corporation
+        in: query
+        type: string
+        required: false
+      - name: platform
+        description: Filter by platform, i.e. webmail, desktop, mobile
+        in: query
+        type: string
+        required: false
+      - name: country
+        description: Filter by country messages were opened in, i.e. Denmark, Russia
+        in: query
+        type: string
+        required: false
+      - name: region
+        description: Filter by full name of region messages were opened in, i.e. Moscow, New York
+        in: query
+        type: string
+        required: false
+      - name: city
+        description: Filter by full name of region messages were opened in, i.e. Moscow, New York
+        in: query
+        type: string
+        required: false
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/MessageClickSearchResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /messages/outbound/clicks/{messageid}:
+    get:
+      operationId: getClicksForSingleOutboundMessage
+      tags:
+      - Messages API
+      summary: Postmark Retrieve Message Clicks
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: messageid
+        description: The ID of the Outbound Message for which click statistics should be retrieved.
+        in: path
+        type: string
+        required: true
+      - name: count
+        in: query
+        default: 1
+        description: Number of message clicks to return per request. Max 500.
+        type: integer
+        required: true
+        minimum: 1
+        maximum: 500
+      - name: offset
+        in: query
+        description: Number of messages to skip.
+        type: integer
+        required: true
+        minimum: 0
+        default: 0
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/MessageClickSearchResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+definitions:
+  Attachment:
+    description: An attachment for an email message.
+    properties:
+      Name:
+        type: string
+      Content:
+        type: string
+      ContentType:
+        type: string
+      ContentID:
+        type: string
+  ExtendedMessageClickEventInformation:
+    description: ''
+    properties:
+      ClickLocation:
+        type: string
+      Client:
+        description: ''
+        properties:
+          Name:
+            type: string
+          Company:
+            type: string
+          Family:
+            type: string
+      OS:
+        properties:
+          Name:
+            type: string
+          Company:
+            type: string
+          Family:
+            type: string
+      Platform:
+        type: string
+      UserAgent:
+        type: string
+      OriginalLink:
+        type: string
+      Geo:
+        properties:
+          CountryISOCode:
+            type: string
+          Country:
+            type: string
+          RegionISOCode:
+            type: string
+          Region:
+            type: string
+          City:
+            type: string
+          Zip:
+            type: string
+          Coords:
+            type: string
+          IP:
+            type: string
+      MessageID:
+        type: string
+      ReceivedAt:
+        type: string
+        format: date-time
+      Tag:
+        type: string
+      Recipient:
+        type: string
+        format: email
+  MessageClickSearchResponse:
+    properties:
+      TotalCount:
+        type: integer
+      Clicks:
+        type: array
+        items:
+          $ref: '#/definitions/ExtendedMessageClickEventInformation'
+  HeaderCollection:
+    type: array
+    items:
+      $ref: '#/definitions/MessageHeader'
+  OutboundSearchResponse:
+    description: ''
+    properties:
+      TotalCount:
+        type: integer
+      Messages:
+        type: array
+        items:
+          $ref: '#/definitions/OutboundMessageDetail'
+  OutboundMessageDumpResponse:
+    properties:
+      Body:
+        description: Raw source of message. If no dump is available this will return an empty string.
+        type: string
+  ExtendedMessageOpenEventInformation:
+    description: ''
+    properties:
+      FirstOpen:
+        type: boolean
+      Client:
+        description: ''
+        properties:
+          Name:
+            type: string
+          Company:
+            type: string
+          Family:
+            type: string
+      OS:
+        properties:
+          Name:
+            type: string
+          Company:
+            type: string
+          Family:
+            type: string
+      Platform:
+        type: string
+      UserAgent:
+        type: string
+      Geo:
+        properties:
+          CountryISOCode:
+            type: string
+          Country:
+            type: string
+          RegionISOCode:
+            type: string
+          Region:
+            type: string
+          City:
+            type: string
+          Zip:
+            type: string
+          Coords:
+            type: string
+          IP:
+            type: string
+      MessageID:
+        type: string
+      ReceivedAt:
+        type: string
+        format: date-time
+      Tag:
+        type: string
+      Recipient:
+        type: string
+        format: email
+  MessageHeader:
+    description: A single header for an email message.
+    properties:
+      Name:
+        description: The header's name.
+        type: string
+      Value:
+        description: The header's value.
+        type: string
+  OutboundMessageDetailsResponse:
+    properties:
+      TextBody:
+        type: string
+      HtmlBody:
+        type: string
+      Body:
+        type: string
+      Tag:
+        type: string
+      MessageID:
+        type: string
+      To:
+        type: array
+        items:
+          $ref: '#/definitions/EmailNameAddressPair'
+      Cc:
+        type: array
+        items:
+          $ref: '#/definitions/EmailNameAddressPair'
+      Bcc:
+        type: array
+        items:
+          $ref: '#/definitions/EmailNameAddressPair'
+      Recipients:
+        type: array
+        items:
+          type: string
+      ReceivedAt:
+        type: string
+        format: date-time
+      From:
+        type: string
+      Subject:
+        type: string
+      Attachments:
+        $ref: '#/definitions/AttachmentCollection'
+      Status:
+        type: string
+      TrackOpens:
+        type: boolean
+      TrackLinks:
+        type: string
+        enum:
+        - None
+        - HtmlAndText
+        - HtmlOnly
+        - TextOnly
+      MessageEvents:
+        type: array
+        items:
+          $ref: '#/definitions/MessageEventDetails'
+  OutboundMessageDetail:
+    description: ''
+    properties:
+      Tag:
+        type: string
+      MessageID:
+        type: string
+      To:
+        type: array
+        items:
+          $ref: '#/definitions/EmailNameAddressPair'
+      Cc:
+        type: array
+        items:
+          $ref: '#/definitions/EmailNameAddressPair'
+      Bcc:
+        type: array
+        items:
+          $ref: '#/definitions/EmailNameAddressPair'
+      Recipients:
+        type: array
+        items:
+          type: string
+      ReceivedAt:
+        type: string
+        format: date-time
+      From:
+        type: string
+      Subject:
+        type: string
+      Attachments:
+        $ref: '#/definitions/AttachmentCollection'
+      Status:
+        type: string
+      TrackOpens:
+        type: boolean
+      TrackLinks:
+        type: string
+        enum:
+        - None
+        - HtmlAndText
+        - HtmlOnly
+        - TextOnly
+  AttachmentCollection:
+    type: array
+    items:
+      $ref: '#/definitions/Attachment'
+  EmailNameAddressPair:
+    description: ''
+    properties:
+      Name:
+        type: string
+      Email:
+        type: string
+  InboundSearchResponse:
+    description: ''
+    properties:
+      TotalCount:
+        type: integer
+      InboundMessages:
+        type: array
+        items:
+          $ref: '#/definitions/InboundMessageDetail'
+  MessageOpenSearchResponse:
+    properties:
+      TotalCount:
+        type: integer
+      Opens:
+        type: array
+        items:
+          $ref: '#/definitions/ExtendedMessageOpenEventInformation'
+  InboundMessageFullDetailsResponse:
+    properties:
+      From:
+        type: string
+      FromName:
+        type: string
+      FromFull:
+        description: ''
+        properties:
+          Email:
+            type: string
+          Name:
+            type: string
+      To:
+        type: string
+      ToFull:
+        type: array
+        items:
+          $ref: '#/definitions/EmailNameAddressPair'
+      Cc:
+        type: string
+      CcFull:
+        type: array
+        items:
+          $ref: '#/definitions/EmailNameAddressPair'
+      ReplyTo:
+        type: string
+      OriginalRecipient:
+        type: string
+      Subject:
+        type: string
+      Date:
+        type: string
+      MailboxHash:
+        type: string
+      TextBody:
+        type: string
+      HtmlBody:
+        type: string
+      Tag:
+        type: string
+      Headers:
+        $ref: '#/definitions/HeaderCollection'
+      Attachments:
+        $ref: '#/definitions/AttachmentCollection'
+      MessageID:
+        type: string
+      BlockedReason:
+        type: string
+      Status:
+        type: string
+  MessageEventDetails:
+    description: ''
+    properties:
+      Recipient:
+        type: string
+      Type:
+        type: string
+      ReceivedAt:
+        type: string
+        format: date-time
+      Details:
+        properties:
+          Summary:
+            type: string
+          BounceID:
+            type: string
+          DeliveryMessage:
+            type: string
+          DestinationServer:
+            type: string
+          DestinationIP:
+            type: string
+  StandardPostmarkResponse:
+    description: A Postmark API error.
+    properties:
+      ErrorCode:
+        type: integer
+      Message:
+        type: string
+  InboundMessageDetail:
+    description: ''
+    properties:
+      From:
+        type: string
+      FromName:
+        type: string
+      FromFull:
+        description: ''
+        properties:
+          Email:
+            type: string
+          Name:
+            type: string
+      To:
+        type: string
+      ToFull:
+        type: array
+        items:
+          $ref: '#/definitions/EmailNameAddressPair'
+      Cc:
+        type: string
+      CcFull:
+        type: array
+        items:
+          $ref: '#/definitions/EmailNameAddressPair'
+      ReplyTo:
+        type: string
+      OriginalRecipient:
+        type: string
+      Subject:
+        type: string
+      Date:
+        type: string
+      MailboxHash:
+        type: string
+      Tag:
+        type: string
+      Attachments:
+        $ref: '#/definitions/AttachmentCollection'
+      MessageID:
+        type: string
+      Status:
+        type: string

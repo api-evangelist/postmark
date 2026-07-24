@@ -1,0 +1,573 @@
+openapi: 3.0.1
+info:
+  title: Postmark Account Activate Templates API API
+  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+
+    configure all Servers, Domains, and Sender Signatures associated
+
+    with an Account.
+
+    '
+  version: 0.9.0
+servers:
+- url: //api.postmarkapp.com/
+tags:
+- name: Templates API
+paths:
+  /templates/push:
+    put:
+      tags:
+      - Templates API
+      summary: Postmark Push templates from one server to another
+      operationId: pushTemplates
+      parameters:
+      - name: X-Postmark-Account-Token
+        in: header
+        description: The token associated with the Account on which this request will operate.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TemplatesPushModel'
+        required: true
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplatesPushResponse'
+        '422':
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '500':
+          description: Indicates an internal server error occurred.
+          content: {}
+      x-codegen-request-body-name: body
+  /email/withTemplate:
+    post:
+      operationId: sendEmailWithTemplate
+      tags:
+      - Templates API
+      summary: Postmark Send an email using a Template
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/EmailWithTemplateRequest'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/SendEmailResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /email/batchWithTemplates:
+    post:
+      operationId: sendEmailBatchWithTemplates
+      tags:
+      - Templates API
+      summary: Postmark Send a batch of email using templates.
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/SendEmailTemplatedBatchRequest'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/SendEmailBatchResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /templates:
+    get:
+      operationId: listTemplates
+      summary: Postmark Get the Templates associated with this Server
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: Count
+        in: query
+        description: The number of Templates to return
+        required: true
+        type: number
+        format: int
+      - name: Offset
+        in: query
+        description: The number of Templates to "skip" before returning results.
+        required: true
+        type: number
+        format: int
+      tags:
+      - Templates API
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/TemplateListingResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+    post:
+      summary: Postmark Create a Template
+      tags:
+      - Templates API
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/CreateTemplateRequest'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/TemplateRecordResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /templates/{templateIdOrAlias}:
+    get:
+      operationId: getSingleTemplate
+      summary: Postmark Get a Template
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: templateIdOrAlias
+        in: path
+        type: string
+        required: true
+        description: The 'TemplateID' or 'Alias' value for the Template you wish to retrieve.
+      tags:
+      - Templates API
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/TemplateDetailResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+    put:
+      operationId: updateTemplate
+      summary: Postmark Update a Template
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: templateIdOrAlias
+        in: path
+        type: string
+        required: true
+        description: The 'TemplateID' or 'Alias' value for the Template you wish to update.
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/EditTemplateRequest'
+      tags:
+      - Templates API
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/TemplateRecordResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+    delete:
+      operationId: deleteTemplate
+      summary: Postmark Delete a Template
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: templateIdOrAlias
+        in: path
+        type: string
+        required: true
+        description: The 'TemplateID' or 'Alias' value for the Template you wish to delete.
+      tags:
+      - Templates API
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/TemplateDetailResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /templates/validate:
+    post:
+      operationId: testTemplateContent
+      summary: Postmark Test Template Content
+      tags:
+      - Templates API
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/TemplateValidationRequest'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/TemplateValidationResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+components:
+  schemas:
+    TemplatesPushModel:
+      type: object
+      properties:
+        SourceServerId:
+          type: integer
+        DestinationServerId:
+          type: integer
+        PerformChanges:
+          type: boolean
+      description: ''
+    TemplatesPushResponse:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+        Templates:
+          type: array
+          items:
+            type: object
+            properties:
+              Action:
+                type: string
+              TemplateId:
+                type: integer
+              Alias:
+                type: string
+              Name:
+                type: string
+      description: ''
+    StandardPostmarkResponse:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        Message:
+          type: string
+      description: A Postmark API error.
+definitions:
+  EditTemplateRequest:
+    description: The contents required for creating a new template.
+    properties:
+      Alias:
+        type: string
+        description: The optional string identifier for referring to this Template (numbers, letters, and '.', '-', '_' characters, starts with a letter).
+      Name:
+        type: string
+        description: The friendly display name for the template.
+      Subject:
+        type: string
+        description: The Subject template definition for this Template.
+      HtmlBody:
+        type: string
+        description: The HTML template definition for this Template.
+      TextBody:
+        type: string
+        description: The Text template definition for this Template.
+    required:
+    - TemplateId
+  TemplateValidationRequest:
+    properties:
+      Subject:
+        type: string
+        description: 'The subject content to validate. Must be specified if HtmlBody or
+
+          TextBody are not. See our template language documentation for more
+
+          information on the syntax for this field.
+
+          '
+      HtmlBody:
+        type: string
+        description: 'The html body content to validate. Must be specified if Subject or
+
+          TextBody are not. See our template language documentation for more
+
+          information on the syntax for this field.
+
+          '
+      TextBody:
+        type: string
+        description: 'The text body content to validate. Must be specified if HtmlBody or
+
+          Subject are not. See our template language documentation for more
+
+          information on the syntax for this field.
+
+          '
+      TestRenderModel:
+        type: object
+        description: The model to be used when rendering test content.
+      InlineCssForHtmlTestRender:
+        type: boolean
+        default: true
+        description: 'When HtmlBody is specified, the test render will have style blocks
+
+          inlined as style attributes on matching html elements. You may disable
+
+          the css inlining behavior by passing false for this parameter.
+
+          '
+  HeaderCollection:
+    type: array
+    items:
+      $ref: '#/definitions/MessageHeader'
+  TemplateValidationResult:
+    properties:
+      ContentIsValid:
+        type: boolean
+      ValidationErrors:
+        type: array
+        items:
+          $ref: '#/definitions/TemplateValidationError'
+      RenderedContent:
+        type: string
+  SendEmailResponse:
+    description: The standard response when a postmark message is sent
+    properties:
+      To:
+        type: string
+      SubmittedAt:
+        type: string
+        format: date-time
+      MessageID:
+        type: string
+      ErrorCode:
+        type: integer
+      Message:
+        type: string
+  SendEmailBatchResponse:
+    type: array
+    items:
+      $ref: '#/definitions/SendEmailResponse'
+  AttachmentCollection:
+    type: array
+    items:
+      $ref: '#/definitions/Attachment'
+  Attachment:
+    description: An attachment for an email message.
+    properties:
+      Name:
+        type: string
+      Content:
+        type: string
+      ContentType:
+        type: string
+      ContentID:
+        type: string
+  MessageHeader:
+    description: A single header for an email message.
+    properties:
+      Name:
+        description: The header's name.
+        type: string
+      Value:
+        description: The header's value.
+        type: string
+  TemplateRecordResponse:
+    properties:
+      Name:
+        type: string
+        description: The display name for this template.
+      Alias:
+        type: string
+        description: The user-supplied alias for this template.
+      TemplateId:
+        type: number
+        format: int
+        description: The associated ID for this template.
+      Active:
+        type: boolean
+        description: True if this template is currently available for use.
+  TemplateListingResponse:
+    properties:
+      TotalCount:
+        type: number
+        description: The total number of Templates API associated with this server.
+      Templates API:
+        type: array
+        items:
+          $ref: '#/definitions/TemplateRecordResponse'
+        description: Basic information for each Template returned from the query.
+  EmailWithTemplateRequest:
+    properties:
+      TemplateId:
+        description: Required if 'TemplateAlias' is not specified.
+        type: integer
+      TemplateAlias:
+        description: Required if 'TemplateId' is not specified.
+        type: string
+      TemplateModel:
+        type: object
+      InlineCss:
+        type: boolean
+        default: true
+      From:
+        type: string
+        format: email
+      To:
+        type: string
+        format: email
+      Cc:
+        type: string
+        format: email
+      Bcc:
+        type: string
+        format: email
+      Tag:
+        type: string
+      ReplyTo:
+        type: string
+      Headers:
+        $ref: '#/definitions/HeaderCollection'
+      TrackOpens:
+        description: Activate open tracking for this email.
+        type: boolean
+      TrackLinks:
+        description: Replace links in content to enable "click tracking" stats. Default is 'null', which uses the server's LinkTracking setting'.
+        type: string
+        enum:
+        - None
+        - HtmlAndText
+        - HtmlOnly
+        - TextOnly
+      Attachments:
+        $ref: '#/definitions/AttachmentCollection'
+    required:
+    - TemplateId
+    - TemplateAlias
+    - TemplateModel
+    - To
+    - From
+  TemplateDetailResponse:
+    properties:
+      Name:
+        type: string
+        description: The display name for the template.
+      Alias:
+        type: string
+        description: The user-supplied alias for this template.
+      TemplateID:
+        type: integer
+        description: The ID associated with the template.
+      HtmlBody:
+        type: string
+        description: The content to use for the HtmlBody when this template is used to send email.
+      TextBody:
+        type: string
+        description: The content to use for the TextBody when this template is used to send email.
+      AssociatedServerId:
+        type: integer
+        description: The ID of the Server with which this template is associated.
+      Subject:
+        type: string
+        description: The content to use for the Subject when this template is used to send email.
+      Active:
+        type: boolean
+        description: Indicates that this template may be used for sending email.
+  SendEmailTemplatedBatchRequest:
+    properties:
+      Messages:
+        type: array
+        items:
+          $ref: '#/definitions/EmailWithTemplateRequest'
+  TemplateValidationError:
+    properties:
+      Message:
+        type: string
+      Line:
+        type: integer
+      CharacterPosition:
+        type: integer
+  CreateTemplateRequest:
+    description: The contents required for creating a new template.
+    properties:
+      Alias:
+        type: string
+        description: The optional string identifier for referring to this Template (numbers, letters, and '.', '-', '_' characters, starts with a letter).
+      Name:
+        type: string
+        description: The friendly display name for the template.
+      Subject:
+        type: string
+        description: The Subject template definition for this Template.
+      HtmlBody:
+        type: string
+        description: The HTML template definition for this Template.
+      TextBody:
+        type: string
+        description: The Text template definition for this Template.
+    required:
+    - Name
+    - Subject
+  TemplateValidationResponse:
+    properties:
+      AllContentIsValid:
+        type: boolean
+      TextBody:
+        $ref: '#/definitions/TemplateValidationResult'
+      HtmlBody:
+        $ref: '#/definitions/TemplateValidationResult'
+      Subject:
+        $ref: '#/definitions/TemplateValidationResult'
+      SuggestedTemplateModel:
+        type: object

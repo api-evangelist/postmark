@@ -1,0 +1,46 @@
+openapi: 3.0.1
+info:
+  title: Postmark Account Activate Template API
+  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+
+    configure all Servers, Domains, and Sender Signatures associated
+
+    with an Account.
+
+    '
+  version: 0.9.0
+servers:
+- url: //api.postmarkapp.com/
+tags:
+- name: Template
+paths:
+  /email/withTemplate:
+    post:
+      tags:
+      - Template
+      summary: Postmark Send an email using a Template
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /templates/{templateIdOrAlias}:
+    delete:
+      tags:
+      - Template
+      summary: Postmark Delete a Template
+      parameters:
+      - name: templateIdOrAlias
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The 'TemplateID' or 'Alias' value for the Template you wish to delete.
+        example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

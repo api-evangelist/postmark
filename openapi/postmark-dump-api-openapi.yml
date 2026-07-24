@@ -1,0 +1,52 @@
+openapi: 3.0.1
+info:
+  title: Postmark Account Activate Dump API
+  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+
+    configure all Servers, Domains, and Sender Signatures associated
+
+    with an Account.
+
+    '
+  version: 0.9.0
+servers:
+- url: //api.postmarkapp.com/
+tags:
+- name: Dump
+paths:
+  /bounces/{bounceid}/dump:
+    get:
+      tags:
+      - Dump
+      summary: Postmark Get bounce dump
+      parameters:
+      - name: bounceid
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The ID of the bounce to retrieve.
+        example: <integer>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /messages/outbound/{messageid}/dump:
+    get:
+      tags:
+      - Dump
+      summary: Postmark Outbound message dump
+      parameters:
+      - name: messageid
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The ID of the message which should bypass inbound rules.
+        example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

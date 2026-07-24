@@ -1,0 +1,39 @@
+openapi: 3.0.1
+info:
+  title: Postmark Account Activate Triggers > Inboundrules API
+  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+
+    configure all Servers, Domains, and Sender Signatures associated
+
+    with an Account.
+
+    '
+  version: 0.9.0
+servers:
+- url: //api.postmarkapp.com/
+tags:
+- name: Triggers > Inboundrules
+paths:
+  /triggers/inboundrules:
+    get:
+      tags:
+      - Triggers > Inboundrules
+      summary: Postmark List inbound rule triggers
+      parameters:
+      - name: count
+        in: query
+        schema:
+          type: string
+        description: Number of bounces to return per request. Max 500.
+        example: <integer>
+      - name: offset
+        in: query
+        schema:
+          type: string
+        description: Number of bounces to skip.
+        example: <integer>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

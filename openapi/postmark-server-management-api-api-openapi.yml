@@ -1,0 +1,347 @@
+openapi: 3.0.1
+info:
+  title: Postmark Account Activate Server Management API API
+  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+
+    configure all Servers, Domains, and Sender Signatures associated
+
+    with an Account.
+
+    '
+  version: 0.9.0
+servers:
+- url: //api.postmarkapp.com/
+tags:
+- name: Server Management API
+paths:
+  /servers/{serverid}:
+    get:
+      tags:
+      - Server Management API
+      summary: Postmark Get a Server
+      operationId: getServerInformation
+      parameters:
+      - name: X-Postmark-Account-Token
+        in: header
+        description: The token associated with the Account on which this request will operate.
+        required: true
+        schema:
+          type: string
+      - name: serverid
+        in: path
+        description: The ID of the Server to get.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtendedServerInfo'
+        '422':
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '500':
+          description: Indicates an internal server error occurred.
+          content: {}
+    put:
+      tags:
+      - Server Management API
+      summary: Postmark Edit a Server
+      operationId: editServerInformation
+      parameters:
+      - name: X-Postmark-Account-Token
+        in: header
+        description: The token associated with the Account on which this request will operate.
+        required: true
+        schema:
+          type: string
+      - name: serverid
+        in: path
+        description: The ID of the Server to update.
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditServerPayload'
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtendedServerInfo'
+        '422':
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '500':
+          description: Indicates an internal server error occurred.
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+      - Server Management API
+      summary: Postmark Delete a Server
+      operationId: deleteServer
+      parameters:
+      - name: X-Postmark-Account-Token
+        in: header
+        description: The token associated with the Account on which this request will operate.
+        required: true
+        schema:
+          type: string
+      - name: serverid
+        in: path
+        description: The ID of the Server that should be deleted.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content: {}
+        '422':
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '500':
+          description: Indicates an internal server error occurred.
+          content: {}
+  /servers:
+    get:
+      tags:
+      - Server Management API
+      summary: Postmark List servers
+      operationId: listServers
+      parameters:
+      - name: X-Postmark-Account-Token
+        in: header
+        description: The token associated with the Account on which this request will operate.
+        required: true
+        schema:
+          type: string
+      - name: count
+        in: query
+        description: Number of servers to return per request.
+        required: true
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        description: Number of servers to skip.
+        required: true
+        schema:
+          type: integer
+      - name: name
+        in: query
+        description: Filter by a specific server name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerListingResponse'
+        '422':
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '500':
+          description: Indicates an internal server error occurred.
+          content: {}
+    post:
+      tags:
+      - Server Management API
+      summary: Postmark Create a Server
+      operationId: createServer
+      parameters:
+      - name: X-Postmark-Account-Token
+        in: header
+        description: The token associated with the Account on which this request will operate.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateServerPayload'
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtendedServerInfo'
+        '422':
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '500':
+          description: Indicates an internal server error occurred.
+          content: {}
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    EditServerPayload:
+      type: object
+      properties:
+        Name:
+          type: string
+        Color:
+          type: string
+        RawEmailEnabled:
+          type: boolean
+        DeliveryHookUrl:
+          type: string
+        SmtpApiActivated:
+          type: boolean
+        InboundHookUrl:
+          type: string
+        BounceHookUrl:
+          type: string
+        OpenHookUrl:
+          type: string
+        PostFirstOpenOnly:
+          type: boolean
+        TrackOpens:
+          type: boolean
+        TrackLinks:
+          type: string
+          enum:
+          - None
+          - HtmlAndTextTracking
+          - HtmlOnlyTracking
+          - TextOnlyTracking
+        ClickHookUrl:
+          type: string
+        InboundDomain:
+          type: string
+        InboundSpamThreshold:
+          type: integer
+      description: ''
+    CreateServerPayload:
+      type: object
+      properties:
+        Name:
+          type: string
+        Color:
+          type: string
+        RawEmailEnabled:
+          type: boolean
+        DeliveryHookUrl:
+          type: string
+        SmtpApiActivated:
+          type: boolean
+        InboundHookUrl:
+          type: string
+        BounceHookUrl:
+          type: string
+        OpenHookUrl:
+          type: string
+        PostFirstOpenOnly:
+          type: boolean
+        TrackOpens:
+          type: boolean
+        TrackLinks:
+          type: string
+          enum:
+          - None
+          - HtmlAndTextTracking
+          - HtmlOnlyTracking
+          - TextOnlyTracking
+        ClickHookUrl:
+          type: string
+        InboundDomain:
+          type: string
+        InboundSpamThreshold:
+          type: integer
+      description: ''
+    StandardPostmarkResponse:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        Message:
+          type: string
+      description: A Postmark API error.
+    ServerListingResponse:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+        Servers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExtendedServerInfo'
+      description: The results of listing servers.
+    ExtendedServerInfo:
+      type: object
+      properties:
+        ID:
+          type: integer
+        Name:
+          type: string
+        ApiTokens:
+          type: array
+          items:
+            type: string
+        ServerLink:
+          type: string
+        Color:
+          type: string
+        SmtpApiActivated:
+          type: boolean
+        RawEmailEnabled:
+          type: boolean
+        DeliveryHookUrl:
+          type: string
+        InboundAddress:
+          type: string
+        InboundHookUrl:
+          type: string
+        BounceHookUrl:
+          type: string
+        OpenHookUrl:
+          type: string
+        PostFirstOpenOnly:
+          type: boolean
+        TrackOpens:
+          type: boolean
+        TrackLinks:
+          type: string
+          enum:
+          - None
+          - HtmlAndTextTracking
+          - HtmlOnlyTracking
+          - TextOnlyTracking
+        ClickHookUrl:
+          type: string
+        InboundDomain:
+          type: string
+        InboundHash:
+          type: string
+        InboundSpamThreshold:
+          type: integer
+      description: ''

@@ -1,0 +1,577 @@
+openapi: 3.0.1
+info:
+  title: Postmark Account Activate Stats API API
+  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+
+    configure all Servers, Domains, and Sender Signatures associated
+
+    with an Account.
+
+    '
+  version: 0.9.0
+servers:
+- url: //api.postmarkapp.com/
+tags:
+- name: Stats API
+paths:
+  /stats/outbound:
+    get:
+      operationId: getOutboundOverviewStatistics
+      tags:
+      - Stats API
+      summary: Postmark Get outbound overview
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: tag
+        in: query
+        description: Filter by tag
+        type: string
+      - name: fromdate
+        in: query
+        description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        type: string
+        format: date
+      - name: todate
+        in: query
+        description: Filter stats up to the date specified. e.g. `2014-02-01`
+        type: string
+        format: date
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OutboundOverviewStatsResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /stats/outbound/sends:
+    get:
+      operationId: getSentCounts
+      tags:
+      - Stats API
+      summary: Postmark Get sent counts
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: tag
+        description: Filter by tag
+        in: query
+        type: string
+      - name: fromdate
+        description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        in: query
+        type: string
+        format: date
+      - name: todate
+        description: Filter stats up to the date specified. e.g. `2014-02-01`
+        in: query
+        type: string
+        format: date
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/SentCountsResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /stats/outbound/bounces:
+    get:
+      operationId: getBounceCounts
+      tags:
+      - Stats API
+      summary: Postmark Get bounce counts
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: tag
+        description: Filter by tag
+        in: query
+        type: string
+      - name: fromdate
+        in: query
+        description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        type: string
+        format: date
+      - name: todate
+        in: query
+        description: Filter stats up to the date specified. e.g. `2014-02-01`
+        type: string
+        format: date
+      responses:
+        200:
+          description: OK
+          schema:
+            properties:
+              HardBounce:
+                type: integer
+              SMTPApiError:
+                type: integer
+              SoftBounce:
+                type: integer
+              Transient:
+                type: integer
+              Days:
+                type: array
+                items:
+                  properties:
+                    Date:
+                      type: string
+                    HardBounce:
+                      type: integer
+                    SoftBounce:
+                      type: integer
+                    SMTPApiError:
+                      type: integer
+                    Transient:
+                      type: integer
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /stats/outbound/spam:
+    get:
+      operationId: getSpamComplaints
+      tags:
+      - Stats API
+      summary: Postmark Get spam complaints
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: tag
+        in: query
+        description: Filter by tag
+        type: string
+      - name: fromdate
+        in: query
+        type: string
+        description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        format: date
+      - name: todate
+        in: query
+        description: Filter stats up to the date specified. e.g. `2014-02-01`
+        type: string
+        format: date
+      responses:
+        200:
+          description: OK
+          schema:
+            properties:
+              SpamComplaint:
+                type: integer
+              Days:
+                type: array
+                items:
+                  properties:
+                    Date:
+                      type: string
+                    SpamComplaint:
+                      type: integer
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /stats/outbound/tracked:
+    get:
+      operationId: getTrackedEmailCounts
+      tags:
+      - Stats API
+      summary: Postmark Get tracked email counts
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: tag
+        in: query
+        description: Filter by tag
+        type: string
+      - name: fromdate
+        in: query
+        type: string
+        description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        format: date
+      - name: todate
+        in: query
+        description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        type: string
+        format: date
+      responses:
+        200:
+          description: OK
+          schema:
+            properties:
+              Tracked:
+                type: integer
+              Days:
+                type: array
+                items:
+                  properties:
+                    Date:
+                      type: string
+                    Tracked:
+                      type: integer
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /stats/outbound/opens:
+    get:
+      operationId: getOutboundOpenCounts
+      tags:
+      - Stats API
+      summary: Postmark Get email open counts
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: tag
+        description: Filter by tag
+        in: query
+        type: string
+      - name: fromdate
+        in: query
+        description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        type: string
+        format: date
+      - name: todate
+        description: Filter stats up to the date specified. e.g. `2014-02-01`
+        in: query
+        type: string
+        format: date
+      responses:
+        200:
+          description: OK
+          schema:
+            properties:
+              Opens:
+                type: integer
+              Unique:
+                type: integer
+              Days:
+                type: array
+                items:
+                  properties:
+                    Date:
+                      type: string
+                    Opens:
+                      type: integer
+                    Unique:
+                      type: integer
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /stats/outbound/opens/platforms:
+    get:
+      operationId: getOutboundOpenCountsByPlatform
+      tags:
+      - Stats API
+      summary: Postmark Get email platform usage
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: tag
+        description: Filter by tag
+        in: query
+        type: string
+      - name: fromdate
+        in: query
+        description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        type: string
+        format: date
+      - name: todate
+        description: Filter stats up to the date specified. e.g. `2014-02-01`
+        in: query
+        type: string
+        format: date
+      responses:
+        200:
+          description: OK
+          schema:
+            properties:
+              Desktop:
+                type: integer
+              WebMail:
+                type: integer
+              Mobile:
+                type: integer
+              Unknown:
+                type: integer
+              Days:
+                type: array
+                items:
+                  properties:
+                    Date:
+                      type: string
+                    Desktop:
+                      type: integer
+                    WebMail:
+                      type: integer
+                    Mobile:
+                      type: integer
+                    Unknown:
+                      type: integer
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /stats/outbound/opens/emailclients:
+    get:
+      operationId: getOutboundOpenCountsByEmailClient
+      tags:
+      - Stats API
+      summary: Postmark Get email client usage
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: tag
+        description: Filter by tag
+        in: query
+        type: string
+      - name: fromdate
+        in: query
+        description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        type: string
+        format: date
+      - name: todate
+        description: Filter stats up to the date specified. e.g. `2014-02-01`
+        in: query
+        type: string
+        format: date
+      responses:
+        200:
+          description: OK
+          schema:
+            properties:
+              Desktop:
+                type: integer
+              WebMail:
+                type: integer
+              Mobile:
+                type: integer
+              Unknown:
+                type: integer
+              Days:
+                type: array
+                items:
+                  $ref: '#/definitions/DynamicResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /stats/outbound/clicks:
+    get:
+      operationId: getOutboundClickCounts
+      tags:
+      - Stats API
+      summary: Postmark Get click counts
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: tag
+        description: Filter by tag
+        in: query
+        type: string
+      - name: fromdate
+        in: query
+        description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        type: string
+        format: date
+      - name: todate
+        description: Filter stats up to the date specified. e.g. `2014-02-01`
+        in: query
+        type: string
+        format: date
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DynamicResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /stats/outbound/clicks/browserfamilies:
+    get:
+      operationId: getOutboundClickCountsByBrowserFamily
+      tags:
+      - Stats API
+      summary: Postmark Get browser usage by family
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: tag
+        description: Filter by tag
+        in: query
+        type: string
+      - name: fromdate
+        in: query
+        description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        type: string
+        format: date
+      - name: todate
+        description: Filter stats up to the date specified. e.g. `2014-02-01`
+        in: query
+        type: string
+        format: date
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /stats/outbound/clicks/platforms:
+    get:
+      operationId: getOutboundClickCountsByPlatform
+      tags:
+      - Stats API
+      summary: Postmark Get browser plaform usage
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: tag
+        description: Filter by tag
+        in: query
+        type: string
+      - name: fromdate
+        in: query
+        description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        type: string
+        format: date
+      - name: todate
+        description: Filter stats up to the date specified. e.g. `2014-02-01`
+        in: query
+        type: string
+        format: date
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DynamicResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /stats/outbound/clicks/location:
+    get:
+      operationId: getOutboundClickCountsByLocation
+      tags:
+      - Stats API
+      summary: Postmark Get clicks by body location
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: tag
+        description: Filter by tag
+        in: query
+        type: string
+      - name: fromdate
+        in: query
+        description: Filter stats starting from the date specified. e.g. `2014-01-01`
+        type: string
+        format: date
+      - name: todate
+        description: Filter stats up to the date specified. e.g. `2014-02-01`
+        in: query
+        type: string
+        format: date
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DynamicResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+definitions:
+  OutboundOverviewStatsResponse:
+    description: ''
+    properties:
+      Sent:
+        type: integer
+      Bounced:
+        type: integer
+      SMTPAPIErrors:
+        type: integer
+      BounceRate:
+        type: integer
+      SpamComplaints:
+        type: integer
+      SpamComplaintsRate:
+        type: integer
+      Opens:
+        type: integer
+      UniqueOpens:
+        type: integer
+      Tracked:
+        type: integer
+      WithOpenTracking:
+        type: integer
+      WithLinkTracking:
+        type: integer
+      TotalClicks:
+        type: integer
+      UniqueLinksClicked:
+        type: integer
+      TotalTrackedLinksSent:
+        type: integer
+      WithClientRecorded:
+        type: integer
+      WithPlatformRecorded:
+        type: integer
+  DynamicResponse:
+    description: The properties of this object will vary based request parameters.
+  SentCountsResponse:
+    description: The result of a get sent counts operation.
+    properties:
+      Sent:
+        type: integer
+      Days:
+        type: array
+        items:
+          properties:
+            Date:
+              type: string
+            Sent:
+              type: integer

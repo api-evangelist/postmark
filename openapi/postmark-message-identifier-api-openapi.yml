@@ -1,0 +1,76 @@
+openapi: 3.0.1
+info:
+  title: Postmark Account Activate Message Identifier API
+  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+
+    configure all Servers, Domains, and Sender Signatures associated
+
+    with an Account.
+
+    '
+  version: 0.9.0
+servers:
+- url: //api.postmarkapp.com/
+tags:
+- name: Message Identifier
+paths:
+  /messages/outbound/clicks/{messageid}:
+    get:
+      tags:
+      - Message Identifier
+      summary: Postmark Retrieve Message Clicks
+      parameters:
+      - name: count
+        in: query
+        schema:
+          type: string
+        description: Number of bounces to return per request. Max 500.
+        example: <integer>
+      - name: offset
+        in: query
+        schema:
+          type: string
+        description: Number of bounces to skip.
+        example: <integer>
+      - name: messageid
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The ID of the message which should bypass inbound rules.
+        example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /messages/outbound/opens/{messageid}:
+    get:
+      tags:
+      - Message Identifier
+      summary: Postmark Retrieve Message Opens
+      parameters:
+      - name: count
+        in: query
+        schema:
+          type: string
+        description: Number of bounces to return per request. Max 500.
+        example: <integer>
+      - name: offset
+        in: query
+        schema:
+          type: string
+        description: Number of bounces to skip.
+        example: <integer>
+      - name: messageid
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The ID of the message which should bypass inbound rules.
+        example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

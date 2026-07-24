@@ -1,0 +1,487 @@
+openapi: 3.0.1
+info:
+  title: Postmark Account Activate Domains API API
+  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+
+    configure all Servers, Domains, and Sender Signatures associated
+
+    with an Account.
+
+    '
+  version: 0.9.0
+servers:
+- url: //api.postmarkapp.com/
+tags:
+- name: Domains API
+paths:
+  /domains:
+    get:
+      tags:
+      - Domains API
+      summary: Postmark List Domains
+      operationId: listDomains
+      parameters:
+      - name: X-Postmark-Account-Token
+        in: header
+        description: The token associated with the Account on which this request will operate.
+        required: true
+        schema:
+          type: string
+      - name: count
+        in: query
+        description: Number of records to return per request. Max 500.
+        required: true
+        schema:
+          maximum: 500
+          minimum: 1
+          type: integer
+      - name: offset
+        in: query
+        description: Number of records to skip
+        required: true
+        schema:
+          minimum: 0
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainListingResults'
+        '422':
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '500':
+          description: Indicates an internal server error occurred.
+          content: {}
+    post:
+      tags:
+      - Domains API
+      summary: Postmark Create a Domain
+      operationId: createDomain
+      parameters:
+      - name: X-Postmark-Account-Token
+        in: header
+        description: The token associated with the Account on which this request will operate.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DomainCreationModel'
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainExtendedInformation'
+        '422':
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '500':
+          description: Indicates an internal server error occurred.
+          content: {}
+      x-codegen-request-body-name: body
+  /domains/{domainid}:
+    get:
+      tags:
+      - Domains API
+      summary: Postmark Get a Domain
+      operationId: getDomain
+      parameters:
+      - name: X-Postmark-Account-Token
+        in: header
+        description: The token associated with the Account on which this request will operate.
+        required: true
+        schema:
+          type: string
+      - name: domainid
+        in: path
+        description: The ID for the Domain that should be retrieved.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainExtendedInformation'
+        '422':
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '500':
+          description: Indicates an internal server error occurred.
+          content: {}
+    put:
+      tags:
+      - Domains API
+      summary: Postmark Update a Domain
+      operationId: editDomain
+      parameters:
+      - name: X-Postmark-Account-Token
+        in: header
+        description: The token associated with the Account on which this request will operate.
+        required: true
+        schema:
+          type: string
+      - name: domainid
+        in: path
+        description: The ID for the Domain that should be modified by the request.
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DomainEditingModel'
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainExtendedInformation'
+        '422':
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '500':
+          description: Indicates an internal server error occurred.
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+      - Domains API
+      summary: Postmark Delete a Domain
+      operationId: deleteDomain
+      parameters:
+      - name: X-Postmark-Account-Token
+        in: header
+        description: The token associated with the Account on which this request will operate.
+        required: true
+        schema:
+          type: string
+      - name: domainid
+        in: path
+        description: The ID for the Domain that should be deleted by the request.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '422':
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '500':
+          description: Indicates an internal server error occurred.
+          content: {}
+  /domains/{domainid}/verifydkim:
+    put:
+      tags:
+      - Domains API
+      summary: Postmark Request DNS Verification for DKIM
+      operationId: requestDkimVerificationForDomain
+      parameters:
+      - name: X-Postmark-Account-Token
+        in: header
+        description: The token associated with the Account on which this request will operate.
+        required: true
+        schema:
+          type: string
+      - name: domainid
+        in: path
+        description: The ID for the Domain for which DKIM DNS records should be verified.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainExtendedInformation'
+        '422':
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '500':
+          description: Indicates an internal server error occurred.
+          content: {}
+  /domains/{domainid}/verifyreturnpath:
+    put:
+      tags:
+      - Domains API
+      summary: Postmark Request DNS Verification for Return-Path
+      operationId: requestReturnPathVerificationForDomain
+      parameters:
+      - name: X-Postmark-Account-Token
+        in: header
+        description: The token associated with the Account on which this request will operate.
+        required: true
+        schema:
+          type: string
+      - name: domainid
+        in: path
+        description: The ID for the Domain for which Return-Path DNS records should be verified.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainExtendedInformation'
+        '422':
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '500':
+          description: Indicates an internal server error occurred.
+          content: {}
+  /domains/{domainid}/verifyspf:
+    post:
+      tags:
+      - Domains API
+      summary: Postmark Request DNS Verification for SPF
+      operationId: requestSPFVerificationForDomain
+      parameters:
+      - name: X-Postmark-Account-Token
+        in: header
+        description: The token associated with the Account on which this request will operate.
+        required: true
+        schema:
+          type: string
+      - name: domainid
+        in: path
+        description: The ID for the Domain for which SPF DNS records should be verified.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainSPFResult'
+        '422':
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '500':
+          description: Indicates an internal server error occurred.
+          content: {}
+  /domains/{domainid}/rotatedkim:
+    post:
+      tags:
+      - Domains API
+      summary: Postmark Rotate DKIM Key
+      description: 'Creates a new DKIM key to replace your current key. Until the DNS entries are confirmed,
+
+        the new values will be in the `DKIMPendingHost` and `DKIMPendingTextValue` fields.
+
+        After the new DKIM value is verified in DNS, the pending values will migrate to
+
+        `DKIMTextValue` and `DKIMPendingTextValue` and Postmark will begin to sign emails
+
+        with the new DKIM key.
+
+        '
+      operationId: rotateDKIMKeyForDomain
+      parameters:
+      - name: X-Postmark-Account-Token
+        in: header
+        description: The token associated with the Account on which this request will operate.
+        required: true
+        schema:
+          type: string
+      - name: domainid
+        in: path
+        description: The ID for the Sender Signature for which a new DKIM Key should be generated.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DKIMRotationResponse'
+        '422':
+          description: An error was generated due to incorrect use of the API. See the Message associated with this response for more information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '500':
+          description: Indicates an internal server error occurred.
+          content: {}
+components:
+  schemas:
+    DomainSPFResult:
+      type: object
+      properties:
+        SPFHost:
+          type: string
+        SPFVerified:
+          type: boolean
+        SPFTextValue:
+          type: string
+      description: ''
+    DomainListingResults:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+        Domains:
+          type: array
+          items:
+            $ref: '#/components/schemas/DomainInformation'
+      description: ''
+    DKIMRotationResponse:
+      type: object
+      properties:
+        Name:
+          type: string
+        DKIMVerified:
+          type: boolean
+        WeakDKIM:
+          type: boolean
+        DKIMHost:
+          type: string
+        DKIMTestValue:
+          type: string
+        DKIMPendingHost:
+          type: string
+        DKIMPendingTextValue:
+          type: string
+        DKIMRevokedHost:
+          type: string
+        DKIMRevokedTextValue:
+          type: string
+        SafeToRemoveRevokedKeyFromDNS:
+          type: boolean
+        DKIMUpdateStatus:
+          type: string
+        ID:
+          type: integer
+          format: int64
+      description: ''
+    DomainExtendedInformation:
+      type: object
+      properties:
+        Name:
+          type: string
+        SPFVerified:
+          type: boolean
+        SPFHost:
+          type: string
+        SPFTextValue:
+          type: string
+        DKIMVerified:
+          type: boolean
+        WeakDKIM:
+          type: boolean
+        DKIMHost:
+          type: string
+        DKIMTestValue:
+          type: string
+        DKIMPendingHost:
+          type: string
+        DKIMPendingTextValue:
+          type: string
+        DKIMRevokedHost:
+          type: string
+        DKIMRevokedTextValue:
+          type: string
+        SafeToRemoveRevokedKeyFromDNS:
+          type: boolean
+        DKIMUpdateStatus:
+          type: string
+        ReturnPathDomain:
+          type: string
+        ReturnPathDomainVerified:
+          type: boolean
+        ReturnPathDomainCNAMEValue:
+          type: string
+        ID:
+          type: integer
+          format: int64
+      description: ''
+    StandardPostmarkResponse:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        Message:
+          type: string
+      description: A Postmark API error.
+    DomainEditingModel:
+      type: object
+      properties:
+        ReturnPathDomain:
+          type: string
+      description: ''
+    DomainInformation:
+      type: object
+      properties:
+        Name:
+          type: string
+        SPFVerified:
+          type: boolean
+        DKIMVerified:
+          type: boolean
+        WeakDKIM:
+          type: boolean
+        ReturnPathDomainVerified:
+          type: boolean
+        ID:
+          type: integer
+          format: int64
+      description: ''
+    DomainCreationModel:
+      type: object
+      properties:
+        Name:
+          type: string
+        ReturnPathDomain:
+          type: string
+      description: ''

@@ -1,0 +1,126 @@
+openapi: 3.0.1
+info:
+  title: Postmark Account Activate Inbound Rules API API
+  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+
+    configure all Servers, Domains, and Sender Signatures associated
+
+    with an Account.
+
+    '
+  version: 0.9.0
+servers:
+- url: //api.postmarkapp.com/
+tags:
+- name: Inbound Rules API
+paths:
+  /triggers/inboundrules:
+    post:
+      operationId: createInboundRule
+      tags:
+      - Inbound Rules API
+      summary: Postmark Create an inbound rule trigger
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/CreateInboundRuleRequest'
+      responses:
+        200:
+          description: OK
+          schema:
+            properties:
+              ID:
+                type: integer
+              Rule:
+                type: string
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+    get:
+      operationId: listInboundRules
+      tags:
+      - Inbound Rules API
+      summary: Postmark List inbound rule triggers
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: count
+        in: query
+        type: integer
+        required: true
+        description: Number of records to return per request.
+      - name: offset
+        in: query
+        type: integer
+        required: true
+        description: Number of records to skip.
+      responses:
+        200:
+          description: OK
+          schema:
+            properties:
+              TotalCount:
+                type: integer
+              InboundRules:
+                type: array
+                items:
+                  properties:
+                    ID:
+                      type: integer
+                    Rule:
+                      type: string
+                      format: email
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+  /triggers/inboundrules/{triggerid}:
+    delete:
+      operationId: deleteInboundRule
+      tags:
+      - Inbound Rules API
+      summary: Postmark Delete a single trigger
+      parameters:
+      - name: X-Postmark-Server-Token
+        required: true
+        description: The token associated with the Server on which this request will operate.
+        type: string
+        in: header
+      - name: triggerid
+        in: path
+        type: integer
+        description: The ID of the Inbound Rule that should be deleted.
+        required: true
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/StandardPostmarkResponse'
+        422:
+          $ref: '#/responses/422'
+        500:
+          $ref: '#/responses/500'
+definitions:
+  CreateInboundRuleRequest:
+    description: ''
+    properties:
+      Rule:
+        format: email
+        type: string
+  StandardPostmarkResponse:
+    description: A Postmark API error.
+    properties:
+      ErrorCode:
+        type: integer
+      Message:
+        type: string

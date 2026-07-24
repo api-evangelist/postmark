@@ -1,0 +1,26 @@
+openapi: 3.0.1
+info:
+  title: Postmark Account Activate Deliverystats API
+  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+
+    configure all Servers, Domains, and Sender Signatures associated
+
+    with an Account.
+
+    '
+  version: 0.9.0
+servers:
+- url: //api.postmarkapp.com/
+tags:
+- name: Deliverystats
+paths:
+  /deliverystats:
+    get:
+      tags:
+      - Deliverystats
+      summary: Postmark Get delivery stats
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

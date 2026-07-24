@@ -1,0 +1,36 @@
+openapi: 3.0.1
+info:
+  title: Postmark Account Activate Bypass API
+  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+
+    configure all Servers, Domains, and Sender Signatures associated
+
+    with an Account.
+
+    '
+  version: 0.9.0
+servers:
+- url: //api.postmarkapp.com/
+tags:
+- name: Bypass
+paths:
+  /messages/inbound/{messageid}/bypass:
+    put:
+      tags:
+      - Bypass
+      summary: Postmark Bypass rules for a blocked inbound message
+      requestBody:
+        content: {}
+      parameters:
+      - name: messageid
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The ID of the message which should bypass inbound rules.
+        example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

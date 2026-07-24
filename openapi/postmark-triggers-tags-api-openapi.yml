@@ -1,0 +1,34 @@
+openapi: 3.0.1
+info:
+  title: Postmark Account Activate Triggers > Tags API
+  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+
+    configure all Servers, Domains, and Sender Signatures associated
+
+    with an Account.
+
+    '
+  version: 0.9.0
+servers:
+- url: //api.postmarkapp.com/
+tags:
+- name: Triggers > Tags
+paths:
+  /triggers/tags/{triggerid}:
+    delete:
+      tags:
+      - Triggers > Tags
+      summary: Postmark Delete a single trigger
+      parameters:
+      - name: triggerid
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The ID of the Inbound Rule that should be deleted.
+        example: <integer>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
