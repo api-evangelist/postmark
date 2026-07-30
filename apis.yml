@@ -5,7 +5,19 @@ description: Postmark is an email delivery service that helps businesses send an
   service that surfaces detailed delivery analytics, bounce tracking, open and click
   tracking, and dedicated IP addresses.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/postmark.png
 url: https://raw.githubusercontent.com/api-evangelist/postmark/refs/heads/main/apis.yml
 tags:
 - Emails
@@ -17,39 +29,955 @@ created: '2024-04-14'
 modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
-- aid: postmark:postmark-api
-  name: Postmark API
-  description: The Postmark API provides programmatic access to send and track transactional
-    and broadcast emails, manage servers, templates, message streams, bounces, suppressions,
-    statistics, webhooks, and inbound message processing.
+- aid: postmark:postmark-activate-api
+  name: Postmark Activate API
+  description: The Activate API from Postmark — 1 operation(s) for activate.
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
   tags:
-  - Email
-  - Messages
-  - Templates
-  - Servers
-  - Bounces
-  - Statistics
-  - Webhooks
-  - Inbound
-  - Outbound
+  - Activate
   properties:
+  - type: OpenAPI
+    url: openapi/postmark-activate-api-openapi.yml
   - type: Documentation
     url: https://postmarkapp.com/developer
   - type: GettingStarted
     url: https://postmarkapp.com/developer/api/overview
   - type: Authentication
     url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: OpenAPI
-    url: openapi/postmark-api-openapi.yml
   - type: AsyncAPI
     url: asyncapi/postmark-webhooks-asyncapi.yml
-  - url: graphql/postmark-graphql.md
-    type: GraphQL
-  contact:
-  - FN: Postmark Support
-    url: https://postmarkapp.com/support
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-alias-api
+  name: Postmark Alias API
+  description: The Alias API from Postmark — 1 operation(s) for alias.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Alias
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-alias-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-batch-api
+  name: Postmark Batch API
+  description: The Batch API from Postmark — 2 operation(s) for batch.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Batch
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-batch-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-bounceid-api
+  name: Postmark Bounceid API
+  description: The Bounceid API from Postmark — 3 operation(s) for bounceid.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Bounceid
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-bounceid-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-bounces-api-api
+  name: Postmark Bounces API API
+  description: The Bounces API API from Postmark — 5 operation(s) for bounces api.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Bounces API
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-bounces-api-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-bounces-api
+  name: Postmark Bounces API
+  description: The Bounces API from Postmark — 2 operation(s) for bounces.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Bounces
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-bounces-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-browser-families-api
+  name: Postmark Browser Families API
+  description: The Browser Families API from Postmark — 1 operation(s) for browser families.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Browser Families
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-browser-families-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-bypass-api
+  name: Postmark Bypass API
+  description: The Bypass API from Postmark — 1 operation(s) for bypass.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Bypass
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-bypass-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-deliverystats-api
+  name: Postmark Deliverystats API
+  description: The Deliverystats API from Postmark — 1 operation(s) for deliverystats.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Deliverystats
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-deliverystats-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-domains-api-api
+  name: Postmark Domains API API
+  description: The Domains API API from Postmark — 6 operation(s) for domains api.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Domains API
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-domains-api-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-dump-api
+  name: Postmark Dump API
+  description: The Dump API from Postmark — 2 operation(s) for dump.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Dump
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-dump-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-email-api
+  name: Postmark Email API
+  description: The Email API from Postmark — 4 operation(s) for email.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Email
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-email-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-emailclients-api
+  name: Postmark Emailclients API
+  description: The Emailclients API from Postmark — 1 operation(s) for emailclients.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Emailclients
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-emailclients-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-inbound-api
+  name: Postmark Inbound API
+  description: The Inbound API from Postmark — 4 operation(s) for inbound.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Inbound
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-inbound-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-inbound-rules-api-api
+  name: Postmark Inbound Rules API API
+  description: The Inbound Rules API API from Postmark — 2 operation(s) for inbound rules api.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Inbound Rules API
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-inbound-rules-api-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-locations-api
+  name: Postmark Locations API
+  description: The Locations API from Postmark — 1 operation(s) for locations.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-locations-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-message-identifier-api
+  name: Postmark Message Identifier API
+  description: The Message Identifier API from Postmark — 2 operation(s) for message identifier.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Message Identifier
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-message-identifier-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-messages-api-api
+  name: Postmark Messages API API
+  description: The Messages API API from Postmark — 11 operation(s) for messages api.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Messages API
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-messages-api-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-messages-api
+  name: Postmark Messages API
+  description: The Messages API from Postmark — 11 operation(s) for messages.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-messages-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-messages-inbound-messageid-api
+  name: Postmark Messages > Inbound > {Messageid} API
+  description: >-
+    The Messages > Inbound > {Messageid} API from Postmark — 1 operation(s) for messages > inbound > {messageid}.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Messages > Inbound > {Messageid}
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-messages-inbound-messageid-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-messages-outbound-clicks-api
+  name: Postmark Messages > Outbound > Clicks API
+  description: >-
+    The Messages > Outbound > Clicks API from Postmark — 1 operation(s) for messages > outbound > clicks.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Messages > Outbound > Clicks
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-messages-outbound-clicks-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-messages-outbound-messageid-api
+  name: Postmark Messages > Outbound > {Messageid} API
+  description: >-
+    The Messages > Outbound > {Messageid} API from Postmark — 1 operation(s) for messages > outbound >
+    {messageid}.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Messages > Outbound > {Messageid}
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-messages-outbound-messageid-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-messages-outbound-opens-api
+  name: Postmark Messages > Outbound > Opens API
+  description: >-
+    The Messages > Outbound > Opens API from Postmark — 1 operation(s) for messages > outbound > opens.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Messages > Outbound > Opens
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-messages-outbound-opens-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-outbound-api
+  name: Postmark Outbound API
+  description: The Outbound API from Postmark — 20 operation(s) for outbound.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Outbound
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-outbound-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-platforms-api
+  name: Postmark Platforms API
+  description: The Platforms API from Postmark — 2 operation(s) for platforms.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Platforms
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-platforms-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-readtimes-api
+  name: Postmark Readtimes API
+  description: The Readtimes API from Postmark — 1 operation(s) for readtimes.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Readtimes
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-readtimes-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-retry-api
+  name: Postmark Retry API
+  description: The Retry API from Postmark — 1 operation(s) for retry.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Retry
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-retry-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-sender-signatures-api-api
+  name: Postmark Sender Signatures API API
+  description: The Sender Signatures API API from Postmark — 5 operation(s) for sender signatures api.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Sender Signatures API
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-sender-signatures-api-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-sending-api-api
+  name: Postmark Sending API API
+  description: The Sending API API from Postmark — 4 operation(s) for sending api.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Sending API
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-sending-api-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-sends-api
+  name: Postmark Sends API
+  description: The Sends API from Postmark — 1 operation(s) for sends.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Sends
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-sends-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-server-configuration-api-api
+  name: Postmark Server Configuration API API
+  description: >-
+    The Server Configuration API API from Postmark — 1 operation(s) for server configuration api.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Server Configuration API
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-server-configuration-api-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-server-management-api-api
+  name: Postmark Server Management API API
+  description: The Server Management API API from Postmark — 2 operation(s) for server management api.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Server Management API
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-server-management-api-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-servers-api
+  name: Postmark Servers API
+  description: The Servers API from Postmark — 1 operation(s) for servers.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Servers
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-servers-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-spam-api
+  name: Postmark Spam API
+  description: The Spam API from Postmark — 1 operation(s) for spam.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Spam
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-spam-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-statistics-api
+  name: Postmark Statistics API
+  description: The Statistics API from Postmark — 13 operation(s) for statistics.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Statistics
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-statistics-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-stats-api-api
+  name: Postmark Stats API API
+  description: The Stats API API from Postmark — 12 operation(s) for stats api.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Stats API
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-stats-api-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-stats-outbound-api
+  name: Postmark Stats/Outbound API
+  description: The Stats/Outbound API from Postmark — 2 operation(s) for stats/outbound.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Stats/Outbound
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-stats-outbound-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-stats-outbound-clicks-api
+  name: Postmark Stats/Outbound > Clicks API
+  description: >-
+    The Stats/Outbound > Clicks API from Postmark — 1 operation(s) for stats/outbound > clicks.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Stats/Outbound > Clicks
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-stats-outbound-clicks-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-stats-outbound-opens-api
+  name: Postmark Stats/Outbound > Opens API
+  description: >-
+    The Stats/Outbound > Opens API from Postmark — 1 operation(s) for stats/outbound > opens.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Stats/Outbound > Opens
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-stats-outbound-opens-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-template-api
+  name: Postmark Template API
+  description: The Template API from Postmark — 2 operation(s) for template.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Template
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-template-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-templates-api-api
+  name: Postmark Templates API API
+  description: The Templates API API from Postmark — 6 operation(s) for templates api.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Templates API
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-templates-api-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-templates-api
+  name: Postmark Templates API
+  description: The Templates API from Postmark — 4 operation(s) for templates.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-templates-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-triggerid-api
+  name: Postmark Triggerid API
+  description: The Triggerid API from Postmark — 1 operation(s) for triggerid.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Triggerid
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-triggerid-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-triggers-api
+  name: Postmark Triggers API
+  description: The Triggers API from Postmark — 4 operation(s) for triggers.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Triggers
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-triggers-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-triggers-inboundrules-api
+  name: Postmark Triggers > Inboundrules API
+  description: >-
+    The Triggers > Inboundrules API from Postmark — 1 operation(s) for triggers > inboundrules.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Triggers > Inboundrules
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-triggers-inboundrules-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-triggers-tags-api
+  name: Postmark Triggers > Tags API
+  description: The Triggers > Tags API from Postmark — 1 operation(s) for triggers > tags.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Triggers > Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-triggers-tags-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
+- aid: postmark:postmark-validate-api
+  name: Postmark Validate API
+  description: The Validate API from Postmark — 1 operation(s) for validate.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Validate
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-validate-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/postmark-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/postmark-agentic-access.yml
