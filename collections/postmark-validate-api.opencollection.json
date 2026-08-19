@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Validate API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Validate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Test Template Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/templates/validate"
+          },
+          "docs": "Postmark Test Template Content"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Inbound API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inbound",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Bypass rules for a blocked inbound message",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "//api.postmarkapp.com/messages/inbound/:messageid/bypass",
+            "params": [
+              {
+                "name": "messageid",
+                "value": "<string>",
+                "type": "path",
+                "description": "The ID of the message which should bypass inbound rules."
+              }
+            ]
+          },
+          "docs": "Postmark Bypass rules for a blocked inbound message"
+        },
+        {
+          "info": {
+            "name": "Postmark Inbound message details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/messages/inbound/:messageid/details",
+            "params": [
+              {
+                "name": "messageid",
+                "value": "<string>",
+                "type": "path",
+                "description": "The ID of the message which should bypass inbound rules."
+              }
+            ]
+          },
+          "docs": "Postmark Inbound message details"
+        },
+        {
+          "info": {
+            "name": "Postmark Retry a failed inbound message for processing",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "//api.postmarkapp.com/messages/inbound/:messageid/retry",
+            "params": [
+              {
+                "name": "messageid",
+                "value": "<string>",
+                "type": "path",
+                "description": "The ID of the message which should bypass inbound rules."
+              }
+            ]
+          },
+          "docs": "Postmark Retry a failed inbound message for processing"
+        },
+        {
+          "info": {
+            "name": "Postmark Inbound message search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/messages/inbound",
+            "params": [
+              {
+                "name": "count",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to skip."
+              },
+              {
+                "name": "recipient",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by the user who was receiving the email"
+              },
+              {
+                "name": "fromemail",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by the sender email address"
+              },
+              {
+                "name": "subject",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by email subject"
+              },
+              {
+                "name": "mailboxhash",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by mailboxhash"
+              },
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "status",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by status (`blocked`, `processed`, `queued`, `failed`, `scheduled`)"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Inbound message search"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

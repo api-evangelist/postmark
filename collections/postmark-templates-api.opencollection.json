@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Templates API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Send a batch of email using templates.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/email/batchWithTemplates"
+          },
+          "docs": "Postmark Send a batch of email using templates."
+        },
+        {
+          "info": {
+            "name": "Postmark Get the Templates associated with this Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/templates",
+            "params": [
+              {
+                "name": "count",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to skip."
+              }
+            ]
+          },
+          "docs": "Postmark Get the Templates associated with this Server"
+        },
+        {
+          "info": {
+            "name": "Postmark Test Template Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/templates/validate"
+          },
+          "docs": "Postmark Test Template Content"
+        },
+        {
+          "info": {
+            "name": "Postmark Delete a Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "//api.postmarkapp.com/templates/:templateIdOrAlias",
+            "params": [
+              {
+                "name": "templateIdOrAlias",
+                "value": "<string>",
+                "type": "path",
+                "description": "The 'TemplateID' or 'Alias' value for the Template you wish to delete."
+              }
+            ]
+          },
+          "docs": "Postmark Delete a Template"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

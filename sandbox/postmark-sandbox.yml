@@ -1,0 +1,93 @@
+generated: '2026-08-13'
+method: searched
+source: https://postmarkapp.com/developer/user-guide/sandbox-mode
+docs:
+  - https://postmarkapp.com/developer/user-guide/sandbox-mode
+  - https://postmarkapp.com/developer/user-guide/sandbox-mode/server-sandbox-mode
+  - https://postmarkapp.com/developer/api/overview#authentication
+description: >-
+  Postmark ships two distinct, independently usable test paths: a published
+  sentinel API token that validates a request without sending it, and Sandbox
+  Servers, which are full first-class servers whose mail is delivered to a black
+  hole. Both values below are published verbatim by Postmark.
+provider: Postmark
+providerId: postmark
+has_sandbox: true
+
+modes:
+  - id: test-token
+    name: POSTMARK_API_TEST sentinel token
+    kind: request-validation
+    credential: POSTMARK_API_TEST
+    header: X-Postmark-Server-Token
+    behavior: >-
+      Send the literal string POSTMARK_API_TEST as the server token. Postmark
+      validates the request payload and returns a normal API response without
+      delivering the email. Documented for use when integrating a client library
+      and you only need to know whether your data is valid.
+    published_value: true
+    note: >-
+      This is a real published value from Postmark's own authentication docs,
+      not a secret and not a placeholder.
+
+  - id: sandbox-server
+    name: Sandbox Server (DeliveryType Sandbox)
+    kind: isolated-environment
+    behavior: >-
+      A Sandbox Server never delivers to a recipient — messages go to a black
+      hole. They still appear as Delivered in the Postmark UI, on webhooks, and
+      through the API endpoints, so the whole downstream event surface can be
+      exercised end to end.
+    created_via_ui: >-
+      When creating a Server, choose Sandbox rather than Live.
+    created_via_api:
+      operation: createServer
+      field: DeliveryType
+      value: Sandbox
+      default: Live
+    immutable: >-
+      Once a Server is created with a type (Live or Sandbox) the type cannot be
+      changed.
+    billing_caveat: >-
+      Sandbox sends still run through Postmark's infrastructure and DO count
+      toward the account's monthly sending volume. This is stated twice in
+      Postmark's own docs and is the single most important operational fact
+      about the sandbox.
+
+fixtures_and_triggers:
+  - id: fake-bounces
+    name: Generate fake bounces
+    docs: https://postmarkapp.com/developer/user-guide/sandbox-mode/generate-fake-bounces
+    description: >-
+      Documented tooling for producing bounce events on demand so bounce
+      handling, the bounce webhook and the Bounces API can be exercised without
+      real undeliverable addresses.
+    tool_repo: https://github.com/ActiveCampaign/fakebounce
+
+test_vs_live:
+  key_prefixes: none
+  note: >-
+    Postmark tokens carry no test/live prefix — a server token is a bare GUID
+    and the only signal of mode is which server issued it. There is no
+    equivalent of a `sk_test_` / `sk_live_` distinction, so a client cannot tell
+    from the credential alone whether it is about to send real mail. The one
+    exception is the POSTMARK_API_TEST sentinel above.
+
+not_offered:
+  test_cards: n/a
+  test_bank_accounts: n/a
+  test_clocks: false
+  time_simulation: false
+  note: >-
+    Payments-shaped sandbox primitives do not apply to a transactional email
+    API. No time-travel or clock-advance facility is published for stats or
+    retention windows.
+
+plan_availability: >-
+  Sandbox Mode is listed as included on every Postmark tier (Free, Basic, Pro,
+  Platform) on https://postmarkapp.com/pricing.
+
+history:
+  - date: '2021-06-30'
+    event: Sandbox Mode introduced.
+    source: https://postmarkapp.com/updates

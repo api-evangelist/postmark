@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Servers API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Servers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get Server Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/server"
+          },
+          "docs": "Postmark Get Server Configuration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

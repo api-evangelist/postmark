@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Activate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Activate a bounce",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "//api.postmarkapp.com/bounces/:bounceid/activate",
+            "params": [
+              {
+                "name": "bounceid",
+                "value": "<integer>",
+                "type": "path",
+                "description": "The ID of the bounce to retrieve."
+              }
+            ]
+          },
+          "docs": "Postmark Activate a bounce"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

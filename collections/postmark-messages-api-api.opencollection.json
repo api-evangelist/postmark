@@ -1,0 +1,569 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Messages API API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Messages API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Outbound message search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/messages/outbound",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of messages to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of messages to skip"
+              },
+              {
+                "name": "recipient",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the user who was receiving the email"
+              },
+              {
+                "name": "fromemail",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the sender email address"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by status (`queued` or `sent`)"
+              },
+              {
+                "name": "todate",
+                "value": "",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "fromdate",
+                "value": "",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Outbound message search"
+        },
+        {
+          "info": {
+            "name": "Postmark Outbound message details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/messages/outbound/:messageid/details",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "messageid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the message for which to retrieve details."
+              }
+            ]
+          },
+          "docs": "Postmark Outbound message details"
+        },
+        {
+          "info": {
+            "name": "Postmark Outbound message dump",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/messages/outbound/:messageid/dump",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "messageid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the message for which to retrieve a dump."
+              }
+            ]
+          },
+          "docs": "Postmark Outbound message dump"
+        },
+        {
+          "info": {
+            "name": "Postmark Inbound message search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/messages/inbound",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of messages to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of messages to skip"
+              },
+              {
+                "name": "recipient",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the user who was receiving the email"
+              },
+              {
+                "name": "fromemail",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the sender email address"
+              },
+              {
+                "name": "subject",
+                "value": "",
+                "type": "query",
+                "description": "Filter by email subject"
+              },
+              {
+                "name": "mailboxhash",
+                "value": "",
+                "type": "query",
+                "description": "Filter by mailboxhash"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by status (`blocked`, `processed`, `queued`, `failed`, `scheduled`)"
+              },
+              {
+                "name": "todate",
+                "value": "",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "fromdate",
+                "value": "",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Inbound message search"
+        },
+        {
+          "info": {
+            "name": "Postmark Inbound message details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/messages/inbound/:messageid/details",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "messageid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the message for which to details will be retrieved."
+              }
+            ]
+          },
+          "docs": "Postmark Inbound message details"
+        },
+        {
+          "info": {
+            "name": "Postmark Bypass rules for a blocked inbound message",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "//api.postmarkapp.com/messages/inbound/:messageid/bypass",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "messageid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the message which should bypass inbound rules."
+              }
+            ]
+          },
+          "docs": "Postmark Bypass rules for a blocked inbound message"
+        },
+        {
+          "info": {
+            "name": "Postmark Retry a failed inbound message for processing",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "//api.postmarkapp.com/messages/inbound/:messageid/retry",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "messageid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the inbound message on which we should retry processing."
+              }
+            ]
+          },
+          "docs": "Postmark Retry a failed inbound message for processing"
+        },
+        {
+          "info": {
+            "name": "Postmark Opens for all messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/messages/outbound/opens",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of message opens to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of messages to skip"
+              },
+              {
+                "name": "recipient",
+                "value": "",
+                "type": "query",
+                "description": "Filter by To, Cc, Bcc"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "client_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by client name, i.e. Outlook, Gmail"
+              },
+              {
+                "name": "client_company",
+                "value": "",
+                "type": "query",
+                "description": "Filter by company, i.e. Microsoft, Apple, Google"
+              },
+              {
+                "name": "client_family",
+                "value": "",
+                "type": "query",
+                "description": "Filter by client family, i.e. OS X, Chrome"
+              },
+              {
+                "name": "os_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by full OS name and specific version, i.e. OS X 10.9 Mavericks, Windows 7"
+              },
+              {
+                "name": "os_family",
+                "value": "",
+                "type": "query",
+                "description": "Filter by kind of OS used without specific version, i.e. OS X, Windows"
+              },
+              {
+                "name": "os_company",
+                "value": "",
+                "type": "query",
+                "description": "Filter by company which produced the OS, i.e. Apple Computer, Inc., Microsoft Corporation"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "Filter by platform, i.e. webmail, desktop, mobile"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Filter by country messages were opened in, i.e. Denmark, Russia"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
+              },
+              {
+                "name": "city",
+                "value": "",
+                "type": "query",
+                "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
+              }
+            ]
+          },
+          "docs": "Postmark Opens for all messages"
+        },
+        {
+          "info": {
+            "name": "Postmark Retrieve Message Opens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/messages/outbound/opens/:messageid",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "messageid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Outbound Message for which open statistics should be retrieved."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of message opens to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of messages to skip."
+              }
+            ]
+          },
+          "docs": "Postmark Retrieve Message Opens"
+        },
+        {
+          "info": {
+            "name": "Postmark Clicks for a all messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/messages/outbound/clicks",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of message clicks to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of messages to skip"
+              },
+              {
+                "name": "recipient",
+                "value": "",
+                "type": "query",
+                "description": "Filter by To, Cc, Bcc"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "client_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by client name, i.e. Outlook, Gmail"
+              },
+              {
+                "name": "client_company",
+                "value": "",
+                "type": "query",
+                "description": "Filter by company, i.e. Microsoft, Apple, Google"
+              },
+              {
+                "name": "client_family",
+                "value": "",
+                "type": "query",
+                "description": "Filter by client family, i.e. OS X, Chrome"
+              },
+              {
+                "name": "os_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by full OS name and specific version, i.e. OS X 10.9 Mavericks, Windows 7"
+              },
+              {
+                "name": "os_family",
+                "value": "",
+                "type": "query",
+                "description": "Filter by kind of OS used without specific version, i.e. OS X, Windows"
+              },
+              {
+                "name": "os_company",
+                "value": "",
+                "type": "query",
+                "description": "Filter by company which produced the OS, i.e. Apple Computer, Inc., Microsoft Corporation"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "Filter by platform, i.e. webmail, desktop, mobile"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Filter by country messages were opened in, i.e. Denmark, Russia"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
+              },
+              {
+                "name": "city",
+                "value": "",
+                "type": "query",
+                "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
+              }
+            ]
+          },
+          "docs": "Postmark Clicks for a all messages"
+        },
+        {
+          "info": {
+            "name": "Postmark Retrieve Message Clicks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/messages/outbound/clicks/:messageid",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "messageid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Outbound Message for which click statistics should be retrieved."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of message clicks to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of messages to skip."
+              }
+            ]
+          },
+          "docs": "Postmark Retrieve Message Clicks"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Stats/Outbound API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stats/Outbound",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get bounce counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/bounces",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get bounce counts"
+        },
+        {
+          "info": {
+            "name": "Postmark Get tracked email counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/tracked",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get tracked email counts"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

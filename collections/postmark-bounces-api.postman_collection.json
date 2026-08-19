@@ -1,0 +1,260 @@
+{
+  "item": [
+    {
+      "id": "4167c0e1-2311-4a79-91ce-69db08c04aa8",
+      "name": "Bounces",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ce166375-700b-4f49-a6a1-d4ba5cb92828",
+          "name": "Postmark Get bounces",
+          "request": {
+            "name": "Postmark Get bounces",
+            "description": {},
+            "url": {
+              "path": [
+                "bounces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Number of bounces to return per request. Max 500."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Number of bounces to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by type of bounce"
+                },
+                {
+                  "disabled": false,
+                  "key": "inactive",
+                  "value": "<string>",
+                  "description": "Filter by emails that were deactivated by Postmark due to the bounce. Set to true or false. If this isn't specified it will return both active and inactive."
+                },
+                {
+                  "disabled": false,
+                  "key": "emailFilter",
+                  "value": "<string>",
+                  "description": "Filter by email address"
+                },
+                {
+                  "disabled": false,
+                  "key": "messageID",
+                  "value": "<string>",
+                  "description": "Filter by messageID"
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "Filter by tag"
+                },
+                {
+                  "disabled": false,
+                  "key": "todate",
+                  "value": "<string>",
+                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromdate",
+                  "value": "<string>",
+                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "004ae0ce-5a64-4a1a-8189-f821679de933",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bounces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "inactive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "emailFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "messageID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "todate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9596c004-fb68-4ad2-83be-782155b7863c",
+          "name": "Postmark Get bounced tags",
+          "request": {
+            "name": "Postmark Get bounced tags",
+            "description": {},
+            "url": {
+              "path": [
+                "bounces",
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "883013e1-83a4-4a5e-acb0-1db5859efc75",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bounces",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//api.postmarkapp.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "70f6863d-a9e3-476c-81cc-c04cf7c51ea0",
+    "name": "Postmark Account Activate Bounces API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to\nconfigure all Servers, Domains, and Sender Signatures associated\nwith an Account.\n",
+      "type": "text/plain"
+    }
+  }
+}

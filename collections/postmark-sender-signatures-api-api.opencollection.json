@@ -1,0 +1,224 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Sender Signatures API API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sender Signatures API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark List Sender Signatures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/senders",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip"
+              }
+            ]
+          },
+          "docs": "Postmark List Sender Signatures"
+        },
+        {
+          "info": {
+            "name": "Postmark Create a Sender Signature",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/senders",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Postmark Create a Sender Signature"
+        },
+        {
+          "info": {
+            "name": "Postmark Get a Sender Signature",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/senders/:signatureid",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "signatureid",
+                "value": "",
+                "type": "path",
+                "description": "The ID for the Sender Signature that should be retrieved."
+              }
+            ]
+          },
+          "docs": "Postmark Get a Sender Signature"
+        },
+        {
+          "info": {
+            "name": "Postmark Update a Sender Signature",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "//api.postmarkapp.com/senders/:signatureid",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "signatureid",
+                "value": "",
+                "type": "path",
+                "description": "The ID for the Sender Signature that should be modified by the request."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Postmark Update a Sender Signature"
+        },
+        {
+          "info": {
+            "name": "Postmark Delete a Sender Signature",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "//api.postmarkapp.com/senders/:signatureid",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "signatureid",
+                "value": "",
+                "type": "path",
+                "description": "The ID for the Sender Signature that should be deleted by the request."
+              }
+            ]
+          },
+          "docs": "Postmark Delete a Sender Signature"
+        },
+        {
+          "info": {
+            "name": "Postmark Resend Signature Confirmation Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/senders/:signatureid/resend",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "signatureid",
+                "value": "",
+                "type": "path",
+                "description": "The ID for the Sender Signature that should have its confirmation email resent."
+              }
+            ]
+          },
+          "docs": "Postmark Resend Signature Confirmation Email"
+        },
+        {
+          "info": {
+            "name": "Postmark Request DNS Verification for SPF",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/senders/:signatureid/verifyspf",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "signatureid",
+                "value": "",
+                "type": "path",
+                "description": "The ID for the Sender Signature for which SPF DNS records should be verified."
+              }
+            ]
+          },
+          "docs": "Postmark Request DNS Verification for SPF"
+        },
+        {
+          "info": {
+            "name": "Postmark Request a new DKIM Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/senders/:signatureid/requestnewdkim",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "signatureid",
+                "value": "",
+                "type": "path",
+                "description": "The ID for the Sender Signature for which a new DKIM Key should be generated."
+              }
+            ]
+          },
+          "docs": "Requests a new DKIM key to be created. Until the DNS entries are confirmed,\nthe new values will be in the `DKIMPendingHost` and `DKIMPendingTextValue` fields.\nAfter the new DKIM value is verified in DNS, the pending values will migrate to\n`DKIMTextValue` and `DKIMPendingTextValue` and Postmark will begin to sign emails\nwith the new DKIM key.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

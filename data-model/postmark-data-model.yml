@@ -1,0 +1,221 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/ (47 files, 167 operations, 19 component schemas) + json-schema/
+docs: https://postmarkapp.com/developer/api/overview
+description: >-
+  Entity-relationship graph for the Postmark API, derived from the path
+  hierarchy, the $ref links and the id-reference fields present in the specs in
+  openapi/ and the extracted schemas in json-schema/. Postmark's model is
+  strongly hierarchical: an Account owns Servers, a Server owns everything
+  operational, and almost every resource is reachable only through the token
+  that scopes it.
+provider: Postmark
+providerId: postmark
+
+id_conventions:
+  style: >-
+    Mixed. Postmark uses integer surrogate ids for administrative resources
+    (ServerID, DomainID, SignatureID, BounceID, TriggerID, WebhookID) and a
+    UUID for the one identifier that crosses system boundaries.
+  cross_boundary_identifier:
+    field: MessageID
+    format: UUID
+    note: >-
+      The single most important identifier in the model. Returned by every send,
+      echoed on every webhook event, and the lookup key for message details,
+      dump, opens and clicks. It is the join between the synchronous API and the
+      asynchronous event stream.
+  alias_identifier:
+    field: TemplateAlias
+    applies_to: Template
+    note: >-
+      Templates are addressable by either numeric TemplateId or a
+      human-assigned Alias; the path parameter is literally
+      {templateIdOrAlias}. Postmark's own docs recommend the alias for
+      production sends.
+  stream_identifier:
+    field: MessageStream
+    format: >-
+      Lowercase letters, digits, '-' and '_'; must start with a letter; max 30
+      characters; must not start with the reserved 'pm-' prefix (ErrorCode 1227,
+      1233).
+
+entities:
+  - name: Account
+    scope: account-token
+    description: Billing and identity root. Not directly addressable as a resource.
+  - name: Server
+    scope: account-token (management) / server-token (operation)
+    key: ServerID
+    schemas: [ExtendedServerInfo, CreateServerPayload, EditServerPayload, ServerListingResponse]
+    description: >-
+      The isolation boundary. Each server has its own API token, its own
+      statistics, its own tracking settings and its own DeliveryType
+      (Live | Sandbox).
+  - name: MessageStream
+    scope: server-token
+    key: ID
+    description: >-
+      Transactional, Broadcast or Inbound lane inside a Server. Max 10 per
+      server; exactly one inbound stream per server.
+  - name: Message
+    scope: server-token
+    key: MessageID
+    description: An individual outbound or inbound email.
+  - name: Template
+    scope: server-token
+    key: TemplateId | Alias
+    description: >-
+      Reusable Handlebars-style content. Max 100 per server. A Template may bind
+      to a Layout template.
+  - name: Layout
+    scope: server-token
+    description: >-
+      A Template subtype used as a wrapper; must contain exactly one content
+      placeholder and cannot be deleted while templates depend on it
+      (ErrorCode 1130, 1131).
+  - name: Bounce
+    scope: server-token
+    key: BounceID
+    description: A delivery failure record, with an optional raw SMTP dump.
+  - name: Suppression
+    scope: server-token
+    key: EmailAddress
+    description: >-
+      Per-stream suppressed recipient. Documented in the API reference but not
+      present in the captured OpenAPI.
+  - name: Webhook
+    scope: server-token
+    key: WebhookID
+    description: >-
+      Per-stream event subscription. Documented in the API reference but not
+      present in the captured OpenAPI.
+  - name: InboundRule
+    scope: server-token
+    key: TriggerID
+    description: Blocklist rule for inbound processing, by address or domain.
+  - name: Domain
+    scope: account-token
+    key: ID
+    schemas: [DomainInformation, DomainExtendedInformation, DomainCreationModel, DomainEditingModel, DomainListingResults, DomainSPFResult, DKIMRotationResponse]
+    description: Sending domain with DKIM, SPF and Return-Path verification state.
+  - name: SenderSignature
+    scope: account-token
+    key: ID
+    schemas: [SenderSignatureInformation, SenderSignatureExtendedInformation, SenderSignatureCreationModel, SenderSignatureEditingModel, SenderListingResults]
+    description: A single verified From address, confirmed by email.
+  - name: DataRemovalRequest
+    scope: account-token
+    description: GDPR-style erasure request. Documented since 2023-12-08.
+
+relationships:
+  - from: Account
+    to: Server
+    type: has_many
+    via: ServerID
+  - from: Account
+    to: Domain
+    type: has_many
+    via: ID
+  - from: Account
+    to: SenderSignature
+    type: has_many
+    via: ID
+  - from: Server
+    to: MessageStream
+    type: has_many
+    via: MessageStream
+    constraint: max 10 per server; exactly one Inbound
+  - from: Server
+    to: Message
+    type: has_many
+    via: MessageID
+  - from: Server
+    to: Template
+    type: has_many
+    via: TemplateId
+    constraint: max 100 per server
+  - from: Server
+    to: Webhook
+    type: has_many
+    via: WebhookID
+  - from: Server
+    to: InboundRule
+    type: has_many
+    via: TriggerID
+  - from: MessageStream
+    to: Message
+    type: has_many
+    via: MessageStream
+  - from: MessageStream
+    to: Suppression
+    type: has_many
+    via: EmailAddress
+  - from: Message
+    to: Bounce
+    type: has_one
+    via: MessageID
+  - from: Message
+    to: OpenEvent
+    type: has_many
+    via: MessageID
+  - from: Message
+    to: ClickEvent
+    type: has_many
+    via: MessageID
+  - from: Message
+    to: Template
+    type: belongs_to
+    via: TemplateAlias | TemplateId
+    optional: true
+  - from: Message
+    to: SenderSignature
+    type: belongs_to
+    via: From
+    constraint: >-
+      Send fails with ErrorCode 400/401 if the From address has no confirmed
+      sender signature.
+  - from: Template
+    to: Layout
+    type: belongs_to
+    via: LayoutTemplate
+    optional: true
+  - from: Bounce
+    to: Suppression
+    type: has_one
+    via: EmailAddress
+    note: >-
+      A hard bounce or spam complaint automatically creates a suppression;
+      activateBounce is what reverses it.
+  - from: Domain
+    to: SenderSignature
+    type: has_many
+    via: Name
+  - from: TemplatesPushModel
+    to: Server
+    type: belongs_to
+    via: SourceServerId
+  - from: TemplatesPushModel
+    to: Server
+    type: belongs_to
+    via: DestinationServerId
+
+event_projection:
+  note: >-
+    The webhook event types in asyncapi/postmark-webhooks-asyncapi.yml are the
+    asynchronous projection of this model. Every event carries RecordType as its
+    discriminator plus MessageID, MessageStream, Tag and Metadata — which is
+    what lets a consumer rejoin an event to the Message and the caller's own
+    domain object.
+
+coverage_caveat: >-
+  Only 19 component schemas exist across all 47 captured specs, and they cover
+  Domains, Sender Signatures, Servers and Template push. Messages, Templates,
+  Bounces, Stats, Suppressions and Webhooks are described in the specs by path
+  and parameters but carry no named response schema, so those entities above are
+  derived from path structure, path/query parameters and the published error
+  catalog rather than from typed schemas. Suppressions and Webhooks are absent
+  from the captured OpenAPI entirely and are recorded from the API reference.
+
+entity_count: 13
+relationship_count: 20

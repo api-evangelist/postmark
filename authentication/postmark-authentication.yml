@@ -1,0 +1,99 @@
+generated: '2026-08-13'
+method: searched
+source: https://postmarkapp.com/developer/api/overview#authentication
+docs: https://postmarkapp.com/developer/api/overview#authentication
+description: >-
+  Postmark authenticates every REST request with a static API token sent in a
+  custom HTTP header. There is no OAuth 2.0, no OIDC, no mTLS and no scoped
+  credential of any kind — a token grants everything at its level. Derived
+  automatically from the OpenAPI first, but every spec in openapi/ declares an
+  EMPTY components.securitySchemes, so the whole profile below is authored from
+  Postmark's own authentication documentation.
+provider: Postmark
+providerId: postmark
+baseURL: https://api.postmarkapp.com
+transport_security: >-
+  TLS enforced. Postmark stopped accepting API requests over plain HTTP
+  (announced 2022-09-01, https://postmarkapp.com/updates).
+
+schemes:
+  - id: serverToken
+    type: apiKey
+    in: header
+    name: X-Postmark-Server-Token
+    level: server
+    description: >-
+      Server-level privileges. Found on the API Tokens tab of a Postmark server.
+      Accessible to Account Owners, Account Admins, and users with Server Admin
+      privileges on that server.
+    used_by:
+      - Email (single, batch, template, bulk)
+      - Bounces
+      - Templates
+      - Messages (outbound + inbound search and details)
+      - Stats
+      - Webhooks
+      - Message Streams
+      - Suppressions
+      - Triggers / inbound rules
+      - Current server configuration (GET/PUT /server)
+    scopes: []
+
+  - id: accountToken
+    type: apiKey
+    in: header
+    name: X-Postmark-Account-Token
+    level: account
+    description: >-
+      Account-level privileges. Found on the API Tokens tab of the Postmark
+      account. Accessible to the Account Owner and Account Admins only.
+    used_by:
+      - Servers (list/create/edit/delete)
+      - Domains
+      - Sender signatures
+      - Data removal requests
+    scopes: []
+
+  - id: smtpToken
+    type: smtp-credential
+    in: smtp-auth
+    name: SMTP Token
+    level: server
+    description: >-
+      Separate credential class for SMTP sending, introduced 2021-07-29 to
+      support Broadcast Message Streams over SMTP. Not used by the REST API.
+    used_by:
+      - SMTP submission
+    scopes: []
+
+conventions:
+  header_case_sensitivity: >-
+    Postmark documents that both the header name and its value are case
+    insensitive.
+  missing_or_wrong_token: HTTP 401 Unauthorized
+  bad_token_error_code: >-
+    ErrorCode 10 — "Bad or missing API token" — returned in the 422 JSON error
+    envelope when the token is present but not valid for the operation.
+  test_token: >-
+    POSTMARK_API_TEST is a published, documented sentinel value. Sending it in
+    X-Postmark-Server-Token validates the request without delivering mail. It is
+    a real published value, not a secret. See sandbox/postmark-sandbox.yml.
+
+gaps:
+  - >-
+    No scoped or least-privilege credential exists. Postmark's own MCP server
+    README states it plainly: "Neither supports sub-scoped permissions — a
+    Server Token grants full access to all operations on the server it belongs
+    to." The vendor's recommended mitigation is structural (dedicate a server to
+    the integration), not a permissions model.
+  - >-
+    No documented token rotation or expiry policy. Tokens are long-lived and
+    rotated manually from the UI.
+  - >-
+    Every OpenAPI file in openapi/ declares no securitySchemes and no security
+    requirement, so a code generator reading the spec alone produces an
+    unauthenticated client. overlays/ carries the repair.
+  - >-
+    IP allow-listing against Postmark's API was deprecated on 2023-07-18
+    (https://postmarkapp.com/updates), removing a network-layer control that
+    previously supplemented the static token.

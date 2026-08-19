@@ -1,0 +1,256 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/ + authentication/postmark-authentication.yml +
+  errors/postmark-problem-types.yml + conventions/postmark-conventions.yml,
+  cross-checked against https://postmarkapp.com/security and
+  https://postmarkapp.com/developer/api/overview
+description: >-
+  Assertions about which industry and cross-cutting standards the Postmark API
+  conforms to. Every entry carries evidence, and a `conforms: false` here is a
+  measurement, not a criticism — most of these standards simply do not apply to
+  a transactional email API.
+provider: Postmark
+providerId: postmark
+
+standards:
+  - id: openapi
+    name: OpenAPI 3.x
+    conforms: true
+    evidence: >-
+      47 OpenAPI documents in openapi/ covering 167 operations. NOTE: these were
+      harvested and refined by API Evangelist. Postmark does not publish an
+      OpenAPI definition itself — api.postmarkapp.com/openapi.json,
+      /openapi.yaml, /swagger.json and /api-docs all returned 404 on 2026-08-13.
+    published_by_provider: false
+
+  - id: asyncapi
+    name: AsyncAPI 2.6
+    conforms: true
+    evidence: >-
+      asyncapi/postmark-webhooks-asyncapi.yml describes the outbound webhook
+      surface. Also API Evangelist-authored; Postmark publishes no AsyncAPI.
+    published_by_provider: false
+
+  - id: json-schema
+    name: JSON Schema 2020-12
+    conforms: true
+    evidence: 19 extracted component schemas in json-schema/, $schema draft 2020-12.
+    published_by_provider: false
+
+  - id: rest
+    name: REST / resource-oriented HTTP
+    conforms: true
+    evidence: >-
+      Postmark's own overview states "The Postmark API is built on REST
+      principles." Resource-shaped paths, correct verb usage (GET/POST/PUT/
+      DELETE), 401/404/413/415/422/429/500/503 status semantics.
+
+  - id: rfc9457
+    name: RFC 9457 Problem Details for HTTP APIs
+    conforms: false
+    evidence: >-
+      Errors are returned as application/json with a proprietary
+      {ErrorCode, Message} envelope. No application/problem+json media type, no
+      type/title/status/detail/instance members.
+
+  - id: rfc8594
+    name: RFC 8594 Sunset / Deprecation headers
+    conforms: false
+    evidence: >-
+      No Sunset or Deprecation response headers. Deprecations are announced
+      editorially at https://postmarkapp.com/updates. See
+      lifecycle/postmark-lifecycle.yml.
+
+  - id: rfc8615
+    name: RFC 8615 well-known URIs
+    conforms: false
+    evidence: >-
+      Every /.well-known/ path probed on postmarkapp.com and
+      api.postmarkapp.com returned 404 on 2026-08-13. See
+      well-known/postmark-well-known.yml.
+
+  - id: rfc9116
+    name: RFC 9116 security.txt
+    conforms: false
+    evidence: >-
+      404 at https://postmarkapp.com/.well-known/security.txt,
+      https://postmarkapp.com/security.txt and
+      https://www.activecampaign.com/.well-known/security.txt.
+
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: false
+    evidence: >-
+      Static API tokens only (X-Postmark-Server-Token /
+      X-Postmark-Account-Token). No authorization server, no token endpoint, no
+      grants. Confirmed by 404 on /.well-known/oauth-authorization-server.
+
+  - id: oidc
+    name: OpenID Connect
+    conforms: false
+    evidence: 404 on /.well-known/openid-configuration. No OIDC surface.
+
+  - id: scim
+    name: SCIM 2.0
+    conforms: false
+    evidence: >-
+      User management is UI-only. Postmark documents user roles and per-server
+      permissions on https://postmarkapp.com/security but exposes no user
+      provisioning API.
+
+  - id: pagination
+    name: Offset/limit pagination
+    conforms: true
+    evidence: >-
+      `count` and `offset` query parameters with a TotalCount response field
+      across Messages, Bounces, Templates, Servers, Domains and Senders. No
+      cursor paging.
+
+  - id: idempotency
+    name: Idempotent request keys
+    conforms: false
+    evidence: >-
+      No Idempotency-Key header and no documented request de-duplication. A
+      retried POST /email sends a second email. See
+      conventions/postmark-conventions.yml.
+
+  - id: rate-limit-headers
+    name: RateLimit header fields (draft-ietf-httpapi-ratelimit-headers)
+    conforms: false
+    evidence: >-
+      No RateLimit-* or X-RateLimit-* response headers are documented. Only
+      Retry-After on 429. See rate-limits/postmark-rate-limits.yml.
+
+  - id: mcp
+    name: Model Context Protocol
+    conforms: true
+    evidence: >-
+      Official MCP server at https://github.com/ActiveCampaign/postmark-mcp,
+      24 tools, MIT-licensed, with readOnlyHint/destructiveHint/idempotentHint
+      annotations. Local-stdio distribution only — no hosted endpoint. See
+      mcp/postmark-mcp.yml.
+    published_by_provider: true
+
+  - id: agent-skills
+    name: Agent Skills
+    conforms: true
+    evidence: >-
+      Five provider-published Agent Skills at
+      https://github.com/ActiveCampaign/postmark-skills, announced 2026-02-27.
+    published_by_provider: true
+
+  - id: llmstxt
+    name: llms.txt
+    conforms: true
+    evidence: >-
+      https://postmarkapp.com/llms.txt returns 200 with a real llms.txt
+      document (28,172 bytes), published 2025-10-15. Saved verbatim to
+      llms/postmark-llms.txt.
+    published_by_provider: true
+
+  - id: a2a
+    name: A2A Agent Card
+    conforms: false
+    evidence: >-
+      404 on /.well-known/agent-card.json and /.well-known/agent.json on both
+      postmarkapp.com and api.postmarkapp.com, 2026-08-13.
+
+  - id: graphql
+    name: GraphQL
+    conforms: false
+    evidence: >-
+      404 at https://api.postmarkapp.com/graphql, 2026-08-13. Postmark ships no
+      GraphQL API.
+
+  - id: grpc
+    name: gRPC / Protobuf
+    conforms: false
+    evidence: No .proto published in the GitHub org, on buf.build, or in the docs.
+
+  - id: smtp
+    name: SMTP submission
+    conforms: true
+    evidence: >-
+      Postmark offers full SMTP submission alongside the REST API, with
+      dedicated SMTP Tokens (introduced 2021-07-29) and SMTP header controls
+      (X-PM-TrackOpens, X-PM-TrackLinks). This is the domain-native protocol for
+      this category.
+
+  - id: email-auth
+    name: DKIM / SPF / DMARC
+    conforms: true
+    evidence: >-
+      First-class API support: verifydkim, verifyspf, verifyreturnpath and
+      rotatedkim operations on Domains, plus per-signature DKIM requests.
+      Postmark also sells DMARC Digests as a monitoring add-on.
+
+  - id: tls
+    name: TLS in transit
+    conforms: true
+    evidence: >-
+      TLSv1.3 on both postmarkapp.com and api.postmarkapp.com with HSTS
+      (max-age 2592000), probed 2026-08-13. HTTP support removed 2022-09-01.
+      Opportunistic TLS on outbound mail.
+
+  - id: gdpr
+    name: GDPR
+    conforms: true
+    evidence: >-
+      Dedicated EU data protection page (https://postmarkapp.com/eu-privacy,
+      200), GDPR compliance listed on every pricing tier, and a Data Removal API
+      shipped 2023-12-08.
+
+  - id: soc2
+    name: SOC 2
+    conforms: true
+    evidence: >-
+      Held by the parent company. ActiveCampaign's security page states the
+      company is "heavily focused on GDPR, SOC 2, and HIPAA compliance" and its
+      Trust Center (https://trust.activecampaign.com/, 200) offers self-service
+      access to the latest SOC 2 report. Postmark's own security page separately
+      cites an SSAE 16 SOC 1 Type 2 accredited data-center facility. See
+      security/postmark-trust-center.yml for the scope caveats.
+    scope: parent-company
+
+  - id: pci-dss
+    name: PCI DSS
+    conforms: false
+    evidence: >-
+      Postmark's security page is explicit that PCI Level 1 certification is
+      STRIPE's, not Postmark's: "We partner with Stripe to manage payments on
+      Postmark... Postmark does not have access to customers' credit card data
+      at all." Recorded as not-conforming for Postmark itself, because the
+      certification belongs to a processor.
+
+  - id: fhir
+    name: FHIR
+    conforms: false
+    evidence: Not a healthcare API.
+  - id: fapi
+    name: FAPI
+    conforms: false
+    evidence: Not a financial API.
+  - id: psd2
+    name: PSD2
+    conforms: false
+    evidence: Not a payments API.
+  - id: odata
+    name: OData
+    conforms: false
+    evidence: No OData query surface.
+  - id: jsonapi
+    name: 'JSON:API'
+    conforms: false
+    evidence: >-
+      Responses are PascalCase vendor objects, not JSON:API
+      data/attributes/relationships documents.
+
+summary:
+  asserted: 30
+  conforming: 13
+  not_conforming: 17
+  provider_published_agent_standards:
+    - mcp
+    - agent-skills
+    - llmstxt

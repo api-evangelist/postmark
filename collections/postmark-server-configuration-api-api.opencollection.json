@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Server Configuration API API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Server Configuration API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get Server Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/server",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Postmark Get Server Configuration"
+        },
+        {
+          "info": {
+            "name": "Postmark Edit Server Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "//api.postmarkapp.com/server",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Postmark Edit Server Configuration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

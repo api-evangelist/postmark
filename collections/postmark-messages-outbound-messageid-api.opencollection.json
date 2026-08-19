@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Messages > Outbound > {Messageid} API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Messages > Outbound > {Messageid}",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Outbound message details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/messages/outbound/:messageid/details",
+            "params": [
+              {
+                "name": "messageid",
+                "value": "<string>",
+                "type": "path",
+                "description": "The ID of the message which should bypass inbound rules."
+              }
+            ]
+          },
+          "docs": "Postmark Outbound message details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

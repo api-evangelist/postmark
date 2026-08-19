@@ -4,26 +4,159 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Postmark
 providerId: postmark
 created: '2026-05-04'
-modified: '2026-05-04'
+# 2026-08-13: upgraded generated -> searched, and CORRECTED. The 2026-05-04 sweep
+# asserted a `Retry-After` response header and a per-second request limit. Neither
+# is documented anywhere on postmarkapp.com — see unverified_claims_removed below.
+method: searched
+modified: '2026-08-13'
 reconciled: true
 tags:
   - Rate Limiting
   - Email
-description: Postmark API rate limits per server.
+description: >-
+  Postmark publishes NO numeric API rate limit and NO rate-limit response
+  headers. It documents that a 429 exists and that you should slow down, and it
+  documents hard payload/recipient caps that behave like limits. The only
+  numeric throttle Postmark states anywhere is a self-policed SMTP connection
+  recommendation.
 sources:
-  - https://postmarkapp.com/pricing
   - https://postmarkapp.com/developer/api/overview
+  - https://postmarkapp.com/support/article/do-we-have-rate-limits-for-smtp
+  - https://postmarkapp.com/llms.txt
+  - https://postmarkapp.com/pricing
+
 headers:
-  retryAfter: Retry-After
+  request: []
+  response: []
+  retryAfter: null
+  rateLimitRemaining: null
+  rateLimitReset: null
+  note: >-
+    Probed the developer overview, the webhooks overview, the official-libraries
+    page, the pricing page, the sandbox pages and llms.txt on 2026-08-13 —
+    zero occurrences of Retry-After, RateLimit-*, or X-RateLimit-*. An agent
+    that hits a 429 gets a status code and nothing else: no budget, no reset
+    time, no recommended backoff. This is the single biggest runtime-semantics
+    gap in the profile.
+    https://postmarkapp.com/developer/user-guide/rate-limits returns HTTP 200
+    but serves Postmark's "Oops, page not found" body — a soft 404, not a rate
+    limits page.
+
 responseCodes:
   throttled: 429
+  throttledTitle: Rate Limit Exceeded
+  throttledMeaning: >-
+    "We have detected that you are making requests at a rate that exceeds
+    acceptable use of the API. You should reduce the rate at which you query the
+    API." — https://postmarkapp.com/developer/api/overview
+  payloadTooLarge: 413
+
 limits:
-  - name: Email API send
-    scope: server
-    metric: messages_per_request_batch
+  - name: Batch Email API messages per call
+    scope: request
+    metric: messages_per_request
     limit: 500
     timeFrame: request
-  - name: Email API rate
+    enforced: true
+    errorCode: 410
+    source: https://postmarkapp.com/developer/api/overview
+  - name: Recipients per message
+    scope: request
+    metric: recipients_per_message
+    limit: 50
+    timeFrame: request
+    enforced: true
+    note: To, Cc and Bcc combined.
+    source: https://postmarkapp.com/llms.txt
+  - name: Single message size
+    scope: request
+    metric: bytes_per_message
+    limit: 10485760
+    human: 10 MB including attachments
+    timeFrame: request
+    enforced: true
+    httpStatus: 413
+  - name: Batch/Bulk payload size
+    scope: request
+    metric: bytes_per_request
+    limit: 52428800
+    human: 50 MB
+    timeFrame: request
+    enforced: true
+    httpStatus: 413
+  - name: Body field size
+    scope: request
+    metric: bytes_per_field
+    limit: 5242880
+    human: 5 MB each for TextBody and HtmlBody
+    timeFrame: request
+    enforced: true
+  - name: SMTP concurrent connections
+    scope: client-ip
+    metric: concurrent_connections
+    limit: 10
+    timeFrame: concurrent
+    enforced: false
+    note: >-
+      Postmark's own words: "We recommend that customers limit the total number
+      of connections to our SMTP endpoint to 10 concurrent connections, per IP"
+      and "We do not have any systems in place to enforce these limits, we rely
+      on customers to self-police and be good actors on our systems."
+    source: https://postmarkapp.com/support/article/do-we-have-rate-limits-for-smtp
+  - name: Monthly email volume
+    scope: account
+    metric: emails_per_month
+    limit: plan-dependent
+    timeFrame: month
+    enforced: true
+    note: >-
+      100/month on Free with no overage permitted; paid tiers meter overage per
+      1,000 emails. See plans/postmark-plans-pricing.yml.
+  - name: Daily email limit
+    scope: account
+    metric: emails_per_day
+    limit: unlimited
+    timeFrame: day
+    enforced: false
+    note: Published as "Unlimited" on every tier on the pricing page.
+  - name: Templates per server
     scope: server
-    metric: requests_per_second
-    limit: soft (raise via support)
+    metric: templates
+    limit: 100
+    enforced: true
+    errorCode: 1105
+  - name: Message streams per server
+    scope: server
+    metric: message_streams
+    limit: 10
+    enforced: true
+    errorCode: 1225
+  - name: Tag length
+    scope: request
+    metric: characters
+    limit: 1000
+    enforced: true
+
+api_request_rate:
+  documented: false
+  numeric_limit: null
+  note: >-
+    Postmark documents that an API rate limit exists and that exceeding it
+    returns 429, but publishes no number for it — not per second, per minute or
+    per hour, and not per token, server or account. Raising it is a support
+    conversation.
+
+unverified_claims_removed:
+  - claim: 'headers.retryAfter: Retry-After'
+    reason: >-
+      Not documented on any Postmark page checked on 2026-08-13. Removed rather
+      than carried forward, because a false header contract is worse for an
+      agent than a recorded absence.
+  - claim: 'Email API rate: requests_per_second, "soft (raise via support)"'
+    reason: >-
+      No requests-per-second limit is published anywhere. The "raise via
+      support" part is plausible but unsourced, so the whole entry was dropped
+      and replaced with api_request_rate above, which states the absence
+      honestly.
+
+limit_count: 11

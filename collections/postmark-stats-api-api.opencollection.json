@@ -1,0 +1,462 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Stats API API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stats API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get outbound overview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+              },
+              {
+                "name": "todate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get outbound overview"
+        },
+        {
+          "info": {
+            "name": "Postmark Get sent counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/sends",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+              },
+              {
+                "name": "todate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get sent counts"
+        },
+        {
+          "info": {
+            "name": "Postmark Get bounce counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/bounces",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+              },
+              {
+                "name": "todate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get bounce counts"
+        },
+        {
+          "info": {
+            "name": "Postmark Get spam complaints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/spam",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+              },
+              {
+                "name": "todate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get spam complaints"
+        },
+        {
+          "info": {
+            "name": "Postmark Get tracked email counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/tracked",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+              },
+              {
+                "name": "todate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get tracked email counts"
+        },
+        {
+          "info": {
+            "name": "Postmark Get email open counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/opens",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+              },
+              {
+                "name": "todate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get email open counts"
+        },
+        {
+          "info": {
+            "name": "Postmark Get email platform usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/opens/platforms",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+              },
+              {
+                "name": "todate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get email platform usage"
+        },
+        {
+          "info": {
+            "name": "Postmark Get email client usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/opens/emailclients",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+              },
+              {
+                "name": "todate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get email client usage"
+        },
+        {
+          "info": {
+            "name": "Postmark Get click counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/clicks",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+              },
+              {
+                "name": "todate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get click counts"
+        },
+        {
+          "info": {
+            "name": "Postmark Get browser usage by family",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/clicks/browserfamilies",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+              },
+              {
+                "name": "todate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get browser usage by family"
+        },
+        {
+          "info": {
+            "name": "Postmark Get browser plaform usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/clicks/platforms",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+              },
+              {
+                "name": "todate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get browser plaform usage"
+        },
+        {
+          "info": {
+            "name": "Postmark Get clicks by body location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/clicks/location",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+              },
+              {
+                "name": "todate",
+                "value": "",
+                "type": "query",
+                "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get clicks by body location"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

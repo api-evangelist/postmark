@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "1b55eccd-7f50-4d6d-a75e-0911802e2521",
+      "name": "Emailclients",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e5979a3d-f5ee-4cfb-a242-332123b088b1",
+          "name": "Postmark Get email client usage",
+          "request": {
+            "name": "Postmark Get email client usage",
+            "description": {},
+            "url": {
+              "path": [
+                "stats",
+                "outbound",
+                "opens",
+                "emailclients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "Filter by tag"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromdate",
+                  "value": "<string>",
+                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+                },
+                {
+                  "disabled": false,
+                  "key": "todate",
+                  "value": "<string>",
+                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b0859ce-8cd7-4463-812e-efec7695205b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "opens",
+                    "emailclients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "todate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//api.postmarkapp.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4c966ace-c737-4f8f-95ae-767dd5dcb731",
+    "name": "Postmark Account Activate Emailclients API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to\nconfigure all Servers, Domains, and Sender Signatures associated\nwith an Account.\n",
+      "type": "text/plain"
+    }
+  }
+}

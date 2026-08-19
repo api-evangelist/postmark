@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Bounceid API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bounceid",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get a single bounce",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/bounces/:bounceid",
+            "params": [
+              {
+                "name": "bounceid",
+                "value": "<integer>",
+                "type": "path",
+                "description": "The ID of the bounce to retrieve."
+              }
+            ]
+          },
+          "docs": "Postmark Get a single bounce"
+        },
+        {
+          "info": {
+            "name": "Postmark Activate a bounce",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "//api.postmarkapp.com/bounces/:bounceid/activate",
+            "params": [
+              {
+                "name": "bounceid",
+                "value": "<integer>",
+                "type": "path",
+                "description": "The ID of the bounce to retrieve."
+              }
+            ]
+          },
+          "docs": "Postmark Activate a bounce"
+        },
+        {
+          "info": {
+            "name": "Postmark Get bounce dump",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/bounces/:bounceid/dump",
+            "params": [
+              {
+                "name": "bounceid",
+                "value": "<integer>",
+                "type": "path",
+                "description": "The ID of the bounce to retrieve."
+              }
+            ]
+          },
+          "docs": "Postmark Get bounce dump"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

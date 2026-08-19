@@ -1,0 +1,249 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Domains API API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Domains API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark List Domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/domains",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip"
+              }
+            ]
+          },
+          "docs": "Postmark List Domains"
+        },
+        {
+          "info": {
+            "name": "Postmark Create a Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/domains",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Postmark Create a Domain"
+        },
+        {
+          "info": {
+            "name": "Postmark Get a Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/domains/:domainid",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "domainid",
+                "value": "",
+                "type": "path",
+                "description": "The ID for the Domain that should be retrieved."
+              }
+            ]
+          },
+          "docs": "Postmark Get a Domain"
+        },
+        {
+          "info": {
+            "name": "Postmark Update a Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "//api.postmarkapp.com/domains/:domainid",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "domainid",
+                "value": "",
+                "type": "path",
+                "description": "The ID for the Domain that should be modified by the request."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Postmark Update a Domain"
+        },
+        {
+          "info": {
+            "name": "Postmark Delete a Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "//api.postmarkapp.com/domains/:domainid",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "domainid",
+                "value": "",
+                "type": "path",
+                "description": "The ID for the Domain that should be deleted by the request."
+              }
+            ]
+          },
+          "docs": "Postmark Delete a Domain"
+        },
+        {
+          "info": {
+            "name": "Postmark Request DNS Verification for DKIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "//api.postmarkapp.com/domains/:domainid/verifydkim",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "domainid",
+                "value": "",
+                "type": "path",
+                "description": "The ID for the Domain for which DKIM DNS records should be verified."
+              }
+            ]
+          },
+          "docs": "Postmark Request DNS Verification for DKIM"
+        },
+        {
+          "info": {
+            "name": "Postmark Request DNS Verification for Return-Path",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "//api.postmarkapp.com/domains/:domainid/verifyreturnpath",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "domainid",
+                "value": "",
+                "type": "path",
+                "description": "The ID for the Domain for which Return-Path DNS records should be verified."
+              }
+            ]
+          },
+          "docs": "Postmark Request DNS Verification for Return-Path"
+        },
+        {
+          "info": {
+            "name": "Postmark Request DNS Verification for SPF",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/domains/:domainid/verifyspf",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "domainid",
+                "value": "",
+                "type": "path",
+                "description": "The ID for the Domain for which SPF DNS records should be verified."
+              }
+            ]
+          },
+          "docs": "Postmark Request DNS Verification for SPF"
+        },
+        {
+          "info": {
+            "name": "Postmark Rotate DKIM Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/domains/:domainid/rotatedkim",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "domainid",
+                "value": "",
+                "type": "path",
+                "description": "The ID for the Sender Signature for which a new DKIM Key should be generated."
+              }
+            ]
+          },
+          "docs": "Creates a new DKIM key to replace your current key. Until the DNS entries are confirmed,\nthe new values will be in the `DKIMPendingHost` and `DKIMPendingTextValue` fields.\nAfter the new DKIM value is verified in DNS, the pending values will migrate to\n`DKIMTextValue` and `DKIMPendingTextValue` and Postmark will begin to sign emails\nwith the new DKIM key.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

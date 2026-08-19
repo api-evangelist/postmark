@@ -1,0 +1,85 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Postmark Account Activate Domains API API
+  version: 1.0.0
+x-generated: '2026-08-13'
+x-method: generated
+x-source: derived from authentication/postmark-authentication.yml, errors/postmark-problem-types.yml and
+  conventions/postmark-conventions.yml against openapi/postmark-domains-api-api-openapi.yml
+x-note: 'Non-destructive. The underlying OpenAPI is never mutated. Every action below adds something Postmark
+  documents on postmarkapp.com but does not express in the machine-readable contract: the two authentication
+  schemes, the https scheme on the server URL (the harvested spec carries a protocol-relative "//api.postmarkapp.com/"),
+  contact/licence metadata, and the six documented HTTP error statuses missing from every operation.'
+extends: ../openapi/postmark-domains-api-api-openapi.yml
+actions:
+- target: $.info
+  description: Add publisher contact and terms metadata documented on postmarkapp.com.
+  update:
+    contact:
+      name: Postmark Support
+      url: https://postmarkapp.com/support
+    termsOfService: https://postmarkapp.com/terms-of-service
+    x-provider: Postmark (ActiveCampaign, LLC)
+    x-documentation: https://postmarkapp.com/developer/api/overview
+- target: $
+  description: Pin the production server to an absolute https URL. Postmark enforces TLS and stopped accepting
+    plain HTTP on 2022-09-01; the harvested spec carries a scheme-relative server URL that is not a valid
+    absolute URL.
+  update:
+    servers:
+    - url: https://api.postmarkapp.com
+      description: Postmark production API
+- target: $.components
+  description: Declare the two API token schemes. Every Postmark spec in this repo ships with no securitySchemes
+    at all, so a generator reading the spec alone emits an unauthenticated client.
+  update:
+    securitySchemes:
+      serverToken:
+        type: apiKey
+        in: header
+        name: X-Postmark-Server-Token
+        description: Server-level API token. Send POSTMARK_API_TEST to validate a request without delivering
+          mail.
+      accountToken:
+        type: apiKey
+        in: header
+        name: X-Postmark-Account-Token
+        description: Account-level API token, required by Servers, Domains, Sender Signatures and Data
+          Removal.
+- target: $.paths.*.*.responses
+  description: Add the documented HTTP statuses absent from every operation. The specs declare only 200,
+    422 and 500; Postmark also documents 401, 404, 413, 415, 429 and 503.
+  update:
+    '401':
+      description: Unauthorized — missing or incorrect API token in header.
+    '404':
+      description: Entity doesn't exist — the requested resource or ID was not found.
+    '413':
+      description: Payload Too Large — over 10 MB (Email API) or 50 MB (Batch/Bulk).
+    '415':
+      description: Unsupported Media Type — Accept and Content-Type must be application/json.
+    '429':
+      description: Rate Limit Exceeded — reduce request rate. No RateLimit-* or Retry-After header is
+        returned.
+    '503':
+      description: Service Unavailable — planned maintenance window.
+- target: $
+  description: Record cross-cutting runtime semantics captured in conventions/postmark-conventions.yml.
+  update:
+    x-error-envelope:
+      mediaType: application/json
+      shape: '{"ErrorCode": <int>, "Message": "<string>"}'
+      rfc9457: false
+      catalog: ../errors/postmark-problem-types.yml
+    x-idempotency:
+      supported: false
+      note: Postmark publishes no idempotency key. A retried send is a second send.
+    x-pagination:
+      style: offset-limit
+      params:
+      - count
+      - offset
+      totalField: TotalCount
+    x-versioning:
+      scheme: unversioned
+      changelog: https://postmarkapp.com/updates

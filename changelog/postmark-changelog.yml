@@ -1,0 +1,178 @@
+generated: '2026-08-13'
+method: searched
+source: https://postmarkapp.com/updates
+docs: https://postmarkapp.com/updates
+description: >-
+  Postmark publishes a dated, categorised product changelog at
+  https://postmarkapp.com/updates ("Latest updates"), filterable by Web, Mobile,
+  API, Labs, Libraries and Company. 106 dated entries were readable on
+  2026-08-13, the oldest reaching back to 2013. The recent window is captured
+  below. NOTE: the ChangeLog link previously carried in apis.yml
+  (https://postmarkapp.com/changelog) returns 404 — /updates is the live page.
+provider: Postmark
+providerId: postmark
+
+scheme:
+  api_versioning: unversioned
+  version_pinning: false
+  changelog_form: dated editorial post list, categorised
+  machine_readable: false
+  rss: null
+  note: >-
+    There is no version number to track. Breaking changes are announced as dated
+    posts with lead time (e.g. the 2022-09-01 HTTP deprecation carried a
+    2022-09-12 reminder), and there is no way for a client to pin behaviour.
+  current_version: null
+
+categories:
+  - Web
+  - Mobile
+  - API
+  - Labs
+  - Libraries
+  - Company
+
+entries:
+  - date: '2026-07-14'
+    category: Labs
+    title: "Postmark's MCP server: now with 24 tools and delivery diagnostics"
+    breaking: false
+    additions:
+      - 24 MCP tools across email, templates, messages, bounces, suppressions, stats, server info and webhooks
+      - diagnoseDelivery composite tool
+      - MCP read-only / destructive / idempotent tool annotations
+      - Masked-by-default logging, HTTPS enforcement, optional webhook URL allowlist
+
+  - date: '2026-06-09'
+    category: Libraries
+    title: 'Python SDK v0.3.0: now with sync support'
+    breaking: false
+    additions:
+      - Synchronous wrapper alongside the async-first client
+      - Sync and async variants of every example
+
+  - date: '2026-04-30'
+    category: Libraries
+    title: Python SDK now available
+    breaking: false
+    additions:
+      - Official async-first Python SDK (Python 3.10+), ServerClient and AccountClient
+
+  - date: '2026-03-05'
+    category: API
+    title: Send bulk email at scale
+    breaking: false
+    additions:
+      - New Bulk API — content defined once at request level, recipient list supplied separately
+      - Up to 50 MB per request including attachments
+      - Status endpoint reporting percentage delivered
+    note: >-
+      Broadcast streams only; must be enabled per account by support. Distinct
+      from the Batch API, which sends different messages to different recipients.
+
+  - date: '2026-02-27'
+    category: Labs
+    title: 'Postmark Skills: Teach AI coding agents how to send email'
+    breaking: false
+    additions:
+      - Five open-source Agent Skills (send-email, inbound, templates, webhooks, email-best-practices)
+
+  - date: '2026-02-18'
+    category: Libraries
+    title: postmark.js 4.0.7
+    breaking: false
+
+  - date: '2025-10-15'
+    category: Labs
+    title: Give AI assistants context about Postmark with llms.txt
+    breaking: false
+    additions:
+      - Published https://postmarkapp.com/llms.txt
+
+  - date: '2025-08-06'
+    category: Web
+    title: Pro and Platform tier features now accessible to lower-volume plans
+    breaking: false
+
+  - date: '2025-06-27'
+    category: API
+    title: 'Postmark Labs: New MCP Server for AI-Powered Email'
+    breaking: false
+    additions:
+      - First release of the Postmark MCP server
+
+  - date: '2025-06-25'
+    category: Libraries
+    title: 'PHP SDK Update: Now Supports PHP 8.4'
+    breaking: false
+
+  - date: '2024-11-13'
+    category: Web
+    title: Introducing the Postman collection for Postmark
+    breaking: false
+
+  - date: '2023-12-13'
+    category: Libraries
+    title: "Updates to Postmark's JS and PHP libraries"
+    breaking: false
+
+  - date: '2023-12-08'
+    category: API
+    title: Introducing the Postmark Data Removal API
+    breaking: false
+    additions:
+      - Data Removal request + status endpoints
+
+  - date: '2023-10-31'
+    category: API
+    title: Changes to Email API validation – Action may be required
+    breaking: true
+    highlights:
+      - Tightened Email API request validation; existing integrations could start failing.
+
+  - date: '2023-07-18'
+    category: API
+    title: 'Static IP Deprecation: Postmark will no longer support IP allow-listing for our API'
+    breaking: true
+    highlights:
+      - Removed a network-layer control customers used to restrict API access.
+
+  - date: '2023-05-22'
+    category: API
+    title: Introducing the Retention Add-on
+    breaking: false
+
+  - date: '2023-02-20'
+    category: API
+    title: "Introducing Postmark's new Status API (powered by Sorry™)"
+    breaking: false
+
+  - date: '2022-09-01'
+    category: API
+    title: 'Upcoming changes: Postmark will no longer support API requests over HTTP'
+    breaking: true
+    highlights:
+      - HTTPS became mandatory for all API requests; reminder announcement posted 2022-09-12.
+
+  - date: '2022-05-03'
+    category: Company
+    title: Postmark has been acquired by ActiveCampaign
+    breaking: false
+    highlights:
+      - Explains why every first-party repository now lives under github.com/ActiveCampaign
+        and why the PHP package is still published as wildbit/postmark-php.
+
+  - date: '2021-07-29'
+    category: API
+    title: 'Introducing SMTP Tokens: Expanded support for using Broadcast Message Streams via SMTP'
+    breaking: false
+
+  - date: '2021-06-30'
+    category: API
+    title: Introducing Sandbox Mode, a safe environment for email testing
+    breaking: false
+
+entry_count_window: 21
+entry_count_published_total: 106
+window: '2021-06-30 to 2026-07-14'
+breaking_changes_in_window: 3

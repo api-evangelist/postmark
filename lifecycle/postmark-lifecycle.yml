@@ -1,0 +1,113 @@
+generated: '2026-08-13'
+method: searched
+source: https://postmarkapp.com/updates
+docs:
+  - https://postmarkapp.com/updates
+  - https://status.postmarkapp.com
+  - https://postmarkapp.com/terms-of-service
+description: >-
+  Versioning, deprecation and availability posture for the Postmark API. The
+  headline finding is a mismatch: Postmark manages change responsibly in
+  editorial practice — dated announcements, lead time, reminder posts — but
+  publishes none of it as machine-readable policy, and the API itself carries no
+  version handle a client could pin.
+provider: Postmark
+providerId: postmark
+
+versioning:
+  scheme: unversioned
+  base_url: https://api.postmarkapp.com
+  version_in_path: false
+  version_in_header: false
+  version_negotiation: false
+  pinning_available: false
+  note: >-
+    No /v1 segment, no Postmark-Version header, no date-pinned versions. A
+    change to the API applies to every caller at once.
+
+deprecation_policy:
+  published_policy_page: null
+  rfc8594_headers: false
+  sunset_header: false
+  deprecation_header: false
+  advance_notice: >-
+    Observed in practice, not committed in writing. The HTTP removal was
+    announced 2022-09-01 with a 2022-09-12 reminder; the static-IP allow-listing
+    removal was announced 2023-07-18; the Email API validation tightening was
+    announced 2023-10-31 with "Action may be required" in the title.
+  note: >-
+    Postmark publishes no deprecation policy document and emits no RFC 8594
+    Deprecation or Sunset response headers. Notice reaches customers only
+    through https://postmarkapp.com/updates and email. A
+    `type: Deprecation` pointer IS emitted in apis.yml on the strength of the
+    documented, dated deprecation announcements below — but readers should know
+    it is editorial practice, not a stated policy with a guaranteed window.
+
+deprecations:
+  - date: '2023-07-18'
+    subject: Static IP allow-listing for the API
+    status: removed
+    source: https://postmarkapp.com/updates
+    impact: >-
+      Customers who restricted API egress to Postmark's published static IPs had
+      to stop relying on that control.
+  - date: '2022-09-01'
+    subject: API requests over plain HTTP
+    status: removed
+    source: https://postmarkapp.com/updates
+    impact: All API traffic must be HTTPS. Reminder announcement posted 2022-09-12.
+  - date: '2023-10-31'
+    subject: Loosely-validated Email API request bodies
+    status: tightened
+    source: https://postmarkapp.com/updates
+    impact: >-
+      Requests that previously passed validation began returning ErrorCode 403
+      (Invalid request field(s)). Postmark's error reference still links to this
+      announcement from the ErrorCode 403 entry.
+
+deprecated_operations_in_openapi: []
+deprecated_operations_note: >-
+  Zero operations across the 47 files in openapi/ carry `deprecated: true`.
+  Consistent with an unversioned API that removes capability by announcement
+  rather than by marking it in the contract.
+
+status_page:
+  url: https://status.postmarkapp.com
+  status: 200
+  probed: '2026-08-13'
+  provider: Sorry™
+  since: '2023-02-20'
+  machine_readable_api: false
+  note: >-
+    A Status API was announced 2023-02-20. The Statuspage-convention endpoint
+    https://status.postmarkapp.com/api/v2/status.json returns HTML rather than
+    JSON (probed 2026-08-13), because the page is not Atlassian Statuspage — it
+    is Sorry™. The page itself also publishes Postmark's delivery statistics to
+    the major inbox providers, which is unusually transparent for the category.
+
+sla:
+  published_uptime_sla: null
+  note: >-
+    No numeric uptime SLA is published on the pricing page or the security page.
+    Enterprise terms are handled through https://postmarkapp.com/talk-to-sales.
+
+data_retention:
+  default_days: 45
+  scope: Full message content and activity history
+  configurable_range_days: '7 to 365'
+  add_on: Custom activity retention, from $5/month, Pro tier and above
+  statistics: Retained indefinitely
+  source: https://postmarkapp.com/pricing
+
+data_removal:
+  api: true
+  since: '2023-12-08'
+  operations:
+    - Create a Data Removal request
+    - Check a Data Removal request status
+  source: https://postmarkapp.com/developer/api/overview
+
+support:
+  support_center: https://postmarkapp.com/support
+  contact: https://postmarkapp.com/contact
+  sales: https://postmarkapp.com/talk-to-sales

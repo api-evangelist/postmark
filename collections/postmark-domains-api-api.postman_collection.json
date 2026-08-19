@@ -1,0 +1,1830 @@
+{
+  "item": [
+    {
+      "id": "5cd32cc7-7754-41c6-81c7-0ec5473d0a26",
+      "name": "Domains API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8d427397-dc4e-45af-8cfa-9be7bf019eb5",
+          "name": "Postmark List Domains",
+          "request": {
+            "name": "Postmark List Domains",
+            "description": {},
+            "url": {
+              "path": [
+                "domains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<integer>",
+                  "description": "(Required) Number of records to return per request. Max 500."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "(Required) Number of records to skip"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Account on which this request will operate.",
+                "key": "X-Postmark-Account-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6523fad6-50d7-4706-9d5c-dd869634c871",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"TotalCount\": 2421,\n  \"Domains\": [\n    {\n      \"Name\": \"string\",\n      \"SPFVerified\": true,\n      \"DKIMVerified\": false,\n      \"WeakDKIM\": true,\n      \"ReturnPathDomainVerified\": true,\n      \"ID\": 8383\n    },\n    {\n      \"Name\": \"string\",\n      \"SPFVerified\": true,\n      \"DKIMVerified\": false,\n      \"WeakDKIM\": false,\n      \"ReturnPathDomainVerified\": false,\n      \"ID\": 6440\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "382e3dbf-a1ed-4616-9cdc-cd63299bf7cc",
+              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 1851,\n  \"Message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38c9ff9a-6120-42a5-8a94-4be157312619",
+              "name": "Indicates an internal server error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc00f848-7d15-4688-8024-dfdb08705876",
+          "name": "Postmark Create a Domain",
+          "request": {
+            "name": "Postmark Create a Domain",
+            "description": {},
+            "url": {
+              "path": [
+                "domains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Account on which this request will operate.",
+                "key": "X-Postmark-Account-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"ReturnPathDomain\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aa09e29e-ae4b-4621-ae12-7046eb35f168",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"ReturnPathDomain\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Name\": \"string\",\n  \"SPFVerified\": true,\n  \"SPFHost\": \"string\",\n  \"SPFTextValue\": \"string\",\n  \"DKIMVerified\": true,\n  \"WeakDKIM\": true,\n  \"DKIMHost\": \"string\",\n  \"DKIMTestValue\": \"string\",\n  \"DKIMPendingHost\": \"string\",\n  \"DKIMPendingTextValue\": \"string\",\n  \"DKIMRevokedHost\": \"string\",\n  \"DKIMRevokedTextValue\": \"string\",\n  \"SafeToRemoveRevokedKeyFromDNS\": false,\n  \"DKIMUpdateStatus\": \"string\",\n  \"ReturnPathDomain\": \"string\",\n  \"ReturnPathDomainVerified\": false,\n  \"ReturnPathDomainCNAMEValue\": \"string\",\n  \"ID\": 3868\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17c5cae9-4c03-46e8-a38a-8c6713add9c3",
+              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"ReturnPathDomain\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 1851,\n  \"Message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0769c81-f69b-4485-9e78-640f94f0a216",
+              "name": "Indicates an internal server error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"ReturnPathDomain\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b313ce2c-fbe1-452a-9b8d-5c2a1b667bc1",
+          "name": "Postmark Get a Domain",
+          "request": {
+            "name": "Postmark Get a Domain",
+            "description": {},
+            "url": {
+              "path": [
+                "domains",
+                ":domainid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "domainid",
+                  "description": "(Required) The ID for the Domain that should be retrieved."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Account on which this request will operate.",
+                "key": "X-Postmark-Account-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26e0ca2a-aedd-43ec-a1cb-017efa4f3c56",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain that should be retrieved."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Name\": \"string\",\n  \"SPFVerified\": true,\n  \"SPFHost\": \"string\",\n  \"SPFTextValue\": \"string\",\n  \"DKIMVerified\": true,\n  \"WeakDKIM\": true,\n  \"DKIMHost\": \"string\",\n  \"DKIMTestValue\": \"string\",\n  \"DKIMPendingHost\": \"string\",\n  \"DKIMPendingTextValue\": \"string\",\n  \"DKIMRevokedHost\": \"string\",\n  \"DKIMRevokedTextValue\": \"string\",\n  \"SafeToRemoveRevokedKeyFromDNS\": false,\n  \"DKIMUpdateStatus\": \"string\",\n  \"ReturnPathDomain\": \"string\",\n  \"ReturnPathDomainVerified\": false,\n  \"ReturnPathDomainCNAMEValue\": \"string\",\n  \"ID\": 3868\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bed60623-5993-4785-98f7-072a4f14c347",
+              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain that should be retrieved."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 1851,\n  \"Message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ba64ec5-61e2-431e-b1be-1ebcade83094",
+              "name": "Indicates an internal server error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain that should be retrieved."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "833fb236-8ba4-4684-b9d3-d4644f7b7326",
+          "name": "Postmark Update a Domain",
+          "request": {
+            "name": "Postmark Update a Domain",
+            "description": {},
+            "url": {
+              "path": [
+                "domains",
+                ":domainid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "domainid",
+                  "description": "(Required) The ID for the Domain that should be modified by the request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Account on which this request will operate.",
+                "key": "X-Postmark-Account-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ReturnPathDomain\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "47916caa-1bf0-46cd-88fa-fcfc4755a2ef",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain that should be modified by the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ReturnPathDomain\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Name\": \"string\",\n  \"SPFVerified\": true,\n  \"SPFHost\": \"string\",\n  \"SPFTextValue\": \"string\",\n  \"DKIMVerified\": true,\n  \"WeakDKIM\": true,\n  \"DKIMHost\": \"string\",\n  \"DKIMTestValue\": \"string\",\n  \"DKIMPendingHost\": \"string\",\n  \"DKIMPendingTextValue\": \"string\",\n  \"DKIMRevokedHost\": \"string\",\n  \"DKIMRevokedTextValue\": \"string\",\n  \"SafeToRemoveRevokedKeyFromDNS\": false,\n  \"DKIMUpdateStatus\": \"string\",\n  \"ReturnPathDomain\": \"string\",\n  \"ReturnPathDomainVerified\": false,\n  \"ReturnPathDomainCNAMEValue\": \"string\",\n  \"ID\": 3868\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "677ed221-bb07-4f49-87a1-add05dc5ef30",
+              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain that should be modified by the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ReturnPathDomain\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 1851,\n  \"Message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9eec1e4-aef6-41ef-8079-4f5e60761cae",
+              "name": "Indicates an internal server error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain that should be modified by the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ReturnPathDomain\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b20945a5-b2d5-40c3-84b3-8c776f3f0a96",
+          "name": "Postmark Delete a Domain",
+          "request": {
+            "name": "Postmark Delete a Domain",
+            "description": {},
+            "url": {
+              "path": [
+                "domains",
+                ":domainid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "domainid",
+                  "description": "(Required) The ID for the Domain that should be deleted by the request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Account on which this request will operate.",
+                "key": "X-Postmark-Account-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7593523b-3875-46ff-b83f-222d75a43b03",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain that should be deleted by the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 1851,\n  \"Message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f30c1789-f082-43e2-a3b5-f6d0bcee2657",
+              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain that should be deleted by the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 1851,\n  \"Message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ce0bb66-dc97-4e3d-9752-3aa4349c7d3b",
+              "name": "Indicates an internal server error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain that should be deleted by the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6bfc2fb2-4f93-4542-98fc-acfc6d45ce5d",
+          "name": "Postmark Request DNS Verification for DKIM",
+          "request": {
+            "name": "Postmark Request DNS Verification for DKIM",
+            "description": {},
+            "url": {
+              "path": [
+                "domains",
+                ":domainid",
+                "verifydkim"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "domainid",
+                  "description": "(Required) The ID for the Domain for which DKIM DNS records should be verified."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Account on which this request will operate.",
+                "key": "X-Postmark-Account-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c8fc033-4d70-4cb0-8b0f-ed51824a6460",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid",
+                    "verifydkim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain for which DKIM DNS records should be verified."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Name\": \"string\",\n  \"SPFVerified\": true,\n  \"SPFHost\": \"string\",\n  \"SPFTextValue\": \"string\",\n  \"DKIMVerified\": true,\n  \"WeakDKIM\": true,\n  \"DKIMHost\": \"string\",\n  \"DKIMTestValue\": \"string\",\n  \"DKIMPendingHost\": \"string\",\n  \"DKIMPendingTextValue\": \"string\",\n  \"DKIMRevokedHost\": \"string\",\n  \"DKIMRevokedTextValue\": \"string\",\n  \"SafeToRemoveRevokedKeyFromDNS\": false,\n  \"DKIMUpdateStatus\": \"string\",\n  \"ReturnPathDomain\": \"string\",\n  \"ReturnPathDomainVerified\": false,\n  \"ReturnPathDomainCNAMEValue\": \"string\",\n  \"ID\": 3868\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0879fc3c-7cf0-465f-9728-2797e80475d6",
+              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid",
+                    "verifydkim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain for which DKIM DNS records should be verified."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 1851,\n  \"Message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66be878e-4277-4430-b80e-033e7c7ae351",
+              "name": "Indicates an internal server error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid",
+                    "verifydkim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain for which DKIM DNS records should be verified."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a091345a-87f4-45b5-8984-362cc3ec9db8",
+          "name": "Postmark Request DNS Verification for Return-Path",
+          "request": {
+            "name": "Postmark Request DNS Verification for Return-Path",
+            "description": {},
+            "url": {
+              "path": [
+                "domains",
+                ":domainid",
+                "verifyreturnpath"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "domainid",
+                  "description": "(Required) The ID for the Domain for which Return-Path DNS records should be verified."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Account on which this request will operate.",
+                "key": "X-Postmark-Account-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f6afe97-bf27-45d5-8c30-ce472bab1e52",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid",
+                    "verifyreturnpath"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain for which Return-Path DNS records should be verified."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Name\": \"string\",\n  \"SPFVerified\": true,\n  \"SPFHost\": \"string\",\n  \"SPFTextValue\": \"string\",\n  \"DKIMVerified\": true,\n  \"WeakDKIM\": true,\n  \"DKIMHost\": \"string\",\n  \"DKIMTestValue\": \"string\",\n  \"DKIMPendingHost\": \"string\",\n  \"DKIMPendingTextValue\": \"string\",\n  \"DKIMRevokedHost\": \"string\",\n  \"DKIMRevokedTextValue\": \"string\",\n  \"SafeToRemoveRevokedKeyFromDNS\": false,\n  \"DKIMUpdateStatus\": \"string\",\n  \"ReturnPathDomain\": \"string\",\n  \"ReturnPathDomainVerified\": false,\n  \"ReturnPathDomainCNAMEValue\": \"string\",\n  \"ID\": 3868\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ed4ef0e-67c3-4b24-8157-dc7de240fe4e",
+              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid",
+                    "verifyreturnpath"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain for which Return-Path DNS records should be verified."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 1851,\n  \"Message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9259c68c-0705-4f88-b7b1-9a9971362b08",
+              "name": "Indicates an internal server error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid",
+                    "verifyreturnpath"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain for which Return-Path DNS records should be verified."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18aec9f8-191e-41c7-9a46-ea47d661fa6a",
+          "name": "Postmark Request DNS Verification for SPF",
+          "request": {
+            "name": "Postmark Request DNS Verification for SPF",
+            "description": {},
+            "url": {
+              "path": [
+                "domains",
+                ":domainid",
+                "verifyspf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "domainid",
+                  "description": "(Required) The ID for the Domain for which SPF DNS records should be verified."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Account on which this request will operate.",
+                "key": "X-Postmark-Account-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d0f599a-a263-4a44-b098-0fa4ac94b84a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid",
+                    "verifyspf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain for which SPF DNS records should be verified."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"SPFHost\": \"string\",\n  \"SPFVerified\": false,\n  \"SPFTextValue\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf997e9c-c913-41fa-97f3-0a32be9438af",
+              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid",
+                    "verifyspf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain for which SPF DNS records should be verified."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 1851,\n  \"Message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcedc2b6-3497-4144-9036-bf4c7153cb67",
+              "name": "Indicates an internal server error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid",
+                    "verifyspf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Domain for which SPF DNS records should be verified."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "943e3b0a-9903-42ce-8d83-7e43512cb645",
+          "name": "Postmark Rotate DKIM Key",
+          "request": {
+            "name": "Postmark Rotate DKIM Key",
+            "description": {
+              "content": "Creates a new DKIM key to replace your current key. Until the DNS entries are confirmed,\nthe new values will be in the `DKIMPendingHost` and `DKIMPendingTextValue` fields.\nAfter the new DKIM value is verified in DNS, the pending values will migrate to\n`DKIMTextValue` and `DKIMPendingTextValue` and Postmark will begin to sign emails\nwith the new DKIM key.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "domains",
+                ":domainid",
+                "rotatedkim"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "domainid",
+                  "description": "(Required) The ID for the Sender Signature for which a new DKIM Key should be generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Account on which this request will operate.",
+                "key": "X-Postmark-Account-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80f3fca0-72b9-4d25-9f72-4379718b4000",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid",
+                    "rotatedkim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Sender Signature for which a new DKIM Key should be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Name\": \"string\",\n  \"DKIMVerified\": true,\n  \"WeakDKIM\": false,\n  \"DKIMHost\": \"string\",\n  \"DKIMTestValue\": \"string\",\n  \"DKIMPendingHost\": \"string\",\n  \"DKIMPendingTextValue\": \"string\",\n  \"DKIMRevokedHost\": \"string\",\n  \"DKIMRevokedTextValue\": \"string\",\n  \"SafeToRemoveRevokedKeyFromDNS\": true,\n  \"DKIMUpdateStatus\": \"string\",\n  \"ID\": 6362\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9097e715-db92-490f-a534-f59868bd78f0",
+              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid",
+                    "rotatedkim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Sender Signature for which a new DKIM Key should be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": 1851,\n  \"Message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5c11ee1-29c7-4181-b6f5-6816d02af4c1",
+              "name": "Indicates an internal server error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domainid",
+                    "rotatedkim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "domainid",
+                      "description": "(Required) The ID for the Sender Signature for which a new DKIM Key should be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//api.postmarkapp.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "eea6fd3c-5e09-4d6f-baca-429226e8b1ba",
+    "name": "Postmark Account Activate Domains API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to\nconfigure all Servers, Domains, and Sender Signatures associated\nwith an Account.\n",
+      "type": "text/plain"
+    }
+  }
+}

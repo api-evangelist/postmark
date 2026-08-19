@@ -1,5 +1,15 @@
 # Postmark GraphQL Schema
 
+> **NOT A POSTMARK SURFACE — DO NOT WIRE AS `type: GraphQL`.**
+> Postmark ships no GraphQL API. `https://api.postmarkapp.com/graphql` returned
+> **HTTP 404** when probed on 2026-08-13, and no GraphQL endpoint appears
+> anywhere in Postmark's developer documentation. This file and
+> `postmark-schema.graphql` are an API Evangelist thought experiment — a
+> GraphQL shape imagined over Postmark's REST resources — and nothing more.
+> The 47 `type: GraphQL` pointers that previously referenced this file from
+> `apis.yml` were removed on 2026-08-13 because they asserted a machine-readable
+> surface that Postmark does not serve.
+
 ## Overview
 
 This document describes a conceptual GraphQL schema for the Postmark transactional email API. Postmark provides a REST API for sending and tracking transactional and broadcast email, managing templates, servers, bounces, suppressions, statistics, webhooks, and inbound message processing.

@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Template API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Template",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Send an email using a Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/email/withTemplate"
+          },
+          "docs": "Postmark Send an email using a Template"
+        },
+        {
+          "info": {
+            "name": "Postmark Delete a Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "//api.postmarkapp.com/templates/:templateIdOrAlias",
+            "params": [
+              {
+                "name": "templateIdOrAlias",
+                "value": "<string>",
+                "type": "path",
+                "description": "The 'TemplateID' or 'Alias' value for the Template you wish to delete."
+              }
+            ]
+          },
+          "docs": "Postmark Delete a Template"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

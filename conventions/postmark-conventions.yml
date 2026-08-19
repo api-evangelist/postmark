@@ -1,0 +1,173 @@
+generated: '2026-08-13'
+method: searched
+source: https://postmarkapp.com/developer/api/overview
+docs:
+  - https://postmarkapp.com/developer/api/overview
+  - https://postmarkapp.com/developer/webhooks/webhooks-overview
+  - https://postmarkapp.com/llms.txt
+description: >-
+  Cross-cutting runtime semantics for the Postmark REST API — how you
+  authenticate, page, trace, version, and what the API does and does not give
+  you for safe retries. Read from Postmark's own docs and cross-checked against
+  the 47 specs in openapi/.
+provider: Postmark
+providerId: postmark
+
+auth:
+  style: static API token in a custom header
+  headers:
+    - X-Postmark-Server-Token
+    - X-Postmark-Account-Token
+  scopes: none
+  detail: authentication/postmark-authentication.yml
+
+idempotency:
+  supported: false
+  header: null
+  scope: null
+  retention: null
+  note: >-
+    Postmark publishes NO idempotency key mechanism. There is no
+    Idempotency-Key header, no request-replay window, and no documented
+    de-duplication on POST /email or POST /email/batch. A retried send is a
+    second send. The only idempotency Postmark documents is CONSUMER-side and
+    applies to inbound webhooks: store each MessageID on receipt and check it
+    before acting, because Postmark retries webhook deliveries. No
+    `type: Idempotency` pointer is emitted in apis.yml, because that check
+    asserts the provider supports idempotent requests and Postmark does not.
+  consumer_side_guidance: >-
+    Delivery/bounce/open/click webhooks are retried on a fixed schedule (see
+    webhooks.retry below). Deduplicate on MessageID.
+
+pagination:
+  style: offset-limit
+  params:
+    - name: count
+      description: Page size. Documented range 1–500 on message search; default 50.
+    - name: offset
+      description: Zero-based record offset.
+  response_fields:
+    - TotalCount
+  cursor: false
+  note: >-
+    Classic offset/count paging across Messages, Bounces, Templates, Servers,
+    Domains and Sender Signatures. There is no cursor or link-header paging.
+    ErrorCode 13 ("Invalid pagination key") exists in the error catalog, which
+    implies a keyed variant on at least one endpoint, but no pagination-key
+    parameter is documented in the public reference.
+
+field_expansion:
+  supported: false
+  sparse_fieldsets: false
+
+metadata:
+  supported: true
+  field: Metadata
+  shape: flat key/value object on the message
+  note: >-
+    Round-trips onto every tracking webhook payload (Open, Click, Bounce,
+    Delivery), which makes it the practical correlation key between a send and
+    the events it produces.
+
+tagging:
+  field: Tag
+  cardinality: one tag per message
+  max_length: 1000 characters
+  note: Tags are the aggregation axis for the Stats API.
+
+request_id_tracing:
+  provider_request_id_header: null
+  correlation_key: MessageID
+  note: >-
+    Postmark returns no X-Request-Id / trace header. Correlation is done on the
+    MessageID returned in the send response body, which is the same identifier
+    carried on every subsequent webhook event and message-detail lookup.
+  client_identification_headers:
+    - name: X-Postmark-Client
+      note: Sent BY Postmark's own MCP server to identify request origin.
+    - name: X-Postmark-Client-Version
+    - name: X-Postmark-MCP-Client
+    - name: X-Agent-Label
+      note: >-
+        Free-form label an integrator sets; the closest thing Postmark offers to
+        a caller-supplied trace tag, but it is an MCP-server feature, not a
+        documented REST API header.
+
+versioning:
+  scheme: unversioned
+  in_path: false
+  in_header: false
+  current_version: null
+  note: >-
+    The base URL is https://api.postmarkapp.com with no version segment and no
+    version header. Change is managed editorially through
+    https://postmarkapp.com/updates, with breaking changes announced in advance
+    (see changelog/postmark-changelog.yml). There is no way for a client to pin
+    a version.
+
+error_envelope:
+  media_type: application/json
+  shape: '{"ErrorCode": <int>, "Message": "<string>"}'
+  rfc9457: false
+  validation_status: 422
+  detail: errors/postmark-problem-types.yml
+
+rate_limit_signaling:
+  request_headers: []
+  response_headers:
+    - Retry-After
+  exhaustion_status: 429
+  documented_numeric_limits: false
+  detail: rate-limits/postmark-rate-limits.yml
+
+transport:
+  https_only: true
+  http_support: >-
+    Removed. Postmark announced on 2022-09-01 that it would stop accepting API
+    requests over HTTP.
+  content_type_required: application/json
+  accept_required: application/json
+  note: ErrorCode 409 is returned when Accept and Content-Type are not application/json.
+
+payload_limits:
+  message_max_bytes: 10485760
+  message_max_human: 10 MB including attachments
+  body_field_max_human: 5 MB each for TextBody and HtmlBody
+  recipients_max: 50
+  recipients_note: To, Cc and Bcc combined
+  batch_max_messages: 500
+  batch_max_payload_human: 50 MB
+  bulk_max_payload_human: 50 MB
+
+webhooks:
+  auth_options:
+    - HTTP Basic credentials embedded in the webhook URL
+    - IP allow-listing against Postmark's published webhook IP ranges
+  signature_verification: false
+  retry:
+    bounce_and_inbound: [1m, 5m, 10m, 10m, 10m, 15m, 30m, 1h, 2h, 6h]
+    click_open_delivery_subscription: [1m, 5m, 15m]
+    stop_condition: A 403 response stops retries permanently.
+    success_condition: Any non-200 response triggers a retry.
+  detail: asyncapi/postmark-webhooks-asyncapi.yml
+
+documentation_contradiction:
+  observed: '2026-08-13'
+  summary: >-
+    Postmark's webhook documentation contradicts itself on signature
+    verification, and the contradiction sits on the same page.
+  detail: >-
+    https://postmarkapp.com/developer/webhooks/webhooks-overview publishes a
+    TypeScript handler that verifies an `x-postmark-signature` header with
+    HMAC-SHA256 against a POSTMARK_WEBHOOK_SECRET, and
+    https://postmarkapp.com/llms.txt advertises a "Webhook verification guide —
+    Node/TypeScript raw-body HMAC-SHA256 signature verification". Further down
+    that same page Postmark states: "Postmark does not currently support HMAC
+    webhook signature verification. The recommended approach to protect your
+    webhook endpoint is HTTP Basic Authentication combined with allowlisting
+    Postmark's IP ranges." The prose disclaimer is the authoritative statement —
+    no signing key is issued anywhere in the product — so the code sample and
+    the llms.txt entry describe a mechanism that does not exist. An agent
+    following the sample will build a verifier for a header Postmark never
+    sends. Recorded here rather than resolved, because both statements are
+    Postmark's own published words.

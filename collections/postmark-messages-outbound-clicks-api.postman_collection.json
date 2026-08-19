@@ -1,0 +1,245 @@
+{
+  "item": [
+    {
+      "id": "286d9709-b4cc-4114-a88f-312907e16b5f",
+      "name": "Messages > Outbound > Clicks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d81fe5ce-b497-4495-aa8b-173f5cbfcf81",
+          "name": "Postmark Clicks for a all messages",
+          "request": {
+            "name": "Postmark Clicks for a all messages",
+            "description": {},
+            "url": {
+              "path": [
+                "messages",
+                "outbound",
+                "clicks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Number of bounces to return per request. Max 500."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Number of bounces to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "recipient",
+                  "value": "<string>",
+                  "description": "Filter by the user who was receiving the email"
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "Filter by tag"
+                },
+                {
+                  "disabled": false,
+                  "key": "client_name",
+                  "value": "<string>",
+                  "description": "Filter by client name, i.e. Outlook, Gmail"
+                },
+                {
+                  "disabled": false,
+                  "key": "client_company",
+                  "value": "<string>",
+                  "description": "Filter by company, i.e. Microsoft, Apple, Google"
+                },
+                {
+                  "disabled": false,
+                  "key": "client_family",
+                  "value": "<string>",
+                  "description": "Filter by client family, i.e. OS X, Chrome"
+                },
+                {
+                  "disabled": false,
+                  "key": "os_name",
+                  "value": "<string>",
+                  "description": "Filter by full OS name and specific version, i.e. OS X 10.9 Mavericks, Windows 7"
+                },
+                {
+                  "disabled": false,
+                  "key": "os_family",
+                  "value": "<string>",
+                  "description": "Filter by kind of OS used without specific version, i.e. OS X, Windows"
+                },
+                {
+                  "disabled": false,
+                  "key": "os_company",
+                  "value": "<string>",
+                  "description": "Filter by company which produced the OS, i.e. Apple Computer, Inc., Microsoft Corporation"
+                },
+                {
+                  "disabled": false,
+                  "key": "platform",
+                  "value": "<string>",
+                  "description": "Filter by platform, i.e. webmail, desktop, mobile"
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Filter by country messages were opened in, i.e. Denmark, Russia"
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>",
+                  "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
+                },
+                {
+                  "disabled": false,
+                  "key": "city",
+                  "value": "<string>",
+                  "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86209e07-4b24-418d-b523-c66c4e724ae0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messages",
+                    "outbound",
+                    "clicks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "recipient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "client_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "client_company",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "client_family",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "os_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "os_family",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "os_company",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//api.postmarkapp.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f5b5bed7-4049-4fcb-88cb-89a9eafe3ba3",
+    "name": "Postmark Account Activate Messages > Outbound > Clicks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to\nconfigure all Servers, Domains, and Sender Signatures associated\nwith an Account.\n",
+      "type": "text/plain"
+    }
+  }
+}

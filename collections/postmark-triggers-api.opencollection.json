@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Triggers API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Triggers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark List inbound rule triggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/triggers/inboundrules",
+            "params": [
+              {
+                "name": "count",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to skip."
+              }
+            ]
+          },
+          "docs": "Postmark List inbound rule triggers"
+        },
+        {
+          "info": {
+            "name": "Postmark Delete a single trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "//api.postmarkapp.com/triggers/inboundrules/:triggerid",
+            "params": [
+              {
+                "name": "triggerid",
+                "value": "<integer>",
+                "type": "path",
+                "description": "The ID of the Inbound Rule that should be deleted."
+              }
+            ]
+          },
+          "docs": "Postmark Delete a single trigger"
+        },
+        {
+          "info": {
+            "name": "Postmark Search triggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/triggers/tags",
+            "params": [
+              {
+                "name": "count",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to skip."
+              },
+              {
+                "name": "match_name",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by delivery tag"
+              }
+            ]
+          },
+          "docs": "Postmark Search triggers"
+        },
+        {
+          "info": {
+            "name": "Postmark Delete a single trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "//api.postmarkapp.com/triggers/tags/:triggerid",
+            "params": [
+              {
+                "name": "triggerid",
+                "value": "<integer>",
+                "type": "path",
+                "description": "The ID of the Inbound Rule that should be deleted."
+              }
+            ]
+          },
+          "docs": "Postmark Delete a single trigger"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

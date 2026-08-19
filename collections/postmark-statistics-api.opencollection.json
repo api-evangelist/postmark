@@ -1,0 +1,421 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Statistics API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Statistics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get click counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/clicks",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get click counts"
+        },
+        {
+          "info": {
+            "name": "Postmark Get browser usage by family",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/clicks/browserfamilies",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get browser usage by family"
+        },
+        {
+          "info": {
+            "name": "Postmark Get clicks by body location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/clicks/location",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get clicks by body location"
+        },
+        {
+          "info": {
+            "name": "Postmark Get browser plaform usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/clicks/platforms",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get browser plaform usage"
+        },
+        {
+          "info": {
+            "name": "Postmark Get email open counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/opens",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get email open counts"
+        },
+        {
+          "info": {
+            "name": "Postmark Get email client usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/opens/emailclients",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get email client usage"
+        },
+        {
+          "info": {
+            "name": "Postmark Get email platform usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/opens/platforms",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get email platform usage"
+        },
+        {
+          "info": {
+            "name": "Postmark Get email read times",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/opens/readtimes",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get email read times"
+        },
+        {
+          "info": {
+            "name": "Postmark Get outbound overview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get outbound overview"
+        },
+        {
+          "info": {
+            "name": "Postmark Get bounce counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/bounces",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get bounce counts"
+        },
+        {
+          "info": {
+            "name": "Postmark Get sent counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/sends",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get sent counts"
+        },
+        {
+          "info": {
+            "name": "Postmark Get spam complaints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/spam",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get spam complaints"
+        },
+        {
+          "info": {
+            "name": "Postmark Get tracked email counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/stats/outbound/tracked",
+            "params": [
+              {
+                "name": "tag",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "fromdate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "todate",
+                "value": "<string>",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get tracked email counts"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

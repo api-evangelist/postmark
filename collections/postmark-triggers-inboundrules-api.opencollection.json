@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Triggers > Inboundrules API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Triggers > Inboundrules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark List inbound rule triggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/triggers/inboundrules",
+            "params": [
+              {
+                "name": "count",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "<integer>",
+                "type": "query",
+                "description": "Number of bounces to skip."
+              }
+            ]
+          },
+          "docs": "Postmark List inbound rule triggers"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,2628 @@
+{
+  "item": [
+    {
+      "id": "82950cdd-de12-49fe-8aa4-185ad93ad1a2",
+      "name": "Stats API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "285f1b6d-36f4-44d0-afa2-1a9b083a9a65",
+          "name": "Postmark Get outbound overview",
+          "request": {
+            "name": "Postmark Get outbound overview",
+            "description": {},
+            "url": {
+              "path": [
+                "stats",
+                "outbound"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Filter by tag",
+                    "type": "text/plain"
+                  },
+                  "key": "tag",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats starting from the date specified. e.g. `2014-01-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "fromdate",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats up to the date specified. e.g. `2014-02-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "todate",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Server on which this request will operate.",
+                "key": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b104c765-8f2e-4af1-99a1-130940151d88",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a3de9cde-df95-4fcb-8fab-75c24c0c635c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "41bb469b-257e-4a75-9c74-87c49bb338f7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7865802b-eb40-4d01-bb2a-256057f16ab6",
+          "name": "Postmark Get sent counts",
+          "request": {
+            "name": "Postmark Get sent counts",
+            "description": {},
+            "url": {
+              "path": [
+                "stats",
+                "outbound",
+                "sends"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Filter by tag",
+                    "type": "text/plain"
+                  },
+                  "key": "tag",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats starting from the date specified. e.g. `2014-01-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "fromdate",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats up to the date specified. e.g. `2014-02-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "todate",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Server on which this request will operate.",
+                "key": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1740a550-6e2c-40f4-a319-14acec439da0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "sends"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "31316848-f778-4bf3-bf7b-1663b2067e7c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "sends"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0f9b7060-5c89-448b-8e46-48e00acfdd87",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "sends"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c04eecb5-3fab-41df-bd5e-61a56811edba",
+          "name": "Postmark Get bounce counts",
+          "request": {
+            "name": "Postmark Get bounce counts",
+            "description": {},
+            "url": {
+              "path": [
+                "stats",
+                "outbound",
+                "bounces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Filter by tag",
+                    "type": "text/plain"
+                  },
+                  "key": "tag",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats starting from the date specified. e.g. `2014-01-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "fromdate",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats up to the date specified. e.g. `2014-02-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "todate",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Server on which this request will operate.",
+                "key": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83109430-56c6-496e-87ee-d8bd0de57549",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "bounces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "314a2200-e0c0-4d99-bc0d-eb38312363a1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "bounces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "90bb7847-23c2-4871-b821-84f7ff74c00c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "bounces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09338e1f-49f5-4573-8d4a-718035ff1962",
+          "name": "Postmark Get spam complaints",
+          "request": {
+            "name": "Postmark Get spam complaints",
+            "description": {},
+            "url": {
+              "path": [
+                "stats",
+                "outbound",
+                "spam"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Filter by tag",
+                    "type": "text/plain"
+                  },
+                  "key": "tag",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats starting from the date specified. e.g. `2014-01-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "fromdate",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats up to the date specified. e.g. `2014-02-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "todate",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Server on which this request will operate.",
+                "key": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e0ebda00-b0a0-4a8f-802c-bafd75afe19e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "spam"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1e5c2f1f-bfb6-4e6f-86a8-ebbe4b808885",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "spam"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e4aba6e6-5ae6-4d84-81d0-4fcf703f05c3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "spam"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66870104-70c1-4b5e-86b3-76b0045f22db",
+          "name": "Postmark Get tracked email counts",
+          "request": {
+            "name": "Postmark Get tracked email counts",
+            "description": {},
+            "url": {
+              "path": [
+                "stats",
+                "outbound",
+                "tracked"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Filter by tag",
+                    "type": "text/plain"
+                  },
+                  "key": "tag",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats starting from the date specified. e.g. `2014-01-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "fromdate",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats starting from the date specified. e.g. `2014-01-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "todate",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Server on which this request will operate.",
+                "key": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "51eb4115-7041-4980-b717-c6eb69dc41cd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "tracked"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ab8ad339-17ed-4a15-8bcc-7bbae0489508",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "tracked"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b4c6f51e-35ec-41f8-8365-d65ea27b14ef",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "tracked"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5256fc83-a147-4cdd-81f7-2cb3429e2a6a",
+          "name": "Postmark Get email open counts",
+          "request": {
+            "name": "Postmark Get email open counts",
+            "description": {},
+            "url": {
+              "path": [
+                "stats",
+                "outbound",
+                "opens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Filter by tag",
+                    "type": "text/plain"
+                  },
+                  "key": "tag",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats starting from the date specified. e.g. `2014-01-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "fromdate",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats up to the date specified. e.g. `2014-02-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "todate",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Server on which this request will operate.",
+                "key": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39307a91-a701-4a4b-90a3-95296385af23",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "opens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c30394e3-eb9f-4006-ba7e-081ad78313f2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "opens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c2b8cb8-156f-4882-bc61-57659a41b799",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "opens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0904e52-0237-47b9-a501-5540f381458e",
+          "name": "Postmark Get email platform usage",
+          "request": {
+            "name": "Postmark Get email platform usage",
+            "description": {},
+            "url": {
+              "path": [
+                "stats",
+                "outbound",
+                "opens",
+                "platforms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Filter by tag",
+                    "type": "text/plain"
+                  },
+                  "key": "tag",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats starting from the date specified. e.g. `2014-01-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "fromdate",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats up to the date specified. e.g. `2014-02-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "todate",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Server on which this request will operate.",
+                "key": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6407ba74-608a-45cc-a570-d5e14124d9f9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "opens",
+                    "platforms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f6ddc47d-8f47-4e10-8bdf-f6ddbcb8bff3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "opens",
+                    "platforms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9d52dfd2-038a-47de-ba44-7ffa184287d3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "opens",
+                    "platforms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e6c6674-c9b9-4faa-b84c-dc70d70f3751",
+          "name": "Postmark Get email client usage",
+          "request": {
+            "name": "Postmark Get email client usage",
+            "description": {},
+            "url": {
+              "path": [
+                "stats",
+                "outbound",
+                "opens",
+                "emailclients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Filter by tag",
+                    "type": "text/plain"
+                  },
+                  "key": "tag",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats starting from the date specified. e.g. `2014-01-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "fromdate",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats up to the date specified. e.g. `2014-02-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "todate",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Server on which this request will operate.",
+                "key": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65aed2af-4530-4488-9026-1d989a638ac0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "opens",
+                    "emailclients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "599af56c-7cb7-4bd3-a1da-bb298abf95ed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "opens",
+                    "emailclients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fff2d134-e0f7-4a9e-a5de-59415f072a39",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "opens",
+                    "emailclients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "435b4fe3-a4c9-4b6c-b4c7-799f1a3a52be",
+          "name": "Postmark Get click counts",
+          "request": {
+            "name": "Postmark Get click counts",
+            "description": {},
+            "url": {
+              "path": [
+                "stats",
+                "outbound",
+                "clicks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Filter by tag",
+                    "type": "text/plain"
+                  },
+                  "key": "tag",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats starting from the date specified. e.g. `2014-01-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "fromdate",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats up to the date specified. e.g. `2014-02-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "todate",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Server on which this request will operate.",
+                "key": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f501caae-19c9-4963-abef-37ed77499bb8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "clicks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d668b5a1-fb22-48b6-853c-9664e664e964",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "clicks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3a7e5ae0-68fd-45be-a9a7-5ca29382912c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "clicks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa1b51ed-55c8-4de0-a293-76e6ed70f080",
+          "name": "Postmark Get browser usage by family",
+          "request": {
+            "name": "Postmark Get browser usage by family",
+            "description": {},
+            "url": {
+              "path": [
+                "stats",
+                "outbound",
+                "clicks",
+                "browserfamilies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Filter by tag",
+                    "type": "text/plain"
+                  },
+                  "key": "tag",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats starting from the date specified. e.g. `2014-01-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "fromdate",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats up to the date specified. e.g. `2014-02-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "todate",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Server on which this request will operate.",
+                "key": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f411ad6-6b76-4e24-a832-d769269222b4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "clicks",
+                    "browserfamilies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f0371624-8fe6-41ca-9f4a-69250d17ee00",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "clicks",
+                    "browserfamilies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10a30882-44fd-4b00-9168-62f8409ff792",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "clicks",
+                    "browserfamilies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a31a6c6-2cba-4b41-913c-ded8bc95acc3",
+          "name": "Postmark Get browser plaform usage",
+          "request": {
+            "name": "Postmark Get browser plaform usage",
+            "description": {},
+            "url": {
+              "path": [
+                "stats",
+                "outbound",
+                "clicks",
+                "platforms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Filter by tag",
+                    "type": "text/plain"
+                  },
+                  "key": "tag",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats starting from the date specified. e.g. `2014-01-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "fromdate",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats up to the date specified. e.g. `2014-02-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "todate",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Server on which this request will operate.",
+                "key": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b707e6fc-1e6c-4bf3-9d62-4d7aa5056da1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "clicks",
+                    "platforms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "76be0868-835c-406f-9e13-c1153cf174b4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "clicks",
+                    "platforms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6dbe96b2-3ec7-4296-bb89-09f694b63637",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "clicks",
+                    "platforms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a14a0b55-6635-4a8c-8c43-c98769ef41ea",
+          "name": "Postmark Get clicks by body location",
+          "request": {
+            "name": "Postmark Get clicks by body location",
+            "description": {},
+            "url": {
+              "path": [
+                "stats",
+                "outbound",
+                "clicks",
+                "location"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Filter by tag",
+                    "type": "text/plain"
+                  },
+                  "key": "tag",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats starting from the date specified. e.g. `2014-01-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "fromdate",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter stats up to the date specified. e.g. `2014-02-01`",
+                    "type": "text/plain"
+                  },
+                  "key": "todate",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The token associated with the Server on which this request will operate.",
+                "key": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9fdb4a2a-b18e-4de1-8fea-d88dee66cc96",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "clicks",
+                    "location"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "883a4d14-4965-47a2-b9cc-f2199034257c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "clicks",
+                    "location"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2abd988f-45c2-4b11-a432-1596597d2e27",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "outbound",
+                    "clicks",
+                    "location"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "fromdate",
+                      "value": ""
+                    },
+                    {
+                      "key": "todate",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//api.postmarkapp.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c532faaa-5513-4886-80b9-07f18f52b305",
+    "name": "Postmark Account Activate Stats API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to\nconfigure all Servers, Domains, and Sender Signatures associated\nwith an Account.\n",
+      "type": "text/plain"
+    }
+  }
+}

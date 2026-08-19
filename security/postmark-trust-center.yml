@@ -1,0 +1,142 @@
+generated: '2026-08-13'
+method: searched
+source: https://postmarkapp.com/security
+docs:
+  - https://postmarkapp.com/security
+  - https://postmarkapp.com/eu-privacy
+  - https://www.activecampaign.com/security
+  - https://trust.activecampaign.com/
+description: >-
+  Postmark's published security and compliance posture. Postmark itself runs a
+  security page rather than a trust center; the trust center belongs to its
+  parent, ActiveCampaign, LLC. Scope is recorded explicitly on every
+  certification below, because several of the strongest-sounding claims on
+  Postmark's page belong to a facility or a processor rather than to Postmark.
+provider: Postmark
+providerId: postmark
+parent_company: ActiveCampaign, LLC
+parent_relationship: >-
+  Postmark was acquired by ActiveCampaign on 2022-05-03
+  (https://postmarkapp.com/updates). postmarkapp.com carries "Made with ♥ at
+  ActiveCampaign" and "© ActiveCampaign, LLC" in its footer, which is why the
+  parent's compliance surface is in scope for this profile.
+
+trust_center:
+  exists: true
+  owner: ActiveCampaign, LLC
+  url: https://trust.activecampaign.com/
+  http_status: 200
+  probed: '2026-08-13'
+  machine_readable: false
+  note: >-
+    The trust center returns a JavaScript application shell — 6,826 bytes with
+    no readable content beyond the title "ActiveCampaign Trust Center". The
+    certifications recorded below therefore come from the server-rendered
+    security pages, not from the trust center itself.
+
+security_page:
+  owner: Postmark
+  url: https://postmarkapp.com/security
+  http_status: 200
+  probed: '2026-08-13'
+
+certifications:
+  - name: SOC 2
+    holder: ActiveCampaign, LLC
+    scope: parent-company
+    evidence: >-
+      "ActiveCampaign is heavily focused on GDPR, SOC 2, and HIPAA compliance"
+      and "Our Trust Center provides self-service access to our latest SOC 2
+      report" — https://www.activecampaign.com/security
+    report_available: on request via trust center
+  - name: SSAE 16 SOC 1 Type 2
+    holder: Postmark's hosting provider
+    scope: data-center facility only
+    evidence: >-
+      "We host our servers in one of the most impressive data centers in the
+      country, a Type 2 SSAE 16 SOC 1 accredited facility" —
+      https://postmarkapp.com/security
+    caveat: >-
+      This attests the facility, not Postmark's own controls. It is a
+      colocation claim.
+  - name: PCI DSS Level 1
+    holder: Stripe
+    scope: payment processor only
+    evidence: >-
+      "We partner with Stripe to manage payments on Postmark. Stripe is
+      certified as a PCI Level 1 Service Provider. Postmark does not have access
+      to customers' credit card data at all." — https://postmarkapp.com/security
+    caveat: Postmark is not itself PCI certified; it is out of scope by design.
+  - name: HIPAA
+    holder: ActiveCampaign, LLC
+    scope: parent-company
+    evidence: https://www.activecampaign.com/security
+    caveat: >-
+      Stated as a compliance focus for ActiveCampaign. No Postmark-specific BAA
+      offering is published on postmarkapp.com.
+  - name: GDPR
+    holder: Postmark
+    scope: product
+    evidence: >-
+      Dedicated EU data protection page https://postmarkapp.com/eu-privacy
+      (200); GDPR compliance listed on every tier at
+      https://postmarkapp.com/pricing; Data Removal API shipped 2023-12-08.
+
+controls_published:
+  - control: Two-factor authentication
+    detail: >-
+      TOTP apps (Google Authenticator, 1Password, Authy) or SMS, with printable
+      backup codes. Account-wide 2FA enforcement added 2022-02-24. Listed as
+      unavailable on the Free tier on the pricing page.
+  - control: Granular user permissions
+    detail: >-
+      Per-server access control including read-only observer roles who can
+      review message history but not edit or delete a server.
+  - control: Penetration testing
+    detail: >-
+      "our systems are regularly tested using both automated systems and manual
+      audits from respected security firms" — https://postmarkapp.com/security.
+      Listed as a tier feature on the pricing page. No cadence or report is
+      published.
+  - control: DDoS protection
+    detail: Listed as a feature on every tier on https://postmarkapp.com/pricing.
+  - control: TLS in transit
+    detail: >-
+      Opportunistic TLS on all outbound mail; TLSv1.3 with HSTS on the API and
+      website; HTTP support for the API removed 2022-09-01.
+  - control: Email authentication
+    detail: DKIM, SPF and DMARC supported and API-manageable per domain.
+  - control: API permission controls
+    detail: >-
+      Listed as a pricing-page feature, but see the caveat in
+      authentication/postmark-authentication.yml — Postmark tokens are not
+      sub-scopable. The control is who can SEE a token in the UI, not what a
+      token may do.
+
+vulnerability_disclosure:
+  published: false
+  security_txt: false
+  bug_bounty_confirmed: false
+  probes:
+    - url: https://postmarkapp.com/.well-known/security.txt
+      status: 404
+    - url: https://postmarkapp.com/security.txt
+      status: 404
+    - url: https://www.activecampaign.com/.well-known/security.txt
+      status: 404
+    - url: https://bugcrowd.com/activecampaign
+      status: 404
+    - url: https://hackerone.com/activecampaign
+      status: 200
+      verdict: unconfirmed
+      note: >-
+        The response is a 2,294-byte HackerOne application shell with no
+        program content, no policy text and no submit-report affordance in the
+        served HTML. A 200 on an SPA route is not evidence a program exists, so
+        no bug-bounty claim is recorded and no VulnerabilityDisclosure artifact
+        is written.
+  finding: >-
+    Postmark publishes a security page but no machine-readable disclosure
+    contact and no discoverable disclosure policy on either its own domain or
+    ActiveCampaign's. This is the clearest single security-surface gap in the
+    profile and is cheap for the provider to close: one /.well-known/security.txt.

@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Inbound Rules API API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inbound Rules API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark List inbound rule triggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/triggers/inboundrules",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return per request."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip."
+              }
+            ]
+          },
+          "docs": "Postmark List inbound rule triggers"
+        },
+        {
+          "info": {
+            "name": "Postmark Create an inbound rule trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/triggers/inboundrules",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Postmark Create an inbound rule trigger"
+        },
+        {
+          "info": {
+            "name": "Postmark Delete a single trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "//api.postmarkapp.com/triggers/inboundrules/:triggerid",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "triggerid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Inbound Rule that should be deleted."
+              }
+            ]
+          },
+          "docs": "Postmark Delete a single trigger"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

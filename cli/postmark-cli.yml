@@ -1,0 +1,87 @@
+generated: '2026-08-13'
+method: searched
+source: https://github.com/ActiveCampaign/postmark-cli
+docs:
+  - https://postmarkapp.com/developer/integration/official-libraries
+  - https://github.com/ActiveCampaign/postmark-cli
+  - https://github.com/activecampaign/postmark-cli/wiki
+  - https://github.com/activecampaign/postmark-cli/wiki/email-command
+  - https://github.com/activecampaign/postmark-cli/wiki/templates-command
+  - https://github.com/activecampaign/postmark-cli/wiki/servers-command
+command_surface_verified: >-
+  Command groups and subcommands below were read from the repository's own
+  src/commands tree (email/raw.ts, email/template.ts, templates/pull.ts,
+  templates/push.ts, templates/preview.ts, servers/list.ts) on 2026-08-13, not
+  inferred.
+description: >-
+  Postmark ships a first-party CLI, listed on its official-libraries page. Its
+  scope is deliberately narrow: it is a template-authoring and email-sending
+  tool for people who keep email templates in a git repository, not a general
+  client for the whole API.
+provider: Postmark
+providerId: postmark
+name: postmark-cli
+official: true
+repository: https://github.com/ActiveCampaign/postmark-cli
+package: https://www.npmjs.com/package/postmark-cli
+version: 1.6.19
+published: '2024-02-02'
+license: MIT
+
+install:
+  - method: npm
+    command: npm install postmark-cli --global
+  - method: npx
+    command: npx postmark-cli
+  - method: yarn
+    command: yarn global add postmark-cli
+
+authentication:
+  mechanism: Postmark API token supplied per command or via environment
+  env_vars:
+    - POSTMARK_SERVER_TOKEN
+    - POSTMARK_ACCOUNT_TOKEN
+  note: >-
+    Same token model as the REST API — see
+    authentication/postmark-authentication.yml. Server token for template and
+    email work; account token for cross-server template pushes.
+
+command_groups:
+  - group: templates
+    purpose: Sync email templates between a Postmark server and the local filesystem
+    commands:
+      - name: templates pull
+        description: Download a server's templates and layouts into a local directory.
+      - name: templates push
+        description: Upload local templates and layouts back to a server.
+      - name: templates preview
+        description: Serve a local preview of templates in the browser.
+  - group: email
+    purpose: Send email from the command line
+    commands:
+      - name: email raw
+        description: Send an email with inline subject/body.
+      - name: email template
+        description: Send an email using a template alias or id with a template model.
+  - group: servers
+    purpose: Inspect servers available to the token
+    commands:
+      - name: servers list
+        description: List servers on the account.
+
+key_flows:
+  - name: Template version control
+    description: >-
+      `templates pull` into a repo, edit, `templates preview` locally, then
+      `templates push` — the canonical reason this CLI exists. It makes email
+      templates reviewable in a pull request instead of edited in a web UI.
+  - name: Promote templates between environments
+    description: >-
+      Pull from a staging server and push to a production server to promote
+      template changes; complements the REST `pushTemplates` operation.
+
+currency_note: >-
+  The npm release is 1.6.19, published 2024-02-02, while the repository was last
+  pushed 2026-07-17. The distributed binary is over two years behind the source
+  and predates the Bulk API (2026-03-05) and Message Streams changes shipped
+  since. Recorded as a decay signal, not a defect.

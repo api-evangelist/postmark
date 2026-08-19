@@ -1,0 +1,184 @@
+generated: '2026-08-13'
+method: searched
+source: https://github.com/ActiveCampaign/postmark-mcp
+description: >-
+  Postmark ships an official, first-party MCP server. It is distributed ONLY as
+  a local-stdio npm package — there is no hosted remote endpoint an MCP client
+  can POST to. Postmark's own landing page (https://postmarkapp.com/lp/mcp)
+  gives a single install path: `npx -y @activecampaign/postmark-mcp` in the
+  client's mcpServers config.
+provider: Postmark
+providerId: postmark
+status: official
+name: Postmark MCP Server
+repository: https://github.com/ActiveCampaign/postmark-mcp
+landing_page: https://postmarkapp.com/lp/mcp
+license: MIT
+version: 2.1.1
+version_published: '2026-07-13'
+
+deployment:
+  mode: local-stdio
+  endpoint: null
+  install: npx -y @activecampaign/postmark-mcp
+  package: https://www.npmjs.com/package/@activecampaign/postmark-mcp
+  auth: api-key
+  verified: searched
+
+deployment_note: >-
+  mode is local-stdio, not remote. Postmark publishes no MCP URL. Every
+  configuration example on the vendor landing page and in the repository README
+  uses `command: npx` / `command: node` with stdio transport and environment
+  variables — a human must install and run the server on a machine before any
+  agent can reach Postmark through it. Probed https://mcp.postmarkapp.com/mcp
+  (DNS does not resolve, curl exit code 6 / recorded 000) and
+  https://postmarkapp.com/mcp (404) on 2026-08-13 to confirm no hosted surface
+  exists; no endpoint URL is recorded because guessing one would read as a
+  verified agent surface.
+
+configuration:
+  required:
+    - name: POSTMARK_SERVER_TOKEN
+      description: Postmark server API token (X-Postmark-Server-Token).
+    - name: DEFAULT_SENDER_EMAIL
+      description: Default From address; must be a verified sender signature.
+    - name: DEFAULT_MESSAGE_STREAM
+      description: Message stream, e.g. `outbound`.
+  optional:
+    - name: AGENT_LABEL
+      description: Sent as X-Agent-Label on every Postmark API request.
+    - name: WEBHOOK_URL_ALLOWLIST
+      description: Comma-separated HTTPS URL prefixes createWebhook will accept.
+    - name: LOG_FILE
+      description: Path for appended structured JSON logs.
+    - name: LOG_EMAIL_FULL
+      default: 'false'
+      description: Set true to disable mailbox masking in logs.
+
+clients_documented:
+  - Claude Desktop
+  - Cursor
+  - Windsurf
+  - any MCP client accepting the standard mcpServers JSON config
+
+runtime:
+  requires: Node.js v20 or higher
+  transport: stdio
+  request_headers:
+    - name: X-Postmark-Client
+      value: postmark-mcp
+    - name: X-Postmark-Client-Version
+      value: matches the MCP server package version
+    - name: X-Postmark-MCP-Client
+      value: MCP host app name/version from the initialize handshake
+    - name: X-Agent-Label
+      value: value of AGENT_LABEL when set
+
+security_posture:
+  token_scope: >-
+    The server acts with the full permissions of POSTMARK_SERVER_TOKEN. Postmark
+    tokens are not sub-scopable — a Server Token grants every operation on its
+    server. The vendor's documented mitigation is structural: dedicate a
+    Postmark server to MCP traffic.
+  annotations: >-
+    All 24 tools carry MCP readOnlyHint / destructiveHint / idempotentHint
+    annotations so clients can auto-approve reads and gate mutations.
+  webhook_policy: HTTPS enforced at the schema level; optional URL allowlist.
+  logging: Structured JSON to stderr; mailbox portion of email addresses masked by default.
+  prompt_injection: >-
+    Vendor explicitly documents prompt-injection risk because the server can
+    send email and register webhooks.
+
+tool_count: 24
+tools:
+  - name: sendEmail
+    category: Email
+    mutating: true
+  - name: sendEmailWithTemplate
+    category: Email
+    mutating: true
+  - name: sendBatch
+    category: Email
+    mutating: true
+  - name: sendBatchWithTemplate
+    category: Email
+    mutating: true
+  - name: listTemplates
+    category: Templates
+    mutating: false
+  - name: getTemplate
+    category: Templates
+    mutating: false
+  - name: createTemplate
+    category: Templates
+    mutating: true
+  - name: editTemplate
+    category: Templates
+    mutating: true
+  - name: deleteTemplate
+    category: Templates
+    mutating: true
+    destructive: true
+  - name: validateTemplate
+    category: Templates
+    mutating: false
+  - name: searchOutboundMessages
+    category: Messages
+    mutating: false
+  - name: getMessageDetails
+    category: Messages
+    mutating: false
+  - name: diagnoseDelivery
+    category: Diagnostics
+    mutating: false
+    note: >-
+      Composite tool with no single REST equivalent — fans out across message
+      search, suppressions and bounce history, then returns a plain-English
+      recommendation.
+  - name: searchBounces
+    category: Bounces
+    mutating: false
+  - name: getBounceDump
+    category: Bounces
+    mutating: false
+  - name: activateBounce
+    category: Bounces
+    mutating: true
+  - name: listSuppressions
+    category: Suppressions
+    mutating: false
+  - name: createSuppressions
+    category: Suppressions
+    mutating: true
+  - name: deleteSuppressions
+    category: Suppressions
+    mutating: true
+    destructive: true
+  - name: getDeliveryStats
+    category: Stats & Server
+    mutating: false
+    note: >-
+      One tool fronting the whole Stats API via a `stat` selector: summary,
+      overview, sent, bounces, spam, tracked, opens, openPlatforms, openClients,
+      openReadTimes, clicks, clickBrowsers, clickPlatforms, clickLocation.
+  - name: getServerInfo
+    category: Stats & Server
+    mutating: false
+  - name: listWebhooks
+    category: Webhooks
+    mutating: false
+  - name: createWebhook
+    category: Webhooks
+    mutating: true
+  - name: deleteWebhook
+    category: Webhooks
+    mutating: true
+    destructive: true
+
+history:
+  - date: '2025-06-27'
+    event: Initial MCP server released via Postmark Labs.
+    source: https://postmarkapp.com/updates
+  - date: '2026-07-14'
+    event: v2.0 — 24 tools, diagnoseDelivery, tool annotations, tighter security defaults.
+    source: https://postmarkapp.com/updates

@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Sending API API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sending API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Send a single email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/email",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Postmark Send a single email"
+        },
+        {
+          "info": {
+            "name": "Postmark Send a batch of emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/email/batch",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Postmark Send a batch of emails"
+        },
+        {
+          "info": {
+            "name": "Postmark Send an email using a Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/email/withTemplate",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Postmark Send an email using a Template"
+        },
+        {
+          "info": {
+            "name": "Postmark Send a batch of email using templates.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/email/batchWithTemplates",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Postmark Send a batch of email using templates."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

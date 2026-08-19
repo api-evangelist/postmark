@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Server Management API API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Server Management API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get a Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/servers/:serverid",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "serverid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Server to get."
+              }
+            ]
+          },
+          "docs": "Postmark Get a Server"
+        },
+        {
+          "info": {
+            "name": "Postmark Edit a Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "//api.postmarkapp.com/servers/:serverid",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "serverid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Server to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Postmark Edit a Server"
+        },
+        {
+          "info": {
+            "name": "Postmark Delete a Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "//api.postmarkapp.com/servers/:serverid",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "serverid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Server that should be deleted."
+              }
+            ]
+          },
+          "docs": "Postmark Delete a Server"
+        },
+        {
+          "info": {
+            "name": "Postmark List servers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/servers",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of servers to return per request."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of servers to skip."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a specific server name"
+              }
+            ]
+          },
+          "docs": "Postmark List servers"
+        },
+        {
+          "info": {
+            "name": "Postmark Create a Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/servers",
+            "headers": [
+              {
+                "name": "X-Postmark-Account-Token",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Postmark Create a Server"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

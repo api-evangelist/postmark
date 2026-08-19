@@ -1,0 +1,256 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  mcp/postmark-mcp.yml (tool list read from
+  https://github.com/ActiveCampaign/postmark-mcp) bound to operationIds grepped
+  from openapi/*.yml in this repo
+description: >-
+  Binds each of the 24 tools in Postmark's official MCP server to the REST
+  operation(s) that back it, so an agent can recover a tool's real input schema
+  from the OpenAPI operation. Postmark's MCP server is local-stdio and its live
+  tools/list requires a POSTMARK_SERVER_TOKEN, so tools were mapped from the
+  vendor README's documented payloads by name and semantics rather than from a
+  live introspection; confidence is recorded per row accordingly.
+provider: Postmark
+providerId: postmark
+
+surfaces:
+  openapi:
+    path: openapi/
+    files: 47
+    operations: 167
+    gated: false
+    note: >-
+      The refined per-tag specs overlap heavily (the same path appears in
+      several files) and 92 of the 167 operations carry no operationId. Where a
+      path has no operationId anywhere in the repo, the row below records the
+      METHOD + PATH instead and drops confidence to medium.
+  graphql:
+    endpoint: null
+    gated: null
+    note: >-
+      Postmark publishes no GraphQL API. https://api.postmarkapp.com/graphql
+      returned 404 on 2026-08-13. The graphql/ directory in this repo holds an
+      API Evangelist *conceptual* schema, explicitly labelled as such in its own
+      header, and is not a Postmark surface.
+  mcp:
+    url: null
+    transport: stdio
+    install: npx -y @activecampaign/postmark-mcp
+    gated: true
+    note: >-
+      No remote endpoint exists to introspect. tools/list requires the server to
+      be spawned locally with a valid Postmark server token.
+
+crosswalk:
+  - tool: sendEmail
+    category: Email
+    rest: [sendEmail]
+    binding: one-to-one
+    confidence: high
+  - tool: sendEmailWithTemplate
+    category: Email
+    rest: [sendEmailWithTemplate]
+    binding: one-to-one
+    confidence: high
+  - tool: sendBatch
+    category: Email
+    rest: [sendEmailBatch]
+    binding: one-to-one
+    confidence: high
+  - tool: sendBatchWithTemplate
+    category: Email
+    rest: [sendEmailBatchWithTemplates]
+    binding: one-to-one
+    confidence: high
+  - tool: listTemplates
+    category: Templates
+    rest: [listTemplates]
+    binding: one-to-one
+    confidence: high
+  - tool: getTemplate
+    category: Templates
+    rest: [getSingleTemplate]
+    binding: one-to-one
+    confidence: high
+    note: Tool accepts templateIdOrAlias, matching the REST path parameter.
+  - tool: createTemplate
+    category: Templates
+    rest: []
+    rest_path: POST /templates
+    binding: one-to-one
+    confidence: medium
+    note: >-
+      The operation exists in openapi/postmark-templates-api-api-openapi.yml but
+      carries no operationId, so it cannot be referenced by id.
+  - tool: editTemplate
+    category: Templates
+    rest: [updateTemplate]
+    binding: one-to-one
+    confidence: high
+  - tool: deleteTemplate
+    category: Templates
+    rest: [deleteTemplate]
+    binding: one-to-one
+    confidence: high
+  - tool: validateTemplate
+    category: Templates
+    rest: [testTemplateContent]
+    binding: one-to-one
+    confidence: high
+  - tool: searchOutboundMessages
+    category: Messages
+    rest: [searchOutboundMessages]
+    binding: one-to-one
+    confidence: high
+    note: >-
+      Tool filters (recipient, fromEmail, tag, subject, status, messageStream,
+      fromDate, toDate, count, offset) mirror the REST query parameters.
+  - tool: getMessageDetails
+    category: Messages
+    rest: [getOutboundMessageDetails]
+    binding: one-to-one
+    confidence: high
+  - tool: diagnoseDelivery
+    category: Diagnostics
+    rest: [searchOutboundMessages, getBounces]
+    binding: composite
+    confidence: medium
+    note: >-
+      Vendor describes a fan-out across message history, suppression status and
+      bounce history. Only two of the three legs have a captured REST
+      operation — suppressions are absent from the OpenAPI in this repo (see
+      mcp_only).
+  - tool: searchBounces
+    category: Bounces
+    rest: [getBounces]
+    binding: one-to-one
+    confidence: high
+  - tool: getBounceDump
+    category: Bounces
+    rest: []
+    rest_path: GET /bounces/{bounceid}/dump
+    binding: one-to-one
+    confidence: medium
+    note: Present in three spec files, none of which assigns an operationId.
+  - tool: activateBounce
+    category: Bounces
+    rest: [activateBounce]
+    binding: one-to-one
+    confidence: high
+  - tool: getDeliveryStats
+    category: Stats & Server
+    rest:
+      - getDeliveryStats
+      - getOutboundOverviewStatistics
+      - getSentCounts
+      - getBounceCounts
+      - getSpamComplaints
+      - getTrackedEmailCounts
+      - getOutboundOpenCounts
+      - getOutboundOpenCountsByPlatform
+      - getOutboundOpenCountsByEmailClient
+      - getOutboundClickCounts
+      - getOutboundClickCountsByBrowserFamily
+      - getOutboundClickCountsByPlatform
+      - getOutboundClickCountsByLocation
+    binding: composite
+    confidence: high
+    note: >-
+      One tool fronts the whole Stats API through a `stat` selector. Its 14
+      documented selector values map onto the operations listed here plus
+      `openReadTimes` (GET /stats/outbound/opens/readtimes, no operationId).
+  - tool: getServerInfo
+    category: Stats & Server
+    rest: [getCurrentServerConfiguration]
+    binding: one-to-one
+    confidence: high
+
+mcp_only:
+  - tool: listSuppressions
+    reason: >-
+      Suppression endpoints are documented in the API reference but are absent
+      from every OpenAPI file captured in this repo.
+  - tool: createSuppressions
+    reason: Same — no captured REST operation for suppression creation.
+  - tool: deleteSuppressions
+    reason: Same — no captured REST operation for suppression deletion.
+  - tool: listWebhooks
+    reason: >-
+      The Webhooks API (GET/POST/PUT/DELETE /webhooks) is documented at
+      https://postmarkapp.com/developer/api/webhooks-api but is not present in
+      the captured OpenAPI.
+  - tool: createWebhook
+    reason: Same — no captured REST operation for webhook creation.
+  - tool: deleteWebhook
+    reason: Same — no captured REST operation for webhook deletion.
+
+rest_only:
+  - operation: listDomains
+    note: Domains API — account-token scope, not exposed as an MCP tool.
+  - operation: createDomain
+  - operation: getDomain
+  - operation: editDomain
+  - operation: deleteDomain
+  - operation: rotateDKIMKeyForDomain
+  - operation: requestDkimVerificationForDomain
+  - operation: requestReturnPathVerificationForDomain
+  - operation: requestSPFVerificationForDomain
+  - operation: listSenderSignatures
+    note: Sender signature management — account-token scope, no MCP tool.
+  - operation: createSenderSignature
+  - operation: getSenderSignature
+  - operation: editSenderSignature
+  - operation: deleteSenderSignature
+  - operation: requestNewDKIMKeyForSenderSignature
+  - operation: resendSenderSignatureConfirmationEmail
+  - operation: requestSPFVerificationForSenderSignature
+  - operation: listServers
+    note: Multi-server management — account-token scope, no MCP tool.
+  - operation: createServer
+  - operation: getServerInformation
+  - operation: editServerInformation
+  - operation: deleteServer
+  - operation: editCurrentServerConfiguration
+  - operation: searchInboundMessages
+    note: Inbound processing has no MCP coverage at all.
+  - operation: getInboundMessageDetails
+  - operation: bypassRulesForInboundMessage
+  - operation: retryInboundMessageProcessing
+  - operation: listInboundRules
+  - operation: createInboundRule
+  - operation: deleteInboundRule
+  - operation: getOutboundMessageDump
+  - operation: searchOpensForOutboundMessages
+  - operation: getOpensForSingleOutboundMessage
+  - operation: searchClicksForOutboundMessages
+  - operation: getClicksForSingleOutboundMessage
+  - operation: getSingleBounce
+  - operation: pushTemplates
+
+coverage:
+  mcp_tools: 24
+  tools_bound_to_rest: 18
+  tools_without_rest: 6
+  rest_operations_total: 167
+  rest_operations_with_operationid: 75
+  rest_operations_unbound: 37
+  note: >-
+    rest_operations_unbound counts distinct named operations with no MCP tool;
+    the 167 total includes duplicates of the same path across the refined
+    per-tag spec files, so it is not a distinct-endpoint count.
+
+findings:
+  - >-
+    The MCP server is materially AHEAD of the captured OpenAPI on two whole
+    resources: suppressions and webhook management. Six of 24 tools have no REST
+    operation in this repo, which means an agent reading only the OpenAPI cannot
+    recover their input schemas.
+  - >-
+    Inbound email — a marquee Postmark feature with its own SDK skill — has zero
+    MCP coverage. So does everything requiring an account token (domains, sender
+    signatures, multi-server management), which is consistent: the MCP server
+    only ever holds a server token.
+  - >-
+    92 of 167 captured operations carry no operationId, which is what forces
+    three crosswalk rows to fall back to METHOD + PATH.

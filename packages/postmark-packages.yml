@@ -1,0 +1,213 @@
+generated: '2026-08-13'
+method: searched
+source: https://postmarkapp.com/developer/integration/official-libraries
+description: >-
+  First-party Postmark client libraries and tooling, as listed on the Postmark
+  "Official libraries" page, with the latest published version and release date
+  read from each package registry's unauthenticated metadata endpoint on
+  2026-08-13. Postmark is owned by ActiveCampaign, LLC, so every first-party
+  repository lives under github.com/ActiveCampaign — that is the vendor's own
+  organization, not a third party.
+provider: Postmark
+providerId: postmark
+docs:
+  - https://postmarkapp.com/developer/integration/official-libraries
+  - https://postmarkapp.com/developer/integration/community-libraries
+registries_checked:
+  - registry.npmjs.org
+  - pypi.org
+  - rubygems.org
+  - packagist.org
+  - api.nuget.org
+  - repo1.maven.org
+  - api.wordpress.org
+packages:
+  - name: postmark
+    language: JavaScript/TypeScript
+    registry: npm
+    url: https://www.npmjs.com/package/postmark
+    repository: https://github.com/ActiveCampaign/postmark.js
+    official: true
+    version: 5.1.0
+    published: '2026-07-10'
+    note: >-
+      The Node.js / TypeScript SDK. Postmark's own TypeScript recipe page
+      documents `import { ServerClient } from "postmark"`.
+
+  - name: '@activecampaign/postmark-mcp'
+    language: JavaScript
+    registry: npm
+    url: https://www.npmjs.com/package/@activecampaign/postmark-mcp
+    repository: https://github.com/ActiveCampaign/postmark-mcp
+    official: true
+    version: 2.1.1
+    published: '2026-07-13'
+    kind: mcp-server
+    note: >-
+      The official Postmark MCP server, distributed as a local-stdio npm
+      package. See mcp/postmark-mcp.yml — there is no hosted remote endpoint.
+
+  - name: postmark-cli
+    language: JavaScript
+    registry: npm
+    url: https://www.npmjs.com/package/postmark-cli
+    repository: https://github.com/ActiveCampaign/postmark-cli
+    official: true
+    version: 1.6.19
+    published: '2024-02-02'
+    kind: cli
+    note: >-
+      The official CLI. The npm release is 2+ years old (2024-02-02) even though
+      the repository was pushed 2026-07-17 — the published artifact lags the
+      source. See cli/postmark-cli.yml.
+
+  - name: postmark-python
+    language: Python
+    registry: pypi
+    url: https://pypi.org/project/postmark-python/
+    repository: https://github.com/ActiveCampaign/postmark-python
+    official: true
+    version: 0.4.0
+    published: '2026-08-12'
+    note: >-
+      Async-first SDK, Python 3.10+. Installed as `postmark-python`; the module
+      you import is `postmark`. First released 2026-04-30, so it is the newest
+      first-party SDK in the set.
+
+  - name: postmark
+    language: Ruby
+    registry: rubygems
+    url: https://rubygems.org/gems/postmark
+    repository: https://github.com/ActiveCampaign/postmark-gem
+    official: true
+    version: 1.25.1
+    published: '2024-06-20'
+
+  - name: postmark-rails
+    language: Ruby
+    registry: rubygems
+    url: https://rubygems.org/gems/postmark-rails
+    repository: https://github.com/ActiveCampaign/postmark-rails
+    official: true
+    version: 0.22.1
+    published: '2022-06-29'
+    note: >-
+      ActionMailer delivery method. Latest release predates the current Email
+      API surface (Bulk API shipped 2026-03-05) by nearly four years.
+
+  - name: Postmark
+    language: .NET
+    registry: nuget
+    url: https://www.nuget.org/packages/Postmark
+    repository: https://github.com/ActiveCampaign/postmark-dotnet
+    official: true
+    version: 5.4.1
+    published: '2026-07-07'
+
+  - name: Postmark-Strong
+    language: .NET
+    registry: nuget
+    url: https://www.nuget.org/packages/Postmark-Strong
+    repository: https://github.com/ActiveCampaign/postmark-dotnet
+    official: true
+    version: 2.2.1
+    published: '2017-04-19'
+    note: >-
+      Strongly-named/signed build with JSON.NET bundled. Still linked from the
+      official-libraries page but last published 2017 — effectively abandoned
+      relative to the mainline Postmark NuGet package (5.4.1, 2026-07-07).
+
+  - name: com.postmarkapp:postmark
+    language: Java
+    registry: maven
+    url: https://repo1.maven.org/maven2/com/postmarkapp/postmark/
+    repository: https://github.com/ActiveCampaign/postmark-java
+    official: true
+    version: 1.13.0
+    published: '2025-12-30'
+    note: >-
+      Date read from maven-metadata.xml `lastUpdated` (20251230183913); Maven
+      Central publishes no per-release timestamp at that path.
+
+  - name: wildbit/postmark-php
+    language: PHP
+    registry: packagist
+    url: https://packagist.org/packages/wildbit/postmark-php
+    repository: https://github.com/ActiveCampaign/postmark-php
+    official: true
+    version: v7.0.0
+    published: '2025-07-11'
+    note: >-
+      Still published under the legacy `wildbit/` vendor namespace — Wildbit was
+      Postmark's pre-acquisition parent company. `composer require
+      wildbit/postmark-php` is the command Postmark's own docs give today.
+
+  - name: craftcms/postmark
+    language: PHP
+    registry: packagist
+    url: https://packagist.org/packages/craftcms/postmark
+    repository: https://github.com/craftcms/postmark
+    official: false
+    version: 2.2.0
+    published: '2024-03-27'
+    note: >-
+      Listed on Postmark's official-libraries page but maintained by Craft CMS
+      (github.com/craftcms), not by Postmark/ActiveCampaign. Marked official:
+      false on maintainer ownership.
+
+  - name: postmark-approved-wordpress-plugin
+    language: PHP
+    registry: wordpress.org
+    url: https://wordpress.org/plugins/postmark-approved-wordpress-plugin/
+    repository: https://github.com/ActiveCampaign/postmark-wordpress
+    official: true
+    version: 1.19.1
+    published: '2024-11-18'
+
+  - name: grunt-postmark
+    language: JavaScript
+    registry: npm
+    url: https://www.npmjs.com/package/grunt-postmark
+    repository: https://github.com/ActiveCampaign/grunt-postmark
+    official: true
+    version: 0.0.9
+    published: '2022-06-16'
+    note: Build-tooling plugin; last published 2022.
+
+  - name: postmark-nodemailer
+    language: JavaScript
+    registry: null
+    url: https://github.com/ActiveCampaign/postmark-nodemailer
+    repository: https://github.com/ActiveCampaign/postmark-nodemailer
+    official: true
+    version: null
+    published: null
+    note: >-
+      Checked registry.npmjs.org for `postmark-nodemailer` on 2026-08-13 — no
+      such package is published; the repository is source-only (last pushed
+      2022-07-13). The nodemailer transport people actually install,
+      `nodemailer-postmark-transport` (7.0.0, 2026-05-23), is a community
+      package by github.com/killmenot and is NOT first-party.
+
+  - name: Zapier Actions
+    language: null
+    registry: null
+    url: https://postmarkapp.com/developer/integration/official-libraries
+    official: true
+    version: null
+    published: null
+    note: >-
+      Listed as an official integration but distributed only through the Zapier
+      platform — there is no package registry entry to date.
+
+currency_findings:
+  - >-
+    Two of the eight language SDKs have not shipped a release in over two years:
+    postmark-rails (2022-06-29) and Postmark-Strong for .NET (2017-04-19). The
+    official CLI's last npm publish is 2024-02-02.
+  - >-
+    The Bulk API shipped 2026-03-05 and the Python SDK 2026-04-30, so any
+    consumer on postmark-rails or postmark-approved-wordpress-plugin is running
+    a client older than a meaningful part of the current API surface.
+official_count: 13
+package_count: 15

@@ -1,0 +1,122 @@
+generated: '2026-08-13'
+method: searched
+source: https://github.com/ActiveCampaign/postmark-skills
+description: >-
+  Postmark PUBLISHES its own Agent Skills. Nothing in skills/ is API
+  Evangelist-authored — the five skills below are the provider's own, vendored
+  verbatim into skills/postmark-skills/ from the official repository. Announced
+  2026-02-27 as "Postmark Skills: Teach AI coding agents how to send email".
+provider: Postmark
+providerId: postmark
+authored_by: provider
+repository: https://github.com/ActiveCampaign/postmark-skills
+license: MIT
+vendored_commit: 73ea6bfafb2b9b3a4a2b2fc37a2f1fcf25b680c6
+vendored_commit_date: '2026-02-28'
+announcement: https://postmarkapp.com/updates
+blog_post: https://postmarkapp.com/blog/teach-your-ai-coding-agent-how-to-send-email-with-postmark-skills
+
+router_skill:
+  name: postmark
+  path: skills/postmark-skills/SKILL.md
+  version: '1.0.0'
+  description: >-
+    Use when working with Postmark email platform - routes to specific
+    sub-skills for sending emails, processing inbound email, managing templates,
+    or configuring webhooks.
+
+skills:
+  - name: postmark-send-email
+    path: skills/postmark-skills/postmark-send-email/SKILL.md
+    version: '1.0.0'
+    description: >-
+      Use when sending transactional or broadcast emails through Postmark —
+      single sends, batch (up to 500), bulk, or template-based emails with
+      support for attachments, tracking, and message streams.
+    references:
+      - batch-email-examples.md
+      - error-handling.md
+    operations:
+      - sendEmail
+      - sendEmailBatch
+      - sendEmailWithTemplate
+      - sendEmailBatchWithTemplates
+
+  - name: postmark-inbound
+    path: skills/postmark-skills/postmark-inbound/SKILL.md
+    version: '1.0.0'
+    description: >-
+      Use when processing incoming emails with Postmark inbound webhooks —
+      building reply-by-email, email-to-ticket, document extraction, or any
+      workflow that receives and parses email.
+    references:
+      - handler-examples.md
+      - inbound-api.md
+      - inbound-setup.md
+      - payload-structure.md
+    operations:
+      - searchInboundMessages
+      - getInboundMessageDetails
+      - bypassRulesForInboundMessage
+      - retryInboundMessageProcessing
+      - listInboundRules
+      - createInboundRule
+      - deleteInboundRule
+
+  - name: postmark-templates
+    path: skills/postmark-skills/postmark-templates/SKILL.md
+    version: '1.0.0'
+    description: >-
+      Use when creating, managing, or sending with Postmark server-side email
+      templates — Handlebars syntax, layout inheritance, template validation,
+      and cross-server pushing.
+    operations:
+      - listTemplates
+      - getSingleTemplate
+      - updateTemplate
+      - deleteTemplate
+      - testTemplateContent
+      - pushTemplates
+      - sendEmailWithTemplate
+      - sendEmailBatchWithTemplates
+
+  - name: postmark-webhooks
+    path: skills/postmark-skills/postmark-webhooks/SKILL.md
+    version: '1.0.0'
+    description: >-
+      Use when setting up Postmark webhooks for tracking email delivery,
+      bounces, opens, clicks, spam complaints, or subscription changes —
+      includes webhook configuration, payload handling, and security.
+    related_artifact: asyncapi/postmark-webhooks-asyncapi.yml
+    operations: []
+    note: >-
+      The Webhooks CRUD operations this skill describes are documented in
+      Postmark's API reference but are absent from the OpenAPI captured in
+      openapi/, so no operationIds are listed. See mcp/postmark-tool-crosswalk.yml.
+
+  - name: postmark-email-best-practices
+    path: skills/postmark-skills/postmark-email-best-practices/SKILL.md
+    version: '1.0.0'
+    description: >-
+      Use when asking about email deliverability, compliance (CAN-SPAM, GDPR,
+      CASL), transactional email design patterns, list management, testing
+      safely, or general email best practices — provider-agnostic knowledge with
+      Postmark-specific guidance.
+    references:
+      - compliance.md
+      - deliverability.md
+      - list-management.md
+      - sending-reliability.md
+      - testing.md
+      - transactional-design.md
+    operations: []
+    note: Domain-knowledge skill; deliberately not bound to operations.
+
+skill_count: 5
+coverage_note: >-
+  The provider's skills cover sending, inbound, templates and webhooks. They do
+  NOT cover the account-token surface (domains, sender signatures, server
+  management), suppressions, stats, or the Bulk API shipped 2026-03-05 — the
+  skills were published 2026-02-27, before it. Compare with
+  mcp/postmark-tool-crosswalk.yml, which shows the MCP server has the inverse
+  gap: it covers suppressions and stats but has no inbound coverage at all.

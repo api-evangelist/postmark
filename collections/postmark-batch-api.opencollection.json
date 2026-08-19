@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Batch API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Batch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Send a batch of emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/email/batch"
+          },
+          "docs": "Postmark Send a batch of emails"
+        },
+        {
+          "info": {
+            "name": "Postmark Send a batch of email using templates.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//api.postmarkapp.com/email/batchWithTemplates"
+          },
+          "docs": "Postmark Send a batch of email using templates."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

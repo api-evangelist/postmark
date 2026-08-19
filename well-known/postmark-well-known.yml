@@ -1,0 +1,74 @@
+generated: '2026-08-13'
+method: probed
+source: live HTTP probes of postmarkapp.com and api.postmarkapp.com
+description: >-
+  Probe of the RFC 8615 /.well-known/ surface on every host Postmark's apis.yml
+  and OpenAPI servers[] name. Every path returned 404. No WellKnown or
+  SecurityTxt pointer is emitted in apis.yml, because a recorded absence is not
+  a served surface.
+provider: Postmark
+providerId: postmark
+checked: '2026-08-13'
+hosts:
+  - host: postmarkapp.com
+    role: website + developer docs
+    paths:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+  - host: api.postmarkapp.com
+    role: API base URL
+    paths:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+adjacent_probes:
+  - url: https://postmarkapp.com/security.txt
+    status: 404
+    note: Legacy pre-RFC-8615 location, also absent.
+  - url: https://www.activecampaign.com/.well-known/security.txt
+    status: 404
+    note: >-
+      Parent company (ActiveCampaign, LLC) also serves no security.txt. Checked
+      because Postmark's footer and copyright are ActiveCampaign's.
+hits: 0
+findings:
+  - >-
+    Zero /.well-known/ documents on any Postmark host. There is no OAuth or
+    OIDC surface to advertise (the API authenticates with static server and
+    account tokens), so the openid-configuration and oauth-authorization-server
+    404s are expected and not a gap.
+  - >-
+    security.txt is a genuine gap: Postmark publishes a security page at
+    https://postmarkapp.com/security but exposes no machine-readable contact or
+    disclosure policy at /.well-known/security.txt on either its own domain or
+    ActiveCampaign's.
+  - >-
+    Both 404 bodies are real 404s with the correct status code — postmarkapp.com
+    returns its branded "Oops, page not found" page and api.postmarkapp.com
+    returns an ASP.NET "The resource cannot be found." page. Neither is a soft
+    200, so there is no false-credit risk here.

@@ -1,0 +1,183 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Postmark Account Activate Bounces API API",
+    "version": "0.9.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bounces API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Postmark Get delivery stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/deliverystats",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Postmark Get delivery stats"
+        },
+        {
+          "info": {
+            "name": "Postmark Get bounces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/bounces",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of bounces to return per request. Max 500."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of bounces to skip."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by type of bounce"
+              },
+              {
+                "name": "inactive",
+                "value": "",
+                "type": "query",
+                "description": "Filter by emails that were deactivated by Postmark due to the bounce. Set to true or false. If this isn't specified it will return both active and inactive."
+              },
+              {
+                "name": "emailFilter",
+                "value": "",
+                "type": "query",
+                "description": "Filter by email address"
+              },
+              {
+                "name": "messageID",
+                "value": "",
+                "type": "query",
+                "description": "Filter by messageID"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag"
+              },
+              {
+                "name": "todate",
+                "value": "",
+                "type": "query",
+                "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+              },
+              {
+                "name": "fromdate",
+                "value": "",
+                "type": "query",
+                "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+              }
+            ]
+          },
+          "docs": "Postmark Get bounces"
+        },
+        {
+          "info": {
+            "name": "Postmark Get a single bounce",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/bounces/:bounceid",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "bounceid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the bounce to retrieve."
+              }
+            ]
+          },
+          "docs": "Postmark Get a single bounce"
+        },
+        {
+          "info": {
+            "name": "Postmark Get bounce dump",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//api.postmarkapp.com/bounces/:bounceid/dump",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "bounceid",
+                "value": "",
+                "type": "path",
+                "description": "The ID for the bounce dump to retrieve."
+              }
+            ]
+          },
+          "docs": "Postmark Get bounce dump"
+        },
+        {
+          "info": {
+            "name": "Postmark Activate a bounce",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "//api.postmarkapp.com/bounces/:bounceid/activate",
+            "headers": [
+              {
+                "name": "X-Postmark-Server-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "bounceid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Bounce to activate."
+              }
+            ]
+          },
+          "docs": "Postmark Activate a bounce"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

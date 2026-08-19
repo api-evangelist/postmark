@@ -1,0 +1,299 @@
+generated: '2026-08-13'
+method: searched
+source: https://postmarkapp.com/developer/api/overview#api-error-codes
+docs: https://postmarkapp.com/developer/api/overview#api-error-codes
+description: >-
+  Postmark's error surface has two layers: a small set of HTTP status codes, and
+  a large numeric ErrorCode catalog carried inside a 422 JSON body. It is NOT
+  RFC 9457 — there is no application/problem+json media type, no `type` URI, no
+  `title`/`detail` members. The envelope is a bare JSON object with `ErrorCode`
+  and `Message`. Titles and remediation below are Postmark's own published
+  wording; the HTTP-status layer was cross-checked against the 422 and 500
+  responses declared in openapi/.
+provider: Postmark
+providerId: postmark
+format: vendor-json
+rfc9457: false
+media_type: application/json
+
+envelope:
+  shape: '{"ErrorCode": <int>, "Message": "<string>"}'
+  discriminator: ErrorCode
+  http_status_for_validation_errors: 422
+  multi_error_form: >-
+    ErrorCode 11 signals multiple errors; the response then carries an `Errors`
+    array with per-item detail.
+  note: >-
+    The numeric ErrorCode namespace deliberately collides with HTTP status
+    numbers (there is an ErrorCode 401, 403, 405, 406, 413, 500, 503 that mean
+    something entirely different from the same-numbered HTTP status). An agent
+    must read ErrorCode from the BODY and never infer it from the status line.
+
+http_statuses:
+  - status: 200
+    title: Success
+    meaning: Everything went smooth.
+  - status: 401
+    title: Unauthorized
+    meaning: Missing or incorrect API token in header.
+    remediation: Send X-Postmark-Server-Token or X-Postmark-Account-Token as the endpoint requires.
+  - status: 404
+    title: Entity doesn't exist
+    meaning: Request for a resource/entity that does not exist.
+    remediation: Verify the endpoint and the ID being requested.
+  - status: 413
+    title: Payload Too Large
+    meaning: Exceeded 10 MB for the Email API or 50 MB total for the Batch Email API.
+    remediation: Reduce message or attachment size; split the batch.
+  - status: 415
+    title: Unsupported Media Type
+    meaning: The request is missing expected request headers.
+    remediation: Set Accept and Content-Type to application/json.
+  - status: 422
+    title: Unprocessable Entity
+    meaning: Malformed JSON or incorrect fields; body carries ErrorCode + Message.
+    remediation: Read ErrorCode from the response body and branch on it.
+  - status: 429
+    title: Rate Limit Exceeded
+    meaning: Request rate exceeds acceptable use of the API.
+    remediation: Back off and reduce request rate. See rate-limits/postmark-rate-limits.yml.
+  - status: 500
+    title: Internal Server Error
+    meaning: Postmark-side processing failure; the message is usually lost.
+    remediation: Retry; Postmark is notified automatically.
+  - status: 503
+    title: Service Unavailable
+    meaning: Planned service outage.
+    remediation: Check https://status.postmarkapp.com and retry after the window.
+
+error_codes:
+  - code: 10
+    title: Bad or missing API token
+    remediation: Send the API token the endpoint's reference page specifies.
+  - code: 11
+    title: 'Multiple errors occurred'
+    remediation: Inspect the Errors property on the response for per-item detail.
+  - code: 12
+    title: Resource not found
+  - code: 13
+    title: Invalid pagination key
+  - code: 100
+    title: Maintenance
+    remediation: The API is offline for maintenance; retry after the window.
+  - code: 300
+    title: Invalid email request
+    remediation: Validation failed for the email request JSON.
+  - code: 400
+    title: Sender Signature not found
+    remediation: Add or use a From address that has a sender signature.
+  - code: 401
+    title: Sender signature not confirmed
+    remediation: Resend the confirmation email from the Sender Signatures page.
+  - code: 402
+    title: Invalid JSON
+    remediation: Run the payload through a JSON validator.
+  - code: 403
+    title: Invalid request field(s) - {FIELD_NAME}
+    remediation: The named field is invalid; check the endpoint's required body parameters.
+  - code: 405
+    title: Not allowed to send
+    remediation: Account has run out of credits; purchase more.
+  - code: 406
+    title: Inactive recipient
+    remediation: >-
+      Recipient generated a hard bounce or spam complaint. Only hard-bounce
+      recipients can be reactivated, from the server's Activity page.
+  - code: 409
+    title: JSON required
+    remediation: Set Accept and Content-Type to application/json.
+  - code: 410
+    title: Too many batch messages
+    remediation: Batch requests are capped at 500 messages.
+  - code: 411
+    title: Forbidden attachment type
+    remediation: See Postmark's forbidden file types list.
+  - code: 412
+    title: Account is Pending
+    remediation: >-
+      While pending approval, recipients must share the domain in the From
+      address.
+  - code: 413
+    title: Account May Not Send
+    remediation: The account is not approved for sending.
+  - code: 500
+    title: Sender signature query exception
+  - code: 501
+    title: Sender Signature not found by id
+  - code: 502
+    title: No updated Sender Signature data received
+  - code: 503
+    title: You cannot use a public domain
+  - code: 504
+    title: Sender Signature already exists
+  - code: 505
+    title: DKIM already scheduled for renewal
+  - code: 506
+    title: This Sender Signature already confirmed
+  - code: 507
+    title: You do not own this Sender Signature
+  - code: 510
+    title: This domain was not found
+  - code: 511
+    title: Invalid fields supplied
+  - code: 512
+    title: Domain already exists
+  - code: 513
+    title: You do not own this Domain
+  - code: 514
+    title: Name is a required field to create a Domain
+  - code: 515
+    title: Name field must be less than or equal to 255 characters
+  - code: 516
+    title: Name format is invalid
+  - code: 520
+    title: You are missing a required field to create a Sender Signature
+    remediation: Supply both Name and FromEmail.
+  - code: 521
+    title: A field in the Sender Signature request is too long
+    remediation: ConfirmationPersonalNote has a max length of 400 characters.
+  - code: 522
+    title: Value for field is invalid
+  - code: 600
+    title: Server query exception
+  - code: 602
+    title: Duplicate Inbound Domain
+  - code: 603
+    title: Server name already exists
+  - code: 604
+    title: You don't have delete access
+    remediation: Server deletion via API requires support to enable.
+  - code: 605
+    title: Unable to delete Server
+  - code: 606
+    title: Invalid webhook URL
+    remediation: URL is invalid or contains an internal IP range.
+  - code: 607
+    title: Invalid Server color
+    remediation: Use Purple, Blue, Turqoise, Green, Red, Orange, Yellow, or Grey.
+  - code: 608
+    title: Server name missing or invalid
+  - code: 609
+    title: No updated Server data received
+  - code: 610
+    title: Invalid MX record for Inbound Domain
+    remediation: MX must point at inbound.postmarkapp.com.
+  - code: 611
+    title: InboundSpamThreshold value is invalid
+    remediation: Use a number between 0 and 30 in increments of 5.
+  - code: 700
+    title: Messages query exception
+  - code: 701
+    title: Message doesn't exist
+  - code: 702
+    title: Could not bypass this blocked inbound message
+    remediation: Contact support.
+  - code: 703
+    title: Could not retry this failed inbound message
+    remediation: Contact support.
+  - code: 800
+    title: Trigger query exception
+  - code: 809
+    title: No trigger data received
+  - code: 810
+    title: This inbound rule already exists
+  - code: 811
+    title: Unable to remove this inbound rule
+    remediation: Contact support.
+  - code: 812
+    title: This inbound rule was not found
+  - code: 813
+    title: Not a valid email address or domain
+  - code: 900
+    title: Stats query exception
+  - code: 1000
+    title: Bounces query exception
+  - code: 1001
+    title: Bounce was not found
+  - code: 1002
+    title: BounceID parameter required
+  - code: 1003
+    title: Cannot activate bounce
+    remediation: Certain bounces and SPAM complaints cannot be user-activated.
+  - code: 1100
+    title: Template query exception
+  - code: 1101
+    title: Template not found
+  - code: 1105
+    title: Template limit would be exceeded
+    remediation: A server may have up to 100 templates.
+  - code: 1109
+    title: No Template data received
+  - code: 1120
+    title: A required Template field is missing
+  - code: 1121
+    title: Template field is too large
+  - code: 1122
+    title: A Templated field has been submitted that is invalid
+  - code: 1123
+    title: A field was included in the request body that is not allowed
+  - code: 1125
+    title: The template types don't match on the source and destination servers
+  - code: 1130
+    title: The layout template cannot be deleted because it has dependent templates
+  - code: 1131
+    title: The layout content placeholder must be present exactly once
+  - code: 1221
+    title: The 'MessageStreamType' associated with this request was invalid
+  - code: 1222
+    title: A valid 'ID' must be provided
+  - code: 1223
+    title: A valid 'Name' must be provided
+  - code: 1224
+    title: The 'Name' is too long (limit 100 characters)
+  - code: 1225
+    title: Maximum number of message streams reached (10 per server)
+  - code: 1226
+    title: The message stream for the provided 'ID' was not found
+  - code: 1227
+    title: Invalid 'ID' format
+    remediation: >-
+      Must start with an English letter; lowercase letters, numbers, '-' and '_'
+      only; max 30 characters.
+  - code: 1228
+    title: A server can only have one inbound stream
+  - code: 1229
+    title: You cannot archive the default transactional and inbound streams
+  - code: 1230
+    title: The 'ID' provided already exists for this server
+  - code: 1231
+    title: The 'Description' is too long (limit 1000 characters)
+  - code: 1232
+    title: You cannot unarchive this message stream anymore
+  - code: 1233
+    title: The 'ID' must not start with the 'pm-' prefix
+  - code: 1234
+    title: The 'Description' must not contain HTML tags
+  - code: 1235
+    title: The 'MessageStream' provided does not exist on this server
+  - code: 1236
+    title: Sending is not supported on the supplied 'MessageStream'
+
+spec_coverage:
+  declared_in_openapi:
+    - 200
+    - 422
+    - 500
+  missing_from_openapi:
+    - 401
+    - 404
+    - 413
+    - 415
+    - 429
+    - 503
+  note: >-
+    The 47 specs in openapi/ declare only 200, 422 and 500 across all 167
+    operations. Six documented HTTP statuses — including 401 and 429, the two an
+    agent most needs to branch on — appear nowhere in the machine-readable
+    contract. overlays/ carries the repair.
+
+error_code_count: 84
