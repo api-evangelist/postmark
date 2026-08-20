@@ -25,6 +25,17 @@ tags:
 - Deliverability
 - SMTP
 - Email API
+- Webhook
+- Inbound Email
+- Email Templates
+- Email Analytics
+tags_raw:
+- Emails
+- Messaging
+- Transactional Email
+- Deliverability
+- SMTP
+- Email API
 - Webhooks
 - Inbound Email
 - Email Templates
@@ -279,6 +290,8 @@ apis:
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
   tags:
+  - Email Clients
+  tags_raw:
   - Emailclients
   properties:
   - type: OpenAPI
@@ -399,6 +412,8 @@ apis:
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
   tags:
+  - Message
+  tags_raw:
   - Messages
   properties:
   - type: OpenAPI
@@ -419,7 +434,8 @@ apis:
     inbound > {messageid}.
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
-  tags:
+  tags: []
+  tags_raw:
   - Messages > Inbound > {Messageid}
   properties:
   - type: OpenAPI
@@ -461,7 +477,8 @@ apis:
     outbound > {messageid}.
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
-  tags:
+  tags: []
+  tags_raw:
   - Messages > Outbound > {Messageid}
   properties:
   - type: OpenAPI
