@@ -428,92 +428,6 @@ apis:
     url: asyncapi/postmark-webhooks-asyncapi.yml
   - type: Overlay
     url: overlays/postmark-messages-api-overlay.yaml
-- aid: postmark:postmark-messages-inbound-messageid-api
-  name: Postmark Messages > Inbound > {Messageid} API
-  description: The Messages > Inbound > {Messageid} API from Postmark — 1 operation(s) for messages >
-    inbound > {messageid}.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags: []
-  tags_raw:
-  - Messages > Inbound > {Messageid}
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-messages-inbound-messageid-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-messages-inbound-messageid-api-overlay.yaml
-- aid: postmark:postmark-messages-outbound-clicks-api
-  name: Postmark Messages > Outbound > Clicks API
-  description: The Messages > Outbound > Clicks API from Postmark — 1 operation(s) for messages > outbound
-    > clicks.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags:
-  - Messages > Outbound > Clicks
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-messages-outbound-clicks-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-messages-outbound-clicks-api-overlay.yaml
-- aid: postmark:postmark-messages-outbound-messageid-api
-  name: Postmark Messages > Outbound > {Messageid} API
-  description: The Messages > Outbound > {Messageid} API from Postmark — 1 operation(s) for messages >
-    outbound > {messageid}.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags: []
-  tags_raw:
-  - Messages > Outbound > {Messageid}
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-messages-outbound-messageid-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-messages-outbound-messageid-api-overlay.yaml
-- aid: postmark:postmark-messages-outbound-opens-api
-  name: Postmark Messages > Outbound > Opens API
-  description: The Messages > Outbound > Opens API from Postmark — 1 operation(s) for messages > outbound
-    > opens.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags:
-  - Messages > Outbound > Opens
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-messages-outbound-opens-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-messages-outbound-opens-api-overlay.yaml
 - aid: postmark:postmark-outbound-api
   name: Postmark Outbound API
   description: The Outbound API from Postmark — 20 operation(s) for outbound.
@@ -534,66 +448,6 @@ apis:
     url: asyncapi/postmark-webhooks-asyncapi.yml
   - type: Overlay
     url: overlays/postmark-outbound-api-overlay.yaml
-- aid: postmark:postmark-platforms-api
-  name: Postmark Platforms API
-  description: The Platforms API from Postmark — 2 operation(s) for platforms.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags:
-  - Platforms
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-platforms-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-platforms-api-overlay.yaml
-- aid: postmark:postmark-readtimes-api
-  name: Postmark Readtimes API
-  description: The Readtimes API from Postmark — 1 operation(s) for readtimes.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags:
-  - Readtimes
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-readtimes-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-readtimes-api-overlay.yaml
-- aid: postmark:postmark-retry-api
-  name: Postmark Retry API
-  description: The Retry API from Postmark — 1 operation(s) for retry.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags:
-  - Retry
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-retry-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-retry-api-overlay.yaml
 - aid: postmark:postmark-sender-signatures-api-api
   name: Postmark Sender Signatures API API
   description: The Sender Signatures API API from Postmark — 5 operation(s) for sender signatures api.
@@ -634,30 +488,10 @@ apis:
     url: asyncapi/postmark-webhooks-asyncapi.yml
   - type: Overlay
     url: overlays/postmark-sending-api-api-overlay.yaml
-- aid: postmark:postmark-sends-api
-  name: Postmark Sends API
-  description: The Sends API from Postmark — 1 operation(s) for sends.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags:
-  - Sends
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-sends-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-sends-api-overlay.yaml
 - aid: postmark:postmark-server-configuration-api-api
   name: Postmark Server Configuration API API
-  description: The Server Configuration API API from Postmark — 1 operation(s) for server configuration
-    api.
+  description: >-
+    The Server Configuration API API from Postmark — 1 operation(s) for server configuration api.
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
   tags:
@@ -715,46 +549,6 @@ apis:
     url: asyncapi/postmark-webhooks-asyncapi.yml
   - type: Overlay
     url: overlays/postmark-servers-api-overlay.yaml
-- aid: postmark:postmark-spam-api
-  name: Postmark Spam API
-  description: The Spam API from Postmark — 1 operation(s) for spam.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags:
-  - Spam
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-spam-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-spam-api-overlay.yaml
-- aid: postmark:postmark-statistics-api
-  name: Postmark Statistics API
-  description: The Statistics API from Postmark — 13 operation(s) for statistics.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags:
-  - Statistics
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-statistics-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-statistics-api-overlay.yaml
 - aid: postmark:postmark-stats-api-api
   name: Postmark Stats API API
   description: The Stats API API from Postmark — 12 operation(s) for stats api.
@@ -775,86 +569,6 @@ apis:
     url: asyncapi/postmark-webhooks-asyncapi.yml
   - type: Overlay
     url: overlays/postmark-stats-api-api-overlay.yaml
-- aid: postmark:postmark-stats-outbound-api
-  name: Postmark Stats/Outbound API
-  description: The Stats/Outbound API from Postmark — 2 operation(s) for stats/outbound.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags:
-  - Stats/Outbound
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-stats-outbound-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-stats-outbound-api-overlay.yaml
-- aid: postmark:postmark-stats-outbound-clicks-api
-  name: Postmark Stats/Outbound > Clicks API
-  description: The Stats/Outbound > Clicks API from Postmark — 1 operation(s) for stats/outbound > clicks.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags:
-  - Stats/Outbound > Clicks
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-stats-outbound-clicks-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-stats-outbound-clicks-api-overlay.yaml
-- aid: postmark:postmark-stats-outbound-opens-api
-  name: Postmark Stats/Outbound > Opens API
-  description: The Stats/Outbound > Opens API from Postmark — 1 operation(s) for stats/outbound > opens.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags:
-  - Stats/Outbound > Opens
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-stats-outbound-opens-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-stats-outbound-opens-api-overlay.yaml
-- aid: postmark:postmark-template-api
-  name: Postmark Template API
-  description: The Template API from Postmark — 2 operation(s) for template.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags:
-  - Template
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-template-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-template-api-overlay.yaml
 - aid: postmark:postmark-templates-api-api
   name: Postmark Templates API API
   description: The Templates API API from Postmark — 6 operation(s) for templates api.
@@ -935,67 +649,41 @@ apis:
     url: asyncapi/postmark-webhooks-asyncapi.yml
   - type: Overlay
     url: overlays/postmark-triggers-api-overlay.yaml
-- aid: postmark:postmark-triggers-inboundrules-api
-  name: Postmark Triggers > Inboundrules API
-  description: The Triggers > Inboundrules API from Postmark — 1 operation(s) for triggers > inboundrules.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags:
-  - Triggers > Inboundrules
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-triggers-inboundrules-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-triggers-inboundrules-api-overlay.yaml
-- aid: postmark:postmark-triggers-tags-api
-  name: Postmark Triggers > Tags API
-  description: The Triggers > Tags API from Postmark — 1 operation(s) for triggers > tags.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags:
-  - Triggers > Tags
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-triggers-tags-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-triggers-tags-api-overlay.yaml
-- aid: postmark:postmark-validate-api
-  name: Postmark Validate API
-  description: The Validate API from Postmark — 1 operation(s) for validate.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags:
-  - Validate
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-validate-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-validate-api-overlay.yaml
 common:
+- type: Overlay
+  url: overlays/postmark-messages-inbound-messageid-api-overlay.yaml
+- type: Overlay
+  url: overlays/postmark-messages-outbound-clicks-api-overlay.yaml
+- type: Overlay
+  url: overlays/postmark-messages-outbound-messageid-api-overlay.yaml
+- type: Overlay
+  url: overlays/postmark-messages-outbound-opens-api-overlay.yaml
+- type: Overlay
+  url: overlays/postmark-platforms-api-overlay.yaml
+- type: Overlay
+  url: overlays/postmark-readtimes-api-overlay.yaml
+- type: Overlay
+  url: overlays/postmark-retry-api-overlay.yaml
+- type: Overlay
+  url: overlays/postmark-sends-api-overlay.yaml
+- type: Overlay
+  url: overlays/postmark-spam-api-overlay.yaml
+- type: Overlay
+  url: overlays/postmark-statistics-api-overlay.yaml
+- type: Overlay
+  url: overlays/postmark-stats-outbound-api-overlay.yaml
+- type: Overlay
+  url: overlays/postmark-stats-outbound-clicks-api-overlay.yaml
+- type: Overlay
+  url: overlays/postmark-stats-outbound-opens-api-overlay.yaml
+- type: Overlay
+  url: overlays/postmark-template-api-overlay.yaml
+- type: Overlay
+  url: overlays/postmark-triggers-inboundrules-api-overlay.yaml
+- type: Overlay
+  url: overlays/postmark-triggers-tags-api-overlay.yaml
+- type: Overlay
+  url: overlays/postmark-validate-api-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/postmark-agentic-access.yml
 - type: DomainSecurity
