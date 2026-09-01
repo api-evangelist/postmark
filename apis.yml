@@ -38,7 +38,7 @@ tags:
 - SMTP
 - Email API
 - Webhook
-- Inbound Email
+- inbound email
 - Email Templates
 - Email Analytics
 tags_raw:
@@ -302,7 +302,7 @@ apis:
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
   tags:
-  - Emailclients
+  - Email Clients
   tags_raw:
   - Emailclients
   properties:
