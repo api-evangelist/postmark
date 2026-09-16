@@ -38,7 +38,7 @@ tags:
 - SMTP
 - Email API
 - Webhook
-- inbound email
+- Inbound Email
 - Email Templates
 - Email Analytics
 tags_raw:
@@ -53,7 +53,7 @@ tags_raw:
 - Email Templates
 - Email Analytics
 created: '2024-04-14'
-modified: '2026-08-13'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: postmark:postmark-activate-api
@@ -137,7 +137,7 @@ apis:
   - type: Overlay
     url: overlays/postmark-bounceid-api-overlay.yaml
 - aid: postmark:postmark-bounces-api-api
-  name: Postmark Bounces API API
+  name: Postmark Bounces API
   description: The Bounces API API from Postmark — 5 operation(s) for bounces api.
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
@@ -237,7 +237,7 @@ apis:
   - type: Overlay
     url: overlays/postmark-deliverystats-api-overlay.yaml
 - aid: postmark:postmark-domains-api-api
-  name: Postmark Domains API API
+  name: Postmark Domains API
   description: The Domains API API from Postmark — 6 operation(s) for domains api.
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
@@ -339,7 +339,7 @@ apis:
   - type: Overlay
     url: overlays/postmark-inbound-api-overlay.yaml
 - aid: postmark:postmark-inbound-rules-api-api
-  name: Postmark Inbound Rules API API
+  name: Postmark Inbound Rules API
   description: The Inbound Rules API API from Postmark — 2 operation(s) for inbound rules api.
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
@@ -399,7 +399,7 @@ apis:
   - type: Overlay
     url: overlays/postmark-message-identifier-api-overlay.yaml
 - aid: postmark:postmark-messages-api-api
-  name: Postmark Messages API API
+  name: Postmark Messages API
   description: The Messages API API from Postmark — 11 operation(s) for messages api.
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
@@ -461,7 +461,7 @@ apis:
   - type: Overlay
     url: overlays/postmark-outbound-api-overlay.yaml
 - aid: postmark:postmark-sender-signatures-api-api
-  name: Postmark Sender Signatures API API
+  name: Postmark Sender Signatures API
   description: The Sender Signatures API API from Postmark — 5 operation(s) for sender signatures api.
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
@@ -481,7 +481,7 @@ apis:
   - type: Overlay
     url: overlays/postmark-sender-signatures-api-api-overlay.yaml
 - aid: postmark:postmark-sending-api-api
-  name: Postmark Sending API API
+  name: Postmark Sending API
   description: The Sending API API from Postmark — 4 operation(s) for sending api.
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
@@ -501,9 +501,9 @@ apis:
   - type: Overlay
     url: overlays/postmark-sending-api-api-overlay.yaml
 - aid: postmark:postmark-server-configuration-api-api
-  name: Postmark Server Configuration API API
-  description: >-
-    The Server Configuration API API from Postmark — 1 operation(s) for server configuration api.
+  name: Postmark Server Configuration API
+  description: The Server Configuration API API from Postmark — 1 operation(s) for server configuration
+    api.
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
   tags:
@@ -522,7 +522,7 @@ apis:
   - type: Overlay
     url: overlays/postmark-server-configuration-api-api-overlay.yaml
 - aid: postmark:postmark-server-management-api-api
-  name: Postmark Server Management API API
+  name: Postmark Server Management API
   description: The Server Management API API from Postmark — 2 operation(s) for server management api.
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
@@ -562,7 +562,7 @@ apis:
   - type: Overlay
     url: overlays/postmark-servers-api-overlay.yaml
 - aid: postmark:postmark-stats-api-api
-  name: Postmark Stats API API
+  name: Postmark Stats API
   description: The Stats API API from Postmark — 12 operation(s) for stats api.
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
@@ -582,7 +582,7 @@ apis:
   - type: Overlay
     url: overlays/postmark-stats-api-api-overlay.yaml
 - aid: postmark:postmark-templates-api-api
-  name: Postmark Templates API API
+  name: Postmark Templates API
   description: The Templates API API from Postmark — 6 operation(s) for templates api.
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
