@@ -296,28 +296,6 @@ apis:
     url: asyncapi/postmark-webhooks-asyncapi.yml
   - type: Overlay
     url: overlays/postmark-email-api-overlay.yaml
-- aid: postmark:postmark-emailclients-api
-  name: Postmark Emailclients API
-  description: The Emailclients API from Postmark — 1 operation(s) for emailclients.
-  humanURL: https://postmarkapp.com/developer
-  baseURL: https://api.postmarkapp.com
-  tags:
-  - Email Clients
-  tags_raw:
-  - Emailclients
-  properties:
-  - type: OpenAPI
-    url: openapi/postmark-emailclients-api-openapi.yml
-  - type: Documentation
-    url: https://postmarkapp.com/developer
-  - type: GettingStarted
-    url: https://postmarkapp.com/developer/api/overview
-  - type: Authentication
-    url: https://postmarkapp.com/developer/api/overview#authentication
-  - type: AsyncAPI
-    url: asyncapi/postmark-webhooks-asyncapi.yml
-  - type: Overlay
-    url: overlays/postmark-emailclients-api-overlay.yaml
 - aid: postmark:postmark-inbound-api
   name: Postmark Inbound API
   description: The Inbound API from Postmark — 4 operation(s) for inbound.
@@ -502,8 +480,8 @@ apis:
     url: overlays/postmark-sending-api-api-overlay.yaml
 - aid: postmark:postmark-server-configuration-api-api
   name: Postmark Server Configuration API
-  description: The Server Configuration API API from Postmark — 1 operation(s) for server configuration
-    api.
+  description: >-
+    The Server Configuration API API from Postmark — 1 operation(s) for server configuration api.
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
   tags:
@@ -661,7 +639,27 @@ apis:
     url: asyncapi/postmark-webhooks-asyncapi.yml
   - type: Overlay
     url: overlays/postmark-triggers-api-overlay.yaml
+- aid: postmark:postmark-email-clients-api
+  name: Postmark Email Clients API
+  description: The Email Clients API from Postmark — 1 operation(s) for email clients.
+  humanURL: https://postmarkapp.com/developer
+  baseURL: https://api.postmarkapp.com
+  tags:
+  - Email Clients
+  properties:
+  - type: OpenAPI
+    url: openapi/postmark-email-clients-api-openapi.yml
+  - type: Documentation
+    url: https://postmarkapp.com/developer
+  - type: GettingStarted
+    url: https://postmarkapp.com/developer/api/overview
+  - type: Authentication
+    url: https://postmarkapp.com/developer/api/overview#authentication
+  - type: AsyncAPI
+    url: asyncapi/postmark-webhooks-asyncapi.yml
 common:
+- type: Overlay
+  url: overlays/postmark-emailclients-api-overlay.yaml
 - type: Overlay
   url: overlays/postmark-messages-inbound-messageid-api-overlay.yaml
 - type: Overlay
