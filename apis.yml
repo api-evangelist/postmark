@@ -31,7 +31,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/postmark.png
 url: https://raw.githubusercontent.com/api-evangelist/postmark/refs/heads/main/apis.yml
 tags:
-- Emails
+- Email
 - Messaging
 - Transactional Email
 - Deliverability
@@ -342,6 +342,8 @@ apis:
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
   tags:
+  - Location
+  tags_raw:
   - Locations
   properties:
   - type: OpenAPI
@@ -645,6 +647,8 @@ apis:
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
   tags:
+  - Email Client
+  tags_raw:
   - Email Clients
   properties:
   - type: OpenAPI
