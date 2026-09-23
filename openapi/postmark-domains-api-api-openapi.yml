@@ -1,13 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Postmark Account Activate Domains API API
+  title: Postmark Account Domains API
   description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
 
     configure all Servers, Domains, and Sender Signatures associated
 
-    with an Account.
-
-    '
+    with an Account.'
   version: 0.9.0
 servers:
 - url: //api.postmarkapp.com/
@@ -321,9 +319,7 @@ paths:
 
         `DKIMTextValue` and `DKIMPendingTextValue` and Postmark will begin to sign emails
 
-        with the new DKIM key.
-
-        '
+        with the new DKIM key.'
       operationId: rotateDKIMKeyForDomain
       parameters:
       - name: X-Postmark-Account-Token
@@ -356,25 +352,11 @@ paths:
           content: {}
 components:
   schemas:
-    DomainSPFResult:
+    DomainEditingModel:
       type: object
       properties:
-        SPFHost:
+        ReturnPathDomain:
           type: string
-        SPFVerified:
-          type: boolean
-        SPFTextValue:
-          type: string
-      description: ''
-    DomainListingResults:
-      type: object
-      properties:
-        TotalCount:
-          type: integer
-        Domains:
-          type: array
-          items:
-            $ref: '#/components/schemas/DomainInformation'
       description: ''
     DKIMRotationResponse:
       type: object
@@ -404,6 +386,43 @@ components:
         ID:
           type: integer
           format: int64
+      description: ''
+    DomainInformation:
+      type: object
+      properties:
+        Name:
+          type: string
+        SPFVerified:
+          type: boolean
+        DKIMVerified:
+          type: boolean
+        WeakDKIM:
+          type: boolean
+        ReturnPathDomainVerified:
+          type: boolean
+        ID:
+          type: integer
+          format: int64
+      description: ''
+    DomainSPFResult:
+      type: object
+      properties:
+        SPFHost:
+          type: string
+        SPFVerified:
+          type: boolean
+        SPFTextValue:
+          type: string
+      description: ''
+    DomainListingResults:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+        Domains:
+          type: array
+          items:
+            $ref: '#/components/schemas/DomainInformation'
       description: ''
     DomainExtendedInformation:
       type: object
@@ -454,29 +473,6 @@ components:
         Message:
           type: string
       description: A Postmark API error.
-    DomainEditingModel:
-      type: object
-      properties:
-        ReturnPathDomain:
-          type: string
-      description: ''
-    DomainInformation:
-      type: object
-      properties:
-        Name:
-          type: string
-        SPFVerified:
-          type: boolean
-        DKIMVerified:
-          type: boolean
-        WeakDKIM:
-          type: boolean
-        ReturnPathDomainVerified:
-          type: boolean
-        ID:
-          type: integer
-          format: int64
-      description: ''
     DomainCreationModel:
       type: object
       properties:

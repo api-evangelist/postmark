@@ -1,24 +1,24 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Postmark Account Activate Stats/Outbound > Clicks API
-  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+  title: Postmark Emailclients API
+  description: 'Postmark helps deliver and track application email. In a nutshell, the
 
-    configure all Servers, Domains, and Sender Signatures associated
+    service replaces SMTP (or Sendmail) with a far more reliable, scalable and
 
-    with an Account.
+    care-free environment. In addition, you can track statistics such as
 
-    '
-  version: 0.9.0
+    number of emails sent or processed, opens, bounces and spam complaints.'
+  version: 1.0.0
 servers:
-- url: //api.postmarkapp.com/
+- url: http://{{baseurl}}
 tags:
-- name: Stats/Outbound > Clicks
+- name: Email Clients
 paths:
-  /stats/outbound/clicks:
+  /stats/outbound/opens/emailclients:
     get:
       tags:
-      - Stats/Outbound > Clicks
-      summary: Postmark Get click counts
+      - Email Clients
+      summary: Postmark Get email client usage
       parameters:
       - name: tag
         in: query
@@ -43,3 +43,5 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getStatsOutboundOpensEmailclients
+      x-operation-id-source: derived

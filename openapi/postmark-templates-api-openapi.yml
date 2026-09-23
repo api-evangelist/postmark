@@ -1,31 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Postmark Account Activate Templates API
-  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+  title: Postmark Templates API
+  description: 'Postmark helps deliver and track application email. In a nutshell, the
 
-    configure all Servers, Domains, and Sender Signatures associated
+    service replaces SMTP (or Sendmail) with a far more reliable, scalable and
 
-    with an Account.
+    care-free environment. In addition, you can track statistics such as
 
-    '
-  version: 0.9.0
+    number of emails sent or processed, opens, bounces and spam complaints.'
+  version: 1.0.0
 servers:
-- url: //api.postmarkapp.com/
+- url: http://{{baseurl}}
 tags:
 - name: Templates
 paths:
-  /email/batchWithTemplates:
-    post:
-      tags:
-      - Templates
-      summary: Postmark Send a batch of email using templates.
-      requestBody:
-        content: {}
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /templates:
     get:
       tags:
@@ -49,6 +37,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getTemplates
+      x-operation-id-source: derived
   /templates/validate:
     post:
       tags:
@@ -61,21 +51,5 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /templates/{templateIdOrAlias}:
-    delete:
-      tags:
-      - Templates
-      summary: Postmark Delete a Template
-      parameters:
-      - name: templateIdOrAlias
-        in: path
-        schema:
-          type: string
-        required: true
-        description: The 'TemplateID' or 'Alias' value for the Template you wish to delete.
-        example: <string>
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
+      operationId: postTemplatesValidate
+      x-operation-id-source: derived

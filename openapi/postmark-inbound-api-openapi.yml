@@ -1,39 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Postmark Account Activate Inbound API
-  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+  title: Postmark Inbound API
+  description: 'Postmark helps deliver and track application email. In a nutshell, the
 
-    configure all Servers, Domains, and Sender Signatures associated
+    service replaces SMTP (or Sendmail) with a far more reliable, scalable and
 
-    with an Account.
+    care-free environment. In addition, you can track statistics such as
 
-    '
-  version: 0.9.0
+    number of emails sent or processed, opens, bounces and spam complaints.'
+  version: 1.0.0
 servers:
-- url: //api.postmarkapp.com/
+- url: http://{{baseurl}}
 tags:
 - name: Inbound
 paths:
-  /messages/inbound/{messageid}/bypass:
-    put:
-      tags:
-      - Inbound
-      summary: Postmark Bypass rules for a blocked inbound message
-      requestBody:
-        content: {}
-      parameters:
-      - name: messageid
-        in: path
-        schema:
-          type: string
-        required: true
-        description: The ID of the message which should bypass inbound rules.
-        example: <string>
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /messages/inbound/{messageid}/details:
     get:
       tags:
@@ -52,6 +32,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getMessagesInboundByMessageidDetails
+      x-operation-id-source: derived
   /messages/inbound/{messageid}/retry:
     put:
       tags:
@@ -72,6 +54,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: putMessagesInboundByMessageidRetry
+      x-operation-id-source: derived
   /messages/inbound:
     get:
       tags:
@@ -143,3 +127,5 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getMessagesInbound
+      x-operation-id-source: derived

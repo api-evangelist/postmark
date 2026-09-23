@@ -1,16 +1,12 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Postmark Account Activate Sending API API
-  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+  title: Postmark Server Sending API
+  description: 'Postmark makes sending and receiving email
 
-    configure all Servers, Domains, and Sender Signatures associated
-
-    with an Account.
-
-    '
-  version: 0.9.0
+    incredibly easy.'
+  version: 1.0.0
 servers:
-- url: //api.postmarkapp.com/
+- url: https://api.postmarkapp.com/
 tags:
 - name: Sending API
 paths:
@@ -24,21 +20,25 @@ paths:
       - name: X-Postmark-Server-Token
         required: true
         description: The token associated with the Server on which this request will operate.
-        type: string
         in: header
-      - name: body
-        in: body
         schema:
-          $ref: '#/definitions/SendEmailRequest'
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/SendEmailResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEmailResponse'
         422:
-          $ref: '#/responses/422'
+          $ref: '#/components/responses/422'
         500:
-          $ref: '#/responses/500'
+          $ref: '#/components/responses/500'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailRequest'
   /email/batch:
     post:
       operationId: sendEmailBatch
@@ -49,21 +49,25 @@ paths:
       - name: X-Postmark-Server-Token
         required: true
         description: The token associated with the Server on which this request will operate.
-        type: string
         in: header
-      - name: body
-        in: body
         schema:
-          $ref: '#/definitions/SendEmailBatchRequest'
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/SendEmailBatchResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEmailBatchResponse'
         422:
-          $ref: '#/responses/422'
+          $ref: '#/components/responses/422'
         500:
-          $ref: '#/responses/500'
+          $ref: '#/components/responses/500'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailBatchRequest'
   /email/withTemplate:
     post:
       operationId: sendEmailWithTemplate
@@ -74,196 +78,205 @@ paths:
       - name: X-Postmark-Server-Token
         required: true
         description: The token associated with the Server on which this request will operate.
-        type: string
         in: header
-      - name: body
-        in: body
-        required: true
         schema:
-          $ref: '#/definitions/EmailWithTemplateRequest'
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/SendEmailResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEmailResponse'
         422:
-          $ref: '#/responses/422'
+          $ref: '#/components/responses/422'
         500:
-          $ref: '#/responses/500'
+          $ref: '#/components/responses/500'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailWithTemplateRequest'
+        required: true
   /email/batchWithTemplates:
     post:
       operationId: sendEmailBatchWithTemplates
       tags:
       - Sending API
-      summary: Postmark Send a batch of email using templates.
+      summary: Postmark Send a batch of email using templates
       parameters:
       - name: X-Postmark-Server-Token
         required: true
         description: The token associated with the Server on which this request will operate.
-        type: string
         in: header
-      - name: body
-        in: body
-        required: true
         schema:
-          $ref: '#/definitions/SendEmailTemplatedBatchRequest'
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/SendEmailBatchResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEmailBatchResponse'
         422:
-          $ref: '#/responses/422'
+          $ref: '#/components/responses/422'
         500:
-          $ref: '#/responses/500'
-definitions:
-  SendEmailBatchRequest:
-    type: array
-    items:
-      $ref: '#/definitions/SendEmailRequest'
-  SendEmailResponse:
-    description: The standard response when a postmark message is sent
-    properties:
-      To:
-        type: string
-      SubmittedAt:
-        type: string
-        format: date-time
-      MessageID:
-        type: string
-      ErrorCode:
-        type: integer
-      Message:
-        type: string
-  EmailWithTemplateRequest:
-    properties:
-      TemplateId:
-        description: Required if 'TemplateAlias' is not specified.
-        type: integer
-      TemplateAlias:
-        description: Required if 'TemplateId' is not specified.
-        type: string
-      TemplateModel:
-        type: object
-      InlineCss:
-        type: boolean
-        default: true
-      From:
-        type: string
-        format: email
-      To:
-        type: string
-        format: email
-      Cc:
-        type: string
-        format: email
-      Bcc:
-        type: string
-        format: email
-      Tag:
-        type: string
-      ReplyTo:
-        type: string
-      Headers:
-        $ref: '#/definitions/HeaderCollection'
-      TrackOpens:
-        description: Activate open tracking for this email.
-        type: boolean
-      TrackLinks:
-        description: Replace links in content to enable "click tracking" stats. Default is 'null', which uses the server's LinkTracking setting'.
-        type: string
-        enum:
-        - None
-        - HtmlAndText
-        - HtmlOnly
-        - TextOnly
-      Attachments:
-        $ref: '#/definitions/AttachmentCollection'
-    required:
-    - TemplateId
-    - TemplateAlias
-    - TemplateModel
-    - To
-    - From
-  HeaderCollection:
-    type: array
-    items:
-      $ref: '#/definitions/MessageHeader'
-  SendEmailRequest:
-    properties:
-      From:
-        description: The sender email address. Must have a registered and confirmed Sender Signature.
-        type: string
-      To:
-        description: Recipient email address. Multiple addresses are comma seperated. Max 50.
-        type: string
-      Cc:
-        description: Recipient email address. Multiple addresses are comma seperated. Max 50.
-        type: string
-      Bcc:
-        description: Bcc recipient email address. Multiple addresses are comma seperated. Max 50.
-        type: string
-      Subject:
-        description: Email Subject
-        type: string
-      Tag:
-        description: Email tag that allows you to categorize outgoing emails and get detailed statistics.
-        type: string
-      HtmlBody:
-        description: If no TextBody specified HTML email message
-        type: string
-      TextBody:
-        description: If no HtmlBody specified Plain text email message
-        type: string
-      ReplyTo:
-        description: Reply To override email address. Defaults to the Reply To set in the sender signature.
-        type: string
-      TrackOpens:
-        description: Activate open tracking for this email.
-        type: boolean
-      TrackLinks:
-        description: Replace links in content to enable "click tracking" stats. Default is 'null', which uses the server's LinkTracking setting'.
-        type: string
-        enum:
-        - None
-        - HtmlAndText
-        - HtmlOnly
-        - TextOnly
-      Headers:
-        $ref: '#/definitions/HeaderCollection'
-      Attachments:
-        $ref: '#/definitions/AttachmentCollection'
-  SendEmailTemplatedBatchRequest:
-    properties:
-      Messages:
-        type: array
-        items:
-          $ref: '#/definitions/EmailWithTemplateRequest'
-  MessageHeader:
-    description: A single header for an email message.
-    properties:
-      Name:
-        description: The header's name.
-        type: string
-      Value:
-        description: The header's value.
-        type: string
-  SendEmailBatchResponse:
-    type: array
-    items:
-      $ref: '#/definitions/SendEmailResponse'
-  AttachmentCollection:
-    type: array
-    items:
-      $ref: '#/definitions/Attachment'
-  Attachment:
-    description: An attachment for an email message.
-    properties:
-      Name:
-        type: string
-      Content:
-        type: string
-      ContentType:
-        type: string
-      ContentID:
-        type: string
+          $ref: '#/components/responses/500'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailTemplatedBatchRequest'
+        required: true
+components:
+  schemas:
+    AttachmentCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/Attachment'
+    EmailWithTemplateRequest:
+      properties:
+        TemplateId:
+          description: Required if 'TemplateAlias' is not specified.
+          type: integer
+        TemplateAlias:
+          description: Required if 'TemplateId' is not specified.
+          type: string
+        TemplateModel:
+          type: object
+        InlineCss:
+          type: boolean
+          default: true
+        From:
+          type: string
+          format: email
+        To:
+          type: string
+          format: email
+        Cc:
+          type: string
+          format: email
+        Bcc:
+          type: string
+          format: email
+        Tag:
+          type: string
+        ReplyTo:
+          type: string
+        Headers:
+          $ref: '#/components/schemas/HeaderCollection'
+        TrackOpens:
+          description: Activate open tracking for this email.
+          type: boolean
+        TrackLinks:
+          description: Replace links in content to enable "click tracking" stats. Default is 'null', which uses the server's LinkTracking setting'.
+          type: string
+          enum:
+          - None
+          - HtmlAndText
+          - HtmlOnly
+          - TextOnly
+        Attachments:
+          $ref: '#/components/schemas/AttachmentCollection'
+      required:
+      - TemplateId
+      - TemplateAlias
+      - TemplateModel
+      - To
+      - From
+    SendEmailRequest:
+      properties:
+        From:
+          description: The sender email address. Must have a registered and confirmed Sender Signature.
+          type: string
+        To:
+          description: Recipient email address. Multiple addresses are comma seperated. Max 50.
+          type: string
+        Cc:
+          description: Recipient email address. Multiple addresses are comma seperated. Max 50.
+          type: string
+        Bcc:
+          description: Bcc recipient email address. Multiple addresses are comma seperated. Max 50.
+          type: string
+        Subject:
+          description: Email Subject
+          type: string
+        Tag:
+          description: Email tag that allows you to categorize outgoing emails and get detailed statistics.
+          type: string
+        HtmlBody:
+          description: If no TextBody specified HTML email message
+          type: string
+        TextBody:
+          description: If no HtmlBody specified Plain text email message
+          type: string
+        ReplyTo:
+          description: Reply To override email address. Defaults to the Reply To set in the sender signature.
+          type: string
+        TrackOpens:
+          description: Activate open tracking for this email.
+          type: boolean
+        TrackLinks:
+          description: Replace links in content to enable "click tracking" stats. Default is 'null', which uses the server's LinkTracking setting'.
+          type: string
+          enum:
+          - None
+          - HtmlAndText
+          - HtmlOnly
+          - TextOnly
+        Headers:
+          $ref: '#/components/schemas/HeaderCollection'
+        Attachments:
+          $ref: '#/components/schemas/AttachmentCollection'
+    SendEmailResponse:
+      description: The standard response when a postmark message is sent
+      properties:
+        To:
+          type: string
+        SubmittedAt:
+          type: string
+          format: date-time
+        MessageID:
+          type: string
+        ErrorCode:
+          type: integer
+        Message:
+          type: string
+    HeaderCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/MessageHeader'
+    Attachment:
+      description: An attachment for an email message.
+      properties:
+        Name:
+          type: string
+        Content:
+          type: string
+        ContentType:
+          type: string
+        ContentID:
+          type: string
+    SendEmailBatchRequest:
+      type: array
+      items:
+        $ref: '#/components/schemas/SendEmailRequest'
+    MessageHeader:
+      description: A single header for an email message.
+      properties:
+        Name:
+          description: The header's name.
+          type: string
+        Value:
+          description: The header's value.
+          type: string
+    SendEmailTemplatedBatchRequest:
+      properties:
+        Messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailWithTemplateRequest'
+    SendEmailBatchResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/SendEmailResponse'

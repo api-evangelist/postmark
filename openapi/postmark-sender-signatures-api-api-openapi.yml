@@ -1,13 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Postmark Account Activate Sender Signatures API API
+  title: Postmark Account Sender Signatures API
   description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
 
     configure all Servers, Domains, and Sender Signatures associated
 
-    with an Account.
-
-    '
+    with an Account.'
   version: 0.9.0
 servers:
 - url: //api.postmarkapp.com/
@@ -286,9 +284,7 @@ paths:
 
         `DKIMTextValue` and `DKIMPendingTextValue` and Postmark will begin to sign emails
 
-        with the new DKIM key.
-
-        '
+        with the new DKIM key.'
       operationId: requestNewDKIMKeyForSenderSignature
       parameters:
       - name: X-Postmark-Account-Token
@@ -321,6 +317,41 @@ paths:
           content: {}
 components:
   schemas:
+    SenderListingResults:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+        SenderSignatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/SenderSignatureInformation'
+      description: ''
+    SenderSignatureCreationModel:
+      type: object
+      properties:
+        FromEmail:
+          type: string
+          format: email
+        Name:
+          type: string
+        ReplyToEmail:
+          type: string
+          format: email
+        ReturnPathDomain:
+          type: string
+      description: ''
+    SenderSignatureEditingModel:
+      type: object
+      properties:
+        Name:
+          type: string
+        ReplyToEmail:
+          type: string
+          format: email
+        ReturnPathDomain:
+          type: string
+      description: ''
     SenderSignatureInformation:
       type: object
       properties:
@@ -340,6 +371,14 @@ components:
           type: integer
           format: int64
       description: ''
+    StandardPostmarkResponse:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        Message:
+          type: string
+      description: A Postmark API error.
     SenderSignatureExtendedInformation:
       type: object
       properties:
@@ -390,47 +429,4 @@ components:
         ID:
           type: integer
           format: int64
-      description: ''
-    SenderSignatureCreationModel:
-      type: object
-      properties:
-        FromEmail:
-          type: string
-          format: email
-        Name:
-          type: string
-        ReplyToEmail:
-          type: string
-          format: email
-        ReturnPathDomain:
-          type: string
-      description: ''
-    SenderListingResults:
-      type: object
-      properties:
-        TotalCount:
-          type: integer
-        SenderSignatures:
-          type: array
-          items:
-            $ref: '#/components/schemas/SenderSignatureInformation'
-      description: ''
-    StandardPostmarkResponse:
-      type: object
-      properties:
-        ErrorCode:
-          type: integer
-        Message:
-          type: string
-      description: A Postmark API error.
-    SenderSignatureEditingModel:
-      type: object
-      properties:
-        Name:
-          type: string
-        ReplyToEmail:
-          type: string
-          format: email
-        ReturnPathDomain:
-          type: string
       description: ''

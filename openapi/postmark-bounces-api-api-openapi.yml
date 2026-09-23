@@ -1,16 +1,12 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Postmark Account Activate Bounces API API
-  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+  title: Postmark Server Bounces API
+  description: 'Postmark makes sending and receiving email
 
-    configure all Servers, Domains, and Sender Signatures associated
-
-    with an Account.
-
-    '
-  version: 0.9.0
+    incredibly easy.'
+  version: 1.0.0
 servers:
-- url: //api.postmarkapp.com/
+- url: https://api.postmarkapp.com/
 tags:
 - name: Bounces API
 paths:
@@ -24,17 +20,20 @@ paths:
       - name: X-Postmark-Server-Token
         required: true
         description: The token associated with the Server on which this request will operate.
-        type: string
         in: header
+        schema:
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/DeliveryStatsResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryStatsResponse'
         422:
-          $ref: '#/responses/422'
+          $ref: '#/components/responses/422'
         500:
-          $ref: '#/responses/500'
+          $ref: '#/components/responses/500'
   /bounces:
     get:
       operationId: getBounces
@@ -45,82 +44,94 @@ paths:
       - name: X-Postmark-Server-Token
         required: true
         description: The token associated with the Server on which this request will operate.
-        type: string
         in: header
+        schema:
+          type: string
       - name: count
         in: query
         description: Number of bounces to return per request. Max 500.
-        type: integer
-        maximum: 500
         required: true
+        schema:
+          type: integer
+          maximum: 500
       - name: offset
         description: Number of bounces to skip.
         in: query
         required: true
-        type: integer
+        schema:
+          type: integer
       - name: type
         description: Filter by type of bounce
         in: query
-        type: string
-        enum:
-        - HardBounce
-        - Transient
-        - Unsubscribe
-        - Subscribe
-        - AutoResponder
-        - AddressChange
-        - DnsError
-        - SpamNotification
-        - OpenRelayTest
-        - Unknown
-        - SoftBounce
-        - VirusNotification
-        - MailFrontier Matador.
-        - BadEmailAddress
-        - SpamComplaint
-        - ManuallyDeactivated
-        - Unconfirmed
-        - Blocked
-        - SMTPApiError
-        - InboundError
-        - DMARCPolicy
-        - TemplateRenderingFailed
+        schema:
+          type: string
+          enum:
+          - HardBounce
+          - Transient
+          - Unsubscribe
+          - Subscribe
+          - AutoResponder
+          - AddressChange
+          - DnsError
+          - SpamNotification
+          - OpenRelayTest
+          - Unknown
+          - SoftBounce
+          - VirusNotification
+          - MailFrontier Matador.
+          - BadEmailAddress
+          - SpamComplaint
+          - ManuallyDeactivated
+          - Unconfirmed
+          - Blocked
+          - SMTPApiError
+          - InboundError
+          - DMARCPolicy
+          - TemplateRenderingFailed
       - name: inactive
         description: Filter by emails that were deactivated by Postmark due to the bounce. Set to true or false. If this isn't specified it will return both active and inactive.
         in: query
-        type: boolean
+        schema:
+          type: boolean
       - name: emailFilter
         in: query
         description: Filter by email address
-        type: string
-        format: email
+        schema:
+          type: string
+          format: email
       - name: messageID
         description: Filter by messageID
         in: query
-        type: string
+        schema:
+          type: string
       - name: tag
         description: Filter by tag
-        type: string
         in: query
+        schema:
+          type: string
       - name: todate
         in: query
         description: Filter messages up to the date specified. e.g. `2014-02-01`
-        type: string
-        format: date
+        schema:
+          type: string
+          format: date
       - name: fromdate
         description: Filter messages starting from the date specified. e.g. `2014-02-01`
         in: query
-        type: string
-        format: date
+        schema:
+          type: string
+          format: date
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/BounceSearchResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BounceSearchResponse'
         422:
-          $ref: '#/responses/422'
+          $ref: '#/components/responses/422'
         500:
-          $ref: '#/responses/500'
+          $ref: '#/components/responses/500'
   /bounces/{bounceid}:
     get:
       operationId: getSingleBounce
@@ -131,23 +142,27 @@ paths:
       - name: X-Postmark-Server-Token
         required: true
         description: The token associated with the Server on which this request will operate.
-        type: string
         in: header
+        schema:
+          type: string
       - name: bounceid
         in: path
         description: The ID of the bounce to retrieve.
         required: true
-        type: integer
-        format: int64
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/BounceInfoResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BounceInfoResponse'
         422:
-          $ref: '#/responses/422'
+          $ref: '#/components/responses/422'
         500:
-          $ref: '#/responses/500'
+          $ref: '#/components/responses/500'
   /bounces/{bounceid}/dump:
     get:
       tags:
@@ -157,23 +172,29 @@ paths:
       - name: X-Postmark-Server-Token
         required: true
         description: The token associated with the Server on which this request will operate.
-        type: string
         in: header
+        schema:
+          type: string
       - name: bounceid
         in: path
         description: The ID for the bounce dump to retrieve.
         required: true
-        type: integer
-        format: int64
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/BounceDumpResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BounceDumpResponse'
         422:
-          $ref: '#/responses/422'
+          $ref: '#/components/responses/422'
         500:
-          $ref: '#/responses/500'
+          $ref: '#/components/responses/500'
+      operationId: getBouncesByBounceidDump
+      x-operation-id-source: derived
   /bounces/{bounceid}/activate:
     put:
       operationId: activateBounce
@@ -184,92 +205,97 @@ paths:
       - name: X-Postmark-Server-Token
         required: true
         description: The token associated with the Server on which this request will operate.
-        type: string
         in: header
+        schema:
+          type: string
       - name: bounceid
         in: path
         description: The ID of the Bounce to activate.
         required: true
-        type: integer
-        format: int64
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/BounceActivationResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BounceActivationResponse'
         422:
-          $ref: '#/responses/422'
+          $ref: '#/components/responses/422'
         500:
-          $ref: '#/responses/500'
-definitions:
-  DeliveryStatsResponse:
-    description: ''
-    properties:
-      InactiveMails:
-        type: integer
-      Bounces:
-        type: array
-        items:
-          $ref: '#/definitions/BounceCountElement'
-  BounceCountElement:
-    properties:
-      Name:
-        type: string
-      Count:
-        type: integer
-      Type:
-        type: string
-  BounceDumpResponse:
-    properties:
-      Body:
-        description: Raw source of bounce. If no dump is available this will return an empty string.
-        type: string
-  BounceActivationResponse:
-    properties:
-      Message:
-        type: string
-      Bounce:
-        $ref: '#/definitions/BounceInfoResponse'
-  BounceSearchResponse:
-    description: ''
-    properties:
-      TotalCount:
-        type: integer
-      Bounces:
-        type: array
-        items:
-          $ref: '#/definitions/BounceInfoResponse'
-  BounceInfoResponse:
-    properties:
-      ID:
-        type: string
-      Type:
-        type: string
-      TypeCode:
-        type: integer
-      Name:
-        type: string
-      Tag:
-        type: string
-      MessageID:
-        type: string
-      Description:
-        type: string
-      Details:
-        type: string
-      Email:
-        type: string
-        format: email
-      BouncedAt:
-        type: string
-        format: date-time
-      DumpAvailable:
-        type: boolean
-      Inactive:
-        type: boolean
-      CanActivate:
-        type: boolean
-      Subject:
-        type: string
-      Content:
-        type: string
+          $ref: '#/components/responses/500'
+components:
+  schemas:
+    BounceActivationResponse:
+      properties:
+        Message:
+          type: string
+        Bounce:
+          $ref: '#/components/schemas/BounceInfoResponse'
+    BounceSearchResponse:
+      description: ''
+      properties:
+        TotalCount:
+          type: integer
+        Bounces:
+          type: array
+          items:
+            $ref: '#/components/schemas/BounceInfoResponse'
+    BounceInfoResponse:
+      properties:
+        ID:
+          type: string
+        Type:
+          type: string
+        TypeCode:
+          type: integer
+        Name:
+          type: string
+        Tag:
+          type: string
+        MessageID:
+          type: string
+        Description:
+          type: string
+        Details:
+          type: string
+        Email:
+          type: string
+          format: email
+        BouncedAt:
+          type: string
+          format: date-time
+        DumpAvailable:
+          type: boolean
+        Inactive:
+          type: boolean
+        CanActivate:
+          type: boolean
+        Subject:
+          type: string
+        Content:
+          type: string
+    BounceCountElement:
+      properties:
+        Name:
+          type: string
+        Count:
+          type: integer
+        Type:
+          type: string
+    BounceDumpResponse:
+      properties:
+        Body:
+          description: Raw source of bounce. If no dump is available this will return an empty string.
+          type: string
+    DeliveryStatsResponse:
+      description: ''
+      properties:
+        InactiveMails:
+          type: integer
+        Bounces:
+          type: array
+          items:
+            $ref: '#/components/schemas/BounceCountElement'

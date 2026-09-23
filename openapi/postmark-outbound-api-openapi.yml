@@ -1,364 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Postmark Account Activate Outbound API
-  description: 'Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to
+  title: Postmark Outbound API
+  description: 'Postmark helps deliver and track application email. In a nutshell, the
 
-    configure all Servers, Domains, and Sender Signatures associated
+    service replaces SMTP (or Sendmail) with a far more reliable, scalable and
 
-    with an Account.
+    care-free environment. In addition, you can track statistics such as
 
-    '
-  version: 0.9.0
+    number of emails sent or processed, opens, bounces and spam complaints.'
+  version: 1.0.0
 servers:
-- url: //api.postmarkapp.com/
+- url: http://{{baseurl}}
 tags:
 - name: Outbound
 paths:
-  /messages/outbound/clicks:
-    get:
-      tags:
-      - Outbound
-      summary: Postmark Clicks for a all messages
-      parameters:
-      - name: count
-        in: query
-        schema:
-          type: string
-        description: Number of bounces to return per request. Max 500.
-        example: <integer>
-      - name: offset
-        in: query
-        schema:
-          type: string
-        description: Number of bounces to skip.
-        example: <integer>
-      - name: recipient
-        in: query
-        schema:
-          type: string
-        description: Filter by the user who was receiving the email
-        example: <string>
-      - name: tag
-        in: query
-        schema:
-          type: string
-        description: Filter by tag
-        example: <string>
-      - name: client_name
-        in: query
-        schema:
-          type: string
-        description: Filter by client name, i.e. Outlook, Gmail
-        example: <string>
-      - name: client_company
-        in: query
-        schema:
-          type: string
-        description: Filter by company, i.e. Microsoft, Apple, Google
-        example: <string>
-      - name: client_family
-        in: query
-        schema:
-          type: string
-        description: Filter by client family, i.e. OS X, Chrome
-        example: <string>
-      - name: os_name
-        in: query
-        schema:
-          type: string
-        description: Filter by full OS name and specific version, i.e. OS X 10.9 Mavericks, Windows 7
-        example: <string>
-      - name: os_family
-        in: query
-        schema:
-          type: string
-        description: Filter by kind of OS used without specific version, i.e. OS X, Windows
-        example: <string>
-      - name: os_company
-        in: query
-        schema:
-          type: string
-        description: Filter by company which produced the OS, i.e. Apple Computer, Inc., Microsoft Corporation
-        example: <string>
-      - name: platform
-        in: query
-        schema:
-          type: string
-        description: Filter by platform, i.e. webmail, desktop, mobile
-        example: <string>
-      - name: country
-        in: query
-        schema:
-          type: string
-        description: Filter by country messages were opened in, i.e. Denmark, Russia
-        example: <string>
-      - name: region
-        in: query
-        schema:
-          type: string
-        description: Filter by full name of region messages were opened in, i.e. Moscow, New York
-        example: <string>
-      - name: city
-        in: query
-        schema:
-          type: string
-        description: Filter by full name of region messages were opened in, i.e. Moscow, New York
-        example: <string>
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /messages/outbound/clicks/{messageid}:
-    get:
-      tags:
-      - Outbound
-      summary: Postmark Retrieve Message Clicks
-      parameters:
-      - name: count
-        in: query
-        schema:
-          type: string
-        description: Number of bounces to return per request. Max 500.
-        example: <integer>
-      - name: offset
-        in: query
-        schema:
-          type: string
-        description: Number of bounces to skip.
-        example: <integer>
-      - name: messageid
-        in: path
-        schema:
-          type: string
-        required: true
-        description: The ID of the message which should bypass inbound rules.
-        example: <string>
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /messages/outbound/opens:
-    get:
-      tags:
-      - Outbound
-      summary: Postmark Opens for all messages
-      parameters:
-      - name: count
-        in: query
-        schema:
-          type: string
-        description: Number of bounces to return per request. Max 500.
-        example: <integer>
-      - name: offset
-        in: query
-        schema:
-          type: string
-        description: Number of bounces to skip.
-        example: <integer>
-      - name: recipient
-        in: query
-        schema:
-          type: string
-        description: Filter by the user who was receiving the email
-        example: <string>
-      - name: tag
-        in: query
-        schema:
-          type: string
-        description: Filter by tag
-        example: <string>
-      - name: client_name
-        in: query
-        schema:
-          type: string
-        description: Filter by client name, i.e. Outlook, Gmail
-        example: <string>
-      - name: client_company
-        in: query
-        schema:
-          type: string
-        description: Filter by company, i.e. Microsoft, Apple, Google
-        example: <string>
-      - name: client_family
-        in: query
-        schema:
-          type: string
-        description: Filter by client family, i.e. OS X, Chrome
-        example: <string>
-      - name: os_name
-        in: query
-        schema:
-          type: string
-        description: Filter by full OS name and specific version, i.e. OS X 10.9 Mavericks, Windows 7
-        example: <string>
-      - name: os_family
-        in: query
-        schema:
-          type: string
-        description: Filter by kind of OS used without specific version, i.e. OS X, Windows
-        example: <string>
-      - name: os_company
-        in: query
-        schema:
-          type: string
-        description: Filter by company which produced the OS, i.e. Apple Computer, Inc., Microsoft Corporation
-        example: <string>
-      - name: platform
-        in: query
-        schema:
-          type: string
-        description: Filter by platform, i.e. webmail, desktop, mobile
-        example: <string>
-      - name: country
-        in: query
-        schema:
-          type: string
-        description: Filter by country messages were opened in, i.e. Denmark, Russia
-        example: <string>
-      - name: region
-        in: query
-        schema:
-          type: string
-        description: Filter by full name of region messages were opened in, i.e. Moscow, New York
-        example: <string>
-      - name: city
-        in: query
-        schema:
-          type: string
-        description: Filter by full name of region messages were opened in, i.e. Moscow, New York
-        example: <string>
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /messages/outbound/opens/{messageid}:
-    get:
-      tags:
-      - Outbound
-      summary: Postmark Retrieve Message Opens
-      parameters:
-      - name: count
-        in: query
-        schema:
-          type: string
-        description: Number of bounces to return per request. Max 500.
-        example: <integer>
-      - name: offset
-        in: query
-        schema:
-          type: string
-        description: Number of bounces to skip.
-        example: <integer>
-      - name: messageid
-        in: path
-        schema:
-          type: string
-        required: true
-        description: The ID of the message which should bypass inbound rules.
-        example: <string>
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /messages/outbound/{messageid}/details:
-    get:
-      tags:
-      - Outbound
-      summary: Postmark Outbound message details
-      parameters:
-      - name: messageid
-        in: path
-        schema:
-          type: string
-        required: true
-        description: The ID of the message which should bypass inbound rules.
-        example: <string>
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /messages/outbound/{messageid}/dump:
-    get:
-      tags:
-      - Outbound
-      summary: Postmark Outbound message dump
-      parameters:
-      - name: messageid
-        in: path
-        schema:
-          type: string
-        required: true
-        description: The ID of the message which should bypass inbound rules.
-        example: <string>
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /messages/outbound:
-    get:
-      tags:
-      - Outbound
-      summary: Postmark Outbound message search
-      parameters:
-      - name: count
-        in: query
-        schema:
-          type: string
-        description: Number of bounces to return per request. Max 500.
-        example: <integer>
-      - name: offset
-        in: query
-        schema:
-          type: string
-        description: Number of bounces to skip.
-        example: <integer>
-      - name: recipient
-        in: query
-        schema:
-          type: string
-        description: Filter by the user who was receiving the email
-        example: <string>
-      - name: fromemail
-        in: query
-        schema:
-          type: string
-        description: Filter by the sender email address
-        example: <string>
-      - name: tag
-        in: query
-        schema:
-          type: string
-        description: Filter by tag
-        example: <string>
-      - name: status
-        in: query
-        schema:
-          type: string
-        description: Filter by status (`blocked`, `processed`, `queued`, `failed`, `scheduled`)
-        example: <string>
-      - name: todate
-        in: query
-        schema:
-          type: string
-        description: Filter messages up to the date specified. e.g. `2014-02-01`
-        example: <string>
-      - name: fromdate
-        in: query
-        schema:
-          type: string
-        description: Filter messages starting from the date specified. e.g. `2014-02-01`
-        example: <string>
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /stats/outbound/clicks:
     get:
       tags:
@@ -388,64 +43,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /stats/outbound/clicks/browserfamilies:
-    get:
-      tags:
-      - Outbound
-      summary: Postmark Get browser usage by family
-      parameters:
-      - name: tag
-        in: query
-        schema:
-          type: string
-        description: Filter by tag
-        example: <string>
-      - name: fromdate
-        in: query
-        schema:
-          type: string
-        description: Filter messages starting from the date specified. e.g. `2014-02-01`
-        example: <string>
-      - name: todate
-        in: query
-        schema:
-          type: string
-        description: Filter messages up to the date specified. e.g. `2014-02-01`
-        example: <string>
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /stats/outbound/clicks/location:
-    get:
-      tags:
-      - Outbound
-      summary: Postmark Get clicks by body location
-      parameters:
-      - name: tag
-        in: query
-        schema:
-          type: string
-        description: Filter by tag
-        example: <string>
-      - name: fromdate
-        in: query
-        schema:
-          type: string
-        description: Filter messages starting from the date specified. e.g. `2014-02-01`
-        example: <string>
-      - name: todate
-        in: query
-        schema:
-          type: string
-        description: Filter messages up to the date specified. e.g. `2014-02-01`
-        example: <string>
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
+      operationId: getStatsOutboundClicks
+      x-operation-id-source: derived
   /stats/outbound/clicks/platforms:
     get:
       tags:
@@ -475,6 +74,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getStatsOutboundClicksPlatforms
+      x-operation-id-source: derived
   /stats/outbound/opens:
     get:
       tags:
@@ -504,35 +105,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /stats/outbound/opens/emailclients:
-    get:
-      tags:
-      - Outbound
-      summary: Postmark Get email client usage
-      parameters:
-      - name: tag
-        in: query
-        schema:
-          type: string
-        description: Filter by tag
-        example: <string>
-      - name: fromdate
-        in: query
-        schema:
-          type: string
-        description: Filter messages starting from the date specified. e.g. `2014-02-01`
-        example: <string>
-      - name: todate
-        in: query
-        schema:
-          type: string
-        description: Filter messages up to the date specified. e.g. `2014-02-01`
-        example: <string>
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
+      operationId: getStatsOutboundOpens
+      x-operation-id-source: derived
   /stats/outbound/opens/platforms:
     get:
       tags:
@@ -562,6 +136,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getStatsOutboundOpensPlatforms
+      x-operation-id-source: derived
   /stats/outbound/opens/readtimes:
     get:
       tags:
@@ -591,6 +167,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getStatsOutboundOpensReadtimes
+      x-operation-id-source: derived
   /stats/outbound:
     get:
       tags:
@@ -620,6 +198,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getStatsOutbound
+      x-operation-id-source: derived
   /stats/outbound/bounces:
     get:
       tags:
@@ -649,6 +229,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getStatsOutboundBounces
+      x-operation-id-source: derived
   /stats/outbound/sends:
     get:
       tags:
@@ -678,6 +260,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getStatsOutboundSends
+      x-operation-id-source: derived
   /stats/outbound/spam:
     get:
       tags:
@@ -707,6 +291,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getStatsOutboundSpam
+      x-operation-id-source: derived
   /stats/outbound/tracked:
     get:
       tags:
@@ -736,3 +322,5 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getStatsOutboundTracked
+      x-operation-id-source: derived
