@@ -202,55 +202,14 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    ExtendedServerInfo:
+    StandardPostmarkResponse:
       type: object
       properties:
-        ID:
+        ErrorCode:
           type: integer
-        Name:
+        Message:
           type: string
-        ApiTokens:
-          type: array
-          items:
-            type: string
-        ServerLink:
-          type: string
-        Color:
-          type: string
-        SmtpApiActivated:
-          type: boolean
-        RawEmailEnabled:
-          type: boolean
-        DeliveryHookUrl:
-          type: string
-        InboundAddress:
-          type: string
-        InboundHookUrl:
-          type: string
-        BounceHookUrl:
-          type: string
-        OpenHookUrl:
-          type: string
-        PostFirstOpenOnly:
-          type: boolean
-        TrackOpens:
-          type: boolean
-        TrackLinks:
-          type: string
-          enum:
-          - None
-          - HtmlAndTextTracking
-          - HtmlOnlyTracking
-          - TextOnlyTracking
-        ClickHookUrl:
-          type: string
-        InboundDomain:
-          type: string
-        InboundHash:
-          type: string
-        InboundSpamThreshold:
-          type: integer
-      description: ''
+      description: A Postmark API error.
     EditServerPayload:
       type: object
       properties:
@@ -335,11 +294,52 @@ components:
         InboundSpamThreshold:
           type: integer
       description: ''
-    StandardPostmarkResponse:
+    ExtendedServerInfo:
       type: object
       properties:
-        ErrorCode:
+        ID:
           type: integer
-        Message:
+        Name:
           type: string
-      description: A Postmark API error.
+        ApiTokens:
+          type: array
+          items:
+            type: string
+        ServerLink:
+          type: string
+        Color:
+          type: string
+        SmtpApiActivated:
+          type: boolean
+        RawEmailEnabled:
+          type: boolean
+        DeliveryHookUrl:
+          type: string
+        InboundAddress:
+          type: string
+        InboundHookUrl:
+          type: string
+        BounceHookUrl:
+          type: string
+        OpenHookUrl:
+          type: string
+        PostFirstOpenOnly:
+          type: boolean
+        TrackOpens:
+          type: boolean
+        TrackLinks:
+          type: string
+          enum:
+          - None
+          - HtmlAndTextTracking
+          - HtmlOnlyTracking
+          - TextOnlyTracking
+        ClickHookUrl:
+          type: string
+        InboundDomain:
+          type: string
+        InboundHash:
+          type: string
+        InboundSpamThreshold:
+          type: integer
+      description: ''

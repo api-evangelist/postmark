@@ -317,30 +317,6 @@ paths:
           content: {}
 components:
   schemas:
-    SenderListingResults:
-      type: object
-      properties:
-        TotalCount:
-          type: integer
-        SenderSignatures:
-          type: array
-          items:
-            $ref: '#/components/schemas/SenderSignatureInformation'
-      description: ''
-    SenderSignatureCreationModel:
-      type: object
-      properties:
-        FromEmail:
-          type: string
-          format: email
-        Name:
-          type: string
-        ReplyToEmail:
-          type: string
-          format: email
-        ReturnPathDomain:
-          type: string
-      description: ''
     SenderSignatureEditingModel:
       type: object
       properties:
@@ -352,6 +328,14 @@ components:
         ReturnPathDomain:
           type: string
       description: ''
+    StandardPostmarkResponse:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        Message:
+          type: string
+      description: A Postmark API error.
     SenderSignatureInformation:
       type: object
       properties:
@@ -371,14 +355,6 @@ components:
           type: integer
           format: int64
       description: ''
-    StandardPostmarkResponse:
-      type: object
-      properties:
-        ErrorCode:
-          type: integer
-        Message:
-          type: string
-      description: A Postmark API error.
     SenderSignatureExtendedInformation:
       type: object
       properties:
@@ -429,4 +405,28 @@ components:
         ID:
           type: integer
           format: int64
+      description: ''
+    SenderListingResults:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+        SenderSignatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/SenderSignatureInformation'
+      description: ''
+    SenderSignatureCreationModel:
+      type: object
+      properties:
+        FromEmail:
+          type: string
+          format: email
+        Name:
+          type: string
+        ReplyToEmail:
+          type: string
+          format: email
+        ReturnPathDomain:
+          type: string
       description: ''

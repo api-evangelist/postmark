@@ -310,24 +310,6 @@ paths:
     - url: https://api.postmarkapp.com/
 components:
   schemas:
-    TemplatesPushModel:
-      type: object
-      properties:
-        SourceServerId:
-          type: integer
-        DestinationServerId:
-          type: integer
-        PerformChanges:
-          type: boolean
-      description: ''
-    StandardPostmarkResponse:
-      type: object
-      properties:
-        ErrorCode:
-          type: integer
-        Message:
-          type: string
-      description: A Postmark API error.
     TemplatesPushResponse:
       type: object
       properties:
@@ -347,10 +329,53 @@ components:
               Name:
                 type: string
       description: ''
-    AttachmentCollection:
-      type: array
-      items:
-        $ref: '#/components/schemas/Attachment'
+    TemplatesPushModel:
+      type: object
+      properties:
+        SourceServerId:
+          type: integer
+        DestinationServerId:
+          type: integer
+        PerformChanges:
+          type: boolean
+      description: ''
+    StandardPostmarkResponse:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        Message:
+          type: string
+      description: A Postmark API error.
+    TemplateValidationError:
+      properties:
+        Message:
+          type: string
+        Line:
+          type: integer
+        CharacterPosition:
+          type: integer
+    CreateTemplateRequest:
+      description: The contents required for creating a new template.
+      properties:
+        Alias:
+          type: string
+          description: The optional string identifier for referring to this Template (numbers, letters, and '.', '-', '_' characters, starts with a letter).
+        Name:
+          type: string
+          description: The friendly display name for the template.
+        Subject:
+          type: string
+          description: The Subject template definition for this Template.
+        HtmlBody:
+          type: string
+          description: The HTML template definition for this Template.
+        TextBody:
+          type: string
+          description: The Text template definition for this Template.
+      required:
+      - Name
+      - Subject
     EmailWithTemplateRequest:
       properties:
         TemplateId:
@@ -401,26 +426,40 @@ components:
       - TemplateModel
       - To
       - From
-    EditTemplateRequest:
-      description: The contents required for creating a new template.
+    MessageHeader:
+      description: A single header for an email message.
       properties:
-        Alias:
+        Name:
+          description: The header's name.
           type: string
-          description: The optional string identifier for referring to this Template (numbers, letters, and '.', '-', '_' characters, starts with a letter).
+        Value:
+          description: The header's value.
+          type: string
+    SendEmailBatchResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/SendEmailResponse'
+    Attachment:
+      description: An attachment for an email message.
+      properties:
         Name:
           type: string
-          description: The friendly display name for the template.
-        Subject:
+        Content:
           type: string
-          description: The Subject template definition for this Template.
-        HtmlBody:
+        ContentType:
           type: string
-          description: The HTML template definition for this Template.
-        TextBody:
+        ContentID:
           type: string
-          description: The Text template definition for this Template.
-      required:
-      - TemplateId
+    TemplateListingResponse:
+      properties:
+        TotalCount:
+          type: number
+          description: The total number of Templates API associated with this server.
+        Templates API:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateRecordResponse'
+          description: Basic information for each Template returned from the query.
     SendEmailResponse:
       description: The standard response when a postmark message is sent
       properties:
@@ -435,138 +474,6 @@ components:
           type: integer
         Message:
           type: string
-    HeaderCollection:
-      type: array
-      items:
-        $ref: '#/components/schemas/MessageHeader'
-    Attachment:
-      description: An attachment for an email message.
-      properties:
-        Name:
-          type: string
-        Content:
-          type: string
-        ContentType:
-          type: string
-        ContentID:
-          type: string
-    TemplateValidationResponse:
-      properties:
-        AllContentIsValid:
-          type: boolean
-        TextBody:
-          $ref: '#/components/schemas/TemplateValidationResult'
-        HtmlBody:
-          $ref: '#/components/schemas/TemplateValidationResult'
-        Subject:
-          $ref: '#/components/schemas/TemplateValidationResult'
-        SuggestedTemplateModel:
-          type: object
-    CreateTemplateRequest:
-      description: The contents required for creating a new template.
-      properties:
-        Alias:
-          type: string
-          description: The optional string identifier for referring to this Template (numbers, letters, and '.', '-', '_' characters, starts with a letter).
-        Name:
-          type: string
-          description: The friendly display name for the template.
-        Subject:
-          type: string
-          description: The Subject template definition for this Template.
-        HtmlBody:
-          type: string
-          description: The HTML template definition for this Template.
-        TextBody:
-          type: string
-          description: The Text template definition for this Template.
-      required:
-      - Name
-      - Subject
-    TemplateDetailResponse:
-      properties:
-        Name:
-          type: string
-          description: The display name for the template.
-        Alias:
-          type: string
-          description: The user-supplied alias for this template.
-        TemplateID:
-          type: integer
-          description: The ID associated with the template.
-        HtmlBody:
-          type: string
-          description: The content to use for the HtmlBody when this template is used to send email.
-        TextBody:
-          type: string
-          description: The content to use for the TextBody when this template is used to send email.
-        AssociatedServerId:
-          type: integer
-          description: The ID of the Server with which this template is associated.
-        Subject:
-          type: string
-          description: The content to use for the Subject when this template is used to send email.
-        Active:
-          type: boolean
-          description: Indicates that this template may be used for sending email.
-    MessageHeader:
-      description: A single header for an email message.
-      properties:
-        Name:
-          description: The header's name.
-          type: string
-        Value:
-          description: The header's value.
-          type: string
-    TemplateValidationResult:
-      properties:
-        ContentIsValid:
-          type: boolean
-        ValidationErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/TemplateValidationError'
-        RenderedContent:
-          type: string
-    TemplateRecordResponse:
-      properties:
-        Name:
-          type: string
-          description: The display name for this template.
-        Alias:
-          type: string
-          description: The user-supplied alias for this template.
-        TemplateId:
-          type: number
-          format: int
-          description: The associated ID for this template.
-        Active:
-          type: boolean
-          description: True if this template is currently available for use.
-    TemplateValidationError:
-      properties:
-        Message:
-          type: string
-        Line:
-          type: integer
-        CharacterPosition:
-          type: integer
-    SendEmailTemplatedBatchRequest:
-      properties:
-        Messages:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailWithTemplateRequest'
-    TemplateListingResponse:
-      properties:
-        TotalCount:
-          type: number
-          description: The total number of Templates API associated with this server.
-        Templates API:
-          type: array
-          items:
-            $ref: '#/components/schemas/TemplateRecordResponse'
-          description: Basic information for each Template returned from the query.
     TemplateValidationRequest:
       properties:
         Subject:
@@ -609,10 +516,103 @@ components:
             the css inlining behavior by passing false for this parameter.
 
             '
-    SendEmailBatchResponse:
+    EditTemplateRequest:
+      description: The contents required for creating a new template.
+      properties:
+        Alias:
+          type: string
+          description: The optional string identifier for referring to this Template (numbers, letters, and '.', '-', '_' characters, starts with a letter).
+        Name:
+          type: string
+          description: The friendly display name for the template.
+        Subject:
+          type: string
+          description: The Subject template definition for this Template.
+        HtmlBody:
+          type: string
+          description: The HTML template definition for this Template.
+        TextBody:
+          type: string
+          description: The Text template definition for this Template.
+      required:
+      - TemplateId
+    TemplateRecordResponse:
+      properties:
+        Name:
+          type: string
+          description: The display name for this template.
+        Alias:
+          type: string
+          description: The user-supplied alias for this template.
+        TemplateId:
+          type: number
+          format: int
+          description: The associated ID for this template.
+        Active:
+          type: boolean
+          description: True if this template is currently available for use.
+    SendEmailTemplatedBatchRequest:
+      properties:
+        Messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailWithTemplateRequest'
+    TemplateDetailResponse:
+      properties:
+        Name:
+          type: string
+          description: The display name for the template.
+        Alias:
+          type: string
+          description: The user-supplied alias for this template.
+        TemplateID:
+          type: integer
+          description: The ID associated with the template.
+        HtmlBody:
+          type: string
+          description: The content to use for the HtmlBody when this template is used to send email.
+        TextBody:
+          type: string
+          description: The content to use for the TextBody when this template is used to send email.
+        AssociatedServerId:
+          type: integer
+          description: The ID of the Server with which this template is associated.
+        Subject:
+          type: string
+          description: The content to use for the Subject when this template is used to send email.
+        Active:
+          type: boolean
+          description: Indicates that this template may be used for sending email.
+    TemplateValidationResponse:
+      properties:
+        AllContentIsValid:
+          type: boolean
+        TextBody:
+          $ref: '#/components/schemas/TemplateValidationResult'
+        HtmlBody:
+          $ref: '#/components/schemas/TemplateValidationResult'
+        Subject:
+          $ref: '#/components/schemas/TemplateValidationResult'
+        SuggestedTemplateModel:
+          type: object
+    TemplateValidationResult:
+      properties:
+        ContentIsValid:
+          type: boolean
+        ValidationErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateValidationError'
+        RenderedContent:
+          type: string
+    HeaderCollection:
       type: array
       items:
-        $ref: '#/components/schemas/SendEmailResponse'
+        $ref: '#/components/schemas/MessageHeader'
+    AttachmentCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/Attachment'
 x-refined-from:
 - postmark-account-openapi-original.yml
 - postmark-server-openapi-original.yml

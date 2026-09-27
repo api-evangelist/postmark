@@ -228,21 +228,20 @@ paths:
           $ref: '#/components/responses/500'
 components:
   schemas:
-    BounceActivationResponse:
+    BounceDumpResponse:
       properties:
-        Message:
+        Body:
+          description: Raw source of bounce. If no dump is available this will return an empty string.
           type: string
-        Bounce:
-          $ref: '#/components/schemas/BounceInfoResponse'
-    BounceSearchResponse:
+    DeliveryStatsResponse:
       description: ''
       properties:
-        TotalCount:
+        InactiveMails:
           type: integer
         Bounces:
           type: array
           items:
-            $ref: '#/components/schemas/BounceInfoResponse'
+            $ref: '#/components/schemas/BounceCountElement'
     BounceInfoResponse:
       properties:
         ID:
@@ -277,6 +276,12 @@ components:
           type: string
         Content:
           type: string
+    BounceActivationResponse:
+      properties:
+        Message:
+          type: string
+        Bounce:
+          $ref: '#/components/schemas/BounceInfoResponse'
     BounceCountElement:
       properties:
         Name:
@@ -285,17 +290,12 @@ components:
           type: integer
         Type:
           type: string
-    BounceDumpResponse:
-      properties:
-        Body:
-          description: Raw source of bounce. If no dump is available this will return an empty string.
-          type: string
-    DeliveryStatsResponse:
+    BounceSearchResponse:
       description: ''
       properties:
-        InactiveMails:
+        TotalCount:
           type: integer
         Bounces:
           type: array
           items:
-            $ref: '#/components/schemas/BounceCountElement'
+            $ref: '#/components/schemas/BounceInfoResponse'

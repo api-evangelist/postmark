@@ -121,16 +121,16 @@ paths:
           $ref: '#/components/responses/500'
 components:
   schemas:
+    CreateInboundRuleRequest:
+      description: ''
+      properties:
+        Rule:
+          format: email
+          type: string
     StandardPostmarkResponse:
       description: A Postmark API error.
       properties:
         ErrorCode:
           type: integer
         Message:
-          type: string
-    CreateInboundRuleRequest:
-      description: ''
-      properties:
-        Rule:
-          format: email
           type: string

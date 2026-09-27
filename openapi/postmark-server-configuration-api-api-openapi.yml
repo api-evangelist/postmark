@@ -65,6 +65,50 @@ paths:
         description: The settings that should be modified for the current server.
 components:
   schemas:
+    EditServerConfigurationRequest:
+      properties:
+        Name:
+          type: string
+        Color:
+          type: string
+          enum:
+          - purple
+          - blue
+          - turqoise
+          - green
+          - red
+          - yellow
+          - grey
+        RawEmailEnabled:
+          type: boolean
+        DeliveryHookUrl:
+          type: string
+        SmtpApiActivated:
+          type: boolean
+        InboundHookUrl:
+          type: string
+        BounceHookUrl:
+          type: string
+        OpenHookUrl:
+          type: string
+        PostFirstOpenOnly:
+          type: boolean
+        TrackOpens:
+          type: boolean
+        TrackLinks:
+          type: string
+          enum:
+          - None
+          - HtmlAndText
+          - HtmlOnly
+          - TextOnly
+        ClickHookUrl:
+          description: Webhook url allowing real-time notification when tracked links are clicked.
+          type: string
+        InboundDomain:
+          type: string
+        InboundSpamThreshold:
+          type: integer
     ServerConfigurationResponse:
       properties:
         ID:
@@ -118,50 +162,6 @@ components:
         InboundDomain:
           type: string
         InboundHash:
-          type: string
-        InboundSpamThreshold:
-          type: integer
-    EditServerConfigurationRequest:
-      properties:
-        Name:
-          type: string
-        Color:
-          type: string
-          enum:
-          - purple
-          - blue
-          - turqoise
-          - green
-          - red
-          - yellow
-          - grey
-        RawEmailEnabled:
-          type: boolean
-        DeliveryHookUrl:
-          type: string
-        SmtpApiActivated:
-          type: boolean
-        InboundHookUrl:
-          type: string
-        BounceHookUrl:
-          type: string
-        OpenHookUrl:
-          type: string
-        PostFirstOpenOnly:
-          type: boolean
-        TrackOpens:
-          type: boolean
-        TrackLinks:
-          type: string
-          enum:
-          - None
-          - HtmlAndText
-          - HtmlOnly
-          - TextOnly
-        ClickHookUrl:
-          description: Webhook url allowing real-time notification when tracked links are clicked.
-          type: string
-        InboundDomain:
           type: string
         InboundSpamThreshold:
           type: integer

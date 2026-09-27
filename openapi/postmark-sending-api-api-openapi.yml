@@ -130,10 +130,19 @@ paths:
         required: true
 components:
   schemas:
-    AttachmentCollection:
+    SendEmailBatchResponse:
       type: array
       items:
-        $ref: '#/components/schemas/Attachment'
+        $ref: '#/components/schemas/SendEmailResponse'
+    MessageHeader:
+      description: A single header for an email message.
+      properties:
+        Name:
+          description: The header's name.
+          type: string
+        Value:
+          description: The header's value.
+          type: string
     EmailWithTemplateRequest:
       properties:
         TemplateId:
@@ -184,6 +193,41 @@ components:
       - TemplateModel
       - To
       - From
+    Attachment:
+      description: An attachment for an email message.
+      properties:
+        Name:
+          type: string
+        Content:
+          type: string
+        ContentType:
+          type: string
+        ContentID:
+          type: string
+    SendEmailResponse:
+      description: The standard response when a postmark message is sent
+      properties:
+        To:
+          type: string
+        SubmittedAt:
+          type: string
+          format: date-time
+        MessageID:
+          type: string
+        ErrorCode:
+          type: integer
+        Message:
+          type: string
+    SendEmailTemplatedBatchRequest:
+      properties:
+        Messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailWithTemplateRequest'
+    SendEmailBatchRequest:
+      type: array
+      items:
+        $ref: '#/components/schemas/SendEmailRequest'
     SendEmailRequest:
       properties:
         From:
@@ -228,55 +272,11 @@ components:
           $ref: '#/components/schemas/HeaderCollection'
         Attachments:
           $ref: '#/components/schemas/AttachmentCollection'
-    SendEmailResponse:
-      description: The standard response when a postmark message is sent
-      properties:
-        To:
-          type: string
-        SubmittedAt:
-          type: string
-          format: date-time
-        MessageID:
-          type: string
-        ErrorCode:
-          type: integer
-        Message:
-          type: string
     HeaderCollection:
       type: array
       items:
         $ref: '#/components/schemas/MessageHeader'
-    Attachment:
-      description: An attachment for an email message.
-      properties:
-        Name:
-          type: string
-        Content:
-          type: string
-        ContentType:
-          type: string
-        ContentID:
-          type: string
-    SendEmailBatchRequest:
+    AttachmentCollection:
       type: array
       items:
-        $ref: '#/components/schemas/SendEmailRequest'
-    MessageHeader:
-      description: A single header for an email message.
-      properties:
-        Name:
-          description: The header's name.
-          type: string
-        Value:
-          description: The header's value.
-          type: string
-    SendEmailTemplatedBatchRequest:
-      properties:
-        Messages:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailWithTemplateRequest'
-    SendEmailBatchResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/SendEmailResponse'
+        $ref: '#/components/schemas/Attachment'
