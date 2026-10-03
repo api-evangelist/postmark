@@ -202,14 +202,16 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    StandardPostmarkResponse:
+    ServerListingResponse:
       type: object
       properties:
-        ErrorCode:
+        TotalCount:
           type: integer
-        Message:
-          type: string
-      description: A Postmark API error.
+        Servers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExtendedServerInfo'
+      description: The results of listing servers.
     EditServerPayload:
       type: object
       properties:
@@ -247,16 +249,6 @@ components:
         InboundSpamThreshold:
           type: integer
       description: ''
-    ServerListingResponse:
-      type: object
-      properties:
-        TotalCount:
-          type: integer
-        Servers:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExtendedServerInfo'
-      description: The results of listing servers.
     CreateServerPayload:
       type: object
       properties:
@@ -294,6 +286,14 @@ components:
         InboundSpamThreshold:
           type: integer
       description: ''
+    StandardPostmarkResponse:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        Message:
+          type: string
+      description: A Postmark API error.
     ExtendedServerInfo:
       type: object
       properties:

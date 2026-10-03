@@ -607,6 +607,8 @@ components:
                 type: string
               Sent:
                 type: integer
+    DynamicResponse:
+      description: The properties of this object will vary based request parameters.
     OutboundOverviewStatsResponse:
       description: ''
       properties:
@@ -642,5 +644,3 @@ components:
           type: integer
         WithPlatformRecorded:
           type: integer
-    DynamicResponse:
-      description: The properties of this object will vary based request parameters.

@@ -130,10 +130,97 @@ paths:
         required: true
 components:
   schemas:
+    SendEmailResponse:
+      description: The standard response when a postmark message is sent
+      properties:
+        To:
+          type: string
+        SubmittedAt:
+          type: string
+          format: date-time
+        MessageID:
+          type: string
+        ErrorCode:
+          type: integer
+        Message:
+          type: string
+    Attachment:
+      description: An attachment for an email message.
+      properties:
+        Name:
+          type: string
+        Content:
+          type: string
+        ContentType:
+          type: string
+        ContentID:
+          type: string
+    SendEmailTemplatedBatchRequest:
+      properties:
+        Messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailWithTemplateRequest'
+    HeaderCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/MessageHeader'
+    SendEmailBatchRequest:
+      type: array
+      items:
+        $ref: '#/components/schemas/SendEmailRequest'
+    AttachmentCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/Attachment'
     SendEmailBatchResponse:
       type: array
       items:
         $ref: '#/components/schemas/SendEmailResponse'
+    SendEmailRequest:
+      properties:
+        From:
+          description: The sender email address. Must have a registered and confirmed Sender Signature.
+          type: string
+        To:
+          description: Recipient email address. Multiple addresses are comma seperated. Max 50.
+          type: string
+        Cc:
+          description: Recipient email address. Multiple addresses are comma seperated. Max 50.
+          type: string
+        Bcc:
+          description: Bcc recipient email address. Multiple addresses are comma seperated. Max 50.
+          type: string
+        Subject:
+          description: Email Subject
+          type: string
+        Tag:
+          description: Email tag that allows you to categorize outgoing emails and get detailed statistics.
+          type: string
+        HtmlBody:
+          description: If no TextBody specified HTML email message
+          type: string
+        TextBody:
+          description: If no HtmlBody specified Plain text email message
+          type: string
+        ReplyTo:
+          description: Reply To override email address. Defaults to the Reply To set in the sender signature.
+          type: string
+        TrackOpens:
+          description: Activate open tracking for this email.
+          type: boolean
+        TrackLinks:
+          description: Replace links in content to enable "click tracking" stats. Default is 'null', which uses the server's LinkTracking setting'.
+          type: string
+          enum:
+          - None
+          - HtmlAndText
+          - HtmlOnly
+          - TextOnly
+        Headers:
+          $ref: '#/components/schemas/HeaderCollection'
+        Attachments:
+          $ref: '#/components/schemas/AttachmentCollection'
     MessageHeader:
       description: A single header for an email message.
       properties:
@@ -193,90 +280,3 @@ components:
       - TemplateModel
       - To
       - From
-    Attachment:
-      description: An attachment for an email message.
-      properties:
-        Name:
-          type: string
-        Content:
-          type: string
-        ContentType:
-          type: string
-        ContentID:
-          type: string
-    SendEmailResponse:
-      description: The standard response when a postmark message is sent
-      properties:
-        To:
-          type: string
-        SubmittedAt:
-          type: string
-          format: date-time
-        MessageID:
-          type: string
-        ErrorCode:
-          type: integer
-        Message:
-          type: string
-    SendEmailTemplatedBatchRequest:
-      properties:
-        Messages:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailWithTemplateRequest'
-    SendEmailBatchRequest:
-      type: array
-      items:
-        $ref: '#/components/schemas/SendEmailRequest'
-    SendEmailRequest:
-      properties:
-        From:
-          description: The sender email address. Must have a registered and confirmed Sender Signature.
-          type: string
-        To:
-          description: Recipient email address. Multiple addresses are comma seperated. Max 50.
-          type: string
-        Cc:
-          description: Recipient email address. Multiple addresses are comma seperated. Max 50.
-          type: string
-        Bcc:
-          description: Bcc recipient email address. Multiple addresses are comma seperated. Max 50.
-          type: string
-        Subject:
-          description: Email Subject
-          type: string
-        Tag:
-          description: Email tag that allows you to categorize outgoing emails and get detailed statistics.
-          type: string
-        HtmlBody:
-          description: If no TextBody specified HTML email message
-          type: string
-        TextBody:
-          description: If no HtmlBody specified Plain text email message
-          type: string
-        ReplyTo:
-          description: Reply To override email address. Defaults to the Reply To set in the sender signature.
-          type: string
-        TrackOpens:
-          description: Activate open tracking for this email.
-          type: boolean
-        TrackLinks:
-          description: Replace links in content to enable "click tracking" stats. Default is 'null', which uses the server's LinkTracking setting'.
-          type: string
-          enum:
-          - None
-          - HtmlAndText
-          - HtmlOnly
-          - TextOnly
-        Headers:
-          $ref: '#/components/schemas/HeaderCollection'
-        Attachments:
-          $ref: '#/components/schemas/AttachmentCollection'
-    HeaderCollection:
-      type: array
-      items:
-        $ref: '#/components/schemas/MessageHeader'
-    AttachmentCollection:
-      type: array
-      items:
-        $ref: '#/components/schemas/Attachment'

@@ -631,329 +631,6 @@ paths:
           $ref: '#/components/responses/500'
 components:
   schemas:
-    MessageOpenSearchResponse:
-      properties:
-        TotalCount:
-          type: integer
-        Opens:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExtendedMessageOpenEventInformation'
-    InboundMessageFullDetailsResponse:
-      properties:
-        From:
-          type: string
-        FromName:
-          type: string
-        FromFull:
-          description: ''
-          properties:
-            Email:
-              type: string
-            Name:
-              type: string
-        To:
-          type: string
-        ToFull:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailNameAddressPair'
-        Cc:
-          type: string
-        CcFull:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailNameAddressPair'
-        ReplyTo:
-          type: string
-        OriginalRecipient:
-          type: string
-        Subject:
-          type: string
-        Date:
-          type: string
-        MailboxHash:
-          type: string
-        TextBody:
-          type: string
-        HtmlBody:
-          type: string
-        Tag:
-          type: string
-        Headers:
-          $ref: '#/components/schemas/HeaderCollection'
-        Attachments:
-          $ref: '#/components/schemas/AttachmentCollection'
-        MessageID:
-          type: string
-        BlockedReason:
-          type: string
-        Status:
-          type: string
-    StandardPostmarkResponse:
-      description: A Postmark API error.
-      properties:
-        ErrorCode:
-          type: integer
-        Message:
-          type: string
-    OutboundMessageDetail:
-      description: ''
-      properties:
-        Tag:
-          type: string
-        MessageID:
-          type: string
-        To:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailNameAddressPair'
-        Cc:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailNameAddressPair'
-        Bcc:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailNameAddressPair'
-        Recipients:
-          type: array
-          items:
-            type: string
-        ReceivedAt:
-          type: string
-          format: date-time
-        From:
-          type: string
-        Subject:
-          type: string
-        Attachments:
-          $ref: '#/components/schemas/AttachmentCollection'
-        Status:
-          type: string
-        TrackOpens:
-          type: boolean
-        TrackLinks:
-          type: string
-          enum:
-          - None
-          - HtmlAndText
-          - HtmlOnly
-          - TextOnly
-    MessageEventDetails:
-      description: ''
-      properties:
-        Recipient:
-          type: string
-        Type:
-          type: string
-        ReceivedAt:
-          type: string
-          format: date-time
-        Details:
-          properties:
-            Summary:
-              type: string
-            BounceID:
-              type: string
-            DeliveryMessage:
-              type: string
-            DestinationServer:
-              type: string
-            DestinationIP:
-              type: string
-    MessageClickSearchResponse:
-      properties:
-        TotalCount:
-          type: integer
-        Clicks:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExtendedMessageClickEventInformation'
-    OutboundSearchResponse:
-      description: ''
-      properties:
-        TotalCount:
-          type: integer
-        Messages:
-          type: array
-          items:
-            $ref: '#/components/schemas/OutboundMessageDetail'
-    OutboundMessageDumpResponse:
-      properties:
-        Body:
-          description: Raw source of message. If no dump is available this will return an empty string.
-          type: string
-    MessageHeader:
-      description: A single header for an email message.
-      properties:
-        Name:
-          description: The header's name.
-          type: string
-        Value:
-          description: The header's value.
-          type: string
-    Attachment:
-      description: An attachment for an email message.
-      properties:
-        Name:
-          type: string
-        Content:
-          type: string
-        ContentType:
-          type: string
-        ContentID:
-          type: string
-    ExtendedMessageOpenEventInformation:
-      description: ''
-      properties:
-        FirstOpen:
-          type: boolean
-        Client:
-          description: ''
-          properties:
-            Name:
-              type: string
-            Company:
-              type: string
-            Family:
-              type: string
-        OS:
-          properties:
-            Name:
-              type: string
-            Company:
-              type: string
-            Family:
-              type: string
-        Platform:
-          type: string
-        UserAgent:
-          type: string
-        Geo:
-          properties:
-            CountryISOCode:
-              type: string
-            Country:
-              type: string
-            RegionISOCode:
-              type: string
-            Region:
-              type: string
-            City:
-              type: string
-            Zip:
-              type: string
-            Coords:
-              type: string
-            IP:
-              type: string
-        MessageID:
-          type: string
-        ReceivedAt:
-          type: string
-          format: date-time
-        Tag:
-          type: string
-        Recipient:
-          type: string
-          format: email
-    OutboundMessageDetailsResponse:
-      properties:
-        TextBody:
-          type: string
-        HtmlBody:
-          type: string
-        Body:
-          type: string
-        Tag:
-          type: string
-        MessageID:
-          type: string
-        To:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailNameAddressPair'
-        Cc:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailNameAddressPair'
-        Bcc:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailNameAddressPair'
-        Recipients:
-          type: array
-          items:
-            type: string
-        ReceivedAt:
-          type: string
-          format: date-time
-        From:
-          type: string
-        Subject:
-          type: string
-        Attachments:
-          $ref: '#/components/schemas/AttachmentCollection'
-        Status:
-          type: string
-        TrackOpens:
-          type: boolean
-        TrackLinks:
-          type: string
-          enum:
-          - None
-          - HtmlAndText
-          - HtmlOnly
-          - TextOnly
-        MessageEvents:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageEventDetails'
-    InboundMessageDetail:
-      description: ''
-      properties:
-        From:
-          type: string
-        FromName:
-          type: string
-        FromFull:
-          description: ''
-          properties:
-            Email:
-              type: string
-            Name:
-              type: string
-        To:
-          type: string
-        ToFull:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailNameAddressPair'
-        Cc:
-          type: string
-        CcFull:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailNameAddressPair'
-        ReplyTo:
-          type: string
-        OriginalRecipient:
-          type: string
-        Subject:
-          type: string
-        Date:
-          type: string
-        MailboxHash:
-          type: string
-        Tag:
-          type: string
-        Attachments:
-          $ref: '#/components/schemas/AttachmentCollection'
-        MessageID:
-          type: string
-        Status:
-          type: string
     ExtendedMessageClickEventInformation:
       description: ''
       properties:
@@ -1010,12 +687,343 @@ components:
         Recipient:
           type: string
           format: email
+    InboundMessageFullDetailsResponse:
+      properties:
+        From:
+          type: string
+        FromName:
+          type: string
+        FromFull:
+          description: ''
+          properties:
+            Email:
+              type: string
+            Name:
+              type: string
+        To:
+          type: string
+        ToFull:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+        Cc:
+          type: string
+        CcFull:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+        ReplyTo:
+          type: string
+        OriginalRecipient:
+          type: string
+        Subject:
+          type: string
+        Date:
+          type: string
+        MailboxHash:
+          type: string
+        TextBody:
+          type: string
+        HtmlBody:
+          type: string
+        Tag:
+          type: string
+        Headers:
+          $ref: '#/components/schemas/HeaderCollection'
+        Attachments:
+          $ref: '#/components/schemas/AttachmentCollection'
+        MessageID:
+          type: string
+        BlockedReason:
+          type: string
+        Status:
+          type: string
+    MessageEventDetails:
+      description: ''
+      properties:
+        Recipient:
+          type: string
+        Type:
+          type: string
+        ReceivedAt:
+          type: string
+          format: date-time
+        Details:
+          properties:
+            Summary:
+              type: string
+            BounceID:
+              type: string
+            DeliveryMessage:
+              type: string
+            DestinationServer:
+              type: string
+            DestinationIP:
+              type: string
     EmailNameAddressPair:
       description: ''
       properties:
         Name:
           type: string
         Email:
+          type: string
+    Attachment:
+      description: An attachment for an email message.
+      properties:
+        Name:
+          type: string
+        Content:
+          type: string
+        ContentType:
+          type: string
+        ContentID:
+          type: string
+    MessageOpenSearchResponse:
+      properties:
+        TotalCount:
+          type: integer
+        Opens:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExtendedMessageOpenEventInformation'
+    HeaderCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/MessageHeader'
+    OutboundMessageDetailsResponse:
+      properties:
+        TextBody:
+          type: string
+        HtmlBody:
+          type: string
+        Body:
+          type: string
+        Tag:
+          type: string
+        MessageID:
+          type: string
+        To:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+        Cc:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+        Bcc:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+        Recipients:
+          type: array
+          items:
+            type: string
+        ReceivedAt:
+          type: string
+          format: date-time
+        From:
+          type: string
+        Subject:
+          type: string
+        Attachments:
+          $ref: '#/components/schemas/AttachmentCollection'
+        Status:
+          type: string
+        TrackOpens:
+          type: boolean
+        TrackLinks:
+          type: string
+          enum:
+          - None
+          - HtmlAndText
+          - HtmlOnly
+          - TextOnly
+        MessageEvents:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageEventDetails'
+    MessageClickSearchResponse:
+      properties:
+        TotalCount:
+          type: integer
+        Clicks:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExtendedMessageClickEventInformation'
+    OutboundSearchResponse:
+      description: ''
+      properties:
+        TotalCount:
+          type: integer
+        Messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/OutboundMessageDetail'
+    AttachmentCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/Attachment'
+    InboundMessageDetail:
+      description: ''
+      properties:
+        From:
+          type: string
+        FromName:
+          type: string
+        FromFull:
+          description: ''
+          properties:
+            Email:
+              type: string
+            Name:
+              type: string
+        To:
+          type: string
+        ToFull:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+        Cc:
+          type: string
+        CcFull:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+        ReplyTo:
+          type: string
+        OriginalRecipient:
+          type: string
+        Subject:
+          type: string
+        Date:
+          type: string
+        MailboxHash:
+          type: string
+        Tag:
+          type: string
+        Attachments:
+          $ref: '#/components/schemas/AttachmentCollection'
+        MessageID:
+          type: string
+        Status:
+          type: string
+    StandardPostmarkResponse:
+      description: A Postmark API error.
+      properties:
+        ErrorCode:
+          type: integer
+        Message:
+          type: string
+    ExtendedMessageOpenEventInformation:
+      description: ''
+      properties:
+        FirstOpen:
+          type: boolean
+        Client:
+          description: ''
+          properties:
+            Name:
+              type: string
+            Company:
+              type: string
+            Family:
+              type: string
+        OS:
+          properties:
+            Name:
+              type: string
+            Company:
+              type: string
+            Family:
+              type: string
+        Platform:
+          type: string
+        UserAgent:
+          type: string
+        Geo:
+          properties:
+            CountryISOCode:
+              type: string
+            Country:
+              type: string
+            RegionISOCode:
+              type: string
+            Region:
+              type: string
+            City:
+              type: string
+            Zip:
+              type: string
+            Coords:
+              type: string
+            IP:
+              type: string
+        MessageID:
+          type: string
+        ReceivedAt:
+          type: string
+          format: date-time
+        Tag:
+          type: string
+        Recipient:
+          type: string
+          format: email
+    MessageHeader:
+      description: A single header for an email message.
+      properties:
+        Name:
+          description: The header's name.
+          type: string
+        Value:
+          description: The header's value.
+          type: string
+    OutboundMessageDetail:
+      description: ''
+      properties:
+        Tag:
+          type: string
+        MessageID:
+          type: string
+        To:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+        Cc:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+        Bcc:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+        Recipients:
+          type: array
+          items:
+            type: string
+        ReceivedAt:
+          type: string
+          format: date-time
+        From:
+          type: string
+        Subject:
+          type: string
+        Attachments:
+          $ref: '#/components/schemas/AttachmentCollection'
+        Status:
+          type: string
+        TrackOpens:
+          type: boolean
+        TrackLinks:
+          type: string
+          enum:
+          - None
+          - HtmlAndText
+          - HtmlOnly
+          - TextOnly
+    OutboundMessageDumpResponse:
+      properties:
+        Body:
+          description: Raw source of message. If no dump is available this will return an empty string.
           type: string
     InboundSearchResponse:
       description: ''
@@ -1026,11 +1034,3 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/InboundMessageDetail'
-    HeaderCollection:
-      type: array
-      items:
-        $ref: '#/components/schemas/MessageHeader'
-    AttachmentCollection:
-      type: array
-      items:
-        $ref: '#/components/schemas/Attachment'

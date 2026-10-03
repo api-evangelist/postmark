@@ -317,9 +317,12 @@ paths:
           content: {}
 components:
   schemas:
-    SenderSignatureEditingModel:
+    SenderSignatureCreationModel:
       type: object
       properties:
+        FromEmail:
+          type: string
+          format: email
         Name:
           type: string
         ReplyToEmail:
@@ -328,14 +331,16 @@ components:
         ReturnPathDomain:
           type: string
       description: ''
-    StandardPostmarkResponse:
+    SenderListingResults:
       type: object
       properties:
-        ErrorCode:
+        TotalCount:
           type: integer
-        Message:
-          type: string
-      description: A Postmark API error.
+        SenderSignatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/SenderSignatureInformation'
+      description: ''
     SenderSignatureInformation:
       type: object
       properties:
@@ -406,22 +411,17 @@ components:
           type: integer
           format: int64
       description: ''
-    SenderListingResults:
+    StandardPostmarkResponse:
       type: object
       properties:
-        TotalCount:
+        ErrorCode:
           type: integer
-        SenderSignatures:
-          type: array
-          items:
-            $ref: '#/components/schemas/SenderSignatureInformation'
-      description: ''
-    SenderSignatureCreationModel:
+        Message:
+          type: string
+      description: A Postmark API error.
+    SenderSignatureEditingModel:
       type: object
       properties:
-        FromEmail:
-          type: string
-          format: email
         Name:
           type: string
         ReplyToEmail:
