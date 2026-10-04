@@ -144,17 +144,6 @@ components:
           type: integer
         Message:
           type: string
-    Attachment:
-      description: An attachment for an email message.
-      properties:
-        Name:
-          type: string
-        Content:
-          type: string
-        ContentType:
-          type: string
-        ContentID:
-          type: string
     SendEmailTemplatedBatchRequest:
       properties:
         Messages:
@@ -165,18 +154,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/MessageHeader'
-    SendEmailBatchRequest:
-      type: array
-      items:
-        $ref: '#/components/schemas/SendEmailRequest'
-    AttachmentCollection:
-      type: array
-      items:
-        $ref: '#/components/schemas/Attachment'
-    SendEmailBatchResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/SendEmailResponse'
     SendEmailRequest:
       properties:
         From:
@@ -221,14 +198,16 @@ components:
           $ref: '#/components/schemas/HeaderCollection'
         Attachments:
           $ref: '#/components/schemas/AttachmentCollection'
-    MessageHeader:
-      description: A single header for an email message.
+    Attachment:
+      description: An attachment for an email message.
       properties:
         Name:
-          description: The header's name.
           type: string
-        Value:
-          description: The header's value.
+        Content:
+          type: string
+        ContentType:
+          type: string
+        ContentID:
           type: string
     EmailWithTemplateRequest:
       properties:
@@ -280,3 +259,24 @@ components:
       - TemplateModel
       - To
       - From
+    AttachmentCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/Attachment'
+    SendEmailBatchResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/SendEmailResponse'
+    MessageHeader:
+      description: A single header for an email message.
+      properties:
+        Name:
+          description: The header's name.
+          type: string
+        Value:
+          description: The header's value.
+          type: string
+    SendEmailBatchRequest:
+      type: array
+      items:
+        $ref: '#/components/schemas/SendEmailRequest'

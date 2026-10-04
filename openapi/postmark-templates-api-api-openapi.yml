@@ -329,6 +329,14 @@ components:
               Name:
                 type: string
       description: ''
+    StandardPostmarkResponse:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        Message:
+          type: string
+      description: A Postmark API error.
     TemplatesPushModel:
       type: object
       properties:
@@ -339,68 +347,6 @@ components:
         PerformChanges:
           type: boolean
       description: ''
-    StandardPostmarkResponse:
-      type: object
-      properties:
-        ErrorCode:
-          type: integer
-        Message:
-          type: string
-      description: A Postmark API error.
-    TemplateValidationResponse:
-      properties:
-        AllContentIsValid:
-          type: boolean
-        TextBody:
-          $ref: '#/components/schemas/TemplateValidationResult'
-        HtmlBody:
-          $ref: '#/components/schemas/TemplateValidationResult'
-        Subject:
-          $ref: '#/components/schemas/TemplateValidationResult'
-        SuggestedTemplateModel:
-          type: object
-    TemplateValidationRequest:
-      properties:
-        Subject:
-          type: string
-          description: 'The subject content to validate. Must be specified if HtmlBody or
-
-            TextBody are not. See our template language documentation for more
-
-            information on the syntax for this field.
-
-            '
-        HtmlBody:
-          type: string
-          description: 'The html body content to validate. Must be specified if Subject or
-
-            TextBody are not. See our template language documentation for more
-
-            information on the syntax for this field.
-
-            '
-        TextBody:
-          type: string
-          description: 'The text body content to validate. Must be specified if HtmlBody or
-
-            Subject are not. See our template language documentation for more
-
-            information on the syntax for this field.
-
-            '
-        TestRenderModel:
-          type: object
-          description: The model to be used when rendering test content.
-        InlineCssForHtmlTestRender:
-          type: boolean
-          default: true
-          description: 'When HtmlBody is specified, the test render will have style blocks
-
-            inlined as style attributes on matching html elements. You may disable
-
-            the css inlining behavior by passing false for this parameter.
-
-            '
     SendEmailResponse:
       description: The standard response when a postmark message is sent
       properties:
@@ -415,17 +361,14 @@ components:
           type: integer
         Message:
           type: string
-    Attachment:
-      description: An attachment for an email message.
+    TemplateValidationError:
       properties:
-        Name:
+        Message:
           type: string
-        Content:
-          type: string
-        ContentType:
-          type: string
-        ContentID:
-          type: string
+        Line:
+          type: integer
+        CharacterPosition:
+          type: integer
     SendEmailTemplatedBatchRequest:
       properties:
         Messages:
@@ -436,36 +379,28 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/MessageHeader'
-    TemplateValidationResult:
+    TemplateListingResponse:
       properties:
-        ContentIsValid:
-          type: boolean
-        ValidationErrors:
+        TotalCount:
+          type: number
+          description: The total number of Templates API associated with this server.
+        Templates API:
           type: array
           items:
-            $ref: '#/components/schemas/TemplateValidationError'
-        RenderedContent:
-          type: string
-    EditTemplateRequest:
-      description: The contents required for creating a new template.
+            $ref: '#/components/schemas/TemplateRecordResponse'
+          description: Basic information for each Template returned from the query.
+    TemplateValidationResponse:
       properties:
-        Alias:
-          type: string
-          description: The optional string identifier for referring to this Template (numbers, letters, and '.', '-', '_' characters, starts with a letter).
-        Name:
-          type: string
-          description: The friendly display name for the template.
-        Subject:
-          type: string
-          description: The Subject template definition for this Template.
-        HtmlBody:
-          type: string
-          description: The HTML template definition for this Template.
+        AllContentIsValid:
+          type: boolean
         TextBody:
-          type: string
-          description: The Text template definition for this Template.
-      required:
-      - TemplateId
+          $ref: '#/components/schemas/TemplateValidationResult'
+        HtmlBody:
+          $ref: '#/components/schemas/TemplateValidationResult'
+        Subject:
+          $ref: '#/components/schemas/TemplateValidationResult'
+        SuggestedTemplateModel:
+          type: object
     CreateTemplateRequest:
       description: The contents required for creating a new template.
       properties:
@@ -487,47 +422,6 @@ components:
       required:
       - Name
       - Subject
-    TemplateListingResponse:
-      properties:
-        TotalCount:
-          type: number
-          description: The total number of Templates API associated with this server.
-        Templates API:
-          type: array
-          items:
-            $ref: '#/components/schemas/TemplateRecordResponse'
-          description: Basic information for each Template returned from the query.
-    TemplateValidationError:
-      properties:
-        Message:
-          type: string
-        Line:
-          type: integer
-        CharacterPosition:
-          type: integer
-    AttachmentCollection:
-      type: array
-      items:
-        $ref: '#/components/schemas/Attachment'
-    SendEmailBatchResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/SendEmailResponse'
-    TemplateRecordResponse:
-      properties:
-        Name:
-          type: string
-          description: The display name for this template.
-        Alias:
-          type: string
-          description: The user-supplied alias for this template.
-        TemplateId:
-          type: number
-          format: int
-          description: The associated ID for this template.
-        Active:
-          type: boolean
-          description: True if this template is currently available for use.
     TemplateDetailResponse:
       properties:
         Name:
@@ -554,15 +448,6 @@ components:
         Active:
           type: boolean
           description: Indicates that this template may be used for sending email.
-    MessageHeader:
-      description: A single header for an email message.
-      properties:
-        Name:
-          description: The header's name.
-          type: string
-        Value:
-          description: The header's value.
-          type: string
     EmailWithTemplateRequest:
       properties:
         TemplateId:
@@ -613,6 +498,121 @@ components:
       - TemplateModel
       - To
       - From
+    Attachment:
+      description: An attachment for an email message.
+      properties:
+        Name:
+          type: string
+        Content:
+          type: string
+        ContentType:
+          type: string
+        ContentID:
+          type: string
+    SendEmailBatchResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/SendEmailResponse'
+    AttachmentCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/Attachment'
+    TemplateValidationResult:
+      properties:
+        ContentIsValid:
+          type: boolean
+        ValidationErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateValidationError'
+        RenderedContent:
+          type: string
+    EditTemplateRequest:
+      description: The contents required for creating a new template.
+      properties:
+        Alias:
+          type: string
+          description: The optional string identifier for referring to this Template (numbers, letters, and '.', '-', '_' characters, starts with a letter).
+        Name:
+          type: string
+          description: The friendly display name for the template.
+        Subject:
+          type: string
+          description: The Subject template definition for this Template.
+        HtmlBody:
+          type: string
+          description: The HTML template definition for this Template.
+        TextBody:
+          type: string
+          description: The Text template definition for this Template.
+      required:
+      - TemplateId
+    TemplateRecordResponse:
+      properties:
+        Name:
+          type: string
+          description: The display name for this template.
+        Alias:
+          type: string
+          description: The user-supplied alias for this template.
+        TemplateId:
+          type: number
+          format: int
+          description: The associated ID for this template.
+        Active:
+          type: boolean
+          description: True if this template is currently available for use.
+    TemplateValidationRequest:
+      properties:
+        Subject:
+          type: string
+          description: 'The subject content to validate. Must be specified if HtmlBody or
+
+            TextBody are not. See our template language documentation for more
+
+            information on the syntax for this field.
+
+            '
+        HtmlBody:
+          type: string
+          description: 'The html body content to validate. Must be specified if Subject or
+
+            TextBody are not. See our template language documentation for more
+
+            information on the syntax for this field.
+
+            '
+        TextBody:
+          type: string
+          description: 'The text body content to validate. Must be specified if HtmlBody or
+
+            Subject are not. See our template language documentation for more
+
+            information on the syntax for this field.
+
+            '
+        TestRenderModel:
+          type: object
+          description: The model to be used when rendering test content.
+        InlineCssForHtmlTestRender:
+          type: boolean
+          default: true
+          description: 'When HtmlBody is specified, the test render will have style blocks
+
+            inlined as style attributes on matching html elements. You may disable
+
+            the css inlining behavior by passing false for this parameter.
+
+            '
+    MessageHeader:
+      description: A single header for an email message.
+      properties:
+        Name:
+          description: The header's name.
+          type: string
+        Value:
+          description: The header's value.
+          type: string
 x-refined-from:
 - postmark-account-openapi-original.yml
 - postmark-server-openapi-original.yml

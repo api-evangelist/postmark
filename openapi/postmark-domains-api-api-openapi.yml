@@ -352,51 +352,6 @@ paths:
           content: {}
 components:
   schemas:
-    DomainSPFResult:
-      type: object
-      properties:
-        SPFHost:
-          type: string
-        SPFVerified:
-          type: boolean
-        SPFTextValue:
-          type: string
-      description: ''
-    DomainInformation:
-      type: object
-      properties:
-        Name:
-          type: string
-        SPFVerified:
-          type: boolean
-        DKIMVerified:
-          type: boolean
-        WeakDKIM:
-          type: boolean
-        ReturnPathDomainVerified:
-          type: boolean
-        ID:
-          type: integer
-          format: int64
-      description: ''
-    DomainCreationModel:
-      type: object
-      properties:
-        Name:
-          type: string
-        ReturnPathDomain:
-          type: string
-      description: ''
-    DomainListingResults:
-      type: object
-      properties:
-        TotalCount:
-          type: integer
-        Domains:
-          type: array
-          items:
-            $ref: '#/components/schemas/DomainInformation'
-      description: ''
     DomainExtendedInformation:
       type: object
       properties:
@@ -438,18 +393,22 @@ components:
           type: integer
           format: int64
       description: ''
-    StandardPostmarkResponse:
+    DomainCreationModel:
       type: object
       properties:
-        ErrorCode:
-          type: integer
-        Message:
+        Name:
           type: string
-      description: A Postmark API error.
-    DomainEditingModel:
+        ReturnPathDomain:
+          type: string
+      description: ''
+    DomainSPFResult:
       type: object
       properties:
-        ReturnPathDomain:
+        SPFHost:
+          type: string
+        SPFVerified:
+          type: boolean
+        SPFTextValue:
           type: string
       description: ''
     DKIMRotationResponse:
@@ -480,4 +439,45 @@ components:
         ID:
           type: integer
           format: int64
+      description: ''
+    DomainInformation:
+      type: object
+      properties:
+        Name:
+          type: string
+        SPFVerified:
+          type: boolean
+        DKIMVerified:
+          type: boolean
+        WeakDKIM:
+          type: boolean
+        ReturnPathDomainVerified:
+          type: boolean
+        ID:
+          type: integer
+          format: int64
+      description: ''
+    DomainEditingModel:
+      type: object
+      properties:
+        ReturnPathDomain:
+          type: string
+      description: ''
+    StandardPostmarkResponse:
+      type: object
+      properties:
+        ErrorCode:
+          type: integer
+        Message:
+          type: string
+      description: A Postmark API error.
+    DomainListingResults:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+        Domains:
+          type: array
+          items:
+            $ref: '#/components/schemas/DomainInformation'
       description: ''

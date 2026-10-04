@@ -594,21 +594,6 @@ paths:
           $ref: '#/components/responses/500'
 components:
   schemas:
-    SentCountsResponse:
-      description: The result of a get sent counts operation.
-      properties:
-        Sent:
-          type: integer
-        Days:
-          type: array
-          items:
-            properties:
-              Date:
-                type: string
-              Sent:
-                type: integer
-    DynamicResponse:
-      description: The properties of this object will vary based request parameters.
     OutboundOverviewStatsResponse:
       description: ''
       properties:
@@ -644,3 +629,18 @@ components:
           type: integer
         WithPlatformRecorded:
           type: integer
+    DynamicResponse:
+      description: The properties of this object will vary based request parameters.
+    SentCountsResponse:
+      description: The result of a get sent counts operation.
+      properties:
+        Sent:
+          type: integer
+        Days:
+          type: array
+          items:
+            properties:
+              Date:
+                type: string
+              Sent:
+                type: integer
