@@ -1,0 +1,12 @@
+{
+ "url": "https://postmarkapp.com/swagger/server.yml",
+ "requested_url": "https://postmarkapp.com/swagger/server.yml",
+ "status": 200,
+ "content_type": "application/octet-stream",
+ "bytes": 71284,
+ "sha256": "fdae25f55e2ef5fb71997f1128cc4148d52e0e395aed04b4f8f9e1c86fdf44a2",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
