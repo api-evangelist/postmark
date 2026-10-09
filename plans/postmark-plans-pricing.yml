@@ -241,3 +241,48 @@ credits:
     $75 account credit for launched, revenue-generating companies that have
     taken no outside investment; granted on request through support.
 plan_count: 4
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - subscription
+  units:
+  - message
+  - period
+  plans:
+  - name: Free
+    access: freemium
+    model: free
+    model_how: derived
+    units:
+    - message
+    periods:
+    - month
+  - name: Basic
+    access: paid
+    model: subscription
+    model_how: derived
+    units:
+    - message
+    - period
+    periods:
+    - month
+  - name: Pro
+    access: paid
+    model: subscription
+    model_how: derived
+    units:
+    - message
+    - period
+    periods:
+    - month
+  - name: Platform
+    access: paid
+    model: subscription
+    model_how: derived
+    units:
+    - message
+    - period
+    periods:
+    - month
