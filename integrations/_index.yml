@@ -20,5 +20,5 @@
     matched_domain: postmarkapp.com
     detected_by: sweep-cpaas.py
     detected: '2026-10-12'
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
