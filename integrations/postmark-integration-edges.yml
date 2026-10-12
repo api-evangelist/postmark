@@ -1,0 +1,20 @@
+edges:
+- partner_name: novu
+  partner: novu
+  partner_match: domain
+  type: contract
+  channel: contract-enum
+  relationship: delivery-provider
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/novu/blob/main/openapi/novu-channel-connections-api-openapi.yml
+  contract_reference:
+    repo: novu
+    spec_file: novu-channel-connections-api-openapi.yml
+    value: postmark
+    property: schemas.GetChannelConnectionResponseDto.providerId
+    matched_domain: postmarkapp.com
+    detected_by: sweep-cpaas.py
+    detected: '2026-10-12'
+generated: '2026-10-12'
+method: searched
+checked: []
