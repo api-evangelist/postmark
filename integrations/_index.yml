@@ -58,7 +58,7 @@
     app_slug: postmark
     beta: false
     builder: unknown (not in the directory record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: postmark-n8n
   label: n8n
@@ -83,7 +83,7 @@
     node_path: Postmark
     trigger: true
     builder: n8n (built-in node)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: postmark-pipedream
   label: Pipedream
@@ -109,5 +109,5 @@
     actions: true
     sources: true
     builder: Pipedream repo (component)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
