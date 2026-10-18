@@ -135,7 +135,7 @@
     - connectors/applications/postmark
     vendor_link: https://postmarkapp.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: postmark-meltano
   label: Meltano
@@ -166,5 +166,5 @@
     quality:
     - silver
     builder: 'community (Meltano Hub variant maintainers: airbyte, yoast)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
