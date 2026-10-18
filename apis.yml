@@ -647,6 +647,8 @@ apis:
   humanURL: https://postmarkapp.com/developer
   baseURL: https://api.postmarkapp.com
   tags:
+  - Email Client
+  tags_raw:
   - Email Clients
   properties:
   - type: OpenAPI
