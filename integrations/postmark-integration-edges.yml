@@ -225,6 +225,54 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: APIs.guru OpenAPI Directory
+  partner: apis-guru
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: third-party
+  evidence: https://apis.guru/
+  category: API definition directory listing (OpenAPI)
+  contract_reference:
+    register: APIs.guru OpenAPI Directory
+    spec_file: null
+    standard: APIs.guru OpenAPI Directory
+    role: listed-in-directory
+    directory_provider: postmarkapp.com
+    matched_domain: postmarkapp.com
+    matched_by: domain
+    apis_listed: 2
+    version_count: 2
+    first_added: '2017-08-09'
+    last_updated: '2021-06-21'
+    origin_publisher_hosted: true
+    origin_hosts:
+    - postmarkapp.com
+    categories:
+    - email
+    own_openapi_files: 30
+    listings:
+    - key: postmarkapp.com:account
+      title: Postmark Account-level API
+      preferred: 0.9.0
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/postmarkapp.com/account/0.9.0/swagger.json
+      origin_url: https://postmarkapp.com/swagger/account.yml
+      openapi_version: '2.0'
+    - key: postmarkapp.com:server
+      title: Postmark API
+      preferred: 1.0.0
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/postmarkapp.com/server/1.0.0/swagger.json
+      origin_url: https://postmarkapp.com/swagger/server.yml
+      openapi_version: '2.0'
+    signal_note: 'participation only: a community directory listing (APIs.guru collects definitions; the provider
+      did not file them). Signals: version_count, apis_listed, origin_publisher_hosted.'
+    detected_by: sweep-openapi-directory-apis-guru.py
+    detected: '2026-10-22'
+  detected_by: sweep-openapi-directory-apis-guru.py
+  first_seen: '2026-10-22'
 generated: '2026-10-12'
 method: searched
 checked:
@@ -244,5 +292,7 @@ checked:
 - https://rubygems.org/api/v1
 - https://zapier.com/api/v4/apps/
 - stripe/integrations/stripe-integration-edges.yml
+- https://api.apis.guru/v2/list.json
+- https://api.apis.guru/v2/providers.json
 source:
 - stripe/integrations/stripe-integration-edges.yml

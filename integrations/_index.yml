@@ -230,3 +230,52 @@
     builder: Pipedream repo (component)
   status: not-a-workflow
   arazzo: null
+- slug: postmark-apis-guru-openapi-directory
+  label: APIs.guru OpenAPI Directory
+  partner: apis-guru
+  partner_name: APIs.guru OpenAPI Directory
+  category: API definition directory listing (OpenAPI)
+  type: register
+  channel: standard-directory
+  evidence: https://apis.guru/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: APIs.guru OpenAPI Directory
+    spec_file: null
+    standard: APIs.guru OpenAPI Directory
+    role: listed-in-directory
+    directory_provider: postmarkapp.com
+    matched_domain: postmarkapp.com
+    matched_by: domain
+    apis_listed: 2
+    version_count: 2
+    first_added: '2017-08-09'
+    last_updated: '2021-06-21'
+    origin_publisher_hosted: true
+    origin_hosts:
+    - postmarkapp.com
+    categories:
+    - email
+    own_openapi_files: 30
+    listings:
+    - key: postmarkapp.com:account
+      title: Postmark Account-level API
+      preferred: 0.9.0
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/postmarkapp.com/account/0.9.0/swagger.json
+      origin_url: https://postmarkapp.com/swagger/account.yml
+      openapi_version: '2.0'
+    - key: postmarkapp.com:server
+      title: Postmark API
+      preferred: 1.0.0
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/postmarkapp.com/server/1.0.0/swagger.json
+      origin_url: https://postmarkapp.com/swagger/server.yml
+      openapi_version: '2.0'
+    signal_note: 'participation only: a community directory listing (APIs.guru collects definitions; the provider
+      did not file them). Signals: version_count, apis_listed, origin_publisher_hosted.'
+    detected_by: sweep-openapi-directory-apis-guru.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
