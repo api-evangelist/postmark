@@ -34,3 +34,9 @@ paths:
             application/json: {}
       operationId: getMessagesOutboundByMessageidDump
       x-operation-id-source: derived
+x-provenance:
+  method: harvested
+  publisher: Postmark
+  source: https://postmarkapp.com/swagger/server.yml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
