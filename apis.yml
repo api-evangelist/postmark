@@ -662,6 +662,8 @@ apis:
   - type: AsyncAPI
     url: asyncapi/postmark-webhooks-asyncapi.yml
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/postmark/overview
 - type: Overlay
   url: overlays/postmark-emailclients-api-overlay.yaml
 - type: Overlay
