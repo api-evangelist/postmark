@@ -1,45 +1,1207 @@
 {
+  "info": {
+    "_postman_id": "fe2c708d-bc56-4101-9acf-6a7d26f94c7f",
+    "name": "Postmark Account Sender Signatures API",
+    "description": "Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to\nconfigure all Servers, Domains, and Sender Signatures associated\nwith an Account.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:52:41.000Z",
+    "updatedAt": "2026-10-22T01:52:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fe2c708d-bc56-4101-9acf-6a7d26f94c7f"
+  },
   "item": [
     {
-      "id": "eb8694fc-bd33-4dbf-8fe3-f471114cc786",
-      "name": "Sender Signatures API",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "senders",
       "item": [
         {
-          "id": "b72642b1-94d1-474d-aad2-ae2b306ff4cb",
-          "name": "Postmark List Sender Signatures",
-          "request": {
-            "name": "Postmark List Sender Signatures",
-            "description": {},
-            "url": {
-              "path": [
-                "senders"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "{signatureid}",
+          "item": [
+            {
+              "name": "resend",
+              "item": [
                 {
-                  "disabled": false,
-                  "key": "count",
-                  "value": "<integer>",
-                  "description": "(Required) Number of records to return per request. Max 500."
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "<integer>",
-                  "description": "(Required) Number of records to skip"
+                  "name": "Postmark Resend Signature Confirmation Email",
+                  "id": "6022717b-c4dd-49b0-b2f8-1eff18ecf831",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Account on which this request will operate.",
+                        "key": "X-Postmark-Account-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/senders/:signatureid/resend",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "senders",
+                        ":signatureid",
+                        "resend"
+                      ],
+                      "variable": [
+                        {
+                          "id": "70466a32-8ee9-44bc-bdc2-02075ed152e8",
+                          "key": "signatureid",
+                          "value": "<integer>",
+                          "description": "(Required) The ID for the Sender Signature that should have its confirmation email resent."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "542ee1f3-4903-434a-ad25-d101e53355d4",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Account on which this request will operate.",
+                            "key": "X-Postmark-Account-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/senders/:signatureid/resend",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "senders",
+                            ":signatureid",
+                            "resend"
+                          ],
+                          "variable": [
+                            {
+                              "key": "signatureid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"Message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:52:42.000Z",
+                      "updatedAt": "2026-10-22T01:52:42.000Z",
+                      "uid": "35240-542ee1f3-4903-434a-ad25-d101e53355d4"
+                    },
+                    {
+                      "id": "a11463f8-bd79-4fd6-8fae-4c53bfff7635",
+                      "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Account on which this request will operate.",
+                            "key": "X-Postmark-Account-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/senders/:signatureid/resend",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "senders",
+                            ":signatureid",
+                            "resend"
+                          ],
+                          "variable": [
+                            {
+                              "key": "signatureid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"Message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:52:42.000Z",
+                      "updatedAt": "2026-10-22T01:52:42.000Z",
+                      "uid": "35240-a11463f8-bd79-4fd6-8fae-4c53bfff7635"
+                    },
+                    {
+                      "id": "416a03f3-b65c-4553-8504-428c6ceb5762",
+                      "name": "Indicates an internal server error occurred.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Account on which this request will operate.",
+                            "key": "X-Postmark-Account-Token",
+                            "value": "<string>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/senders/:signatureid/resend",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "senders",
+                            ":signatureid",
+                            "resend"
+                          ],
+                          "variable": [
+                            {
+                              "key": "signatureid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:52:42.000Z",
+                      "updatedAt": "2026-10-22T01:52:42.000Z",
+                      "uid": "35240-416a03f3-b65c-4553-8504-428c6ceb5762"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:52:42.000Z",
+                  "updatedAt": "2026-10-22T01:52:42.000Z",
+                  "uid": "35240-6022717b-c4dd-49b0-b2f8-1eff18ecf831"
                 }
               ],
-              "variable": []
+              "id": "e753a11e-b0da-45f4-8df1-20c441e0701e",
+              "createdAt": "2026-10-22T01:52:42.000Z",
+              "updatedAt": "2026-10-22T01:52:42.000Z",
+              "uid": "35240-e753a11e-b0da-45f4-8df1-20c441e0701e"
             },
+            {
+              "name": "verifyspf",
+              "item": [
+                {
+                  "name": "Postmark Request DNS Verification for SPF",
+                  "id": "f5f130fc-adc2-4f41-a991-de9c469f9010",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Account on which this request will operate.",
+                        "key": "X-Postmark-Account-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/senders/:signatureid/verifyspf",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "senders",
+                        ":signatureid",
+                        "verifyspf"
+                      ],
+                      "variable": [
+                        {
+                          "id": "cece449f-b611-43cf-bff3-048c0e829bb0",
+                          "key": "signatureid",
+                          "value": "<integer>",
+                          "description": "(Required) The ID for the Sender Signature for which SPF DNS records should be verified."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "c6351145-5421-4d84-a382-b83af98fb95b",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Account on which this request will operate.",
+                            "key": "X-Postmark-Account-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/senders/:signatureid/verifyspf",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "senders",
+                            ":signatureid",
+                            "verifyspf"
+                          ],
+                          "variable": [
+                            {
+                              "key": "signatureid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Domain\": \"<string>\",\n  \"EmailAddress\": \"<email>\",\n  \"ReplyToEmailAddress\": \"<email>\",\n  \"Name\": \"<string>\",\n  \"Confirmed\": \"<boolean>\",\n  \"SPFVerified\": \"<boolean>\",\n  \"SPFHost\": \"<string>\",\n  \"SPFTextValue\": \"<string>\",\n  \"DKIMVerified\": \"<boolean>\",\n  \"WeakDKIM\": \"<boolean>\",\n  \"DKIMHost\": \"<string>\",\n  \"DKIMTestValue\": \"<string>\",\n  \"DKIMPendingHost\": \"<string>\",\n  \"DKIMPendingTextValue\": \"<string>\",\n  \"DKIMRevokedHost\": \"<string>\",\n  \"DKIMRevokedTextValue\": \"<string>\",\n  \"SafeToRemoveRevokedKeyFromDNS\": \"<boolean>\",\n  \"DKIMUpdateStatus\": \"<string>\",\n  \"ReturnPathDomain\": \"<string>\",\n  \"ReturnPathDomainVerified\": \"<boolean>\",\n  \"ReturnPathDomainCNAMEValue\": \"<string>\",\n  \"ID\": \"<long>\"\n}",
+                      "createdAt": "2026-10-22T01:52:42.000Z",
+                      "updatedAt": "2026-10-22T01:52:42.000Z",
+                      "uid": "35240-c6351145-5421-4d84-a382-b83af98fb95b"
+                    },
+                    {
+                      "id": "cbe08a84-9e28-48ea-8e30-122b03d3ab93",
+                      "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Account on which this request will operate.",
+                            "key": "X-Postmark-Account-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/senders/:signatureid/verifyspf",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "senders",
+                            ":signatureid",
+                            "verifyspf"
+                          ],
+                          "variable": [
+                            {
+                              "key": "signatureid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"Message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:52:42.000Z",
+                      "updatedAt": "2026-10-22T01:52:42.000Z",
+                      "uid": "35240-cbe08a84-9e28-48ea-8e30-122b03d3ab93"
+                    },
+                    {
+                      "id": "2556ddfc-a7f0-4244-bf05-a95ce18ded82",
+                      "name": "Indicates an internal server error occurred.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Account on which this request will operate.",
+                            "key": "X-Postmark-Account-Token",
+                            "value": "<string>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/senders/:signatureid/verifyspf",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "senders",
+                            ":signatureid",
+                            "verifyspf"
+                          ],
+                          "variable": [
+                            {
+                              "key": "signatureid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:52:42.000Z",
+                      "updatedAt": "2026-10-22T01:52:42.000Z",
+                      "uid": "35240-2556ddfc-a7f0-4244-bf05-a95ce18ded82"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:52:42.000Z",
+                  "updatedAt": "2026-10-22T01:52:42.000Z",
+                  "uid": "35240-f5f130fc-adc2-4f41-a991-de9c469f9010"
+                }
+              ],
+              "id": "4a660e63-345d-4e9e-962f-d972f2181cc4",
+              "createdAt": "2026-10-22T01:52:42.000Z",
+              "updatedAt": "2026-10-22T01:52:42.000Z",
+              "uid": "35240-4a660e63-345d-4e9e-962f-d972f2181cc4"
+            },
+            {
+              "name": "requestnewdkim",
+              "item": [
+                {
+                  "name": "Postmark Request a new DKIM Key",
+                  "id": "672075b0-735c-4c45-b93a-83c35115483e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Account on which this request will operate.",
+                        "key": "X-Postmark-Account-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/senders/:signatureid/requestnewdkim",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "senders",
+                        ":signatureid",
+                        "requestnewdkim"
+                      ],
+                      "variable": [
+                        {
+                          "id": "249f3550-0130-4482-99ba-ad72b1b12f77",
+                          "key": "signatureid",
+                          "value": "<integer>",
+                          "description": "(Required) The ID for the Sender Signature for which a new DKIM Key should be generated."
+                        }
+                      ]
+                    },
+                    "description": "Requests a new DKIM key to be created. Until the DNS entries are confirmed,\nthe new values will be in the `DKIMPendingHost` and `DKIMPendingTextValue` fields.\nAfter the new DKIM value is verified in DNS, the pending values will migrate to\n`DKIMTextValue` and `DKIMPendingTextValue` and Postmark will begin to sign emails\nwith the new DKIM key."
+                  },
+                  "response": [
+                    {
+                      "id": "1b28ecec-b401-4f45-8155-21b0cc7c6a36",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Account on which this request will operate.",
+                            "key": "X-Postmark-Account-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/senders/:signatureid/requestnewdkim",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "senders",
+                            ":signatureid",
+                            "requestnewdkim"
+                          ],
+                          "variable": [
+                            {
+                              "key": "signatureid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"Message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:52:42.000Z",
+                      "updatedAt": "2026-10-22T01:52:42.000Z",
+                      "uid": "35240-1b28ecec-b401-4f45-8155-21b0cc7c6a36"
+                    },
+                    {
+                      "id": "d0feb342-c06b-44c3-94e9-cea812a9926f",
+                      "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Account on which this request will operate.",
+                            "key": "X-Postmark-Account-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/senders/:signatureid/requestnewdkim",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "senders",
+                            ":signatureid",
+                            "requestnewdkim"
+                          ],
+                          "variable": [
+                            {
+                              "key": "signatureid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"Message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:52:42.000Z",
+                      "updatedAt": "2026-10-22T01:52:42.000Z",
+                      "uid": "35240-d0feb342-c06b-44c3-94e9-cea812a9926f"
+                    },
+                    {
+                      "id": "d56926ea-388a-4fa5-8a79-d22b4cfbd5c1",
+                      "name": "Indicates an internal server error occurred.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Account on which this request will operate.",
+                            "key": "X-Postmark-Account-Token",
+                            "value": "<string>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/senders/:signatureid/requestnewdkim",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "senders",
+                            ":signatureid",
+                            "requestnewdkim"
+                          ],
+                          "variable": [
+                            {
+                              "key": "signatureid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:52:42.000Z",
+                      "updatedAt": "2026-10-22T01:52:42.000Z",
+                      "uid": "35240-d56926ea-388a-4fa5-8a79-d22b4cfbd5c1"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:52:42.000Z",
+                  "updatedAt": "2026-10-22T01:52:42.000Z",
+                  "uid": "35240-672075b0-735c-4c45-b93a-83c35115483e"
+                }
+              ],
+              "id": "def84cc5-c011-4199-adc8-2074cf4aee08",
+              "createdAt": "2026-10-22T01:52:42.000Z",
+              "updatedAt": "2026-10-22T01:52:42.000Z",
+              "uid": "35240-def84cc5-c011-4199-adc8-2074cf4aee08"
+            },
+            {
+              "name": "Postmark Get a Sender Signature",
+              "id": "916e9f96-1755-4446-8b1d-365ffbb79c86",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/senders/:signatureid",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "senders",
+                    ":signatureid"
+                  ],
+                  "variable": [
+                    {
+                      "id": "e20c7264-7247-4972-b0e8-80a6bf516fe8",
+                      "key": "signatureid",
+                      "value": "<integer>",
+                      "description": "(Required) The ID for the Sender Signature that should be retrieved."
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "7a4bf31f-12de-435a-8a2c-62fc5f6df6f2",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Account on which this request will operate.",
+                        "key": "X-Postmark-Account-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/senders/:signatureid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "senders",
+                        ":signatureid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "signatureid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Domain\": \"<string>\",\n  \"EmailAddress\": \"<email>\",\n  \"ReplyToEmailAddress\": \"<email>\",\n  \"Name\": \"<string>\",\n  \"Confirmed\": \"<boolean>\",\n  \"SPFVerified\": \"<boolean>\",\n  \"SPFHost\": \"<string>\",\n  \"SPFTextValue\": \"<string>\",\n  \"DKIMVerified\": \"<boolean>\",\n  \"WeakDKIM\": \"<boolean>\",\n  \"DKIMHost\": \"<string>\",\n  \"DKIMTestValue\": \"<string>\",\n  \"DKIMPendingHost\": \"<string>\",\n  \"DKIMPendingTextValue\": \"<string>\",\n  \"DKIMRevokedHost\": \"<string>\",\n  \"DKIMRevokedTextValue\": \"<string>\",\n  \"SafeToRemoveRevokedKeyFromDNS\": \"<boolean>\",\n  \"DKIMUpdateStatus\": \"<string>\",\n  \"ReturnPathDomain\": \"<string>\",\n  \"ReturnPathDomainVerified\": \"<boolean>\",\n  \"ReturnPathDomainCNAMEValue\": \"<string>\",\n  \"ID\": \"<long>\"\n}",
+                  "createdAt": "2026-10-22T01:52:42.000Z",
+                  "updatedAt": "2026-10-22T01:52:42.000Z",
+                  "uid": "35240-7a4bf31f-12de-435a-8a2c-62fc5f6df6f2"
+                },
+                {
+                  "id": "e0c9379a-e279-4afc-b91a-9fa8b5e02c09",
+                  "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Account on which this request will operate.",
+                        "key": "X-Postmark-Account-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/senders/:signatureid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "senders",
+                        ":signatureid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "signatureid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"Message\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:52:42.000Z",
+                  "updatedAt": "2026-10-22T01:52:42.000Z",
+                  "uid": "35240-e0c9379a-e279-4afc-b91a-9fa8b5e02c09"
+                },
+                {
+                  "id": "75b6fa2a-5218-4d47-96d7-98ee3384fe90",
+                  "name": "Indicates an internal server error occurred.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Account on which this request will operate.",
+                        "key": "X-Postmark-Account-Token",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/senders/:signatureid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "senders",
+                        ":signatureid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "signatureid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:52:42.000Z",
+                  "updatedAt": "2026-10-22T01:52:42.000Z",
+                  "uid": "35240-75b6fa2a-5218-4d47-96d7-98ee3384fe90"
+                }
+              ],
+              "createdAt": "2026-10-22T01:52:42.000Z",
+              "updatedAt": "2026-10-22T01:52:42.000Z",
+              "uid": "35240-916e9f96-1755-4446-8b1d-365ffbb79c86"
+            },
+            {
+              "name": "Postmark Update a Sender Signature",
+              "id": "d5e6dc57-54c5-45f9-a613-c94b4356920e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"ReplyToEmail\": \"<email>\",\n  \"ReturnPathDomain\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/senders/:signatureid",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "senders",
+                    ":signatureid"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f1a4dfc3-9aaa-42f4-bac0-c1de3dec62ad",
+                      "key": "signatureid",
+                      "value": "<integer>",
+                      "description": "(Required) The ID for the Sender Signature that should be modified by the request."
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "d4f5375f-f609-4ff8-a210-e439c4bbe3b8",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Account on which this request will operate.",
+                        "key": "X-Postmark-Account-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"ReplyToEmail\": \"<email>\",\n  \"ReturnPathDomain\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/senders/:signatureid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "senders",
+                        ":signatureid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "signatureid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Domain\": \"<string>\",\n  \"EmailAddress\": \"<email>\",\n  \"ReplyToEmailAddress\": \"<email>\",\n  \"Name\": \"<string>\",\n  \"Confirmed\": \"<boolean>\",\n  \"SPFVerified\": \"<boolean>\",\n  \"SPFHost\": \"<string>\",\n  \"SPFTextValue\": \"<string>\",\n  \"DKIMVerified\": \"<boolean>\",\n  \"WeakDKIM\": \"<boolean>\",\n  \"DKIMHost\": \"<string>\",\n  \"DKIMTestValue\": \"<string>\",\n  \"DKIMPendingHost\": \"<string>\",\n  \"DKIMPendingTextValue\": \"<string>\",\n  \"DKIMRevokedHost\": \"<string>\",\n  \"DKIMRevokedTextValue\": \"<string>\",\n  \"SafeToRemoveRevokedKeyFromDNS\": \"<boolean>\",\n  \"DKIMUpdateStatus\": \"<string>\",\n  \"ReturnPathDomain\": \"<string>\",\n  \"ReturnPathDomainVerified\": \"<boolean>\",\n  \"ReturnPathDomainCNAMEValue\": \"<string>\",\n  \"ID\": \"<long>\"\n}",
+                  "createdAt": "2026-10-22T01:52:42.000Z",
+                  "updatedAt": "2026-10-22T01:52:42.000Z",
+                  "uid": "35240-d4f5375f-f609-4ff8-a210-e439c4bbe3b8"
+                },
+                {
+                  "id": "675f8a45-8664-4833-9bcc-9cc78c77e8bd",
+                  "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Account on which this request will operate.",
+                        "key": "X-Postmark-Account-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"ReplyToEmail\": \"<email>\",\n  \"ReturnPathDomain\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/senders/:signatureid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "senders",
+                        ":signatureid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "signatureid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"Message\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:52:42.000Z",
+                  "updatedAt": "2026-10-22T01:52:42.000Z",
+                  "uid": "35240-675f8a45-8664-4833-9bcc-9cc78c77e8bd"
+                },
+                {
+                  "id": "1a97ce1f-09b7-47a7-bcb9-c3eff2c2a62d",
+                  "name": "Indicates an internal server error occurred.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Account on which this request will operate.",
+                        "key": "X-Postmark-Account-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"ReplyToEmail\": \"<email>\",\n  \"ReturnPathDomain\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/senders/:signatureid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "senders",
+                        ":signatureid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "signatureid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:52:42.000Z",
+                  "updatedAt": "2026-10-22T01:52:42.000Z",
+                  "uid": "35240-1a97ce1f-09b7-47a7-bcb9-c3eff2c2a62d"
+                }
+              ],
+              "createdAt": "2026-10-22T01:52:42.000Z",
+              "updatedAt": "2026-10-22T01:52:42.000Z",
+              "uid": "35240-d5e6dc57-54c5-45f9-a613-c94b4356920e"
+            },
+            {
+              "name": "Postmark Delete a Sender Signature",
+              "id": "81c4d170-d58a-4f9c-b444-e3ae336495a3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/senders/:signatureid",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "senders",
+                    ":signatureid"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f7ca28f8-c5fa-483b-88ca-4dc7f32e8007",
+                      "key": "signatureid",
+                      "value": "<integer>",
+                      "description": "(Required) The ID for the Sender Signature that should be deleted by the request."
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "9c906990-04ae-43a0-88c1-6cf4e233f2c9",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Account on which this request will operate.",
+                        "key": "X-Postmark-Account-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/senders/:signatureid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "senders",
+                        ":signatureid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "signatureid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"Message\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:52:42.000Z",
+                  "updatedAt": "2026-10-22T01:52:42.000Z",
+                  "uid": "35240-9c906990-04ae-43a0-88c1-6cf4e233f2c9"
+                },
+                {
+                  "id": "86806bdb-3b58-4695-aba3-0bfe4a8655d2",
+                  "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Account on which this request will operate.",
+                        "key": "X-Postmark-Account-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/senders/:signatureid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "senders",
+                        ":signatureid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "signatureid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"Message\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:52:42.000Z",
+                  "updatedAt": "2026-10-22T01:52:42.000Z",
+                  "uid": "35240-86806bdb-3b58-4695-aba3-0bfe4a8655d2"
+                },
+                {
+                  "id": "b20492b7-a7a3-4227-b058-496222c1cfe5",
+                  "name": "Indicates an internal server error occurred.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Account on which this request will operate.",
+                        "key": "X-Postmark-Account-Token",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/senders/:signatureid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "senders",
+                        ":signatureid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "signatureid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:52:42.000Z",
+                  "updatedAt": "2026-10-22T01:52:42.000Z",
+                  "uid": "35240-b20492b7-a7a3-4227-b058-496222c1cfe5"
+                }
+              ],
+              "createdAt": "2026-10-22T01:52:42.000Z",
+              "updatedAt": "2026-10-22T01:52:42.000Z",
+              "uid": "35240-81c4d170-d58a-4f9c-b444-e3ae336495a3"
+            }
+          ],
+          "id": "c29f7dab-2abd-4689-9cb7-4dbdbb4cc9cf",
+          "createdAt": "2026-10-22T01:52:42.000Z",
+          "updatedAt": "2026-10-22T01:52:42.000Z",
+          "uid": "35240-c29f7dab-2abd-4689-9cb7-4dbdbb4cc9cf"
+        },
+        {
+          "name": "Postmark List Sender Signatures",
+          "id": "d5e3d35f-7467-4006-afd7-a94f84601f15",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
             "header": [
               {
-                "disabled": false,
                 "description": "(Required) The token associated with the Account on which this request will operate.",
                 "key": "X-Postmark-Account-Token",
                 "value": "<string>"
@@ -49,181 +1211,197 @@
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "b955d188-9b12-4e6d-891c-ccddc3a08b06",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"TotalCount\": 4727,\n  \"SenderSignatures\": [\n    {\n      \"Domain\": \"string\",\n      \"EmailAddress\": \"KlW7Jf@gxCNWkfponTQogM.cpk\",\n      \"ReplyToEmailAddress\": \"mqDyxAOMAmWb@WKCYYZwotTIF.va\",\n      \"Name\": \"string\",\n      \"Confirmed\": true,\n      \"ID\": 5104\n    },\n    {\n      \"Domain\": \"string\",\n      \"EmailAddress\": \"aVCs@dQjKzoJIWYEOTAq.qe\",\n      \"ReplyToEmailAddress\": \"FVWRgzcvPmFmwn@vVITjZzdDVdVQQ.bsl\",\n      \"Name\": \"string\",\n      \"Confirmed\": false,\n      \"ID\": 9831\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "bc875843-7ac7-4f63-9db9-750528ffdfa9",
-              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"ErrorCode\": 1167,\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2a6fd611-beac-4b3a-9121-79f684f12074",
-              "name": "Indicates an internal server error occurred.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9c27bc15-6c24-4577-a7d8-5612d176366b",
-          "name": "Postmark Create a Sender Signature",
-          "request": {
-            "name": "Postmark Create a Sender Signature",
-            "description": {},
             "url": {
-              "path": [
-                "senders"
-              ],
+              "raw": "{{baseUrl}}/senders?count=<integer>&offset=<integer>",
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": []
+              "path": [
+                "senders"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Number of records to return per request. Max 500.",
+                  "key": "count",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) Number of records to skip",
+                  "key": "offset",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bb821908-050d-4914-a651-0b486bb6f565",
+              "name": "OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/senders?count=<integer>&offset=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "senders"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Number of records to return per request. Max 500.",
+                      "key": "count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of records to skip",
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"TotalCount\": \"<integer>\",\n  \"SenderSignatures\": [\n    {\n      \"Domain\": \"<string>\",\n      \"EmailAddress\": \"<email>\",\n      \"ReplyToEmailAddress\": \"<email>\",\n      \"Name\": \"<string>\",\n      \"Confirmed\": \"<boolean>\",\n      \"ID\": \"<long>\"\n    },\n    {\n      \"Domain\": \"<string>\",\n      \"EmailAddress\": \"<email>\",\n      \"ReplyToEmailAddress\": \"<email>\",\n      \"Name\": \"<string>\",\n      \"Confirmed\": \"<boolean>\",\n      \"ID\": \"<long>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-22T01:52:42.000Z",
+              "updatedAt": "2026-10-22T01:52:42.000Z",
+              "uid": "35240-bb821908-050d-4914-a651-0b486bb6f565"
             },
+            {
+              "id": "1754bd1e-881a-4c6a-a023-c02bb135652c",
+              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/senders?count=<integer>&offset=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "senders"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Number of records to return per request. Max 500.",
+                      "key": "count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of records to skip",
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"Message\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:52:42.000Z",
+              "updatedAt": "2026-10-22T01:52:42.000Z",
+              "uid": "35240-1754bd1e-881a-4c6a-a023-c02bb135652c"
+            },
+            {
+              "id": "a2071b71-5364-4bb8-a235-695e572d619f",
+              "name": "Indicates an internal server error occurred.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Account on which this request will operate.",
+                    "key": "X-Postmark-Account-Token",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/senders?count=<integer>&offset=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "senders"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Number of records to return per request. Max 500.",
+                      "key": "count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of records to skip",
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:52:42.000Z",
+              "updatedAt": "2026-10-22T01:52:42.000Z",
+              "uid": "35240-a2071b71-5364-4bb8-a235-695e572d619f"
+            }
+          ],
+          "createdAt": "2026-10-22T01:52:42.000Z",
+          "updatedAt": "2026-10-22T01:52:42.000Z",
+          "uid": "35240-d5e3d35f-7467-4006-afd7-a94f84601f15"
+        },
+        {
+          "name": "Postmark Create a Sender Signature",
+          "id": "63ca9886-657f-4e88-84cf-ea451a489d69",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
             "header": [
               {
-                "disabled": false,
                 "description": "(Required) The token associated with the Account on which this request will operate.",
                 "key": "X-Postmark-Account-Token",
                 "value": "<string>"
@@ -237,1397 +1415,202 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
               "raw": "{\n  \"FromEmail\": \"<email>\",\n  \"Name\": \"<string>\",\n  \"ReplyToEmail\": \"<email>\",\n  \"ReturnPathDomain\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/senders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "senders"
+              ]
             }
           },
           "response": [
             {
-              "id": "8c9cbc7a-13dd-4ecf-88f4-678bdc2e391f",
+              "id": "1d9166eb-1764-4e96-8963-4b715e0353aa",
               "name": "OK",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "disabled": false,
                     "description": "(Required) The token associated with the Account on which this request will operate.",
                     "key": "X-Postmark-Account-Token",
                     "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"FromEmail\": \"<email>\",\n  \"Name\": \"<string>\",\n  \"ReplyToEmail\": \"<email>\",\n  \"ReturnPathDomain\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/senders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "senders"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"Domain\": \"string\",\n  \"EmailAddress\": \"AkS@pdUrOtjUzbjFTCSskIgJjPtgtZsOMZgC.pji\",\n  \"ReplyToEmailAddress\": \"9UKDftU@bwWqHpI.moua\",\n  \"Name\": \"string\",\n  \"Confirmed\": true,\n  \"SPFVerified\": true,\n  \"SPFHost\": \"string\",\n  \"SPFTextValue\": \"string\",\n  \"DKIMVerified\": false,\n  \"WeakDKIM\": true,\n  \"DKIMHost\": \"string\",\n  \"DKIMTestValue\": \"string\",\n  \"DKIMPendingHost\": \"string\",\n  \"DKIMPendingTextValue\": \"string\",\n  \"DKIMRevokedHost\": \"string\",\n  \"DKIMRevokedTextValue\": \"string\",\n  \"SafeToRemoveRevokedKeyFromDNS\": false,\n  \"DKIMUpdateStatus\": \"string\",\n  \"ReturnPathDomain\": \"string\",\n  \"ReturnPathDomainVerified\": false,\n  \"ReturnPathDomainCNAMEValue\": \"string\",\n  \"ID\": 556\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"Domain\": \"<string>\",\n  \"EmailAddress\": \"<email>\",\n  \"ReplyToEmailAddress\": \"<email>\",\n  \"Name\": \"<string>\",\n  \"Confirmed\": \"<boolean>\",\n  \"SPFVerified\": \"<boolean>\",\n  \"SPFHost\": \"<string>\",\n  \"SPFTextValue\": \"<string>\",\n  \"DKIMVerified\": \"<boolean>\",\n  \"WeakDKIM\": \"<boolean>\",\n  \"DKIMHost\": \"<string>\",\n  \"DKIMTestValue\": \"<string>\",\n  \"DKIMPendingHost\": \"<string>\",\n  \"DKIMPendingTextValue\": \"<string>\",\n  \"DKIMRevokedHost\": \"<string>\",\n  \"DKIMRevokedTextValue\": \"<string>\",\n  \"SafeToRemoveRevokedKeyFromDNS\": \"<boolean>\",\n  \"DKIMUpdateStatus\": \"<string>\",\n  \"ReturnPathDomain\": \"<string>\",\n  \"ReturnPathDomainVerified\": \"<boolean>\",\n  \"ReturnPathDomainCNAMEValue\": \"<string>\",\n  \"ID\": \"<long>\"\n}",
+              "createdAt": "2026-10-22T01:52:42.000Z",
+              "updatedAt": "2026-10-22T01:52:42.000Z",
+              "uid": "35240-1d9166eb-1764-4e96-8963-4b715e0353aa"
             },
             {
-              "id": "bd94e919-bffa-4fcb-a978-b634af5359a4",
+              "id": "6a430665-4eef-44af-ae5c-29417d1f4a73",
               "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "disabled": false,
                     "description": "(Required) The token associated with the Account on which this request will operate.",
                     "key": "X-Postmark-Account-Token",
                     "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"FromEmail\": \"<email>\",\n  \"Name\": \"<string>\",\n  \"ReplyToEmail\": \"<email>\",\n  \"ReturnPathDomain\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/senders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "senders"
+                  ]
                 }
               },
               "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
               "code": 422,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"ErrorCode\": 1167,\n  \"Message\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"Message\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:52:42.000Z",
+              "updatedAt": "2026-10-22T01:52:42.000Z",
+              "uid": "35240-6a430665-4eef-44af-ae5c-29417d1f4a73"
             },
             {
-              "id": "79503fc7-3da1-4b18-aa35-8d290593cd23",
+              "id": "eba6c92c-0556-42d7-9d9e-e20286b6aa17",
               "name": "Indicates an internal server error occurred.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "disabled": false,
                     "description": "(Required) The token associated with the Account on which this request will operate.",
                     "key": "X-Postmark-Account-Token",
                     "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"FromEmail\": \"<email>\",\n  \"Name\": \"<string>\",\n  \"ReplyToEmail\": \"<email>\",\n  \"ReturnPathDomain\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/senders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "senders"
+                  ]
                 }
               },
               "status": "Internal Server Error",
               "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:52:42.000Z",
+              "updatedAt": "2026-10-22T01:52:42.000Z",
+              "uid": "35240-eba6c92c-0556-42d7-9d9e-e20286b6aa17"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "33e756b7-4add-4954-ba3b-b24266af7010",
-          "name": "Postmark Get a Sender Signature",
-          "request": {
-            "name": "Postmark Get a Sender Signature",
-            "description": {},
-            "url": {
-              "path": [
-                "senders",
-                ":signatureid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "signatureid",
-                  "description": "(Required) The ID for the Sender Signature that should be retrieved."
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Account on which this request will operate.",
-                "key": "X-Postmark-Account-Token",
-                "value": "<string>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "f80243b2-7095-4d1a-9bdd-f561367cbec6",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature that should be retrieved."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"Domain\": \"string\",\n  \"EmailAddress\": \"AkS@pdUrOtjUzbjFTCSskIgJjPtgtZsOMZgC.pji\",\n  \"ReplyToEmailAddress\": \"9UKDftU@bwWqHpI.moua\",\n  \"Name\": \"string\",\n  \"Confirmed\": true,\n  \"SPFVerified\": true,\n  \"SPFHost\": \"string\",\n  \"SPFTextValue\": \"string\",\n  \"DKIMVerified\": false,\n  \"WeakDKIM\": true,\n  \"DKIMHost\": \"string\",\n  \"DKIMTestValue\": \"string\",\n  \"DKIMPendingHost\": \"string\",\n  \"DKIMPendingTextValue\": \"string\",\n  \"DKIMRevokedHost\": \"string\",\n  \"DKIMRevokedTextValue\": \"string\",\n  \"SafeToRemoveRevokedKeyFromDNS\": false,\n  \"DKIMUpdateStatus\": \"string\",\n  \"ReturnPathDomain\": \"string\",\n  \"ReturnPathDomainVerified\": false,\n  \"ReturnPathDomainCNAMEValue\": \"string\",\n  \"ID\": 556\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8a945be4-c84a-459f-b2c1-0781a1bfb82e",
-              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature that should be retrieved."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"ErrorCode\": 1167,\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "cf612a2f-8b2a-41a9-a55d-31f0a74c21a0",
-              "name": "Indicates an internal server error occurred.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature that should be retrieved."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "25f5e1ad-ecc8-49bb-8fc4-e94725ec9504",
-          "name": "Postmark Update a Sender Signature",
-          "request": {
-            "name": "Postmark Update a Sender Signature",
-            "description": {},
-            "url": {
-              "path": [
-                "senders",
-                ":signatureid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "signatureid",
-                  "description": "(Required) The ID for the Sender Signature that should be modified by the request."
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Account on which this request will operate.",
-                "key": "X-Postmark-Account-Token",
-                "value": "<string>"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"Name\": \"<string>\",\n  \"ReplyToEmail\": \"<email>\",\n  \"ReturnPathDomain\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "53bbc289-48d2-45d4-bdb6-c97a1a513f58",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature that should be modified by the request."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Name\": \"<string>\",\n  \"ReplyToEmail\": \"<email>\",\n  \"ReturnPathDomain\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"Domain\": \"string\",\n  \"EmailAddress\": \"AkS@pdUrOtjUzbjFTCSskIgJjPtgtZsOMZgC.pji\",\n  \"ReplyToEmailAddress\": \"9UKDftU@bwWqHpI.moua\",\n  \"Name\": \"string\",\n  \"Confirmed\": true,\n  \"SPFVerified\": true,\n  \"SPFHost\": \"string\",\n  \"SPFTextValue\": \"string\",\n  \"DKIMVerified\": false,\n  \"WeakDKIM\": true,\n  \"DKIMHost\": \"string\",\n  \"DKIMTestValue\": \"string\",\n  \"DKIMPendingHost\": \"string\",\n  \"DKIMPendingTextValue\": \"string\",\n  \"DKIMRevokedHost\": \"string\",\n  \"DKIMRevokedTextValue\": \"string\",\n  \"SafeToRemoveRevokedKeyFromDNS\": false,\n  \"DKIMUpdateStatus\": \"string\",\n  \"ReturnPathDomain\": \"string\",\n  \"ReturnPathDomainVerified\": false,\n  \"ReturnPathDomainCNAMEValue\": \"string\",\n  \"ID\": 556\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "25cb2442-6fad-4fb4-b48c-acee958f9ca5",
-              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature that should be modified by the request."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Name\": \"<string>\",\n  \"ReplyToEmail\": \"<email>\",\n  \"ReturnPathDomain\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"ErrorCode\": 1167,\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a56af330-e1b4-4c83-8b9a-7ed95f09a81b",
-              "name": "Indicates an internal server error occurred.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature that should be modified by the request."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Name\": \"<string>\",\n  \"ReplyToEmail\": \"<email>\",\n  \"ReturnPathDomain\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4413d119-9bc2-401d-9b4a-573087dc673b",
-          "name": "Postmark Delete a Sender Signature",
-          "request": {
-            "name": "Postmark Delete a Sender Signature",
-            "description": {},
-            "url": {
-              "path": [
-                "senders",
-                ":signatureid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "signatureid",
-                  "description": "(Required) The ID for the Sender Signature that should be deleted by the request."
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Account on which this request will operate.",
-                "key": "X-Postmark-Account-Token",
-                "value": "<string>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "ede14626-79ab-4408-9842-bad842baa0fd",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature that should be deleted by the request."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"ErrorCode\": 1167,\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f13a61a7-67ab-4ff4-8e71-78b94717f4c2",
-              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature that should be deleted by the request."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"ErrorCode\": 1167,\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d52a3bc9-c0da-4106-99d9-6ec278144c1d",
-              "name": "Indicates an internal server error occurred.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature that should be deleted by the request."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ffa5671c-3b09-4634-8902-6020da561023",
-          "name": "Postmark Resend Signature Confirmation Email",
-          "request": {
-            "name": "Postmark Resend Signature Confirmation Email",
-            "description": {},
-            "url": {
-              "path": [
-                "senders",
-                ":signatureid",
-                "resend"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "signatureid",
-                  "description": "(Required) The ID for the Sender Signature that should have its confirmation email resent."
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Account on which this request will operate.",
-                "key": "X-Postmark-Account-Token",
-                "value": "<string>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "7b1a119c-15fd-4776-a074-ba187c87b271",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid",
-                    "resend"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature that should have its confirmation email resent."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"ErrorCode\": 1167,\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "412cd6b8-7092-4374-95c1-13f02a9ad2e3",
-              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid",
-                    "resend"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature that should have its confirmation email resent."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"ErrorCode\": 1167,\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "549a4577-c4ac-4170-a8c4-40361c0f9b8a",
-              "name": "Indicates an internal server error occurred.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid",
-                    "resend"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature that should have its confirmation email resent."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "147ac801-a79e-46c5-8fd7-b664b9e0058b",
-          "name": "Postmark Request DNS Verification for SPF",
-          "request": {
-            "name": "Postmark Request DNS Verification for SPF",
-            "description": {},
-            "url": {
-              "path": [
-                "senders",
-                ":signatureid",
-                "verifyspf"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "signatureid",
-                  "description": "(Required) The ID for the Sender Signature for which SPF DNS records should be verified."
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Account on which this request will operate.",
-                "key": "X-Postmark-Account-Token",
-                "value": "<string>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "d7530bfa-9146-47b9-8c7a-3484b1163213",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid",
-                    "verifyspf"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature for which SPF DNS records should be verified."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"Domain\": \"string\",\n  \"EmailAddress\": \"AkS@pdUrOtjUzbjFTCSskIgJjPtgtZsOMZgC.pji\",\n  \"ReplyToEmailAddress\": \"9UKDftU@bwWqHpI.moua\",\n  \"Name\": \"string\",\n  \"Confirmed\": true,\n  \"SPFVerified\": true,\n  \"SPFHost\": \"string\",\n  \"SPFTextValue\": \"string\",\n  \"DKIMVerified\": false,\n  \"WeakDKIM\": true,\n  \"DKIMHost\": \"string\",\n  \"DKIMTestValue\": \"string\",\n  \"DKIMPendingHost\": \"string\",\n  \"DKIMPendingTextValue\": \"string\",\n  \"DKIMRevokedHost\": \"string\",\n  \"DKIMRevokedTextValue\": \"string\",\n  \"SafeToRemoveRevokedKeyFromDNS\": false,\n  \"DKIMUpdateStatus\": \"string\",\n  \"ReturnPathDomain\": \"string\",\n  \"ReturnPathDomainVerified\": false,\n  \"ReturnPathDomainCNAMEValue\": \"string\",\n  \"ID\": 556\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4c37cb43-dbb6-45f6-822d-bd42ad356d4a",
-              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid",
-                    "verifyspf"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature for which SPF DNS records should be verified."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"ErrorCode\": 1167,\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a95590b3-d529-4f83-8e7d-b67261b12b9a",
-              "name": "Indicates an internal server error occurred.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid",
-                    "verifyspf"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature for which SPF DNS records should be verified."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4375c530-5fde-4274-b378-9988b4a48241",
-          "name": "Postmark Request a new DKIM Key",
-          "request": {
-            "name": "Postmark Request a new DKIM Key",
-            "description": {
-              "content": "Requests a new DKIM key to be created. Until the DNS entries are confirmed,\nthe new values will be in the `DKIMPendingHost` and `DKIMPendingTextValue` fields.\nAfter the new DKIM value is verified in DNS, the pending values will migrate to\n`DKIMTextValue` and `DKIMPendingTextValue` and Postmark will begin to sign emails\nwith the new DKIM key.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "senders",
-                ":signatureid",
-                "requestnewdkim"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "signatureid",
-                  "description": "(Required) The ID for the Sender Signature for which a new DKIM Key should be generated."
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Account on which this request will operate.",
-                "key": "X-Postmark-Account-Token",
-                "value": "<string>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "8aee7066-ae56-489d-981f-a6070bf5b891",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid",
-                    "requestnewdkim"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature for which a new DKIM Key should be generated."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"ErrorCode\": 1167,\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a883231a-a126-4f1a-ac97-99feeb5540b1",
-              "name": "An error was generated due to incorrect use of the API. See the Message associated with this response for more information.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid",
-                    "requestnewdkim"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature for which a new DKIM Key should be generated."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"ErrorCode\": 1167,\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "937fdf8f-1573-4767-b7c9-f8cfba6d0777",
-              "name": "Indicates an internal server error occurred.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "senders",
-                    ":signatureid",
-                    "requestnewdkim"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "signatureid",
-                      "description": "(Required) The ID for the Sender Signature for which a new DKIM Key should be generated."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Account on which this request will operate.",
-                    "key": "X-Postmark-Account-Token",
-                    "value": "<string>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:52:42.000Z",
+          "updatedAt": "2026-10-22T01:52:42.000Z",
+          "uid": "35240-63ca9886-657f-4e88-84cf-ea451a489d69"
         }
       ],
-      "event": []
+      "id": "c5f9c21e-eed2-4e87-9402-30c3dfd32c50",
+      "createdAt": "2026-10-22T01:52:42.000Z",
+      "updatedAt": "2026-10-22T01:52:42.000Z",
+      "uid": "35240-c5f9c21e-eed2-4e87-9402-30c3dfd32c50"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "//api.postmarkapp.com/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "//api.postmarkapp.com/"
     }
-  ],
-  "info": {
-    "_postman_id": "950f5842-4618-4484-a6ed-5bc90e36573e",
-    "name": "Postmark Account Activate Sender Signatures API API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to\nconfigure all Servers, Domains, and Sender Signatures associated\nwith an Account.\n",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

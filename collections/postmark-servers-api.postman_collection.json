@@ -1,99 +1,96 @@
 {
+  "info": {
+    "_postman_id": "d788f6d8-90ed-4f62-967d-4ff3fc37a842",
+    "name": "Postmark Servers API",
+    "description": "Postmark helps deliver and track application email. In a nutshell, the\nservice replaces SMTP (or Sendmail) with a far more reliable, scalable and\ncare-free environment. In addition, you can track statistics such as\nnumber of emails sent or processed, opens, bounces and spam complaints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:53:06.000Z",
+    "updatedAt": "2026-10-22T01:53:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d788f6d8-90ed-4f62-967d-4ff3fc37a842"
+  },
   "item": [
     {
-      "id": "505e5a56-c6c7-4a1b-8e48-f2fd6101425b",
-      "name": "Servers",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "server",
       "item": [
         {
-          "id": "e73af5cd-330c-4be0-a3ba-1dfca603243f",
           "name": "Postmark Get Server Configuration",
+          "id": "bf7a48f6-2067-4c14-a304-f1b6023aad13",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Postmark Get Server Configuration",
-            "description": {},
-            "url": {
-              "path": [
-                "server"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/server",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "server"
+              ]
+            }
           },
           "response": [
             {
-              "id": "083044d0-444f-4d44-8170-abb519ea4e17",
+              "id": "c81eafe2-beff-4f68-83bd-fd95cd61e60c",
               "name": "Successful response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "server"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/server",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "server"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "\"\"",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:53:07.000Z",
+              "updatedAt": "2026-10-22T01:53:07.000Z",
+              "uid": "35240-c81eafe2-beff-4f68-83bd-fd95cd61e60c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:53:07.000Z",
+          "updatedAt": "2026-10-22T01:53:07.000Z",
+          "uid": "35240-bf7a48f6-2067-4c14-a304-f1b6023aad13"
         }
       ],
-      "event": []
+      "id": "508db58e-b3d6-4514-8d2f-169879f4e684",
+      "createdAt": "2026-10-22T01:53:07.000Z",
+      "updatedAt": "2026-10-22T01:53:07.000Z",
+      "uid": "35240-508db58e-b3d6-4514-8d2f-169879f4e684"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "//api.postmarkapp.com/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://{{baseurl}}"
     }
-  ],
-  "info": {
-    "_postman_id": "4bedf0df-496d-4107-a685-fa8de44a6f40",
-    "name": "Postmark Account Activate Servers API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to\nconfigure all Servers, Domains, and Sender Signatures associated\nwith an Account.\n",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

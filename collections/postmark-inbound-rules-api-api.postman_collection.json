@@ -1,553 +1,619 @@
 {
+  "info": {
+    "_postman_id": "5e19dab0-53e7-43c9-9f40-0f3341c64ccf",
+    "name": "Postmark Server Inbound Rules API",
+    "description": "Postmark makes sending and receiving email\nincredibly easy.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:52:03.000Z",
+    "updatedAt": "2026-10-22T01:52:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5e19dab0-53e7-43c9-9f40-0f3341c64ccf"
+  },
   "item": [
     {
-      "id": "9168d4c5-398b-4e29-b0e2-13fce587d5fd",
-      "name": "Inbound Rules API",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "triggers",
       "item": [
         {
-          "id": "1af41468-7ef2-4d77-9026-e17a1deaed05",
-          "name": "Postmark Create an inbound rule trigger",
-          "request": {
-            "name": "Postmark Create an inbound rule trigger",
-            "description": {},
-            "url": {
-              "path": [
-                "triggers",
-                "inboundrules"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Server on which this request will operate.",
-                "key": "X-Postmark-Server-Token",
-                "value": ""
-              }
-            ],
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
+          "name": "inboundrules",
+          "item": [
             {
-              "id": "d12018c2-5ec3-496a-9153-9c269e2a2a82",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "triggers",
-                    "inboundrules"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{triggerid}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "023ecf4c-8d13-4b73-b381-0ac67154a4e7",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "triggers",
-                    "inboundrules"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "05744348-af49-4e5a-8997-d8f1bce7640b",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "triggers",
-                    "inboundrules"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "65527963-c190-4b4b-84b1-e44a97812bbd",
-          "name": "Postmark List inbound rule triggers",
-          "request": {
-            "name": "Postmark List inbound rule triggers",
-            "description": {},
-            "url": {
-              "path": [
-                "triggers",
-                "inboundrules"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "description": {
-                    "content": "(Required) Number of records to return per request.",
-                    "type": "text/plain"
+                  "name": "Postmark Delete a single trigger",
+                  "id": "1728527c-468d-4175-aeac-af25fe8f66d3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  "key": "count",
-                  "value": ""
-                },
-                {
-                  "description": {
-                    "content": "(Required) Number of records to skip.",
-                    "type": "text/plain"
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/triggers/inboundrules/:triggerid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "triggers",
+                        "inboundrules",
+                        ":triggerid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2c9f6794-1c8b-49e5-87c2-57064755446a",
+                          "key": "triggerid",
+                          "value": "<integer>",
+                          "description": "(Required) The ID of the Inbound Rule that should be deleted."
+                        }
+                      ]
+                    }
                   },
-                  "key": "offset",
-                  "value": ""
+                  "response": [
+                    {
+                      "id": "474bec89-3399-4098-9c4c-2ce69e0b97e4",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Server on which this request will operate.",
+                            "key": "X-Postmark-Server-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/triggers/inboundrules/:triggerid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "triggers",
+                            "inboundrules",
+                            ":triggerid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "triggerid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"ErrorCode\": \"<integer>\",\n  \"Message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:52:03.000Z",
+                      "updatedAt": "2026-10-22T01:52:03.000Z",
+                      "uid": "35240-474bec89-3399-4098-9c4c-2ce69e0b97e4"
+                    },
+                    {
+                      "id": "4beddc07-3f7d-4736-9a0f-cc0e65d90b92",
+                      "name": "422 response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Server on which this request will operate.",
+                            "key": "X-Postmark-Server-Token",
+                            "value": "<string>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/triggers/inboundrules/:triggerid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "triggers",
+                            "inboundrules",
+                            ":triggerid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "triggerid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:52:03.000Z",
+                      "updatedAt": "2026-10-22T01:52:03.000Z",
+                      "uid": "35240-4beddc07-3f7d-4736-9a0f-cc0e65d90b92"
+                    },
+                    {
+                      "id": "77aa6999-64b6-497f-b01a-6f50cbb83c9d",
+                      "name": "500 response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Server on which this request will operate.",
+                            "key": "X-Postmark-Server-Token",
+                            "value": "<string>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/triggers/inboundrules/:triggerid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "triggers",
+                            "inboundrules",
+                            ":triggerid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "triggerid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:52:03.000Z",
+                      "updatedAt": "2026-10-22T01:52:03.000Z",
+                      "uid": "35240-77aa6999-64b6-497f-b01a-6f50cbb83c9d"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:52:03.000Z",
+                  "updatedAt": "2026-10-22T01:52:03.000Z",
+                  "uid": "35240-1728527c-468d-4175-aeac-af25fe8f66d3"
                 }
               ],
-              "variable": []
+              "id": "b3923378-c3ac-4cfa-88a2-71cb28757ecb",
+              "createdAt": "2026-10-22T01:52:03.000Z",
+              "updatedAt": "2026-10-22T01:52:03.000Z",
+              "uid": "35240-b3923378-c3ac-4cfa-88a2-71cb28757ecb"
             },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Server on which this request will operate.",
-                "key": "X-Postmark-Server-Token",
-                "value": ""
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
             {
-              "id": "0c847d29-8ea8-4525-acc2-58a852151b0d",
-              "name": "OK",
-              "originalRequest": {
+              "name": "Postmark Create an inbound rule trigger",
+              "id": "a18e8f9d-e091-42a4-900c-f1eebffe18b0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Rule\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/triggers/inboundrules",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "triggers",
+                    "inboundrules"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "e9185a45-b6fa-4e19-9434-bed9badee6f3",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Rule\": \"<email>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/triggers/inboundrules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "triggers",
+                        "inboundrules"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ID\": \"<integer>\",\n  \"Rule\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:52:03.000Z",
+                  "updatedAt": "2026-10-22T01:52:03.000Z",
+                  "uid": "35240-e9185a45-b6fa-4e19-9434-bed9badee6f3"
+                },
+                {
+                  "id": "5b1578c4-82fb-46dd-a363-378e63805c79",
+                  "name": "422 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Rule\": \"<email>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/triggers/inboundrules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "triggers",
+                        "inboundrules"
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:52:03.000Z",
+                  "updatedAt": "2026-10-22T01:52:03.000Z",
+                  "uid": "35240-5b1578c4-82fb-46dd-a363-378e63805c79"
+                },
+                {
+                  "id": "f7be0e22-f270-44ca-ab7a-071c85abdf6c",
+                  "name": "500 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Rule\": \"<email>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/triggers/inboundrules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "triggers",
+                        "inboundrules"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:52:03.000Z",
+                  "updatedAt": "2026-10-22T01:52:03.000Z",
+                  "uid": "35240-f7be0e22-f270-44ca-ab7a-071c85abdf6c"
+                }
+              ],
+              "createdAt": "2026-10-22T01:52:03.000Z",
+              "updatedAt": "2026-10-22T01:52:03.000Z",
+              "uid": "35240-a18e8f9d-e091-42a4-900c-f1eebffe18b0"
+            },
+            {
+              "name": "Postmark List inbound rule triggers",
+              "id": "6bba7e73-b57b-4c79-860c-90ee12b3dc44",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/triggers/inboundrules?count=<integer>&offset=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "triggers",
                     "inboundrules"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "(Required) Number of records to return per request.",
                       "key": "count",
-                      "value": ""
+                      "value": "<integer>"
                     },
                     {
+                      "description": "(Required) Number of records to skip.",
                       "key": "offset",
-                      "value": ""
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "83ea57f5-fe65-4ba4-bd4b-9a874b4fc47a",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/triggers/inboundrules?count=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "triggers",
+                        "inboundrules"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Number of records to return per request.",
+                          "key": "count",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) Number of records to skip.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"TotalCount\": \"<integer>\",\n  \"InboundRules\": [\n    {\n      \"ID\": \"<integer>\",\n      \"Rule\": \"<email>\"\n    },\n    {\n      \"ID\": \"<integer>\",\n      \"Rule\": \"<email>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-22T01:52:03.000Z",
+                  "updatedAt": "2026-10-22T01:52:03.000Z",
+                  "uid": "35240-83ea57f5-fe65-4ba4-bd4b-9a874b4fc47a"
                 },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "0acba5d1-7e45-4e74-a440-87040ce0cbfd",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "triggers",
-                    "inboundrules"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "count",
-                      "value": ""
-                    },
-                    {
-                      "key": "offset",
-                      "value": ""
+                  "id": "51b6dbf6-c577-440b-a184-182680c4a2ec",
+                  "name": "422 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/triggers/inboundrules?count=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "triggers",
+                        "inboundrules"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Number of records to return per request.",
+                          "key": "count",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) Number of records to skip.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ]
                     }
-                  ],
-                  "variable": []
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:52:03.000Z",
+                  "updatedAt": "2026-10-22T01:52:03.000Z",
+                  "uid": "35240-51b6dbf6-c577-440b-a184-182680c4a2ec"
                 },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7f3af458-de57-4823-904f-0381263e1a3e",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "triggers",
-                    "inboundrules"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "count",
-                      "value": ""
-                    },
-                    {
-                      "key": "offset",
-                      "value": ""
+                  "id": "1d1e861f-b9f9-4ca4-bef7-01a8d29551dd",
+                  "name": "500 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/triggers/inboundrules?count=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "triggers",
+                        "inboundrules"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Number of records to return per request.",
+                          "key": "count",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) Number of records to skip.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ]
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:52:03.000Z",
+                  "updatedAt": "2026-10-22T01:52:03.000Z",
+                  "uid": "35240-1d1e861f-b9f9-4ca4-bef7-01a8d29551dd"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T01:52:03.000Z",
+              "updatedAt": "2026-10-22T01:52:03.000Z",
+              "uid": "35240-6bba7e73-b57b-4c79-860c-90ee12b3dc44"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "fa5192fc-3986-421a-8429-49cf830d652d",
-          "name": "Postmark Delete a single trigger",
-          "request": {
-            "name": "Postmark Delete a single trigger",
-            "description": {},
-            "url": {
-              "path": [
-                "triggers",
-                "inboundrules",
-                ":triggerid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "triggerid",
-                  "description": "(Required) The ID of the Inbound Rule that should be deleted."
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Server on which this request will operate.",
-                "key": "X-Postmark-Server-Token",
-                "value": ""
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "b190975d-0462-4c36-8a10-9b8a506502b7",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "triggers",
-                    "inboundrules",
-                    ":triggerid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "triggerid",
-                      "description": "(Required) The ID of the Inbound Rule that should be deleted."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "c1547d5d-7cd3-4824-b135-7222ffdc05db",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "triggers",
-                    "inboundrules",
-                    ":triggerid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "triggerid",
-                      "description": "(Required) The ID of the Inbound Rule that should be deleted."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9b8ab3ab-1fda-431f-a8da-afeac3d91b86",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "triggers",
-                    "inboundrules",
-                    ":triggerid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "triggerid",
-                      "description": "(Required) The ID of the Inbound Rule that should be deleted."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "7bcbb999-f696-4026-a1b6-23939c0aab5b",
+          "createdAt": "2026-10-22T01:52:03.000Z",
+          "updatedAt": "2026-10-22T01:52:03.000Z",
+          "uid": "35240-7bcbb999-f696-4026-a1b6-23939c0aab5b"
         }
       ],
-      "event": []
+      "id": "d71d2d1a-4a7f-41a1-afaa-b1ee0fde3af8",
+      "createdAt": "2026-10-22T01:52:03.000Z",
+      "updatedAt": "2026-10-22T01:52:03.000Z",
+      "uid": "35240-d71d2d1a-4a7f-41a1-afaa-b1ee0fde3af8"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "//api.postmarkapp.com/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.postmarkapp.com/"
     }
-  ],
-  "info": {
-    "_postman_id": "ef8222c8-27d9-4aef-a83f-6104a8370297",
-    "name": "Postmark Account Activate Inbound Rules API API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to\nconfigure all Servers, Domains, and Sender Signatures associated\nwith an Account.\n",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

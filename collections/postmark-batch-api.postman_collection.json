@@ -1,192 +1,185 @@
 {
+  "info": {
+    "_postman_id": "92ee8f9a-eeaf-4324-b353-50059428fd12",
+    "name": "Postmark Batch API",
+    "description": "Postmark helps deliver and track application email. In a nutshell, the\nservice replaces SMTP (or Sendmail) with a far more reliable, scalable and\ncare-free environment. In addition, you can track statistics such as\nnumber of emails sent or processed, opens, bounces and spam complaints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:50:46.000Z",
+    "updatedAt": "2026-10-22T01:50:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-92ee8f9a-eeaf-4324-b353-50059428fd12"
+  },
   "item": [
     {
-      "id": "a09566a7-3bfa-4ce4-be1e-aff7124cba6e",
-      "name": "Batch",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "email",
       "item": [
         {
-          "id": "0c980faf-a1df-4637-8008-9857afd24f42",
-          "name": "Postmark Send a batch of emails",
-          "request": {
-            "name": "Postmark Send a batch of emails",
-            "description": {},
-            "url": {
-              "path": [
-                "email",
-                "batch"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            }
-          },
-          "response": [
+          "name": "batch",
+          "item": [
             {
-              "id": "bba28002-ef64-4db8-b42f-1ab840ce7aa8",
-              "name": "Successful response",
-              "originalRequest": {
+              "name": "Postmark Send a batch of emails",
+              "id": "ca993857-97ec-4ef8-861f-9bd585e28206",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/email/batch",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "email",
                     "batch"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "42250c74-25f9-477e-b82b-096203340ec1",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/email/batch",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "email",
+                        "batch"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "",
+                  "createdAt": "2026-10-22T01:50:46.000Z",
+                  "updatedAt": "2026-10-22T01:50:46.000Z",
+                  "uid": "35240-42250c74-25f9-477e-b82b-096203340ec1"
+                }
+              ],
+              "createdAt": "2026-10-22T01:50:46.000Z",
+              "updatedAt": "2026-10-22T01:50:46.000Z",
+              "uid": "35240-ca993857-97ec-4ef8-861f-9bd585e28206"
+            }
+          ],
+          "id": "6fe31f8d-b1cb-4ef1-8f0f-73600e43f2b7",
+          "createdAt": "2026-10-22T01:50:46.000Z",
+          "updatedAt": "2026-10-22T01:50:46.000Z",
+          "uid": "35240-6fe31f8d-b1cb-4ef1-8f0f-73600e43f2b7"
+        },
+        {
+          "name": "batchWithTemplates",
+          "item": [
+            {
+              "name": "Postmark Send a batch of email using templates",
+              "id": "b5093fab-a361-4546-9391-84e7e5f55dce",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b64ba9b1-7c2b-4761-9e66-43eeab1e132f",
-          "name": "Postmark Send a batch of email using templates.",
-          "request": {
-            "name": "Postmark Send a batch of email using templates.",
-            "description": {},
-            "url": {
-              "path": [
-                "email",
-                "batchWithTemplates"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            }
-          },
-          "response": [
-            {
-              "id": "a1ad25d4-e747-4d7b-ba0a-0498209e0bde",
-              "name": "Successful response",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/email/batchWithTemplates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "email",
                     "batchWithTemplates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
+                  ]
                 }
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "0bcefc6f-2cf6-4abf-ac43-19717ed65be9",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/email/batchWithTemplates",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "email",
+                        "batchWithTemplates"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "",
+                  "createdAt": "2026-10-22T01:50:46.000Z",
+                  "updatedAt": "2026-10-22T01:50:46.000Z",
+                  "uid": "35240-0bcefc6f-2cf6-4abf-ac43-19717ed65be9"
                 }
               ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T01:50:46.000Z",
+              "updatedAt": "2026-10-22T01:50:46.000Z",
+              "uid": "35240-b5093fab-a361-4546-9391-84e7e5f55dce"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "9e5cb2f8-9e80-4140-a7f0-de1073ae6b06",
+          "createdAt": "2026-10-22T01:50:46.000Z",
+          "updatedAt": "2026-10-22T01:50:46.000Z",
+          "uid": "35240-9e5cb2f8-9e80-4140-a7f0-de1073ae6b06"
         }
       ],
-      "event": []
+      "id": "fd30196d-b20f-4422-ad53-f9fe6542b599",
+      "createdAt": "2026-10-22T01:50:46.000Z",
+      "updatedAt": "2026-10-22T01:50:46.000Z",
+      "uid": "35240-fd30196d-b20f-4422-ad53-f9fe6542b599"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "//api.postmarkapp.com/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://{{baseurl}}"
     }
-  ],
-  "info": {
-    "_postman_id": "6e526947-a3ac-49aa-851f-f4ce9ea23855",
-    "name": "Postmark Account Activate Batch API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to\nconfigure all Servers, Domains, and Sender Signatures associated\nwith an Account.\n",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

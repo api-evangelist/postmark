@@ -1,0 +1,163 @@
+{
+  "info": {
+    "_postman_id": "cf652ce7-b658-4565-b470-d9b2c8b31fa3",
+    "name": "Postmark Emailclients API",
+    "description": "Postmark helps deliver and track application email. In a nutshell, the\nservice replaces SMTP (or Sendmail) with a far more reliable, scalable and\ncare-free environment. In addition, you can track statistics such as\nnumber of emails sent or processed, opens, bounces and spam complaints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:53:43.000Z",
+    "updatedAt": "2026-10-22T01:53:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cf652ce7-b658-4565-b470-d9b2c8b31fa3"
+  },
+  "item": [
+    {
+      "name": "stats",
+      "item": [
+        {
+          "name": "outbound",
+          "item": [
+            {
+              "name": "opens",
+              "item": [
+                {
+                  "name": "emailclients",
+                  "item": [
+                    {
+                      "name": "Postmark Get email client usage",
+                      "id": "3045f48a-ecb2-4de9-85d7-9b11aef8a631",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stats/outbound/opens/emailclients?tag=<string>&fromdate=<string>&todate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stats",
+                            "outbound",
+                            "opens",
+                            "emailclients"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by tag",
+                              "key": "tag",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                              "key": "fromdate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                              "key": "todate",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "a8ca1190-2c29-417a-b215-74c055d46cf7",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/stats/outbound/opens/emailclients?tag=<string>&fromdate=<string>&todate=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "stats",
+                                "outbound",
+                                "opens",
+                                "emailclients"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter by tag",
+                                  "key": "tag",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                                  "key": "fromdate",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                                  "key": "todate",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "",
+                          "createdAt": "2026-10-22T01:53:44.000Z",
+                          "updatedAt": "2026-10-22T01:53:44.000Z",
+                          "uid": "35240-a8ca1190-2c29-417a-b215-74c055d46cf7"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:53:44.000Z",
+                      "updatedAt": "2026-10-22T01:53:44.000Z",
+                      "uid": "35240-3045f48a-ecb2-4de9-85d7-9b11aef8a631"
+                    }
+                  ],
+                  "id": "4c2f6c60-db29-4fc3-b7e4-04ddc5d4176d",
+                  "createdAt": "2026-10-22T01:53:44.000Z",
+                  "updatedAt": "2026-10-22T01:53:44.000Z",
+                  "uid": "35240-4c2f6c60-db29-4fc3-b7e4-04ddc5d4176d"
+                }
+              ],
+              "id": "92418c95-9958-4d3f-b1a5-99f2c11d8d2a",
+              "createdAt": "2026-10-22T01:53:44.000Z",
+              "updatedAt": "2026-10-22T01:53:44.000Z",
+              "uid": "35240-92418c95-9958-4d3f-b1a5-99f2c11d8d2a"
+            }
+          ],
+          "id": "53ad2d50-5eab-47a8-a20e-ef7c22808d01",
+          "createdAt": "2026-10-22T01:53:44.000Z",
+          "updatedAt": "2026-10-22T01:53:44.000Z",
+          "uid": "35240-53ad2d50-5eab-47a8-a20e-ef7c22808d01"
+        }
+      ],
+      "id": "1cd5c0f4-09d1-4562-8436-804d8a027737",
+      "createdAt": "2026-10-22T01:53:44.000Z",
+      "updatedAt": "2026-10-22T01:53:44.000Z",
+      "uid": "35240-1cd5c0f4-09d1-4562-8436-804d8a027737"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://{{baseurl}}"
+    }
+  ]
+}

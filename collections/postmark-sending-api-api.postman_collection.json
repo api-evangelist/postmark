@@ -1,616 +1,864 @@
 {
+  "info": {
+    "_postman_id": "54aa5f7e-278b-4f70-b8d2-5ea33b9e70d8",
+    "name": "Postmark Server Sending API",
+    "description": "Postmark makes sending and receiving email\nincredibly easy.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:52:48.000Z",
+    "updatedAt": "2026-10-22T01:52:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-54aa5f7e-278b-4f70-b8d2-5ea33b9e70d8"
+  },
   "item": [
     {
-      "id": "55f0f77b-f775-4fb6-a5b8-9f8b10876a02",
-      "name": "Sending API",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "email",
       "item": [
         {
-          "id": "cc02d07b-7344-46f9-a691-8f2bf357ac77",
+          "name": "batch",
+          "item": [
+            {
+              "name": "Postmark Send a batch of emails",
+              "id": "b68238ee-8bd3-4d10-9ae1-1a28b24ce109",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"From\": \"<string>\",\n    \"To\": \"<string>\",\n    \"Cc\": \"<string>\",\n    \"Bcc\": \"<string>\",\n    \"Subject\": \"<string>\",\n    \"Tag\": \"<string>\",\n    \"HtmlBody\": \"<string>\",\n    \"TextBody\": \"<string>\",\n    \"ReplyTo\": \"<string>\",\n    \"TrackOpens\": \"<boolean>\",\n    \"TrackLinks\": \"TextOnly\",\n    \"Headers\": [\n      {\n        \"Name\": \"<string>\",\n        \"Value\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Value\": \"<string>\"\n      }\n    ],\n    \"Attachments\": [\n      {\n        \"Name\": \"<string>\",\n        \"Content\": \"<string>\",\n        \"ContentType\": \"<string>\",\n        \"ContentID\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Content\": \"<string>\",\n        \"ContentType\": \"<string>\",\n        \"ContentID\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"From\": \"<string>\",\n    \"To\": \"<string>\",\n    \"Cc\": \"<string>\",\n    \"Bcc\": \"<string>\",\n    \"Subject\": \"<string>\",\n    \"Tag\": \"<string>\",\n    \"HtmlBody\": \"<string>\",\n    \"TextBody\": \"<string>\",\n    \"ReplyTo\": \"<string>\",\n    \"TrackOpens\": \"<boolean>\",\n    \"TrackLinks\": \"HtmlAndText\",\n    \"Headers\": [\n      {\n        \"Name\": \"<string>\",\n        \"Value\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Value\": \"<string>\"\n      }\n    ],\n    \"Attachments\": [\n      {\n        \"Name\": \"<string>\",\n        \"Content\": \"<string>\",\n        \"ContentType\": \"<string>\",\n        \"ContentID\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Content\": \"<string>\",\n        \"ContentType\": \"<string>\",\n        \"ContentID\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/email/batch",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "email",
+                    "batch"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "af4a9894-dd79-4086-86e4-22a7d3296fb5",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"From\": \"<string>\",\n    \"To\": \"<string>\",\n    \"Cc\": \"<string>\",\n    \"Bcc\": \"<string>\",\n    \"Subject\": \"<string>\",\n    \"Tag\": \"<string>\",\n    \"HtmlBody\": \"<string>\",\n    \"TextBody\": \"<string>\",\n    \"ReplyTo\": \"<string>\",\n    \"TrackOpens\": \"<boolean>\",\n    \"TrackLinks\": \"TextOnly\",\n    \"Headers\": [\n      {\n        \"Name\": \"<string>\",\n        \"Value\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Value\": \"<string>\"\n      }\n    ],\n    \"Attachments\": [\n      {\n        \"Name\": \"<string>\",\n        \"Content\": \"<string>\",\n        \"ContentType\": \"<string>\",\n        \"ContentID\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Content\": \"<string>\",\n        \"ContentType\": \"<string>\",\n        \"ContentID\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"From\": \"<string>\",\n    \"To\": \"<string>\",\n    \"Cc\": \"<string>\",\n    \"Bcc\": \"<string>\",\n    \"Subject\": \"<string>\",\n    \"Tag\": \"<string>\",\n    \"HtmlBody\": \"<string>\",\n    \"TextBody\": \"<string>\",\n    \"ReplyTo\": \"<string>\",\n    \"TrackOpens\": \"<boolean>\",\n    \"TrackLinks\": \"HtmlAndText\",\n    \"Headers\": [\n      {\n        \"Name\": \"<string>\",\n        \"Value\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Value\": \"<string>\"\n      }\n    ],\n    \"Attachments\": [\n      {\n        \"Name\": \"<string>\",\n        \"Content\": \"<string>\",\n        \"ContentType\": \"<string>\",\n        \"ContentID\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Content\": \"<string>\",\n        \"ContentType\": \"<string>\",\n        \"ContentID\": \"<string>\"\n      }\n    ]\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/email/batch",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "email",
+                        "batch"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"To\": \"<string>\",\n    \"SubmittedAt\": \"<dateTime>\",\n    \"MessageID\": \"<string>\",\n    \"ErrorCode\": \"<integer>\",\n    \"Message\": \"<string>\"\n  },\n  {\n    \"To\": \"<string>\",\n    \"SubmittedAt\": \"<dateTime>\",\n    \"MessageID\": \"<string>\",\n    \"ErrorCode\": \"<integer>\",\n    \"Message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-10-22T01:52:48.000Z",
+                  "updatedAt": "2026-10-22T01:52:48.000Z",
+                  "uid": "35240-af4a9894-dd79-4086-86e4-22a7d3296fb5"
+                },
+                {
+                  "id": "756f2b98-02e2-4f1e-a08d-f4761bf8e236",
+                  "name": "422 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"From\": \"<string>\",\n    \"To\": \"<string>\",\n    \"Cc\": \"<string>\",\n    \"Bcc\": \"<string>\",\n    \"Subject\": \"<string>\",\n    \"Tag\": \"<string>\",\n    \"HtmlBody\": \"<string>\",\n    \"TextBody\": \"<string>\",\n    \"ReplyTo\": \"<string>\",\n    \"TrackOpens\": \"<boolean>\",\n    \"TrackLinks\": \"TextOnly\",\n    \"Headers\": [\n      {\n        \"Name\": \"<string>\",\n        \"Value\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Value\": \"<string>\"\n      }\n    ],\n    \"Attachments\": [\n      {\n        \"Name\": \"<string>\",\n        \"Content\": \"<string>\",\n        \"ContentType\": \"<string>\",\n        \"ContentID\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Content\": \"<string>\",\n        \"ContentType\": \"<string>\",\n        \"ContentID\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"From\": \"<string>\",\n    \"To\": \"<string>\",\n    \"Cc\": \"<string>\",\n    \"Bcc\": \"<string>\",\n    \"Subject\": \"<string>\",\n    \"Tag\": \"<string>\",\n    \"HtmlBody\": \"<string>\",\n    \"TextBody\": \"<string>\",\n    \"ReplyTo\": \"<string>\",\n    \"TrackOpens\": \"<boolean>\",\n    \"TrackLinks\": \"HtmlAndText\",\n    \"Headers\": [\n      {\n        \"Name\": \"<string>\",\n        \"Value\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Value\": \"<string>\"\n      }\n    ],\n    \"Attachments\": [\n      {\n        \"Name\": \"<string>\",\n        \"Content\": \"<string>\",\n        \"ContentType\": \"<string>\",\n        \"ContentID\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Content\": \"<string>\",\n        \"ContentType\": \"<string>\",\n        \"ContentID\": \"<string>\"\n      }\n    ]\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/email/batch",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "email",
+                        "batch"
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:52:48.000Z",
+                  "updatedAt": "2026-10-22T01:52:48.000Z",
+                  "uid": "35240-756f2b98-02e2-4f1e-a08d-f4761bf8e236"
+                },
+                {
+                  "id": "2863defb-b3d9-4e70-ae1e-603d22e6fab2",
+                  "name": "500 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"From\": \"<string>\",\n    \"To\": \"<string>\",\n    \"Cc\": \"<string>\",\n    \"Bcc\": \"<string>\",\n    \"Subject\": \"<string>\",\n    \"Tag\": \"<string>\",\n    \"HtmlBody\": \"<string>\",\n    \"TextBody\": \"<string>\",\n    \"ReplyTo\": \"<string>\",\n    \"TrackOpens\": \"<boolean>\",\n    \"TrackLinks\": \"TextOnly\",\n    \"Headers\": [\n      {\n        \"Name\": \"<string>\",\n        \"Value\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Value\": \"<string>\"\n      }\n    ],\n    \"Attachments\": [\n      {\n        \"Name\": \"<string>\",\n        \"Content\": \"<string>\",\n        \"ContentType\": \"<string>\",\n        \"ContentID\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Content\": \"<string>\",\n        \"ContentType\": \"<string>\",\n        \"ContentID\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"From\": \"<string>\",\n    \"To\": \"<string>\",\n    \"Cc\": \"<string>\",\n    \"Bcc\": \"<string>\",\n    \"Subject\": \"<string>\",\n    \"Tag\": \"<string>\",\n    \"HtmlBody\": \"<string>\",\n    \"TextBody\": \"<string>\",\n    \"ReplyTo\": \"<string>\",\n    \"TrackOpens\": \"<boolean>\",\n    \"TrackLinks\": \"HtmlAndText\",\n    \"Headers\": [\n      {\n        \"Name\": \"<string>\",\n        \"Value\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Value\": \"<string>\"\n      }\n    ],\n    \"Attachments\": [\n      {\n        \"Name\": \"<string>\",\n        \"Content\": \"<string>\",\n        \"ContentType\": \"<string>\",\n        \"ContentID\": \"<string>\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Content\": \"<string>\",\n        \"ContentType\": \"<string>\",\n        \"ContentID\": \"<string>\"\n      }\n    ]\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/email/batch",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "email",
+                        "batch"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:52:48.000Z",
+                  "updatedAt": "2026-10-22T01:52:48.000Z",
+                  "uid": "35240-2863defb-b3d9-4e70-ae1e-603d22e6fab2"
+                }
+              ],
+              "createdAt": "2026-10-22T01:52:48.000Z",
+              "updatedAt": "2026-10-22T01:52:48.000Z",
+              "uid": "35240-b68238ee-8bd3-4d10-9ae1-1a28b24ce109"
+            }
+          ],
+          "id": "12a69eca-1b6f-4f4e-b1f4-ae1b0e8bca39",
+          "createdAt": "2026-10-22T01:52:48.000Z",
+          "updatedAt": "2026-10-22T01:52:48.000Z",
+          "uid": "35240-12a69eca-1b6f-4f4e-b1f4-ae1b0e8bca39"
+        },
+        {
+          "name": "withTemplate",
+          "item": [
+            {
+              "name": "Postmark Send an email using a Template",
+              "id": "11842c72-6883-43b7-9116-64e58307500f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"TemplateId\": \"<integer>\",\n  \"TemplateAlias\": \"<string>\",\n  \"TemplateModel\": {},\n  \"To\": \"<email>\",\n  \"From\": \"<email>\",\n  \"InlineCss\": true,\n  \"Cc\": \"<email>\",\n  \"Bcc\": \"<email>\",\n  \"Tag\": \"<string>\",\n  \"ReplyTo\": \"<string>\",\n  \"Headers\": [\n    {\n      \"Name\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"TrackOpens\": \"<boolean>\",\n  \"TrackLinks\": \"HtmlOnly\",\n  \"Attachments\": [\n    {\n      \"Name\": \"<string>\",\n      \"Content\": \"<string>\",\n      \"ContentType\": \"<string>\",\n      \"ContentID\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Content\": \"<string>\",\n      \"ContentType\": \"<string>\",\n      \"ContentID\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/email/withTemplate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "email",
+                    "withTemplate"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "0ec1257e-179d-4f9b-846a-8374774d9720",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"TemplateId\": \"<integer>\",\n  \"TemplateAlias\": \"<string>\",\n  \"TemplateModel\": {},\n  \"To\": \"<email>\",\n  \"From\": \"<email>\",\n  \"InlineCss\": true,\n  \"Cc\": \"<email>\",\n  \"Bcc\": \"<email>\",\n  \"Tag\": \"<string>\",\n  \"ReplyTo\": \"<string>\",\n  \"Headers\": [\n    {\n      \"Name\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"TrackOpens\": \"<boolean>\",\n  \"TrackLinks\": \"HtmlOnly\",\n  \"Attachments\": [\n    {\n      \"Name\": \"<string>\",\n      \"Content\": \"<string>\",\n      \"ContentType\": \"<string>\",\n      \"ContentID\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Content\": \"<string>\",\n      \"ContentType\": \"<string>\",\n      \"ContentID\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/email/withTemplate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "email",
+                        "withTemplate"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"To\": \"<string>\",\n  \"SubmittedAt\": \"<dateTime>\",\n  \"MessageID\": \"<string>\",\n  \"ErrorCode\": \"<integer>\",\n  \"Message\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:52:48.000Z",
+                  "updatedAt": "2026-10-22T01:52:48.000Z",
+                  "uid": "35240-0ec1257e-179d-4f9b-846a-8374774d9720"
+                },
+                {
+                  "id": "119f9057-08a3-411e-a3c1-20bad2742f5d",
+                  "name": "422 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"TemplateId\": \"<integer>\",\n  \"TemplateAlias\": \"<string>\",\n  \"TemplateModel\": {},\n  \"To\": \"<email>\",\n  \"From\": \"<email>\",\n  \"InlineCss\": true,\n  \"Cc\": \"<email>\",\n  \"Bcc\": \"<email>\",\n  \"Tag\": \"<string>\",\n  \"ReplyTo\": \"<string>\",\n  \"Headers\": [\n    {\n      \"Name\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"TrackOpens\": \"<boolean>\",\n  \"TrackLinks\": \"HtmlOnly\",\n  \"Attachments\": [\n    {\n      \"Name\": \"<string>\",\n      \"Content\": \"<string>\",\n      \"ContentType\": \"<string>\",\n      \"ContentID\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Content\": \"<string>\",\n      \"ContentType\": \"<string>\",\n      \"ContentID\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/email/withTemplate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "email",
+                        "withTemplate"
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:52:48.000Z",
+                  "updatedAt": "2026-10-22T01:52:48.000Z",
+                  "uid": "35240-119f9057-08a3-411e-a3c1-20bad2742f5d"
+                },
+                {
+                  "id": "b5edae32-7006-4fc0-9dc0-e260daee52e0",
+                  "name": "500 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"TemplateId\": \"<integer>\",\n  \"TemplateAlias\": \"<string>\",\n  \"TemplateModel\": {},\n  \"To\": \"<email>\",\n  \"From\": \"<email>\",\n  \"InlineCss\": true,\n  \"Cc\": \"<email>\",\n  \"Bcc\": \"<email>\",\n  \"Tag\": \"<string>\",\n  \"ReplyTo\": \"<string>\",\n  \"Headers\": [\n    {\n      \"Name\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"TrackOpens\": \"<boolean>\",\n  \"TrackLinks\": \"HtmlOnly\",\n  \"Attachments\": [\n    {\n      \"Name\": \"<string>\",\n      \"Content\": \"<string>\",\n      \"ContentType\": \"<string>\",\n      \"ContentID\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Content\": \"<string>\",\n      \"ContentType\": \"<string>\",\n      \"ContentID\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/email/withTemplate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "email",
+                        "withTemplate"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:52:48.000Z",
+                  "updatedAt": "2026-10-22T01:52:48.000Z",
+                  "uid": "35240-b5edae32-7006-4fc0-9dc0-e260daee52e0"
+                }
+              ],
+              "createdAt": "2026-10-22T01:52:48.000Z",
+              "updatedAt": "2026-10-22T01:52:48.000Z",
+              "uid": "35240-11842c72-6883-43b7-9116-64e58307500f"
+            }
+          ],
+          "id": "529f28fb-2c78-4fbd-be20-d7313d2b060e",
+          "createdAt": "2026-10-22T01:52:48.000Z",
+          "updatedAt": "2026-10-22T01:52:48.000Z",
+          "uid": "35240-529f28fb-2c78-4fbd-be20-d7313d2b060e"
+        },
+        {
+          "name": "batchWithTemplates",
+          "item": [
+            {
+              "name": "Postmark Send a batch of email using templates",
+              "id": "48ffd3f0-c38d-4c98-b8e9-62687353dde8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Messages\": [\n    {\n      \"TemplateId\": \"<integer>\",\n      \"TemplateAlias\": \"<string>\",\n      \"TemplateModel\": {},\n      \"To\": \"<email>\",\n      \"From\": \"<email>\",\n      \"InlineCss\": true,\n      \"Cc\": \"<email>\",\n      \"Bcc\": \"<email>\",\n      \"Tag\": \"<string>\",\n      \"ReplyTo\": \"<string>\",\n      \"Headers\": [\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ],\n      \"TrackOpens\": \"<boolean>\",\n      \"TrackLinks\": \"HtmlAndText\",\n      \"Attachments\": [\n        {\n          \"Name\": \"<string>\",\n          \"Content\": \"<string>\",\n          \"ContentType\": \"<string>\",\n          \"ContentID\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Content\": \"<string>\",\n          \"ContentType\": \"<string>\",\n          \"ContentID\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"TemplateId\": \"<integer>\",\n      \"TemplateAlias\": \"<string>\",\n      \"TemplateModel\": {},\n      \"To\": \"<email>\",\n      \"From\": \"<email>\",\n      \"InlineCss\": true,\n      \"Cc\": \"<email>\",\n      \"Bcc\": \"<email>\",\n      \"Tag\": \"<string>\",\n      \"ReplyTo\": \"<string>\",\n      \"Headers\": [\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ],\n      \"TrackOpens\": \"<boolean>\",\n      \"TrackLinks\": \"HtmlOnly\",\n      \"Attachments\": [\n        {\n          \"Name\": \"<string>\",\n          \"Content\": \"<string>\",\n          \"ContentType\": \"<string>\",\n          \"ContentID\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Content\": \"<string>\",\n          \"ContentType\": \"<string>\",\n          \"ContentID\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/email/batchWithTemplates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "email",
+                    "batchWithTemplates"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "fbb13e71-b510-4c58-b143-1c444d422383",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Messages\": [\n    {\n      \"TemplateId\": \"<integer>\",\n      \"TemplateAlias\": \"<string>\",\n      \"TemplateModel\": {},\n      \"To\": \"<email>\",\n      \"From\": \"<email>\",\n      \"InlineCss\": true,\n      \"Cc\": \"<email>\",\n      \"Bcc\": \"<email>\",\n      \"Tag\": \"<string>\",\n      \"ReplyTo\": \"<string>\",\n      \"Headers\": [\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ],\n      \"TrackOpens\": \"<boolean>\",\n      \"TrackLinks\": \"HtmlAndText\",\n      \"Attachments\": [\n        {\n          \"Name\": \"<string>\",\n          \"Content\": \"<string>\",\n          \"ContentType\": \"<string>\",\n          \"ContentID\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Content\": \"<string>\",\n          \"ContentType\": \"<string>\",\n          \"ContentID\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"TemplateId\": \"<integer>\",\n      \"TemplateAlias\": \"<string>\",\n      \"TemplateModel\": {},\n      \"To\": \"<email>\",\n      \"From\": \"<email>\",\n      \"InlineCss\": true,\n      \"Cc\": \"<email>\",\n      \"Bcc\": \"<email>\",\n      \"Tag\": \"<string>\",\n      \"ReplyTo\": \"<string>\",\n      \"Headers\": [\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ],\n      \"TrackOpens\": \"<boolean>\",\n      \"TrackLinks\": \"HtmlOnly\",\n      \"Attachments\": [\n        {\n          \"Name\": \"<string>\",\n          \"Content\": \"<string>\",\n          \"ContentType\": \"<string>\",\n          \"ContentID\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Content\": \"<string>\",\n          \"ContentType\": \"<string>\",\n          \"ContentID\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/email/batchWithTemplates",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "email",
+                        "batchWithTemplates"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"To\": \"<string>\",\n    \"SubmittedAt\": \"<dateTime>\",\n    \"MessageID\": \"<string>\",\n    \"ErrorCode\": \"<integer>\",\n    \"Message\": \"<string>\"\n  },\n  {\n    \"To\": \"<string>\",\n    \"SubmittedAt\": \"<dateTime>\",\n    \"MessageID\": \"<string>\",\n    \"ErrorCode\": \"<integer>\",\n    \"Message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-10-22T01:52:48.000Z",
+                  "updatedAt": "2026-10-22T01:52:48.000Z",
+                  "uid": "35240-fbb13e71-b510-4c58-b143-1c444d422383"
+                },
+                {
+                  "id": "cad850b6-a39e-48dc-bd7f-550b3e56886b",
+                  "name": "422 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Messages\": [\n    {\n      \"TemplateId\": \"<integer>\",\n      \"TemplateAlias\": \"<string>\",\n      \"TemplateModel\": {},\n      \"To\": \"<email>\",\n      \"From\": \"<email>\",\n      \"InlineCss\": true,\n      \"Cc\": \"<email>\",\n      \"Bcc\": \"<email>\",\n      \"Tag\": \"<string>\",\n      \"ReplyTo\": \"<string>\",\n      \"Headers\": [\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ],\n      \"TrackOpens\": \"<boolean>\",\n      \"TrackLinks\": \"HtmlAndText\",\n      \"Attachments\": [\n        {\n          \"Name\": \"<string>\",\n          \"Content\": \"<string>\",\n          \"ContentType\": \"<string>\",\n          \"ContentID\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Content\": \"<string>\",\n          \"ContentType\": \"<string>\",\n          \"ContentID\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"TemplateId\": \"<integer>\",\n      \"TemplateAlias\": \"<string>\",\n      \"TemplateModel\": {},\n      \"To\": \"<email>\",\n      \"From\": \"<email>\",\n      \"InlineCss\": true,\n      \"Cc\": \"<email>\",\n      \"Bcc\": \"<email>\",\n      \"Tag\": \"<string>\",\n      \"ReplyTo\": \"<string>\",\n      \"Headers\": [\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ],\n      \"TrackOpens\": \"<boolean>\",\n      \"TrackLinks\": \"HtmlOnly\",\n      \"Attachments\": [\n        {\n          \"Name\": \"<string>\",\n          \"Content\": \"<string>\",\n          \"ContentType\": \"<string>\",\n          \"ContentID\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Content\": \"<string>\",\n          \"ContentType\": \"<string>\",\n          \"ContentID\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/email/batchWithTemplates",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "email",
+                        "batchWithTemplates"
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:52:48.000Z",
+                  "updatedAt": "2026-10-22T01:52:48.000Z",
+                  "uid": "35240-cad850b6-a39e-48dc-bd7f-550b3e56886b"
+                },
+                {
+                  "id": "72cba4f6-71cb-475f-8269-c3c7d15eede1",
+                  "name": "500 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Messages\": [\n    {\n      \"TemplateId\": \"<integer>\",\n      \"TemplateAlias\": \"<string>\",\n      \"TemplateModel\": {},\n      \"To\": \"<email>\",\n      \"From\": \"<email>\",\n      \"InlineCss\": true,\n      \"Cc\": \"<email>\",\n      \"Bcc\": \"<email>\",\n      \"Tag\": \"<string>\",\n      \"ReplyTo\": \"<string>\",\n      \"Headers\": [\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ],\n      \"TrackOpens\": \"<boolean>\",\n      \"TrackLinks\": \"HtmlAndText\",\n      \"Attachments\": [\n        {\n          \"Name\": \"<string>\",\n          \"Content\": \"<string>\",\n          \"ContentType\": \"<string>\",\n          \"ContentID\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Content\": \"<string>\",\n          \"ContentType\": \"<string>\",\n          \"ContentID\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"TemplateId\": \"<integer>\",\n      \"TemplateAlias\": \"<string>\",\n      \"TemplateModel\": {},\n      \"To\": \"<email>\",\n      \"From\": \"<email>\",\n      \"InlineCss\": true,\n      \"Cc\": \"<email>\",\n      \"Bcc\": \"<email>\",\n      \"Tag\": \"<string>\",\n      \"ReplyTo\": \"<string>\",\n      \"Headers\": [\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ],\n      \"TrackOpens\": \"<boolean>\",\n      \"TrackLinks\": \"HtmlOnly\",\n      \"Attachments\": [\n        {\n          \"Name\": \"<string>\",\n          \"Content\": \"<string>\",\n          \"ContentType\": \"<string>\",\n          \"ContentID\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Content\": \"<string>\",\n          \"ContentType\": \"<string>\",\n          \"ContentID\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/email/batchWithTemplates",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "email",
+                        "batchWithTemplates"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:52:48.000Z",
+                  "updatedAt": "2026-10-22T01:52:48.000Z",
+                  "uid": "35240-72cba4f6-71cb-475f-8269-c3c7d15eede1"
+                }
+              ],
+              "createdAt": "2026-10-22T01:52:48.000Z",
+              "updatedAt": "2026-10-22T01:52:48.000Z",
+              "uid": "35240-48ffd3f0-c38d-4c98-b8e9-62687353dde8"
+            }
+          ],
+          "id": "b5d7d55a-2c43-44f9-a26b-ec05268b6f31",
+          "createdAt": "2026-10-22T01:52:48.000Z",
+          "updatedAt": "2026-10-22T01:52:48.000Z",
+          "uid": "35240-b5d7d55a-2c43-44f9-a26b-ec05268b6f31"
+        },
+        {
           "name": "Postmark Send a single email",
+          "id": "ab83348e-0dcb-4019-b4ec-7767a1074569",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Postmark Send a single email",
-            "description": {},
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The token associated with the Server on which this request will operate.",
+                "key": "X-Postmark-Server-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"From\": \"<string>\",\n  \"To\": \"<string>\",\n  \"Cc\": \"<string>\",\n  \"Bcc\": \"<string>\",\n  \"Subject\": \"<string>\",\n  \"Tag\": \"<string>\",\n  \"HtmlBody\": \"<string>\",\n  \"TextBody\": \"<string>\",\n  \"ReplyTo\": \"<string>\",\n  \"TrackOpens\": \"<boolean>\",\n  \"TrackLinks\": \"HtmlOnly\",\n  \"Headers\": [\n    {\n      \"Name\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"Attachments\": [\n    {\n      \"Name\": \"<string>\",\n      \"Content\": \"<string>\",\n      \"ContentType\": \"<string>\",\n      \"ContentID\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Content\": \"<string>\",\n      \"ContentType\": \"<string>\",\n      \"ContentID\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
             "url": {
+              "raw": "{{baseUrl}}/email",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "email"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Server on which this request will operate.",
-                "key": "X-Postmark-Server-Token",
-                "value": ""
-              }
-            ],
-            "method": "POST",
-            "auth": null
+              ]
+            }
           },
           "response": [
             {
-              "id": "ec4e6aa4-a738-49e4-8e0b-878e47643c06",
+              "id": "af746968-f09c-4e54-a1c1-49c1aa5f7e66",
               "name": "OK",
               "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"From\": \"<string>\",\n  \"To\": \"<string>\",\n  \"Cc\": \"<string>\",\n  \"Bcc\": \"<string>\",\n  \"Subject\": \"<string>\",\n  \"Tag\": \"<string>\",\n  \"HtmlBody\": \"<string>\",\n  \"TextBody\": \"<string>\",\n  \"ReplyTo\": \"<string>\",\n  \"TrackOpens\": \"<boolean>\",\n  \"TrackLinks\": \"HtmlOnly\",\n  \"Headers\": [\n    {\n      \"Name\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"Attachments\": [\n    {\n      \"Name\": \"<string>\",\n      \"Content\": \"<string>\",\n      \"ContentType\": \"<string>\",\n      \"ContentID\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Content\": \"<string>\",\n      \"ContentType\": \"<string>\",\n      \"ContentID\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/email",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "email"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {}
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"To\": \"<string>\",\n  \"SubmittedAt\": \"<dateTime>\",\n  \"MessageID\": \"<string>\",\n  \"ErrorCode\": \"<integer>\",\n  \"Message\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:52:48.000Z",
+              "updatedAt": "2026-10-22T01:52:48.000Z",
+              "uid": "35240-af746968-f09c-4e54-a1c1-49c1aa5f7e66"
             },
             {
-              "id": "182b22ca-b1b6-4ec1-801f-6d5de4528064",
+              "id": "6c14f396-5189-4b91-89ef-a5e2a4d96fc6",
+              "name": "422 response",
               "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"From\": \"<string>\",\n  \"To\": \"<string>\",\n  \"Cc\": \"<string>\",\n  \"Bcc\": \"<string>\",\n  \"Subject\": \"<string>\",\n  \"Tag\": \"<string>\",\n  \"HtmlBody\": \"<string>\",\n  \"TextBody\": \"<string>\",\n  \"ReplyTo\": \"<string>\",\n  \"TrackOpens\": \"<boolean>\",\n  \"TrackLinks\": \"HtmlOnly\",\n  \"Headers\": [\n    {\n      \"Name\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"Attachments\": [\n    {\n      \"Name\": \"<string>\",\n      \"Content\": \"<string>\",\n      \"ContentType\": \"<string>\",\n      \"ContentID\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Content\": \"<string>\",\n      \"ContentType\": \"<string>\",\n      \"ContentID\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/email",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "email"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {}
+                  ]
+                }
               },
               "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
               "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:52:48.000Z",
+              "updatedAt": "2026-10-22T01:52:48.000Z",
+              "uid": "35240-6c14f396-5189-4b91-89ef-a5e2a4d96fc6"
             },
             {
-              "id": "7a29df20-d928-4c5a-b2ac-fc462f7adb20",
+              "id": "b7ae767c-639d-491c-a4cd-92567be21f0c",
+              "name": "500 response",
               "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"From\": \"<string>\",\n  \"To\": \"<string>\",\n  \"Cc\": \"<string>\",\n  \"Bcc\": \"<string>\",\n  \"Subject\": \"<string>\",\n  \"Tag\": \"<string>\",\n  \"HtmlBody\": \"<string>\",\n  \"TextBody\": \"<string>\",\n  \"ReplyTo\": \"<string>\",\n  \"TrackOpens\": \"<boolean>\",\n  \"TrackLinks\": \"HtmlOnly\",\n  \"Headers\": [\n    {\n      \"Name\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"Attachments\": [\n    {\n      \"Name\": \"<string>\",\n      \"Content\": \"<string>\",\n      \"ContentType\": \"<string>\",\n      \"ContentID\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Content\": \"<string>\",\n      \"ContentType\": \"<string>\",\n      \"ContentID\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/email",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "email"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {}
+                  ]
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:52:48.000Z",
+              "updatedAt": "2026-10-22T01:52:48.000Z",
+              "uid": "35240-b7ae767c-639d-491c-a4cd-92567be21f0c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "26ca29d4-7bc5-4c77-a7c2-346bc8529de8",
-          "name": "Postmark Send a batch of emails",
-          "request": {
-            "name": "Postmark Send a batch of emails",
-            "description": {},
-            "url": {
-              "path": [
-                "email",
-                "batch"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Server on which this request will operate.",
-                "key": "X-Postmark-Server-Token",
-                "value": ""
-              }
-            ],
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "5f850f06-a1f7-480d-8a58-ff1d3ba14776",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "email",
-                    "batch"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4f00a061-09e6-4b8a-9257-02d1bd75ee7e",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "email",
-                    "batch"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "a0cb668f-ad7e-444a-91ef-60ba9d08f2cd",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "email",
-                    "batch"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "1464e5f8-1c83-43ae-9b5a-50200fcee1fb",
-          "name": "Postmark Send an email using a Template",
-          "request": {
-            "name": "Postmark Send an email using a Template",
-            "description": {},
-            "url": {
-              "path": [
-                "email",
-                "withTemplate"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Server on which this request will operate.",
-                "key": "X-Postmark-Server-Token",
-                "value": ""
-              }
-            ],
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "91d0fba8-3055-4127-8d9b-da495f2291ac",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "email",
-                    "withTemplate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "43cd6021-4b2d-45f4-aa2a-67bbe4d554ac",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "email",
-                    "withTemplate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e8361af1-e558-460d-87f4-f3b550c995a8",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "email",
-                    "withTemplate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e41c6033-3079-4ec2-88f7-edb1cf6491a8",
-          "name": "Postmark Send a batch of email using templates.",
-          "request": {
-            "name": "Postmark Send a batch of email using templates.",
-            "description": {},
-            "url": {
-              "path": [
-                "email",
-                "batchWithTemplates"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Server on which this request will operate.",
-                "key": "X-Postmark-Server-Token",
-                "value": ""
-              }
-            ],
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "825f20d0-ed3f-489f-9952-ef3215237fe7",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "email",
-                    "batchWithTemplates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "85adc437-2fb7-466d-a594-dfc994f8ffed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "email",
-                    "batchWithTemplates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "bd2a089d-f817-44ad-bde8-cdf3929aaa74",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "email",
-                    "batchWithTemplates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:52:48.000Z",
+          "updatedAt": "2026-10-22T01:52:48.000Z",
+          "uid": "35240-ab83348e-0dcb-4019-b4ec-7767a1074569"
         }
       ],
-      "event": []
+      "id": "779da836-a895-4323-8d7c-0de3863f9feb",
+      "createdAt": "2026-10-22T01:52:48.000Z",
+      "updatedAt": "2026-10-22T01:52:48.000Z",
+      "uid": "35240-779da836-a895-4323-8d7c-0de3863f9feb"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "//api.postmarkapp.com/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.postmarkapp.com/"
     }
-  ],
-  "info": {
-    "_postman_id": "ad581c27-4a1b-4784-9652-5457d17f6a71",
-    "name": "Postmark Account Activate Sending API API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to\nconfigure all Servers, Domains, and Sender Signatures associated\nwith an Account.\n",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

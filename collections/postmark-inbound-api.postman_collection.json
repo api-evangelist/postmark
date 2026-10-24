@@ -1,492 +1,410 @@
 {
+  "info": {
+    "_postman_id": "acb85e09-2701-4f67-897a-d7ab1d39408f",
+    "name": "Postmark Inbound API",
+    "description": "Postmark helps deliver and track application email. In a nutshell, the\nservice replaces SMTP (or Sendmail) with a far more reliable, scalable and\ncare-free environment. In addition, you can track statistics such as\nnumber of emails sent or processed, opens, bounces and spam complaints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:51:56.000Z",
+    "updatedAt": "2026-10-22T01:51:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-acb85e09-2701-4f67-897a-d7ab1d39408f"
+  },
   "item": [
     {
-      "id": "0c8ca14d-d169-4bb2-b9f9-8e99cb2799e9",
-      "name": "Inbound",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "messages",
       "item": [
         {
-          "id": "401f8418-098c-45a5-a4e8-3dbae6e4d9fd",
-          "name": "Postmark Bypass rules for a blocked inbound message",
-          "request": {
-            "name": "Postmark Bypass rules for a blocked inbound message",
-            "description": {},
-            "url": {
-              "path": [
-                "messages",
-                "inbound",
-                ":messageid",
-                "bypass"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "messageid",
-                  "description": "(Required) The ID of the message which should bypass inbound rules."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            }
-          },
-          "response": [
+          "name": "inbound",
+          "item": [
             {
-              "id": "de130813-23ab-4b2c-a579-0a0e5a91a28a",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "messages",
-                    "inbound",
-                    ":messageid",
-                    "bypass"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "{messageid}",
+              "item": [
+                {
+                  "name": "details",
+                  "item": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "messageid",
-                      "description": "(Required) The ID of the message which should bypass inbound rules."
+                      "name": "Postmark Inbound message details",
+                      "id": "7ab79e11-5829-461d-872c-fc2af46169f4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/messages/inbound/:messageid/details",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "messages",
+                            "inbound",
+                            ":messageid",
+                            "details"
+                          ],
+                          "variable": [
+                            {
+                              "id": "08b63f4d-b831-49bf-a4cf-fc99355bd0f3",
+                              "key": "messageid",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the message which should bypass inbound rules."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "b3530570-1005-4544-8ac6-c009313410a7",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/messages/inbound/:messageid/details",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "messages",
+                                "inbound",
+                                ":messageid",
+                                "details"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "messageid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "",
+                          "createdAt": "2026-10-22T01:51:56.000Z",
+                          "updatedAt": "2026-10-22T01:51:56.000Z",
+                          "uid": "35240-b3530570-1005-4544-8ac6-c009313410a7"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:51:56.000Z",
+                      "updatedAt": "2026-10-22T01:51:56.000Z",
+                      "uid": "35240-7ab79e11-5829-461d-872c-fc2af46169f4"
                     }
-                  ]
+                  ],
+                  "id": "cc553b76-cfe8-4e21-9ef6-c6efff72a462",
+                  "createdAt": "2026-10-22T01:51:56.000Z",
+                  "updatedAt": "2026-10-22T01:51:56.000Z",
+                  "uid": "35240-cc553b76-cfe8-4e21-9ef6-c6efff72a462"
                 },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "retry",
+                  "item": [
+                    {
+                      "name": "Postmark Retry a failed inbound message for processing",
+                      "id": "aed95bf7-ced5-4e58-9d4e-212f3e5aa846",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/messages/inbound/:messageid/retry",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "messages",
+                            "inbound",
+                            ":messageid",
+                            "retry"
+                          ],
+                          "variable": [
+                            {
+                              "id": "5d269058-9852-4fbc-80a0-d4df624fd93c",
+                              "key": "messageid",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the message which should bypass inbound rules."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "140fed0b-f5d3-4d33-97a5-e9ae273dde0f",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/messages/inbound/:messageid/retry",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "messages",
+                                "inbound",
+                                ":messageid",
+                                "retry"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "messageid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "",
+                          "createdAt": "2026-10-22T01:51:56.000Z",
+                          "updatedAt": "2026-10-22T01:51:56.000Z",
+                          "uid": "35240-140fed0b-f5d3-4d33-97a5-e9ae273dde0f"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:51:56.000Z",
+                      "updatedAt": "2026-10-22T01:51:56.000Z",
+                      "uid": "35240-aed95bf7-ced5-4e58-9d4e-212f3e5aa846"
+                    }
+                  ],
+                  "id": "43280edc-a4d8-4ad5-b6c3-77f1270a660f",
+                  "createdAt": "2026-10-22T01:51:56.000Z",
+                  "updatedAt": "2026-10-22T01:51:56.000Z",
+                  "uid": "35240-43280edc-a4d8-4ad5-b6c3-77f1270a660f"
                 }
               ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e2c75c03-4f86-4a27-83b0-6ca91b9dc7a2",
-          "name": "Postmark Inbound message details",
-          "request": {
-            "name": "Postmark Inbound message details",
-            "description": {},
-            "url": {
-              "path": [
-                "messages",
-                "inbound",
-                ":messageid",
-                "details"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "messageid",
-                  "description": "(Required) The ID of the message which should bypass inbound rules."
-                }
-              ]
+              "id": "8abefd70-0bec-48ff-b88b-578b749dbe85",
+              "createdAt": "2026-10-22T01:51:56.000Z",
+              "updatedAt": "2026-10-22T01:51:56.000Z",
+              "uid": "35240-8abefd70-0bec-48ff-b88b-578b749dbe85"
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
             {
-              "id": "5ec92d5e-f13e-4293-8cc2-11a8826a1c37",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "messages",
-                    "inbound",
-                    ":messageid",
-                    "details"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "messageid",
-                      "description": "(Required) The ID of the message which should bypass inbound rules."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
+              "name": "Postmark Inbound message search",
+              "id": "e109fa1a-798c-4038-b75c-83de3edb207e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
                 "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "7c39fa13-9860-404b-8544-ad706966281c",
-          "name": "Postmark Retry a failed inbound message for processing",
-          "request": {
-            "name": "Postmark Retry a failed inbound message for processing",
-            "description": {},
-            "url": {
-              "path": [
-                "messages",
-                "inbound",
-                ":messageid",
-                "retry"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "messageid",
-                  "description": "(Required) The ID of the message which should bypass inbound rules."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            }
-          },
-          "response": [
-            {
-              "id": "5a3439c7-f189-473e-a47b-0be51b4df97e",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "messages",
-                    "inbound",
-                    ":messageid",
-                    "retry"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "messageid",
-                      "description": "(Required) The ID of the message which should bypass inbound rules."
-                    }
-                  ]
-                },
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "84c90e68-aed7-4f3c-ba30-36114c0c8986",
-          "name": "Postmark Inbound message search",
-          "request": {
-            "name": "Postmark Inbound message search",
-            "description": {},
-            "url": {
-              "path": [
-                "messages",
-                "inbound"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "count",
-                  "value": "<string>",
-                  "description": "Number of bounces to return per request. Max 500."
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "<string>",
-                  "description": "Number of bounces to skip."
-                },
-                {
-                  "disabled": false,
-                  "key": "recipient",
-                  "value": "<string>",
-                  "description": "Filter by the user who was receiving the email"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromemail",
-                  "value": "<string>",
-                  "description": "Filter by the sender email address"
-                },
-                {
-                  "disabled": false,
-                  "key": "subject",
-                  "value": "<string>",
-                  "description": "Filter by email subject"
-                },
-                {
-                  "disabled": false,
-                  "key": "mailboxhash",
-                  "value": "<string>",
-                  "description": "Filter by mailboxhash"
-                },
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "status",
-                  "value": "<string>",
-                  "description": "Filter by status (`blocked`, `processed`, `queued`, `failed`, `scheduled`)"
-                },
-                {
-                  "disabled": false,
-                  "key": "todate",
-                  "value": "<string>",
-                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromdate",
-                  "value": "<string>",
-                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "5908fab5-1aaf-4a5a-a0a6-2772b74c4c8c",
-              "name": "Successful response",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/messages/inbound?count=<string>&offset=<string>&recipient=<string>&fromemail=<string>&subject=<string>&mailboxhash=<string>&tag=<string>&status=<string>&todate=<string>&fromdate=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "messages",
                     "inbound"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Number of bounces to return per request. Max 500.",
                       "key": "count",
-                      "value": "<integer>"
+                      "value": "<string>"
                     },
                     {
+                      "description": "Number of bounces to skip.",
                       "key": "offset",
-                      "value": "<integer>"
+                      "value": "<string>"
                     },
                     {
+                      "description": "Filter by the user who was receiving the email",
                       "key": "recipient",
                       "value": "<string>"
                     },
                     {
+                      "description": "Filter by the sender email address",
                       "key": "fromemail",
                       "value": "<string>"
                     },
                     {
+                      "description": "Filter by email subject",
                       "key": "subject",
                       "value": "<string>"
                     },
                     {
+                      "description": "Filter by mailboxhash",
                       "key": "mailboxhash",
                       "value": "<string>"
                     },
                     {
+                      "description": "Filter by tag",
                       "key": "tag",
                       "value": "<string>"
                     },
                     {
+                      "description": "Filter by status (`blocked`, `processed`, `queued`, `failed`, `scheduled`)",
                       "key": "status",
                       "value": "<string>"
                     },
                     {
+                      "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
                       "key": "todate",
                       "value": "<string>"
                     },
                     {
+                      "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
                       "key": "fromdate",
                       "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "3822a6e2-f069-4f13-b6ac-f04e483e5882",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/messages/inbound?count=<string>&offset=<string>&recipient=<string>&fromemail=<string>&subject=<string>&mailboxhash=<string>&tag=<string>&status=<string>&todate=<string>&fromdate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "messages",
+                        "inbound"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of bounces to return per request. Max 500.",
+                          "key": "count",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of bounces to skip.",
+                          "key": "offset",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by the user who was receiving the email",
+                          "key": "recipient",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by the sender email address",
+                          "key": "fromemail",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by email subject",
+                          "key": "subject",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by mailboxhash",
+                          "key": "mailboxhash",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by tag",
+                          "key": "tag",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by status (`blocked`, `processed`, `queued`, `failed`, `scheduled`)",
+                          "key": "status",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                          "key": "todate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                          "key": "fromdate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "",
+                  "createdAt": "2026-10-22T01:51:56.000Z",
+                  "updatedAt": "2026-10-22T01:51:56.000Z",
+                  "uid": "35240-3822a6e2-f069-4f13-b6ac-f04e483e5882"
                 }
               ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T01:51:56.000Z",
+              "updatedAt": "2026-10-22T01:51:56.000Z",
+              "uid": "35240-e109fa1a-798c-4038-b75c-83de3edb207e"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "906c4447-c6f6-4631-839f-9c6112c3fead",
+          "createdAt": "2026-10-22T01:51:56.000Z",
+          "updatedAt": "2026-10-22T01:51:56.000Z",
+          "uid": "35240-906c4447-c6f6-4631-839f-9c6112c3fead"
         }
       ],
-      "event": []
+      "id": "96b8079b-c3f7-4ea4-bf58-3aa1cca39cb7",
+      "createdAt": "2026-10-22T01:51:56.000Z",
+      "updatedAt": "2026-10-22T01:51:56.000Z",
+      "uid": "35240-96b8079b-c3f7-4ea4-bf58-3aa1cca39cb7"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "//api.postmarkapp.com/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://{{baseurl}}"
     }
-  ],
-  "info": {
-    "_postman_id": "6c05da55-e11d-4409-b39d-c86bbd558959",
-    "name": "Postmark Account Activate Inbound API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to\nconfigure all Servers, Domains, and Sender Signatures associated\nwith an Account.\n",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

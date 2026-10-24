@@ -1,1047 +1,1057 @@
 {
+  "info": {
+    "_postman_id": "95b4f578-e68a-4a1a-80d7-b1691299e4b3",
+    "name": "Postmark Server Bounces API",
+    "description": "Postmark makes sending and receiving email\nincredibly easy.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:50:56.000Z",
+    "updatedAt": "2026-10-22T01:50:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-95b4f578-e68a-4a1a-80d7-b1691299e4b3"
+  },
   "item": [
     {
-      "id": "953e355e-6e00-43d4-af47-f03a5d14f3b8",
-      "name": "Bounces API",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "deliverystats",
       "item": [
         {
-          "id": "fb90c1a2-b9d2-46fb-b688-b3c5524fa9ab",
           "name": "Postmark Get delivery stats",
+          "id": "b5ef3c7c-97a8-4f26-9135-956b94dce529",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Postmark Get delivery stats",
-            "description": {},
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) The token associated with the Server on which this request will operate.",
+                "key": "X-Postmark-Server-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
-              "path": [
-                "deliverystats"
-              ],
+              "raw": "{{baseUrl}}/deliverystats",
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Server on which this request will operate.",
-                "key": "X-Postmark-Server-Token",
-                "value": ""
-              }
-            ],
-            "method": "GET",
-            "auth": null
+              "path": [
+                "deliverystats"
+              ]
+            }
           },
           "response": [
             {
-              "id": "d25f119e-ea62-40bb-9a26-5dbaa63983f4",
+              "id": "c6e88b40-ce73-4287-a182-e05292f84fc4",
               "name": "OK",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "deliverystats"
-                  ],
+                  "raw": "{{baseUrl}}/deliverystats",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  "path": [
+                    "deliverystats"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"InactiveMails\": \"<integer>\",\n  \"Bounces\": [\n    {\n      \"Name\": \"<string>\",\n      \"Count\": \"<integer>\",\n      \"Type\": \"<string>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"Count\": \"<integer>\",\n      \"Type\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-22T01:50:57.000Z",
+              "updatedAt": "2026-10-22T01:50:57.000Z",
+              "uid": "35240-c6e88b40-ce73-4287-a182-e05292f84fc4"
             },
             {
-              "id": "665ceeae-f239-4997-a56b-46aca526efde",
+              "id": "0020f8cd-e62f-4261-a7d5-ad4927e50fc6",
+              "name": "422 response",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": "<string>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "deliverystats"
-                  ],
+                  "raw": "{{baseUrl}}/deliverystats",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  "path": [
+                    "deliverystats"
+                  ]
+                }
               },
               "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
               "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:50:57.000Z",
+              "updatedAt": "2026-10-22T01:50:57.000Z",
+              "uid": "35240-0020f8cd-e62f-4261-a7d5-ad4927e50fc6"
             },
             {
-              "id": "97e67827-bf63-495d-80dd-dd838b2b9db0",
+              "id": "91fb6336-6498-424b-9242-e3a9a89bf5b5",
+              "name": "500 response",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": "<string>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "deliverystats"
-                  ],
+                  "raw": "{{baseUrl}}/deliverystats",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  "path": [
+                    "deliverystats"
+                  ]
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:50:57.000Z",
+              "updatedAt": "2026-10-22T01:50:57.000Z",
+              "uid": "35240-91fb6336-6498-424b-9242-e3a9a89bf5b5"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:50:57.000Z",
+          "updatedAt": "2026-10-22T01:50:57.000Z",
+          "uid": "35240-b5ef3c7c-97a8-4f26-9135-956b94dce529"
+        }
+      ],
+      "id": "1c5f9800-346e-49a4-86f5-f758156b6119",
+      "createdAt": "2026-10-22T01:50:57.000Z",
+      "updatedAt": "2026-10-22T01:50:57.000Z",
+      "uid": "35240-1c5f9800-346e-49a4-86f5-f758156b6119"
+    },
+    {
+      "name": "bounces",
+      "item": [
+        {
+          "name": "{bounceid}",
+          "item": [
+            {
+              "name": "dump",
+              "item": [
+                {
+                  "name": "Postmark Get bounce dump",
+                  "id": "d5953f40-1dc2-464c-8182-4866a48b1cda",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/bounces/:bounceid/dump",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bounces",
+                        ":bounceid",
+                        "dump"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a353a827-2dc0-461e-8933-217f7a7d2ba3",
+                          "key": "bounceid",
+                          "value": "<long>",
+                          "description": "(Required) The ID for the bounce dump to retrieve."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "f367a676-7420-4a35-8a90-127d79784917",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Server on which this request will operate.",
+                            "key": "X-Postmark-Server-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/bounces/:bounceid/dump",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "bounces",
+                            ":bounceid",
+                            "dump"
+                          ],
+                          "variable": [
+                            {
+                              "key": "bounceid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Body\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:50:57.000Z",
+                      "updatedAt": "2026-10-22T01:50:57.000Z",
+                      "uid": "35240-f367a676-7420-4a35-8a90-127d79784917"
+                    },
+                    {
+                      "id": "7b777d40-eb9a-44ca-b9ee-bb7a155b6b00",
+                      "name": "422 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Server on which this request will operate.",
+                            "key": "X-Postmark-Server-Token",
+                            "value": "<string>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/bounces/:bounceid/dump",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "bounces",
+                            ":bounceid",
+                            "dump"
+                          ],
+                          "variable": [
+                            {
+                              "key": "bounceid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:50:57.000Z",
+                      "updatedAt": "2026-10-22T01:50:57.000Z",
+                      "uid": "35240-7b777d40-eb9a-44ca-b9ee-bb7a155b6b00"
+                    },
+                    {
+                      "id": "1533ab59-7679-484e-a01b-bef854b3c303",
+                      "name": "500 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Server on which this request will operate.",
+                            "key": "X-Postmark-Server-Token",
+                            "value": "<string>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/bounces/:bounceid/dump",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "bounces",
+                            ":bounceid",
+                            "dump"
+                          ],
+                          "variable": [
+                            {
+                              "key": "bounceid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:50:57.000Z",
+                      "updatedAt": "2026-10-22T01:50:57.000Z",
+                      "uid": "35240-1533ab59-7679-484e-a01b-bef854b3c303"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:50:57.000Z",
+                  "updatedAt": "2026-10-22T01:50:57.000Z",
+                  "uid": "35240-d5953f40-1dc2-464c-8182-4866a48b1cda"
+                }
+              ],
+              "id": "a04e65ac-26c2-4560-abc9-8ed9f7f67ee9",
+              "createdAt": "2026-10-22T01:50:57.000Z",
+              "updatedAt": "2026-10-22T01:50:57.000Z",
+              "uid": "35240-a04e65ac-26c2-4560-abc9-8ed9f7f67ee9"
+            },
+            {
+              "name": "activate",
+              "item": [
+                {
+                  "name": "Postmark Activate a bounce",
+                  "id": "599b1588-38c9-4574-94ec-02d1d0d3f639",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/bounces/:bounceid/activate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bounces",
+                        ":bounceid",
+                        "activate"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8f699907-214e-4352-8d6c-fc1b10ca36fb",
+                          "key": "bounceid",
+                          "value": "<long>",
+                          "description": "(Required) The ID of the Bounce to activate."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "6c03b284-5a11-4f26-a4fd-33a1cfa7ee3c",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Server on which this request will operate.",
+                            "key": "X-Postmark-Server-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/bounces/:bounceid/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "bounces",
+                            ":bounceid",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "bounceid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Message\": \"<string>\",\n  \"Bounce\": {\n    \"ID\": \"<string>\",\n    \"Type\": \"<string>\",\n    \"TypeCode\": \"<integer>\",\n    \"Name\": \"<string>\",\n    \"Tag\": \"<string>\",\n    \"MessageID\": \"<string>\",\n    \"Description\": \"<string>\",\n    \"Details\": \"<string>\",\n    \"Email\": \"<email>\",\n    \"BouncedAt\": \"<dateTime>\",\n    \"DumpAvailable\": \"<boolean>\",\n    \"Inactive\": \"<boolean>\",\n    \"CanActivate\": \"<boolean>\",\n    \"Subject\": \"<string>\",\n    \"Content\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:50:57.000Z",
+                      "updatedAt": "2026-10-22T01:50:57.000Z",
+                      "uid": "35240-6c03b284-5a11-4f26-a4fd-33a1cfa7ee3c"
+                    },
+                    {
+                      "id": "d2d10be4-cabc-4bc6-ae29-d9fd0efb9258",
+                      "name": "422 response",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Server on which this request will operate.",
+                            "key": "X-Postmark-Server-Token",
+                            "value": "<string>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/bounces/:bounceid/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "bounces",
+                            ":bounceid",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "bounceid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:50:57.000Z",
+                      "updatedAt": "2026-10-22T01:50:57.000Z",
+                      "uid": "35240-d2d10be4-cabc-4bc6-ae29-d9fd0efb9258"
+                    },
+                    {
+                      "id": "ec76bb43-2429-45a2-8d9f-0ac7e153a6c8",
+                      "name": "500 response",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The token associated with the Server on which this request will operate.",
+                            "key": "X-Postmark-Server-Token",
+                            "value": "<string>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/bounces/:bounceid/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "bounces",
+                            ":bounceid",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "bounceid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:50:57.000Z",
+                      "updatedAt": "2026-10-22T01:50:57.000Z",
+                      "uid": "35240-ec76bb43-2429-45a2-8d9f-0ac7e153a6c8"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:50:57.000Z",
+                  "updatedAt": "2026-10-22T01:50:57.000Z",
+                  "uid": "35240-599b1588-38c9-4574-94ec-02d1d0d3f639"
+                }
+              ],
+              "id": "cd1fe347-bbd6-4382-adf2-ecf7b0a6d5d3",
+              "createdAt": "2026-10-22T01:50:57.000Z",
+              "updatedAt": "2026-10-22T01:50:57.000Z",
+              "uid": "35240-cd1fe347-bbd6-4382-adf2-ecf7b0a6d5d3"
+            },
+            {
+              "name": "Postmark Get a single bounce",
+              "id": "69ab9041-818b-4a26-83ec-b287b44adfb1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bounces/:bounceid",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bounces",
+                    ":bounceid"
+                  ],
+                  "variable": [
+                    {
+                      "id": "2de635fc-f2dd-493c-8ba2-f845359fe1c9",
+                      "key": "bounceid",
+                      "value": "<long>",
+                      "description": "(Required) The ID of the bounce to retrieve."
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "354d1fa8-8672-42db-84fc-7dd2bf5109ae",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/bounces/:bounceid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bounces",
+                        ":bounceid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bounceid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ID\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"TypeCode\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"Tag\": \"<string>\",\n  \"MessageID\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"Details\": \"<string>\",\n  \"Email\": \"<email>\",\n  \"BouncedAt\": \"<dateTime>\",\n  \"DumpAvailable\": \"<boolean>\",\n  \"Inactive\": \"<boolean>\",\n  \"CanActivate\": \"<boolean>\",\n  \"Subject\": \"<string>\",\n  \"Content\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:50:57.000Z",
+                  "updatedAt": "2026-10-22T01:50:57.000Z",
+                  "uid": "35240-354d1fa8-8672-42db-84fc-7dd2bf5109ae"
+                },
+                {
+                  "id": "55e528bb-a25d-44ec-b739-637f6086cd02",
+                  "name": "422 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/bounces/:bounceid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bounces",
+                        ":bounceid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bounceid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:50:57.000Z",
+                  "updatedAt": "2026-10-22T01:50:57.000Z",
+                  "uid": "35240-55e528bb-a25d-44ec-b739-637f6086cd02"
+                },
+                {
+                  "id": "7e9f0354-b96a-4a02-b39c-9eaaa865fc52",
+                  "name": "500 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The token associated with the Server on which this request will operate.",
+                        "key": "X-Postmark-Server-Token",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/bounces/:bounceid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bounces",
+                        ":bounceid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bounceid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:50:57.000Z",
+                  "updatedAt": "2026-10-22T01:50:57.000Z",
+                  "uid": "35240-7e9f0354-b96a-4a02-b39c-9eaaa865fc52"
+                }
+              ],
+              "createdAt": "2026-10-22T01:50:57.000Z",
+              "updatedAt": "2026-10-22T01:50:57.000Z",
+              "uid": "35240-69ab9041-818b-4a26-83ec-b287b44adfb1"
+            }
+          ],
+          "id": "873140b3-0c41-493f-841b-d6c2716c9c87",
+          "createdAt": "2026-10-22T01:50:57.000Z",
+          "updatedAt": "2026-10-22T01:50:57.000Z",
+          "uid": "35240-873140b3-0c41-493f-841b-d6c2716c9c87"
         },
         {
-          "id": "c7a0d93c-b67f-4fed-9854-50e6995f0b96",
           "name": "Postmark Get bounces",
+          "id": "aac85ec0-79c0-4ef1-b511-904b14dd34a2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Postmark Get bounces",
-            "description": {},
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) The token associated with the Server on which this request will operate.",
+                "key": "X-Postmark-Server-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/bounces?count=<integer>&offset=<integer>&type=HardBounce&inactive=<boolean>&emailFilter=<email>&messageID=<string>&tag=<string>&todate=<date>&fromdate=<date>",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "bounces"
               ],
-              "host": [
-                "{{baseUrl}}"
-              ],
               "query": [
                 {
-                  "description": {
-                    "content": "(Required) Number of bounces to return per request. Max 500.",
-                    "type": "text/plain"
-                  },
+                  "description": "(Required) Number of bounces to return per request. Max 500.",
                   "key": "count",
-                  "value": ""
+                  "value": "<integer>"
                 },
                 {
-                  "description": {
-                    "content": "(Required) Number of bounces to skip.",
-                    "type": "text/plain"
-                  },
+                  "description": "(Required) Number of bounces to skip.",
                   "key": "offset",
-                  "value": ""
+                  "value": "<integer>"
                 },
                 {
-                  "description": {
-                    "content": "Filter by type of bounce (This can only be one of HardBounce,Transient,Unsubscribe,Subscribe,AutoResponder,AddressChange,DnsError,SpamNotification,OpenRelayTest,Unknown,SoftBounce,VirusNotification,MailFrontier Matador.,BadEmailAddress,SpamComplaint,ManuallyDeactivated,Unconfirmed,Blocked,SMTPApiError,InboundError,DMARCPolicy,TemplateRenderingFailed)",
-                    "type": "text/plain"
-                  },
+                  "description": "Filter by type of bounce",
                   "key": "type",
-                  "value": ""
+                  "value": "HardBounce"
                 },
                 {
-                  "description": {
-                    "content": "Filter by emails that were deactivated by Postmark due to the bounce. Set to true or false. If this isn't specified it will return both active and inactive.",
-                    "type": "text/plain"
-                  },
+                  "description": "Filter by emails that were deactivated by Postmark due to the bounce. Set to true or false. If this isn't specified it will return both active and inactive.",
                   "key": "inactive",
-                  "value": ""
+                  "value": "<boolean>"
                 },
                 {
-                  "description": {
-                    "content": "Filter by email address",
-                    "type": "text/plain"
-                  },
+                  "description": "Filter by email address",
                   "key": "emailFilter",
-                  "value": ""
+                  "value": "<email>"
                 },
                 {
-                  "description": {
-                    "content": "Filter by messageID",
-                    "type": "text/plain"
-                  },
+                  "description": "Filter by messageID",
                   "key": "messageID",
-                  "value": ""
+                  "value": "<string>"
                 },
                 {
-                  "description": {
-                    "content": "Filter by tag",
-                    "type": "text/plain"
-                  },
+                  "description": "Filter by tag",
                   "key": "tag",
-                  "value": ""
+                  "value": "<string>"
                 },
                 {
-                  "description": {
-                    "content": "Filter messages up to the date specified. e.g. `2014-02-01`",
-                    "type": "text/plain"
-                  },
+                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
                   "key": "todate",
-                  "value": ""
+                  "value": "<date>"
                 },
                 {
-                  "description": {
-                    "content": "Filter messages starting from the date specified. e.g. `2014-02-01`",
-                    "type": "text/plain"
-                  },
+                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
                   "key": "fromdate",
-                  "value": ""
+                  "value": "<date>"
                 }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Server on which this request will operate.",
-                "key": "X-Postmark-Server-Token",
-                "value": ""
-              }
-            ],
-            "method": "GET",
-            "auth": null
+              ]
+            }
           },
           "response": [
             {
-              "id": "1412f0b6-52d2-42f3-b53e-f382f0424d19",
+              "id": "205d1c8d-2cd5-45bc-99c2-f996a13177a9",
               "name": "OK",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/bounces?count=<integer>&offset=<integer>&type=HardBounce&inactive=<boolean>&emailFilter=<email>&messageID=<string>&tag=<string>&todate=<date>&fromdate=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "bounces"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "(Required) Number of bounces to return per request. Max 500.",
                       "key": "count",
-                      "value": ""
+                      "value": "<integer>"
                     },
                     {
+                      "description": "(Required) Number of bounces to skip.",
                       "key": "offset",
-                      "value": ""
+                      "value": "<integer>"
                     },
                     {
+                      "description": "Filter by type of bounce",
                       "key": "type",
-                      "value": ""
+                      "value": "HardBounce"
                     },
                     {
+                      "description": "Filter by emails that were deactivated by Postmark due to the bounce. Set to true or false. If this isn't specified it will return both active and inactive.",
                       "key": "inactive",
-                      "value": ""
+                      "value": "<boolean>"
                     },
                     {
+                      "description": "Filter by email address",
                       "key": "emailFilter",
-                      "value": ""
+                      "value": "<email>"
                     },
                     {
+                      "description": "Filter by messageID",
                       "key": "messageID",
-                      "value": ""
+                      "value": "<string>"
                     },
                     {
+                      "description": "Filter by tag",
                       "key": "tag",
-                      "value": ""
+                      "value": "<string>"
                     },
                     {
+                      "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
                       "key": "todate",
-                      "value": ""
+                      "value": "<date>"
                     },
                     {
+                      "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
                       "key": "fromdate",
-                      "value": ""
+                      "value": "<date>"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"TotalCount\": \"<integer>\",\n  \"Bounces\": [\n    {\n      \"ID\": \"<string>\",\n      \"Type\": \"<string>\",\n      \"TypeCode\": \"<integer>\",\n      \"Name\": \"<string>\",\n      \"Tag\": \"<string>\",\n      \"MessageID\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"Details\": \"<string>\",\n      \"Email\": \"<email>\",\n      \"BouncedAt\": \"<dateTime>\",\n      \"DumpAvailable\": \"<boolean>\",\n      \"Inactive\": \"<boolean>\",\n      \"CanActivate\": \"<boolean>\",\n      \"Subject\": \"<string>\",\n      \"Content\": \"<string>\"\n    },\n    {\n      \"ID\": \"<string>\",\n      \"Type\": \"<string>\",\n      \"TypeCode\": \"<integer>\",\n      \"Name\": \"<string>\",\n      \"Tag\": \"<string>\",\n      \"MessageID\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"Details\": \"<string>\",\n      \"Email\": \"<email>\",\n      \"BouncedAt\": \"<dateTime>\",\n      \"DumpAvailable\": \"<boolean>\",\n      \"Inactive\": \"<boolean>\",\n      \"CanActivate\": \"<boolean>\",\n      \"Subject\": \"<string>\",\n      \"Content\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-22T01:50:57.000Z",
+              "updatedAt": "2026-10-22T01:50:57.000Z",
+              "uid": "35240-205d1c8d-2cd5-45bc-99c2-f996a13177a9"
             },
             {
-              "id": "24e2d6df-ff6d-40a0-96d0-9b4c6f6b9a03",
+              "id": "1dea2406-e510-4386-b4bd-ae5ffdfe4096",
+              "name": "422 response",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": "<string>"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/bounces?count=<integer>&offset=<integer>&type=HardBounce&inactive=<boolean>&emailFilter=<email>&messageID=<string>&tag=<string>&todate=<date>&fromdate=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "bounces"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "(Required) Number of bounces to return per request. Max 500.",
                       "key": "count",
-                      "value": ""
+                      "value": "<integer>"
                     },
                     {
+                      "description": "(Required) Number of bounces to skip.",
                       "key": "offset",
-                      "value": ""
+                      "value": "<integer>"
                     },
                     {
+                      "description": "Filter by type of bounce",
                       "key": "type",
-                      "value": ""
+                      "value": "HardBounce"
                     },
                     {
+                      "description": "Filter by emails that were deactivated by Postmark due to the bounce. Set to true or false. If this isn't specified it will return both active and inactive.",
                       "key": "inactive",
-                      "value": ""
+                      "value": "<boolean>"
                     },
                     {
+                      "description": "Filter by email address",
                       "key": "emailFilter",
-                      "value": ""
+                      "value": "<email>"
                     },
                     {
+                      "description": "Filter by messageID",
                       "key": "messageID",
-                      "value": ""
+                      "value": "<string>"
                     },
                     {
+                      "description": "Filter by tag",
                       "key": "tag",
-                      "value": ""
+                      "value": "<string>"
                     },
                     {
+                      "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
                       "key": "todate",
-                      "value": ""
+                      "value": "<date>"
                     },
                     {
+                      "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
                       "key": "fromdate",
-                      "value": ""
+                      "value": "<date>"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
               "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:50:57.000Z",
+              "updatedAt": "2026-10-22T01:50:57.000Z",
+              "uid": "35240-1dea2406-e510-4386-b4bd-ae5ffdfe4096"
             },
             {
-              "id": "3d33b2c0-44a9-4199-b5c8-3981aa19b518",
+              "id": "7ecc320c-90e6-483e-beb2-e9a03fbfe0b5",
+              "name": "500 response",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The token associated with the Server on which this request will operate.",
+                    "key": "X-Postmark-Server-Token",
+                    "value": "<string>"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/bounces?count=<integer>&offset=<integer>&type=HardBounce&inactive=<boolean>&emailFilter=<email>&messageID=<string>&tag=<string>&todate=<date>&fromdate=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "bounces"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "(Required) Number of bounces to return per request. Max 500.",
                       "key": "count",
-                      "value": ""
+                      "value": "<integer>"
                     },
                     {
+                      "description": "(Required) Number of bounces to skip.",
                       "key": "offset",
-                      "value": ""
+                      "value": "<integer>"
                     },
                     {
+                      "description": "Filter by type of bounce",
                       "key": "type",
-                      "value": ""
+                      "value": "HardBounce"
                     },
                     {
+                      "description": "Filter by emails that were deactivated by Postmark due to the bounce. Set to true or false. If this isn't specified it will return both active and inactive.",
                       "key": "inactive",
-                      "value": ""
+                      "value": "<boolean>"
                     },
                     {
+                      "description": "Filter by email address",
                       "key": "emailFilter",
-                      "value": ""
+                      "value": "<email>"
                     },
                     {
+                      "description": "Filter by messageID",
                       "key": "messageID",
-                      "value": ""
+                      "value": "<string>"
                     },
                     {
+                      "description": "Filter by tag",
                       "key": "tag",
-                      "value": ""
+                      "value": "<string>"
                     },
                     {
+                      "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
                       "key": "todate",
-                      "value": ""
+                      "value": "<date>"
                     },
                     {
+                      "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
                       "key": "fromdate",
-                      "value": ""
+                      "value": "<date>"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:50:57.000Z",
+              "updatedAt": "2026-10-22T01:50:57.000Z",
+              "uid": "35240-7ecc320c-90e6-483e-beb2-e9a03fbfe0b5"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "46abfa26-1e10-4c6e-a0e2-b6740482f13a",
-          "name": "Postmark Get a single bounce",
-          "request": {
-            "name": "Postmark Get a single bounce",
-            "description": {},
-            "url": {
-              "path": [
-                "bounces",
-                ":bounceid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "bounceid",
-                  "description": "(Required) The ID of the bounce to retrieve."
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Server on which this request will operate.",
-                "key": "X-Postmark-Server-Token",
-                "value": ""
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "dc283c5b-c5c0-4fa4-947e-09136f2c5f46",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bounces",
-                    ":bounceid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "bounceid",
-                      "description": "(Required) The ID of the bounce to retrieve."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "38c71ee1-241e-49da-b266-f6f2f01ee703",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bounces",
-                    ":bounceid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "bounceid",
-                      "description": "(Required) The ID of the bounce to retrieve."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "8f1fa511-36a8-47ac-a326-0c2eb1f1e075",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bounces",
-                    ":bounceid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "bounceid",
-                      "description": "(Required) The ID of the bounce to retrieve."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "68d1ab39-e44c-4f7c-933c-72ecd24f74ff",
-          "name": "Postmark Get bounce dump",
-          "request": {
-            "name": "Postmark Get bounce dump",
-            "description": {},
-            "url": {
-              "path": [
-                "bounces",
-                ":bounceid",
-                "dump"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "bounceid",
-                  "description": "(Required) The ID for the bounce dump to retrieve."
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Server on which this request will operate.",
-                "key": "X-Postmark-Server-Token",
-                "value": ""
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "9593d1ec-c642-4c93-b244-a7f463bf3561",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bounces",
-                    ":bounceid",
-                    "dump"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "bounceid",
-                      "description": "(Required) The ID for the bounce dump to retrieve."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "aab4d233-224d-4ce5-9597-8c227089c6f6",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bounces",
-                    ":bounceid",
-                    "dump"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "bounceid",
-                      "description": "(Required) The ID for the bounce dump to retrieve."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "c0c6b482-4edb-4eb4-a3d1-9c6b21b70209",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bounces",
-                    ":bounceid",
-                    "dump"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "bounceid",
-                      "description": "(Required) The ID for the bounce dump to retrieve."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "00b12205-e4d8-42ad-9742-8d667e60e4c8",
-          "name": "Postmark Activate a bounce",
-          "request": {
-            "name": "Postmark Activate a bounce",
-            "description": {},
-            "url": {
-              "path": [
-                "bounces",
-                ":bounceid",
-                "activate"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "bounceid",
-                  "description": "(Required) The ID of the Bounce to activate."
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The token associated with the Server on which this request will operate.",
-                "key": "X-Postmark-Server-Token",
-                "value": ""
-              }
-            ],
-            "method": "PUT",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "dd3be877-4c5f-45ef-a460-c221514c590c",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bounces",
-                    ":bounceid",
-                    "activate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "bounceid",
-                      "description": "(Required) The ID of the Bounce to activate."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "PUT",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "59e8060e-4410-4216-8fe0-ffa6db1ebeed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bounces",
-                    ":bounceid",
-                    "activate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "bounceid",
-                      "description": "(Required) The ID of the Bounce to activate."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "PUT",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "c84088c6-aa2a-4f21-96e2-6d294042f2b8",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bounces",
-                    ":bounceid",
-                    "activate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "bounceid",
-                      "description": "(Required) The ID of the Bounce to activate."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "disabled": false,
-                    "description": "(Required) The token associated with the Server on which this request will operate.",
-                    "key": "X-Postmark-Server-Token",
-                    "value": ""
-                  }
-                ],
-                "method": "PUT",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:50:57.000Z",
+          "updatedAt": "2026-10-22T01:50:57.000Z",
+          "uid": "35240-aac85ec0-79c0-4ef1-b511-904b14dd34a2"
         }
       ],
-      "event": []
+      "id": "08d22bfe-8613-4055-9e53-737c89e2dc97",
+      "createdAt": "2026-10-22T01:50:57.000Z",
+      "updatedAt": "2026-10-22T01:50:57.000Z",
+      "uid": "35240-08d22bfe-8613-4055-9e53-737c89e2dc97"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "//api.postmarkapp.com/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.postmarkapp.com/"
     }
-  ],
-  "info": {
-    "_postman_id": "600b1e66-3341-4088-b3b1-ff35720f02b0",
-    "name": "Postmark Account Activate Bounces API API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to\nconfigure all Servers, Domains, and Sender Signatures associated\nwith an Account.\n",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

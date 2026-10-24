@@ -1,366 +1,198 @@
 {
+  "info": {
+    "_postman_id": "8a67c78a-110b-4a26-9ed9-791fec041234",
+    "name": "Postmark Templates API",
+    "description": "Postmark helps deliver and track application email. In a nutshell, the\nservice replaces SMTP (or Sendmail) with a far more reliable, scalable and\ncare-free environment. In addition, you can track statistics such as\nnumber of emails sent or processed, opens, bounces and spam complaints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:53:26.000Z",
+    "updatedAt": "2026-10-22T01:53:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8a67c78a-110b-4a26-9ed9-791fec041234"
+  },
   "item": [
     {
-      "id": "e734aa2d-062d-45f1-813c-94b76ece43b4",
-      "name": "Templates",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "templates",
       "item": [
         {
-          "id": "10cf5447-1e79-4c05-825a-90c2018fc449",
-          "name": "Postmark Send a batch of email using templates.",
-          "request": {
-            "name": "Postmark Send a batch of email using templates.",
-            "description": {},
-            "url": {
-              "path": [
-                "email",
-                "batchWithTemplates"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            }
-          },
-          "response": [
+          "name": "validate",
+          "item": [
             {
-              "id": "075432e2-5ced-4b7f-be23-4342b7dbe25d",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "email",
-                    "batchWithTemplates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
+              "name": "Postmark Test Template Content",
+              "id": "02616af9-e248-4a38-9932-ecdea4ee826b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
                 "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e228a6a3-a80e-484f-84a9-14e63aa49a7d",
-          "name": "Postmark Get the Templates associated with this Server",
-          "request": {
-            "name": "Postmark Get the Templates associated with this Server",
-            "description": {},
-            "url": {
-              "path": [
-                "templates"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "count",
-                  "value": "<string>",
-                  "description": "Number of bounces to return per request. Max 500."
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "<string>",
-                  "description": "Number of bounces to skip."
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "e1e9ffa1-78a6-42b8-99bc-4ef6cf63af68",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "templates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": []
-                },
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "99faadaa-8db8-4978-a073-19404edc0ca4",
-          "name": "Postmark Test Template Content",
-          "request": {
-            "name": "Postmark Test Template Content",
-            "description": {},
-            "url": {
-              "path": [
-                "templates",
-                "validate"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            }
-          },
-          "response": [
-            {
-              "id": "c0642bbe-2fbe-4e39-b463-04c1f51abb32",
-              "name": "Successful response",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/templates/validate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "templates",
                     "validate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
+                  ]
                 }
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "8fc3a687-c078-439e-b65d-f50f7718e96c",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/templates/validate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "templates",
+                        "validate"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "",
+                  "createdAt": "2026-10-22T01:53:27.000Z",
+                  "updatedAt": "2026-10-22T01:53:27.000Z",
+                  "uid": "35240-8fc3a687-c078-439e-b65d-f50f7718e96c"
                 }
               ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T01:53:27.000Z",
+              "updatedAt": "2026-10-22T01:53:27.000Z",
+              "uid": "35240-02616af9-e248-4a38-9932-ecdea4ee826b"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "83b71bc9-d14a-43d2-a2eb-fec91acc8d94",
+          "createdAt": "2026-10-22T01:53:27.000Z",
+          "updatedAt": "2026-10-22T01:53:27.000Z",
+          "uid": "35240-83b71bc9-d14a-43d2-a2eb-fec91acc8d94"
         },
         {
-          "id": "b2fc990a-b1c6-40e8-b575-705d02a039f1",
-          "name": "Postmark Delete a Template",
+          "name": "Postmark Get the Templates associated with this Server",
+          "id": "d9f29618-6e42-45cb-b053-9f23e66f70a7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Postmark Delete a Template",
-            "description": {},
-            "url": {
-              "path": [
-                "templates",
-                ":templateIdOrAlias"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "templateIdOrAlias",
-                  "description": "(Required) The 'TemplateID' or 'Alias' value for the Template you wish to delete."
-                }
-              ]
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "DELETE",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/templates?count=<string>&offset=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "templates"
+              ],
+              "query": [
+                {
+                  "description": "Number of bounces to return per request. Max 500.",
+                  "key": "count",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Number of bounces to skip.",
+                  "key": "offset",
+                  "value": "<string>"
+                }
+              ]
+            }
           },
           "response": [
             {
-              "id": "6b1d8a45-8c4d-47f2-b9c3-1858be608e83",
+              "id": "8b46504c-cff4-405c-95f3-33201a31ad2d",
               "name": "Successful response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "templates",
-                    ":templateIdOrAlias"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "templateIdOrAlias",
-                      "description": "(Required) The 'TemplateID' or 'Alias' value for the Template you wish to delete."
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/templates?count=<string>&offset=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "templates"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of bounces to return per request. Max 500.",
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of bounces to skip.",
+                      "key": "offset",
+                      "value": "<string>"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "\"\"",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:53:27.000Z",
+              "updatedAt": "2026-10-22T01:53:27.000Z",
+              "uid": "35240-8b46504c-cff4-405c-95f3-33201a31ad2d"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:53:27.000Z",
+          "updatedAt": "2026-10-22T01:53:27.000Z",
+          "uid": "35240-d9f29618-6e42-45cb-b053-9f23e66f70a7"
         }
       ],
-      "event": []
+      "id": "47adb4b5-d246-4107-a516-248b37806f8f",
+      "createdAt": "2026-10-22T01:53:27.000Z",
+      "updatedAt": "2026-10-22T01:53:27.000Z",
+      "uid": "35240-47adb4b5-d246-4107-a516-248b37806f8f"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "//api.postmarkapp.com/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://{{baseurl}}"
     }
-  ],
-  "info": {
-    "_postman_id": "b9bc2448-a2a1-469c-bf5b-e44fa29120c3",
-    "name": "Postmark Account Activate Templates API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to\nconfigure all Servers, Domains, and Sender Signatures associated\nwith an Account.\n",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

@@ -1,2358 +1,1173 @@
 {
+  "info": {
+    "_postman_id": "1792d267-4655-4d59-af9f-9605821c5fe3",
+    "name": "Postmark Outbound API",
+    "description": "Postmark helps deliver and track application email. In a nutshell, the\nservice replaces SMTP (or Sendmail) with a far more reliable, scalable and\ncare-free environment. In addition, you can track statistics such as\nnumber of emails sent or processed, opens, bounces and spam complaints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:52:35.000Z",
+    "updatedAt": "2026-10-22T01:52:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1792d267-4655-4d59-af9f-9605821c5fe3"
+  },
   "item": [
     {
-      "id": "d53c2071-ea74-4e9a-a709-d0fe199d0bb2",
-      "name": "Outbound",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "stats",
       "item": [
         {
-          "id": "741095ac-11ff-4d57-96c3-438f0f56da60",
-          "name": "Postmark Clicks for a all messages",
-          "request": {
-            "name": "Postmark Clicks for a all messages",
-            "description": {},
-            "url": {
-              "path": [
-                "messages",
-                "outbound",
-                "clicks"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "count",
-                  "value": "<string>",
-                  "description": "Number of bounces to return per request. Max 500."
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "<string>",
-                  "description": "Number of bounces to skip."
-                },
-                {
-                  "disabled": false,
-                  "key": "recipient",
-                  "value": "<string>",
-                  "description": "Filter by the user who was receiving the email"
-                },
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "client_name",
-                  "value": "<string>",
-                  "description": "Filter by client name, i.e. Outlook, Gmail"
-                },
-                {
-                  "disabled": false,
-                  "key": "client_company",
-                  "value": "<string>",
-                  "description": "Filter by company, i.e. Microsoft, Apple, Google"
-                },
-                {
-                  "disabled": false,
-                  "key": "client_family",
-                  "value": "<string>",
-                  "description": "Filter by client family, i.e. OS X, Chrome"
-                },
-                {
-                  "disabled": false,
-                  "key": "os_name",
-                  "value": "<string>",
-                  "description": "Filter by full OS name and specific version, i.e. OS X 10.9 Mavericks, Windows 7"
-                },
-                {
-                  "disabled": false,
-                  "key": "os_family",
-                  "value": "<string>",
-                  "description": "Filter by kind of OS used without specific version, i.e. OS X, Windows"
-                },
-                {
-                  "disabled": false,
-                  "key": "os_company",
-                  "value": "<string>",
-                  "description": "Filter by company which produced the OS, i.e. Apple Computer, Inc., Microsoft Corporation"
-                },
-                {
-                  "disabled": false,
-                  "key": "platform",
-                  "value": "<string>",
-                  "description": "Filter by platform, i.e. webmail, desktop, mobile"
-                },
-                {
-                  "disabled": false,
-                  "key": "country",
-                  "value": "<string>",
-                  "description": "Filter by country messages were opened in, i.e. Denmark, Russia"
-                },
-                {
-                  "disabled": false,
-                  "key": "region",
-                  "value": "<string>",
-                  "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
-                },
-                {
-                  "disabled": false,
-                  "key": "city",
-                  "value": "<string>",
-                  "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "outbound",
+          "item": [
             {
-              "id": "134608e8-b7fb-4f08-a0d8-82f6398d41ea",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "messages",
-                    "outbound",
-                    "clicks"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              "name": "clicks",
+              "item": [
+                {
+                  "name": "platforms",
+                  "item": [
                     {
-                      "key": "count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "recipient",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "tag",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "client_name",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "client_company",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "client_family",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "os_name",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "os_family",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "os_company",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "platform",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "country",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "region",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "city",
-                      "value": "<string>"
+                      "name": "Postmark Get browser plaform usage",
+                      "id": "ff5baaa7-cf45-4a1c-be3d-1e55f4c73874",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stats/outbound/clicks/platforms?tag=<string>&fromdate=<string>&todate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stats",
+                            "outbound",
+                            "clicks",
+                            "platforms"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by tag",
+                              "key": "tag",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                              "key": "fromdate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                              "key": "todate",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "ca58532f-8d34-4b63-a85c-f63788779a66",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/stats/outbound/clicks/platforms?tag=<string>&fromdate=<string>&todate=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "stats",
+                                "outbound",
+                                "clicks",
+                                "platforms"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter by tag",
+                                  "key": "tag",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                                  "key": "fromdate",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                                  "key": "todate",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "",
+                          "createdAt": "2026-10-22T01:52:35.000Z",
+                          "updatedAt": "2026-10-22T01:52:35.000Z",
+                          "uid": "35240-ca58532f-8d34-4b63-a85c-f63788779a66"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:52:35.000Z",
+                      "updatedAt": "2026-10-22T01:52:35.000Z",
+                      "uid": "35240-ff5baaa7-cf45-4a1c-be3d-1e55f4c73874"
                     }
                   ],
-                  "variable": []
+                  "id": "1adbca7f-4527-4aaa-8a39-fd938f159409",
+                  "createdAt": "2026-10-22T01:52:35.000Z",
+                  "updatedAt": "2026-10-22T01:52:35.000Z",
+                  "uid": "35240-1adbca7f-4527-4aaa-8a39-fd938f159409"
                 },
+                {
+                  "name": "Postmark Get click counts",
+                  "id": "375f35cf-3376-4fb9-a9c7-6275f839c90f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stats/outbound/clicks?tag=<string>&fromdate=<string>&todate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stats",
+                        "outbound",
+                        "clicks"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by tag",
+                          "key": "tag",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                          "key": "fromdate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                          "key": "todate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "b733516d-474b-475f-8759-e923dac28d98",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stats/outbound/clicks?tag=<string>&fromdate=<string>&todate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stats",
+                            "outbound",
+                            "clicks"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by tag",
+                              "key": "tag",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                              "key": "fromdate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                              "key": "todate",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:52:35.000Z",
+                      "updatedAt": "2026-10-22T01:52:35.000Z",
+                      "uid": "35240-b733516d-474b-475f-8759-e923dac28d98"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:52:35.000Z",
+                  "updatedAt": "2026-10-22T01:52:35.000Z",
+                  "uid": "35240-375f35cf-3376-4fb9-a9c7-6275f839c90f"
+                }
+              ],
+              "id": "3adfc1e3-2a37-4a6f-af8f-a8c244977366",
+              "createdAt": "2026-10-22T01:52:35.000Z",
+              "updatedAt": "2026-10-22T01:52:35.000Z",
+              "uid": "35240-3adfc1e3-2a37-4a6f-af8f-a8c244977366"
+            },
+            {
+              "name": "opens",
+              "item": [
+                {
+                  "name": "platforms",
+                  "item": [
+                    {
+                      "name": "Postmark Get email platform usage",
+                      "id": "d0e2186a-e072-43dc-b7e6-d0e110c33b22",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stats/outbound/opens/platforms?tag=<string>&fromdate=<string>&todate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stats",
+                            "outbound",
+                            "opens",
+                            "platforms"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by tag",
+                              "key": "tag",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                              "key": "fromdate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                              "key": "todate",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "08abdacc-fea3-49e6-8d69-69d58a585162",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/stats/outbound/opens/platforms?tag=<string>&fromdate=<string>&todate=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "stats",
+                                "outbound",
+                                "opens",
+                                "platforms"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter by tag",
+                                  "key": "tag",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                                  "key": "fromdate",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                                  "key": "todate",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "",
+                          "createdAt": "2026-10-22T01:52:35.000Z",
+                          "updatedAt": "2026-10-22T01:52:35.000Z",
+                          "uid": "35240-08abdacc-fea3-49e6-8d69-69d58a585162"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:52:35.000Z",
+                      "updatedAt": "2026-10-22T01:52:35.000Z",
+                      "uid": "35240-d0e2186a-e072-43dc-b7e6-d0e110c33b22"
+                    }
+                  ],
+                  "id": "d21efb68-0752-4bfd-a8a2-dde24c1cf48e",
+                  "createdAt": "2026-10-22T01:52:35.000Z",
+                  "updatedAt": "2026-10-22T01:52:35.000Z",
+                  "uid": "35240-d21efb68-0752-4bfd-a8a2-dde24c1cf48e"
+                },
+                {
+                  "name": "readtimes",
+                  "item": [
+                    {
+                      "name": "Postmark Get email read times",
+                      "id": "5177bf6d-b89d-481f-b73f-3e39f648407a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stats/outbound/opens/readtimes?tag=<string>&fromdate=<string>&todate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stats",
+                            "outbound",
+                            "opens",
+                            "readtimes"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by tag",
+                              "key": "tag",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                              "key": "fromdate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                              "key": "todate",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "c9e19af7-dbbd-4fb9-8de8-8b68c567e374",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/stats/outbound/opens/readtimes?tag=<string>&fromdate=<string>&todate=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "stats",
+                                "outbound",
+                                "opens",
+                                "readtimes"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter by tag",
+                                  "key": "tag",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                                  "key": "fromdate",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                                  "key": "todate",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "",
+                          "createdAt": "2026-10-22T01:52:35.000Z",
+                          "updatedAt": "2026-10-22T01:52:35.000Z",
+                          "uid": "35240-c9e19af7-dbbd-4fb9-8de8-8b68c567e374"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:52:35.000Z",
+                      "updatedAt": "2026-10-22T01:52:35.000Z",
+                      "uid": "35240-5177bf6d-b89d-481f-b73f-3e39f648407a"
+                    }
+                  ],
+                  "id": "abf254fe-104b-49f5-a41b-7d254b7dabdb",
+                  "createdAt": "2026-10-22T01:52:35.000Z",
+                  "updatedAt": "2026-10-22T01:52:35.000Z",
+                  "uid": "35240-abf254fe-104b-49f5-a41b-7d254b7dabdb"
+                },
+                {
+                  "name": "Postmark Get email open counts",
+                  "id": "c86da45b-4e71-4391-ad14-8d895e143596",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stats/outbound/opens?tag=<string>&fromdate=<string>&todate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stats",
+                        "outbound",
+                        "opens"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by tag",
+                          "key": "tag",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                          "key": "fromdate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                          "key": "todate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "53f7fb11-db07-4be3-a8da-7fbc487b0148",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stats/outbound/opens?tag=<string>&fromdate=<string>&todate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stats",
+                            "outbound",
+                            "opens"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by tag",
+                              "key": "tag",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                              "key": "fromdate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                              "key": "todate",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:52:35.000Z",
+                      "updatedAt": "2026-10-22T01:52:35.000Z",
+                      "uid": "35240-53f7fb11-db07-4be3-a8da-7fbc487b0148"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:52:35.000Z",
+                  "updatedAt": "2026-10-22T01:52:35.000Z",
+                  "uid": "35240-c86da45b-4e71-4391-ad14-8d895e143596"
+                }
+              ],
+              "id": "01fe9b45-9a48-4ee9-a9b2-99091de51163",
+              "createdAt": "2026-10-22T01:52:35.000Z",
+              "updatedAt": "2026-10-22T01:52:35.000Z",
+              "uid": "35240-01fe9b45-9a48-4ee9-a9b2-99091de51163"
+            },
+            {
+              "name": "bounces",
+              "item": [
+                {
+                  "name": "Postmark Get bounce counts",
+                  "id": "edf25639-98b8-48dc-a957-b339052068aa",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stats/outbound/bounces?tag=<string>&fromdate=<string>&todate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stats",
+                        "outbound",
+                        "bounces"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by tag",
+                          "key": "tag",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                          "key": "fromdate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                          "key": "todate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "1f12c43d-cbae-45a0-a620-b27e7d5941e5",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stats/outbound/bounces?tag=<string>&fromdate=<string>&todate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stats",
+                            "outbound",
+                            "bounces"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by tag",
+                              "key": "tag",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                              "key": "fromdate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                              "key": "todate",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:52:35.000Z",
+                      "updatedAt": "2026-10-22T01:52:35.000Z",
+                      "uid": "35240-1f12c43d-cbae-45a0-a620-b27e7d5941e5"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:52:35.000Z",
+                  "updatedAt": "2026-10-22T01:52:35.000Z",
+                  "uid": "35240-edf25639-98b8-48dc-a957-b339052068aa"
+                }
+              ],
+              "id": "21b44260-71e8-434b-9ae0-085fc575ffdc",
+              "createdAt": "2026-10-22T01:52:35.000Z",
+              "updatedAt": "2026-10-22T01:52:35.000Z",
+              "uid": "35240-21b44260-71e8-434b-9ae0-085fc575ffdc"
+            },
+            {
+              "name": "sends",
+              "item": [
+                {
+                  "name": "Postmark Get sent counts",
+                  "id": "3728a04a-b140-4b2f-8316-993bb0e4d5ba",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stats/outbound/sends?tag=<string>&fromdate=<string>&todate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stats",
+                        "outbound",
+                        "sends"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by tag",
+                          "key": "tag",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                          "key": "fromdate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                          "key": "todate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "f10a4dfa-5dc1-4de6-bc8b-4e226ea4102d",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stats/outbound/sends?tag=<string>&fromdate=<string>&todate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stats",
+                            "outbound",
+                            "sends"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by tag",
+                              "key": "tag",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                              "key": "fromdate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                              "key": "todate",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:52:35.000Z",
+                      "updatedAt": "2026-10-22T01:52:35.000Z",
+                      "uid": "35240-f10a4dfa-5dc1-4de6-bc8b-4e226ea4102d"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:52:35.000Z",
+                  "updatedAt": "2026-10-22T01:52:35.000Z",
+                  "uid": "35240-3728a04a-b140-4b2f-8316-993bb0e4d5ba"
+                }
+              ],
+              "id": "e9281537-7b78-423f-a172-f3f0b447fad0",
+              "createdAt": "2026-10-22T01:52:35.000Z",
+              "updatedAt": "2026-10-22T01:52:35.000Z",
+              "uid": "35240-e9281537-7b78-423f-a172-f3f0b447fad0"
+            },
+            {
+              "name": "spam",
+              "item": [
+                {
+                  "name": "Postmark Get spam complaints",
+                  "id": "f71bafa2-8751-4f63-8d50-eb9c791e339f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stats/outbound/spam?tag=<string>&fromdate=<string>&todate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stats",
+                        "outbound",
+                        "spam"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by tag",
+                          "key": "tag",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                          "key": "fromdate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                          "key": "todate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "46dc5e91-ea37-4c80-81cc-b7ed1fabd862",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stats/outbound/spam?tag=<string>&fromdate=<string>&todate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stats",
+                            "outbound",
+                            "spam"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by tag",
+                              "key": "tag",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                              "key": "fromdate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                              "key": "todate",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:52:35.000Z",
+                      "updatedAt": "2026-10-22T01:52:35.000Z",
+                      "uid": "35240-46dc5e91-ea37-4c80-81cc-b7ed1fabd862"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:52:35.000Z",
+                  "updatedAt": "2026-10-22T01:52:35.000Z",
+                  "uid": "35240-f71bafa2-8751-4f63-8d50-eb9c791e339f"
+                }
+              ],
+              "id": "3c53f85b-5031-4bb4-8dfe-a7ca3f6dd18d",
+              "createdAt": "2026-10-22T01:52:35.000Z",
+              "updatedAt": "2026-10-22T01:52:35.000Z",
+              "uid": "35240-3c53f85b-5031-4bb4-8dfe-a7ca3f6dd18d"
+            },
+            {
+              "name": "tracked",
+              "item": [
+                {
+                  "name": "Postmark Get tracked email counts",
+                  "id": "67d3dba0-ad08-44a0-8e03-2a8ebb9edddc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stats/outbound/tracked?tag=<string>&fromdate=<string>&todate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stats",
+                        "outbound",
+                        "tracked"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by tag",
+                          "key": "tag",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                          "key": "fromdate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                          "key": "todate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "2b1fefeb-4137-4087-9c4e-c991d471f4af",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stats/outbound/tracked?tag=<string>&fromdate=<string>&todate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stats",
+                            "outbound",
+                            "tracked"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by tag",
+                              "key": "tag",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                              "key": "fromdate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                              "key": "todate",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:52:35.000Z",
+                      "updatedAt": "2026-10-22T01:52:35.000Z",
+                      "uid": "35240-2b1fefeb-4137-4087-9c4e-c991d471f4af"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:52:35.000Z",
+                  "updatedAt": "2026-10-22T01:52:35.000Z",
+                  "uid": "35240-67d3dba0-ad08-44a0-8e03-2a8ebb9edddc"
+                }
+              ],
+              "id": "50068093-cc1c-4fe7-af91-350c0776429a",
+              "createdAt": "2026-10-22T01:52:35.000Z",
+              "updatedAt": "2026-10-22T01:52:35.000Z",
+              "uid": "35240-50068093-cc1c-4fe7-af91-350c0776429a"
+            },
+            {
+              "name": "Postmark Get outbound overview",
+              "id": "f716158a-0202-4b01-88b7-520c4d90aad5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "114d1aa6-6b8d-4175-9460-a4c26b64562e",
-          "name": "Postmark Retrieve Message Clicks",
-          "request": {
-            "name": "Postmark Retrieve Message Clicks",
-            "description": {},
-            "url": {
-              "path": [
-                "messages",
-                "outbound",
-                "clicks",
-                ":messageid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "count",
-                  "value": "<string>",
-                  "description": "Number of bounces to return per request. Max 500."
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "<string>",
-                  "description": "Number of bounces to skip."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "messageid",
-                  "description": "(Required) The ID of the message which should bypass inbound rules."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "007953fe-a89c-4efb-91d2-f0f5ddd35397",
-              "name": "Successful response",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "messages",
-                    "outbound",
-                    "clicks",
-                    ":messageid"
-                  ],
+                  "raw": "{{baseUrl}}/stats/outbound?tag=<string>&fromdate=<string>&todate=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "messageid",
-                      "description": "(Required) The ID of the message which should bypass inbound rules."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "a117edab-f3aa-4e20-88ec-9ec820860999",
-          "name": "Postmark Opens for all messages",
-          "request": {
-            "name": "Postmark Opens for all messages",
-            "description": {},
-            "url": {
-              "path": [
-                "messages",
-                "outbound",
-                "opens"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "count",
-                  "value": "<string>",
-                  "description": "Number of bounces to return per request. Max 500."
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "<string>",
-                  "description": "Number of bounces to skip."
-                },
-                {
-                  "disabled": false,
-                  "key": "recipient",
-                  "value": "<string>",
-                  "description": "Filter by the user who was receiving the email"
-                },
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "client_name",
-                  "value": "<string>",
-                  "description": "Filter by client name, i.e. Outlook, Gmail"
-                },
-                {
-                  "disabled": false,
-                  "key": "client_company",
-                  "value": "<string>",
-                  "description": "Filter by company, i.e. Microsoft, Apple, Google"
-                },
-                {
-                  "disabled": false,
-                  "key": "client_family",
-                  "value": "<string>",
-                  "description": "Filter by client family, i.e. OS X, Chrome"
-                },
-                {
-                  "disabled": false,
-                  "key": "os_name",
-                  "value": "<string>",
-                  "description": "Filter by full OS name and specific version, i.e. OS X 10.9 Mavericks, Windows 7"
-                },
-                {
-                  "disabled": false,
-                  "key": "os_family",
-                  "value": "<string>",
-                  "description": "Filter by kind of OS used without specific version, i.e. OS X, Windows"
-                },
-                {
-                  "disabled": false,
-                  "key": "os_company",
-                  "value": "<string>",
-                  "description": "Filter by company which produced the OS, i.e. Apple Computer, Inc., Microsoft Corporation"
-                },
-                {
-                  "disabled": false,
-                  "key": "platform",
-                  "value": "<string>",
-                  "description": "Filter by platform, i.e. webmail, desktop, mobile"
-                },
-                {
-                  "disabled": false,
-                  "key": "country",
-                  "value": "<string>",
-                  "description": "Filter by country messages were opened in, i.e. Denmark, Russia"
-                },
-                {
-                  "disabled": false,
-                  "key": "region",
-                  "value": "<string>",
-                  "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
-                },
-                {
-                  "disabled": false,
-                  "key": "city",
-                  "value": "<string>",
-                  "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "211f2fee-9eac-4ef8-89c8-da48a64d014b",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "messages",
-                    "outbound",
-                    "opens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "recipient",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "tag",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "client_name",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "client_company",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "client_family",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "os_name",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "os_family",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "os_company",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "platform",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "country",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "region",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "city",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c0801ccc-da4d-46d3-9721-a6f6cd927be0",
-          "name": "Postmark Retrieve Message Opens",
-          "request": {
-            "name": "Postmark Retrieve Message Opens",
-            "description": {},
-            "url": {
-              "path": [
-                "messages",
-                "outbound",
-                "opens",
-                ":messageid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "count",
-                  "value": "<string>",
-                  "description": "Number of bounces to return per request. Max 500."
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "<string>",
-                  "description": "Number of bounces to skip."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "messageid",
-                  "description": "(Required) The ID of the message which should bypass inbound rules."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "a4ec8413-b73d-4001-889b-9ba1effa5b0f",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "messages",
-                    "outbound",
-                    "opens",
-                    ":messageid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "messageid",
-                      "description": "(Required) The ID of the message which should bypass inbound rules."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "31118887-b716-46dc-bf89-cb2d0e07e423",
-          "name": "Postmark Outbound message details",
-          "request": {
-            "name": "Postmark Outbound message details",
-            "description": {},
-            "url": {
-              "path": [
-                "messages",
-                "outbound",
-                ":messageid",
-                "details"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "messageid",
-                  "description": "(Required) The ID of the message which should bypass inbound rules."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "4685d9d8-c793-4cb5-a957-4e3fe6e2c740",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "messages",
-                    "outbound",
-                    ":messageid",
-                    "details"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "messageid",
-                      "description": "(Required) The ID of the message which should bypass inbound rules."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3a93492f-5ec8-41ba-b29e-f97b8ee82a14",
-          "name": "Postmark Outbound message dump",
-          "request": {
-            "name": "Postmark Outbound message dump",
-            "description": {},
-            "url": {
-              "path": [
-                "messages",
-                "outbound",
-                ":messageid",
-                "dump"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "messageid",
-                  "description": "(Required) The ID of the message which should bypass inbound rules."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "5ab4b83f-8ebb-4d78-8a17-a16b761ee34d",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "messages",
-                    "outbound",
-                    ":messageid",
-                    "dump"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "messageid",
-                      "description": "(Required) The ID of the message which should bypass inbound rules."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e722d9f9-faf3-40b7-9e11-593e2c886c26",
-          "name": "Postmark Outbound message search",
-          "request": {
-            "name": "Postmark Outbound message search",
-            "description": {},
-            "url": {
-              "path": [
-                "messages",
-                "outbound"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "count",
-                  "value": "<string>",
-                  "description": "Number of bounces to return per request. Max 500."
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "<string>",
-                  "description": "Number of bounces to skip."
-                },
-                {
-                  "disabled": false,
-                  "key": "recipient",
-                  "value": "<string>",
-                  "description": "Filter by the user who was receiving the email"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromemail",
-                  "value": "<string>",
-                  "description": "Filter by the sender email address"
-                },
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "status",
-                  "value": "<string>",
-                  "description": "Filter by status (`blocked`, `processed`, `queued`, `failed`, `scheduled`)"
-                },
-                {
-                  "disabled": false,
-                  "key": "todate",
-                  "value": "<string>",
-                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromdate",
-                  "value": "<string>",
-                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "efdb48e0-45aa-48a5-82ea-d36de81f6c99",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "messages",
-                    "outbound"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "recipient",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fromemail",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "tag",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "todate",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fromdate",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "69abb2a3-6cf3-4dcf-8415-fada3bf14681",
-          "name": "Postmark Get click counts",
-          "request": {
-            "name": "Postmark Get click counts",
-            "description": {},
-            "url": {
-              "path": [
-                "stats",
-                "outbound",
-                "clicks"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromdate",
-                  "value": "<string>",
-                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
-                },
-                {
-                  "disabled": false,
-                  "key": "todate",
-                  "value": "<string>",
-                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "b5e94e2c-6272-4995-acd9-c6dc8eb6594b",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stats",
-                    "outbound",
-                    "clicks"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "tag",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fromdate",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "todate",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d17ea811-91cc-482d-9d10-80f24c8434fb",
-          "name": "Postmark Get browser usage by family",
-          "request": {
-            "name": "Postmark Get browser usage by family",
-            "description": {},
-            "url": {
-              "path": [
-                "stats",
-                "outbound",
-                "clicks",
-                "browserfamilies"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromdate",
-                  "value": "<string>",
-                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
-                },
-                {
-                  "disabled": false,
-                  "key": "todate",
-                  "value": "<string>",
-                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "d52331aa-74d9-4d75-988a-08b9884752c6",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stats",
-                    "outbound",
-                    "clicks",
-                    "browserfamilies"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "tag",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fromdate",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "todate",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3df5e3cd-ce00-46ac-971d-6e4cd89044d4",
-          "name": "Postmark Get clicks by body location",
-          "request": {
-            "name": "Postmark Get clicks by body location",
-            "description": {},
-            "url": {
-              "path": [
-                "stats",
-                "outbound",
-                "clicks",
-                "location"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromdate",
-                  "value": "<string>",
-                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
-                },
-                {
-                  "disabled": false,
-                  "key": "todate",
-                  "value": "<string>",
-                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "6f2884c5-97bc-47a1-ab54-7ae63e36ed81",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stats",
-                    "outbound",
-                    "clicks",
-                    "location"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "tag",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fromdate",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "todate",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "75055a85-7e87-4261-b22d-83c1c5c75544",
-          "name": "Postmark Get browser plaform usage",
-          "request": {
-            "name": "Postmark Get browser plaform usage",
-            "description": {},
-            "url": {
-              "path": [
-                "stats",
-                "outbound",
-                "clicks",
-                "platforms"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromdate",
-                  "value": "<string>",
-                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
-                },
-                {
-                  "disabled": false,
-                  "key": "todate",
-                  "value": "<string>",
-                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "72d4fb53-f4cd-493c-a171-2f7fa262b570",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stats",
-                    "outbound",
-                    "clicks",
-                    "platforms"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "tag",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fromdate",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "todate",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "928f505e-973e-44c7-a422-a07046bdd977",
-          "name": "Postmark Get email open counts",
-          "request": {
-            "name": "Postmark Get email open counts",
-            "description": {},
-            "url": {
-              "path": [
-                "stats",
-                "outbound",
-                "opens"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromdate",
-                  "value": "<string>",
-                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
-                },
-                {
-                  "disabled": false,
-                  "key": "todate",
-                  "value": "<string>",
-                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "323e41ee-ae42-4e4d-8403-e9565af5a026",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stats",
-                    "outbound",
-                    "opens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "tag",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fromdate",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "todate",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "43d0546d-f535-4652-8104-5f0a3c41078e",
-          "name": "Postmark Get email client usage",
-          "request": {
-            "name": "Postmark Get email client usage",
-            "description": {},
-            "url": {
-              "path": [
-                "stats",
-                "outbound",
-                "opens",
-                "emailclients"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromdate",
-                  "value": "<string>",
-                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
-                },
-                {
-                  "disabled": false,
-                  "key": "todate",
-                  "value": "<string>",
-                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "4d2b4d64-b9f7-4eaa-b826-2d0ce24a2d97",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stats",
-                    "outbound",
-                    "opens",
-                    "emailclients"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "tag",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fromdate",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "todate",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b81f52e6-9eaf-4d5d-81f3-a5260e70258d",
-          "name": "Postmark Get email platform usage",
-          "request": {
-            "name": "Postmark Get email platform usage",
-            "description": {},
-            "url": {
-              "path": [
-                "stats",
-                "outbound",
-                "opens",
-                "platforms"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromdate",
-                  "value": "<string>",
-                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
-                },
-                {
-                  "disabled": false,
-                  "key": "todate",
-                  "value": "<string>",
-                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "d4093969-d6c2-4414-8b61-785cec8857e6",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stats",
-                    "outbound",
-                    "opens",
-                    "platforms"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "tag",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fromdate",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "todate",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d3496e5e-2a91-499a-9407-2228c5c0625b",
-          "name": "Postmark Get email read times",
-          "request": {
-            "name": "Postmark Get email read times",
-            "description": {},
-            "url": {
-              "path": [
-                "stats",
-                "outbound",
-                "opens",
-                "readtimes"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromdate",
-                  "value": "<string>",
-                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
-                },
-                {
-                  "disabled": false,
-                  "key": "todate",
-                  "value": "<string>",
-                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "3f130978-0d88-4577-9f4b-5eb3979b2673",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stats",
-                    "outbound",
-                    "opens",
-                    "readtimes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "tag",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fromdate",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "todate",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4e54bfb3-af34-4ab5-b644-f449994e0967",
-          "name": "Postmark Get outbound overview",
-          "request": {
-            "name": "Postmark Get outbound overview",
-            "description": {},
-            "url": {
-              "path": [
-                "stats",
-                "outbound"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromdate",
-                  "value": "<string>",
-                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
-                },
-                {
-                  "disabled": false,
-                  "key": "todate",
-                  "value": "<string>",
-                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "ca8eea44-c6ef-4510-8256-75754bf74943",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "stats",
                     "outbound"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Filter by tag",
                       "key": "tag",
                       "value": "<string>"
                     },
                     {
+                      "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
                       "key": "fromdate",
                       "value": "<string>"
                     },
                     {
+                      "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
                       "key": "todate",
                       "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "82836dcc-9a78-434a-85cb-05deb94c2f60",
-          "name": "Postmark Get bounce counts",
-          "request": {
-            "name": "Postmark Get bounce counts",
-            "description": {},
-            "url": {
-              "path": [
-                "stats",
-                "outbound",
-                "bounces"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromdate",
-                  "value": "<string>",
-                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
-                },
-                {
-                  "disabled": false,
-                  "key": "todate",
-                  "value": "<string>",
-                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "d6f1a016-5b3d-4084-a413-7fe4ea946f62",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stats",
-                    "outbound",
-                    "bounces"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "45e32881-6360-4477-a002-ca7ccf9eca5b",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stats/outbound?tag=<string>&fromdate=<string>&todate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stats",
+                        "outbound"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by tag",
+                          "key": "tag",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter messages starting from the date specified. e.g. `2014-02-01`",
+                          "key": "fromdate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter messages up to the date specified. e.g. `2014-02-01`",
+                          "key": "todate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "tag",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fromdate",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "todate",
-                      "value": "<string>"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "",
+                  "createdAt": "2026-10-22T01:52:35.000Z",
+                  "updatedAt": "2026-10-22T01:52:35.000Z",
+                  "uid": "35240-45e32881-6360-4477-a002-ca7ccf9eca5b"
                 }
               ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T01:52:35.000Z",
+              "updatedAt": "2026-10-22T01:52:35.000Z",
+              "uid": "35240-f716158a-0202-4b01-88b7-520c4d90aad5"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "59779981-4fa5-4655-b7e6-a6ada811bd01",
-          "name": "Postmark Get sent counts",
-          "request": {
-            "name": "Postmark Get sent counts",
-            "description": {},
-            "url": {
-              "path": [
-                "stats",
-                "outbound",
-                "sends"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromdate",
-                  "value": "<string>",
-                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
-                },
-                {
-                  "disabled": false,
-                  "key": "todate",
-                  "value": "<string>",
-                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "b215b83a-92cd-4eab-98aa-e2787bd60a28",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stats",
-                    "outbound",
-                    "sends"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "tag",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fromdate",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "todate",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "7eae2a1f-2e64-4c75-a2ef-be7b2812c221",
-          "name": "Postmark Get spam complaints",
-          "request": {
-            "name": "Postmark Get spam complaints",
-            "description": {},
-            "url": {
-              "path": [
-                "stats",
-                "outbound",
-                "spam"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromdate",
-                  "value": "<string>",
-                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
-                },
-                {
-                  "disabled": false,
-                  "key": "todate",
-                  "value": "<string>",
-                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "ecebff19-2c61-48d6-be38-7eb8621430eb",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stats",
-                    "outbound",
-                    "spam"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "tag",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fromdate",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "todate",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ae30fc1c-ab52-4a7b-90bc-bb1975d66aaf",
-          "name": "Postmark Get tracked email counts",
-          "request": {
-            "name": "Postmark Get tracked email counts",
-            "description": {},
-            "url": {
-              "path": [
-                "stats",
-                "outbound",
-                "tracked"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "tag",
-                  "value": "<string>",
-                  "description": "Filter by tag"
-                },
-                {
-                  "disabled": false,
-                  "key": "fromdate",
-                  "value": "<string>",
-                  "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
-                },
-                {
-                  "disabled": false,
-                  "key": "todate",
-                  "value": "<string>",
-                  "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "c907cc13-87e1-4b50-aa44-0ab1604f48c3",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stats",
-                    "outbound",
-                    "tracked"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "tag",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "fromdate",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "todate",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "1c845dd4-1671-4923-8639-f2870e9aa34b",
+          "createdAt": "2026-10-22T01:52:35.000Z",
+          "updatedAt": "2026-10-22T01:52:35.000Z",
+          "uid": "35240-1c845dd4-1671-4923-8639-f2870e9aa34b"
         }
       ],
-      "event": []
+      "id": "419ba177-433b-45fd-b599-51a095ba39b0",
+      "createdAt": "2026-10-22T01:52:35.000Z",
+      "updatedAt": "2026-10-22T01:52:35.000Z",
+      "uid": "35240-419ba177-433b-45fd-b599-51a095ba39b0"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "//api.postmarkapp.com/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://{{baseurl}}"
     }
-  ],
-  "info": {
-    "_postman_id": "ac13c894-ee7d-41eb-9a10-e60109de4e2c",
-    "name": "Postmark Account Activate Outbound API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Postmark makes sending and receiving email incredibly easy. The Account-level API allows users to\nconfigure all Servers, Domains, and Sender Signatures associated\nwith an Account.\n",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
