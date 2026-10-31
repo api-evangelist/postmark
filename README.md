@@ -1,4 +1,4 @@
-# Postmark (postmark)
+# Postmark
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,77 +66,289 @@
 
 Postmark is an email delivery service that helps businesses send and track transactional and broadcast email reliably, replacing SMTP with a scalable service that surfaces detailed delivery analytics, bounce tracking, open and click tracking, and dedicated IP addresses.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/postmark/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/postmark/refs/heads/main/apis.yml)
+**Areas:** Email · Messaging · Transactional Email · Deliverability · SMTP · Email API · Webhook · Inbound Email · Email Templates · Email Analytics
 
-## Scope
+## Postmark on APIs.io
 
-- **Type:** Index
+Everything profiled for Postmark is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/postmark/](https://apis.io/providers/postmark/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (30)
 
-- Emails
-- Messaging
-- Transactional Email
-- Deliverability
-- SMTP
+- [Postmark Activate API](https://apis.io/apis/postmark/postmark-activate-api/) — The Activate API from Postmark — 1 operation(s) for activate.
+- [Postmark Alias API](https://apis.io/apis/postmark/postmark-alias-api/) — The Alias API from Postmark — 1 operation(s) for alias.
+- [Postmark Batch API](https://apis.io/apis/postmark/postmark-batch-api/) — The Batch API from Postmark — 2 operation(s) for batch.
+- [Postmark Bounceid API](https://apis.io/apis/postmark/postmark-bounceid-api/) — The Bounceid API from Postmark — 3 operation(s) for bounceid.
+- [Postmark Bounces API](https://apis.io/apis/postmark/postmark-bounces-api-api/) — The Bounces API API from Postmark — 5 operation(s) for bounces api.
+- [Postmark Bounces API](https://apis.io/apis/postmark/postmark-bounces-api/) — The Bounces API from Postmark — 2 operation(s) for bounces.
+- [Postmark Browser Families API](https://apis.io/apis/postmark/postmark-browser-families-api/) — The Browser Families API from Postmark — 1 operation(s) for browser families.
+- [Postmark Bypass API](https://apis.io/apis/postmark/postmark-bypass-api/) — The Bypass API from Postmark — 1 operation(s) for bypass.
+- [Postmark Deliverystats API](https://apis.io/apis/postmark/postmark-deliverystats-api/) — The Deliverystats API from Postmark — 1 operation(s) for deliverystats.
+- [Postmark Domains API](https://apis.io/apis/postmark/postmark-domains-api-api/) — The Domains API API from Postmark — 6 operation(s) for domains api.
+- [Postmark Dump API](https://apis.io/apis/postmark/postmark-dump-api/) — The Dump API from Postmark — 2 operation(s) for dump.
+- [Postmark Email API](https://apis.io/apis/postmark/postmark-email-api/) — The Email API from Postmark — 4 operation(s) for email.
+- [Postmark Inbound API](https://apis.io/apis/postmark/postmark-inbound-api/) — The Inbound API from Postmark — 4 operation(s) for inbound.
+- [Postmark Inbound Rules API](https://apis.io/apis/postmark/postmark-inbound-rules-api-api/) — The Inbound Rules API API from Postmark — 2 operation(s) for inbound rules api.
+- [Postmark Locations API](https://apis.io/apis/postmark/postmark-locations-api/) — The Locations API from Postmark — 1 operation(s) for locations.
+- [Postmark Message Identifier API](https://apis.io/apis/postmark/postmark-message-identifier-api/) — The Message Identifier API from Postmark — 2 operation(s) for message identifier.
+- [Postmark Messages API](https://apis.io/apis/postmark/postmark-messages-api-api/) — The Messages API API from Postmark — 11 operation(s) for messages api.
+- [Postmark Messages API](https://apis.io/apis/postmark/postmark-messages-api/) — The Messages API from Postmark — 11 operation(s) for messages.
+- [Postmark Outbound API](https://apis.io/apis/postmark/postmark-outbound-api/) — The Outbound API from Postmark — 20 operation(s) for outbound.
+- [Postmark Sender Signatures API](https://apis.io/apis/postmark/postmark-sender-signatures-api-api/) — The Sender Signatures API API from Postmark — 5 operation(s) for sender signatures api.
+- [Postmark Sending API](https://apis.io/apis/postmark/postmark-sending-api-api/) — The Sending API API from Postmark — 4 operation(s) for sending api.
+- [Postmark Server Configuration API](https://apis.io/apis/postmark/postmark-server-configuration-api-api/) — The Server Configuration API API from Postmark — 1 operation(s) for server configuration api.
+- [Postmark Server Management API](https://apis.io/apis/postmark/postmark-server-management-api-api/) — The Server Management API API from Postmark — 2 operation(s) for server management api.
+- [Postmark Servers API](https://apis.io/apis/postmark/postmark-servers-api/) — The Servers API from Postmark — 1 operation(s) for servers.
+- [Postmark Stats API](https://apis.io/apis/postmark/postmark-stats-api-api/) — The Stats API API from Postmark — 12 operation(s) for stats api.
+- [Postmark Templates API](https://apis.io/apis/postmark/postmark-templates-api-api/) — The Templates API API from Postmark — 6 operation(s) for templates api.
+- [Postmark Templates API](https://apis.io/apis/postmark/postmark-templates-api/) — The Templates API from Postmark — 4 operation(s) for templates.
+- [Postmark Triggerid API](https://apis.io/apis/postmark/postmark-triggerid-api/) — The Triggerid API from Postmark — 1 operation(s) for triggerid.
+- [Postmark Triggers API](https://apis.io/apis/postmark/postmark-triggers-api/) — The Triggers API from Postmark — 4 operation(s) for triggers.
+- [Postmark Email Clients API](https://apis.io/apis/postmark/postmark-email-clients-api/) — The Email Clients API from Postmark — 1 operation(s) for email clients.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-04-14
-- **Modified:** 2026-05-30
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### Postmark API
+Event-driven and webhook contracts.
 
-The Postmark API provides programmatic access to send and track transactional and broadcast emails, manage servers, templates, message streams, bounces, suppressions, statistics, webhooks, and inbound message processing.
+- [Postmark Webhooks](https://apis.io/asyncapis/postmark/postmark-webhooks-asyncapi/)
 
-- **Human URL:** [https://postmarkapp.com/developer](https://postmarkapp.com/developer)
-- **Base URL:** `https://api.postmarkapp.com`
+#### Event channels (1)
 
-#### Tags
+Individual events and webhooks the provider emits.
 
-- Email
-- Messages
-- Templates
-- Servers
-- Bounces
-- Statistics
-- Webhooks
-- Inbound
-- Outbound
+- [/postmark/webhook](https://apis.io/channels/postmark/postmark-webhook/)
 
-#### Properties
+#### GraphQL (1)
 
-- [Documentation](https://postmarkapp.com/developer)
-- [Getting Started](https://postmarkapp.com/developer/api/overview)
-- [Authentication](https://postmarkapp.com/developer/api/overview#authentication)
-- [OpenAPI](openapi/postmark-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/postmark-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/postmark-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/postmark-webhooks-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
+GraphQL schemas.
 
-## Common Properties
+- [Moved to /providers/postmark/](https://apis.io/graphqls/postmark/postmark-graphql/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [Postmark MCP Server](https://apis.io/servers/postmark/postmark-mcp-server/)
+
+#### Agent skills (6)
+
+Agent skills built on the API.
+
+- [postmark](https://apis.io/agent-skills/postmark/postmark/)
+- [postmark-email-best-practices](https://apis.io/agent-skills/postmark/postmark-email-best-practices/)
+- [postmark-inbound](https://apis.io/agent-skills/postmark/postmark-inbound/)
+- [postmark-send-email](https://apis.io/agent-skills/postmark/postmark-send-email/)
+- [postmark-templates](https://apis.io/agent-skills/postmark/postmark-templates/)
+- [postmark-webhooks](https://apis.io/agent-skills/postmark/postmark-webhooks/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Postmark Agentic Access](https://apis.io/agentic-access/postmark/postmark-agentic-access/)
+
+#### JSON Schema (19)
+
+The data models the API reads and writes.
+
+- [CreateServerPayload](https://apis.io/schemas/postmark/postmark-createserverpayload/)
+- [DKIMRotationResponse](https://apis.io/schemas/postmark/postmark-dkimrotationresponse/)
+- [DomainCreationModel](https://apis.io/schemas/postmark/postmark-domaincreationmodel/)
+- [DomainEditingModel](https://apis.io/schemas/postmark/postmark-domaineditingmodel/)
+- [DomainExtendedInformation](https://apis.io/schemas/postmark/postmark-domainextendedinformation/)
+- [DomainInformation](https://apis.io/schemas/postmark/postmark-domaininformation/)
+- [DomainListingResults](https://apis.io/schemas/postmark/postmark-domainlistingresults/)
+- [DomainSPFResult](https://apis.io/schemas/postmark/postmark-domainspfresult/)
+- [EditServerPayload](https://apis.io/schemas/postmark/postmark-editserverpayload/)
+- [ExtendedServerInfo](https://apis.io/schemas/postmark/postmark-extendedserverinfo/)
+- [SenderListingResults](https://apis.io/schemas/postmark/postmark-senderlistingresults/)
+- [SenderSignatureCreationModel](https://apis.io/schemas/postmark/postmark-sendersignaturecreationmodel/)
+- [SenderSignatureEditingModel](https://apis.io/schemas/postmark/postmark-sendersignatureeditingmodel/)
+- [SenderSignatureExtendedInformation](https://apis.io/schemas/postmark/postmark-sendersignatureextendedinformation/)
+- [SenderSignatureInformation](https://apis.io/schemas/postmark/postmark-sendersignatureinformation/)
+- [ServerListingResponse](https://apis.io/schemas/postmark/postmark-serverlistingresponse/)
+- [StandardPostmarkResponse](https://apis.io/schemas/postmark/postmark-standardpostmarkresponse/)
+- [TemplatesPushModel](https://apis.io/schemas/postmark/postmark-templatespushmodel/)
+- [TemplatesPushResponse](https://apis.io/schemas/postmark/postmark-templatespushresponse/)
+
+#### JSON Structure (1)
+
+Data models expressed in JSON Structure.
+
+- [Postmark Structure](https://apis.io/json-structure/postmark/postmark-structure/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Postmark Domain Vocabulary](https://apis.io/vocabularies/postmark/postmark-vocabulary/)
+
+#### Collections (48)
+
+Postman and Open Collection request collections.
+
+- [Postmark Account Activate API](https://apis.io/collections/postmark/open-postmark-activate-api/)
+- [Postmark Account Activate Alias API](https://apis.io/collections/postmark/open-postmark-alias-api/)
+- [Postmark API](https://apis.io/collections/postmark/open-postmark-api/)
+- [Postmark Account Activate Batch API](https://apis.io/collections/postmark/open-postmark-batch-api/)
+- [Postmark Account Activate Bounceid API](https://apis.io/collections/postmark/open-postmark-bounceid-api/)
+- [Postmark Account Activate Bounces API](https://apis.io/collections/postmark/open-postmark-bounces-api/)
+- [Postmark Account Activate Bounces API API](https://apis.io/collections/postmark/open-postmark-bounces-api-api/)
+- [Postmark Account Activate Browser Families API](https://apis.io/collections/postmark/open-postmark-browser-families-api/)
+- [Postmark Account Activate Bypass API](https://apis.io/collections/postmark/open-postmark-bypass-api/)
+- [Postmark Account Activate Deliverystats API](https://apis.io/collections/postmark/open-postmark-deliverystats-api/)
+- [Postmark Account Activate Domains API API](https://apis.io/collections/postmark/open-postmark-domains-api-api/)
+- [Postmark Account Activate Dump API](https://apis.io/collections/postmark/open-postmark-dump-api/)
+- [Postmark Account Activate Email API](https://apis.io/collections/postmark/open-postmark-email-api/)
+- [Postmark Account Activate Emailclients API](https://apis.io/collections/postmark/open-postmark-emailclients-api/)
+- [Postmark Account Activate Inbound API](https://apis.io/collections/postmark/open-postmark-inbound-api/)
+- [Postmark Account Activate Inbound Rules API API](https://apis.io/collections/postmark/open-postmark-inbound-rules-api-api/)
+- [Postmark Account Activate Locations API](https://apis.io/collections/postmark/open-postmark-locations-api/)
+- [Postmark Account Activate Message Identifier API](https://apis.io/collections/postmark/open-postmark-message-identifier-api/)
+- [Postmark Account Activate Messages API](https://apis.io/collections/postmark/open-postmark-messages-api/)
+- [Postmark Account Activate Messages API API](https://apis.io/collections/postmark/open-postmark-messages-api-api/)
+- [Postmark Account Activate Messages > Inbound > {Messageid} API](https://apis.io/collections/postmark/open-postmark-messages-inbound-messageid-api/)
+- [Postmark Account Activate Messages > Outbound > Clicks API](https://apis.io/collections/postmark/open-postmark-messages-outbound-clicks-api/)
+- [Postmark Account Activate Messages > Outbound > {Messageid} API](https://apis.io/collections/postmark/open-postmark-messages-outbound-messageid-api/)
+- [Postmark Account Activate Messages > Outbound > Opens API](https://apis.io/collections/postmark/open-postmark-messages-outbound-opens-api/)
+- [Postmark Account Activate Outbound API](https://apis.io/collections/postmark/open-postmark-outbound-api/)
+- …and 23 more published on APIs.io
+
+#### Overlays (77)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Postmark Activate Api Overlay](https://apis.io/overlays/postmark/postmark-activate-api-overlay/)
+- [Postmark Activate Api Phrasing Overlay](https://apis.io/overlays/postmark/postmark-activate-api-phrasing-overlay/)
+- [Postmark Alias Api Overlay](https://apis.io/overlays/postmark/postmark-alias-api-overlay/)
+- [Postmark Alias Api Phrasing Overlay](https://apis.io/overlays/postmark/postmark-alias-api-phrasing-overlay/)
+- [Postmark Batch Api Overlay](https://apis.io/overlays/postmark/postmark-batch-api-overlay/)
+- [Postmark Batch Api Phrasing Overlay](https://apis.io/overlays/postmark/postmark-batch-api-phrasing-overlay/)
+- [Postmark Bounceid Api Overlay](https://apis.io/overlays/postmark/postmark-bounceid-api-overlay/)
+- [Postmark Bounceid Api Phrasing Overlay](https://apis.io/overlays/postmark/postmark-bounceid-api-phrasing-overlay/)
+- [Postmark Bounces Api Api Overlay](https://apis.io/overlays/postmark/postmark-bounces-api-api-overlay/)
+- [Postmark Bounces Api Api Phrasing Overlay](https://apis.io/overlays/postmark/postmark-bounces-api-api-phrasing-overlay/)
+- [Postmark Bounces Api Overlay](https://apis.io/overlays/postmark/postmark-bounces-api-overlay/)
+- [Postmark Bounces Api Phrasing Overlay](https://apis.io/overlays/postmark/postmark-bounces-api-phrasing-overlay/)
+- [Postmark Browser Families Api Overlay](https://apis.io/overlays/postmark/postmark-browser-families-api-overlay/)
+- [Postmark Browser Families Api Phrasing Overlay](https://apis.io/overlays/postmark/postmark-browser-families-api-phrasing-overlay/)
+- [Postmark Bypass Api Overlay](https://apis.io/overlays/postmark/postmark-bypass-api-overlay/)
+- [Postmark Bypass Api Phrasing Overlay](https://apis.io/overlays/postmark/postmark-bypass-api-phrasing-overlay/)
+- [Postmark Deliverystats Api Overlay](https://apis.io/overlays/postmark/postmark-deliverystats-api-overlay/)
+- [Postmark Deliverystats Api Phrasing Overlay](https://apis.io/overlays/postmark/postmark-deliverystats-api-phrasing-overlay/)
+- [Postmark Domains Api Api Overlay](https://apis.io/overlays/postmark/postmark-domains-api-api-overlay/)
+- [Postmark Domains Api Api Phrasing Overlay](https://apis.io/overlays/postmark/postmark-domains-api-api-phrasing-overlay/)
+- [Postmark Dump Api Overlay](https://apis.io/overlays/postmark/postmark-dump-api-overlay/)
+- [Postmark Dump Api Phrasing Overlay](https://apis.io/overlays/postmark/postmark-dump-api-phrasing-overlay/)
+- [Postmark Email Api Overlay](https://apis.io/overlays/postmark/postmark-email-api-overlay/)
+- [Postmark Email Api Phrasing Overlay](https://apis.io/overlays/postmark/postmark-email-api-phrasing-overlay/)
+- [Postmark Email Clients Api Phrasing Overlay](https://apis.io/overlays/postmark/postmark-email-clients-api-phrasing-overlay/)
+- …and 52 more published on APIs.io
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Postmark — asyncapi rules](https://apis.io/rules/postmark/postmark-asyncapi-spectral-rules/)
+- [Postmark — jsonschema rules](https://apis.io/rules/postmark/postmark-jsonschema-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Postmark Authentication](https://apis.io/security/postmark/postmark-authentication/)
+- [Postmark Domain Security](https://apis.io/security/postmark/postmark-domain-security/)
+- [Postmark Trust Center](https://apis.io/security/postmark/postmark-trust-center/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Postmark Plans Pricing](https://apis.io/plans/postmark/postmark-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Postmark Rate Limits](https://apis.io/rate-limits/postmark/postmark-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Postmark Finops](https://apis.io/finops/postmark/postmark-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://postmarkapp.com)
 - [Documentation](https://postmarkapp.com/developer)
-- [Getting Started](https://postmarkapp.com/developer/api/overview)
+- [Getting started](https://postmarkapp.com/developer/api/overview)
+- [API reference](https://postmarkapp.com/developer/api/overview)
 - [Pricing](https://postmarkapp.com/pricing)
-- [Sign Up](https://account.postmarkapp.com/sign_up)
-- [Login](https://account.postmarkapp.com/login)
-- [Blog](https://postmarkapp.com/blog)
 - [Support](https://postmarkapp.com/support)
-- [Status Page](https://status.postmarkapp.com)
-- [Templates](https://postmarkapp.com/transactional-email-templates)
-- [Changelog](https://postmarkapp.com/changelog)
-- [Terms of Service](https://postmarkapp.com/terms-of-service)
-- [Privacy Policy](https://wildbit.com/privacy)
-- [Git Hub](https://github.com/ActiveCampaign)
-- [Twitter](https://twitter.com/postmarkapp)
-- [LinkedIn](https://www.linkedin.com/company/postmarkapp)
-- [Features](undefined)
+- [Changelog](https://postmarkapp.com/updates)
+- [Blog](https://postmarkapp.com/blog)
+- [Terms of service](https://postmarkapp.com/terms-of-service)
+- [Privacy policy](https://wildbit.com/privacy)
+- [GitHub](https://github.com/ActiveCampaign)
+- [Status](https://status.postmarkapp.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 68.7** — exemplar · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 76.7 |
+| Contract quality | 50.7 |
+| Contract governance | 31.8 |
+| Operational transparency | 81.6 |
+| Developer ergonomics | 90.5 |
+| Access clarity | 75.0 |
+
+**Agent readiness 41.7** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | yes |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 25.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/postmark/](https://apis.io/providers/postmark/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Postmark: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/postmark/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
